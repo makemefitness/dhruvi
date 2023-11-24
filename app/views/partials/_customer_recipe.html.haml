@@ -1,0 +1,44 @@
+.calendar-content-toggler#dieta
+  %h1.color-primary.line-bottom.line-top.inner-box
+    %b= link_to "Lista zestawów", admin_customer_diet_sets_path(get_login_user), class: "color-primary", remote: true
+    \/
+    %b= link_to @diet_set.name, admin_customer_diet_set_path(get_login_user, @diet_set.id), remote: true, class: "color-primary"
+    \/
+    %b= @customer_recipe.name
+
+.customer_recipe-wrapper
+  .customer_recipe-photo
+    .customer_recipe-photo-image
+      = image_tag(@recipe.photo_url.to_s, class: "recipe__show-photo") if @recipe.photo?
+    .customer_recipe-photo-caption
+      .customer_recipe-photo-caption__title
+        %h1.color-primary
+          %b= @recipe.name
+      .summary
+        %svg.fill-primary.recipe__nav-icon
+          %use{"xlink:href" => "#{asset_pack_path('images/sprite.svg')}#icon-power"}
+        = @customer_recipe.summary[:energy].to_i.to_s + "kcal"
+        %svg.fill-primary.recipe__nav-icon
+          %use{"xlink:href" => "#{asset_pack_path('images/sprite.svg')}#icon-heart"}
+        = " protein: #{@customer_recipe.summary[:protein].to_i.to_s}g, "
+        = " tłuszczu: #{@customer_recipe.summary[:fat].to_i.to_s}g, "
+        = " weglowodany: #{@customer_recipe.summary[:carbohydrate].to_i.to_s}g"
+  .customer_recipe-ingredients
+    %h3
+      %b Składniki:
+    - @customer_recipe.customer_diets.each do |ingredient|
+      = Ingredient.find(ingredient.ingredient_id).name 
+      = ingredient.amount.to_s + "g"
+      %span.float-right= ingredient.energy.to_i.to_s + "kcal"
+      %br
+  .customer_recipe-preparation
+    %h3
+      %b Przygotowanie:
+    = @recipe.preparation
+.calendar-content-toggler#dieta
+  %h1.color-primary.line-bottom.line-top.inner-box
+    %b= link_to "Lista zestawów", admin_customer_diet_sets_path(get_login_user), class: "color-primary", remote: true
+    \/
+    %b= link_to @diet_set.name, admin_customer_diet_set_path(get_login_user, @diet_set.id), remote: true, class: "color-primary"
+    \/
+    %b= @customer_recipe.name

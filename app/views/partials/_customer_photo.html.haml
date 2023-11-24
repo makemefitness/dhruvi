@@ -1,0 +1,20 @@
+.calendar-content-toggler#dieta
+  %h1.color-primary.line-bottom.line-top.inner-box 
+    %b.mr-auto= link_to "Twoje zdjęcia.", customer_customer_photos_path, remote: true
+    .ml-auto.mr-3.mb-3
+      = add_button "Dodaj nowe zdjęcie", new_customer_customer_photo_path, title: "Dodaj nowe zdjęcie", remote: true
+  .box
+    .recipe
+      - if @customer_photo.photo.attached?
+        %strong Zdjecie
+        %br
+        = image_tag @customer_photo.photo, class: 'recipe__show-photo'
+    %p
+      %b Tytuł:
+      = @customer_photo.title
+
+    %p
+      %b Opis:
+      = @customer_photo.content
+  .box
+    = button_to_outline_right 'Lista', customer_customer_photos_path, remote: true

@@ -1,0 +1,30 @@
+-# Admin calendar 
+-# TODO refactor with main calendar
+.callendar--header
+  .callendar--header-actions
+    %span#time-now
+    .callendar--header-actions-sub
+      .half
+        #callendar_submenu.menu-btn{title: "Menu"}
+          .btn-line
+          .btn-line
+          .btn-line
+        = render(:partial => "partials/callendar_submenu")
+        %span.heading-collored Dzisiejszy plan 1
+      .half
+        %a.color-white.calendar-link#user-tasks-link{href: '/static_pages/usershome', title: "Twoje zadania"}
+          %svg.side-nav__icon.fill-white.active.icons.calendar-menu-icon
+            %use{"xlink:href" => "#{asset_pack_path('images/sprite.svg')}#icon-calendar"}
+
+
+        %a.color-white.calendar-link#conversations-link{href: "/conversations", title: "Twoje wiadomości", "data-remote": true}
+          %svg.side-nav__icon.fill-white.icons.calendar-menu-icon
+            %use{"xlink:href" => "#{asset_pack_path('images/sprite.svg')}#icon-chat"}
+  .callendar--header-callendar
+    .today-date
+      .date-marker
+        %h1.day#calendar-today 21
+        %p.month#calendar-month Marc
+      .date-tasks
+        %p= "#{@today.size} zadania"
+    .main-callendar#calendar-box

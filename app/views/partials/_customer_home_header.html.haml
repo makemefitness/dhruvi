@@ -1,0 +1,21 @@
+.customer_home-header
+  .gallery
+    %figure.gallery__item
+      = image_pack_tag "images/main_header/art-bicycle.jpg", alt: "logo", class: "gallery__photo"
+    %figure.gallery__item
+      = image_pack_tag "images/main_header/casual-close.jpg", alt: "logo", class: "gallery__photo"
+    %figure.gallery__item
+      = image_pack_tag "images/main_header/berries.jpg", alt: "logo", class: "gallery__photo"
+    %figure.gallery__item
+      = image_pack_tag "images/main_header/appetizer.jpg", alt: "logo", class: "gallery__photo"
+  .customer_home-header__header
+    %h1.customer_home-header__heading
+      %h1.heading-secondary.mt-0= @customer.profil.present? ? "Cel: #{@customer.profil.goal}" : "Brak ustalonego profilu"
+    /.customer_home-header__nav
+    /  %svg.customer_home-header__nav-icon
+    /    %use{"xlink:href" => "#{asset_pack_path('images/sprite.svg')}#icon-hand-o-down"}
+    /  Kategorie
+    /.customer_home-header__summary
+    /  %p
+    /    %b= 7
+    /    Zadan

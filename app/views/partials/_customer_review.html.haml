@@ -1,0 +1,14 @@
+.user-review__photo
+  = image_tag @customer.avatar_url, class: 'user-review__photo' if @customer.avatar.present?
+  .user-review__inner-box
+    %p.paragraph
+      - unless @customer.profil.present?
+        %h1 Brak ustalonego celu
+        = link_to 'Utworz profil', new_admin_customer_profil_path(@customer)
+      - else
+        %h1.color-primary= "#{@customer.name}"
+    .user-review__details
+      .user-review__details-pt.mb-3.line-bottom
+        %p Twój osobisty trener
+        //= image_pack_tag "images/Rysiu.png", alt: "logo", class: "pt__photo"
+        = gravatar_for(User.find(@customer.user_id).nil? ? User.first : User.find(@customer.user_id), 65)
