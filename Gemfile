@@ -37,11 +37,8 @@ group :test do
 end
 
 gem "factory_bot", "~> 6.4"
-
 gem "faker", "~> 3.2"
-
 gem "sassc-rails", "~> 2.1"
 # gem 'sass-rails'
-
 gem "font-awesome-sass", "~> 6.4.2"
-
+gem "devise", "~> 4.9"

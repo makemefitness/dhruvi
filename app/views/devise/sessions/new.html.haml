@@ -1,0 +1,22 @@
+%section.form-all.jumbotron.p-5.center
+  .login_customer__form.p-5
+    %h1.heading-secondary.heading-secondary__form Zaloguj sie
+    = form_for(resource, as: resource_name, url: session_path(resource_name), html: {class: 'form'}) do |f|
+      .form-group
+        = f.text_field :email, autofocus: true, autocomplete: "email", placeholder: 'Email lub nick', class: "form__input"
+        = f.label :email, "Email lub nick", class: "form__label"
+        %br/
+      .form-group
+        = f.password_field :password, class: "form__input", autocomplete: true, placeholder: 'Hasło'
+        = f.label :password, 'Hasło', class: "form__label"
+        %br/
+      /
+        <div class="form-group">
+        <haml_loud> f.check_box :remember_me </haml_loud>
+        <haml_loud> f.label :remember_me, &#39;Zapamiej mnie&#39; </haml_loud>
+        </div>
+      .form-group
+        = f.submit "Loguj", class: "my-btn my-btn--pink my-btn--width btn-lg"
+      .form__group.mt-5
+        %h5.bg-transparent-8.p-3.pull-left.text-left.br-3
+          = render "devise/shared/links"

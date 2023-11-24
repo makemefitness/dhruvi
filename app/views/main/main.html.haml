@@ -1,0 +1,14 @@
+-provide(:title, "Domowa")
+%header
+  %h1
+    Witaj w CRM Trener,
+    = current_user.email
+  %h2
+    Uzywamy Rails
+    = Rails.version
+%section
+  %p
+    Tu bedzie strona
+  = link_to "Edytuj dane logowania", edit_user_registration_path
+  %hr
+  = link_to "Wloguj", destroy_user_session_path
