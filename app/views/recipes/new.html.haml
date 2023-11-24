@@ -1,5 +1,7 @@
-%h1 New recipe
+%section.form-all
+  .receip__form
+    %h1.heading-secondary.heading-secondary__form New recipe
 
-= render 'form'
-
-= link_to 'Back', recipes_path
+    = render 'form'
+    .ml-2.p-5
+      = link_to 'Back', recipes_path, class: 'my-bottom__link'
