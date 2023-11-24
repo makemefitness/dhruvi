@@ -1,24 +1,43 @@
-%p#notice= notice
+.recipe
+  -# = image_tag(@recipe.photo_url.to_s, class: "recipe__show-photo") if @recipe.photo?
+  = image_tag(@recipe.photo, class: "recipe__show-photo") if @recipe.photo.attached?
+  .recipe__details
+    %h1.heading-secondary
+      %b= @recipe.name
+    %h3
+      %b Ingredients:
+      = @recipe.ingredients
+    -# - @recipe.recipeingredients.each do |ingredient|
+    -#   %p
+    -#     = Ingredient.find(ingredient.ingredient_id).name 
+    -#     = ingredient.amount.to_s + "g"
 
-%p
-  %b Photo:
-  = @recipe.photo
-%p
-  %b Name:
-  = @recipe.name
-%p
-  %b Ingredients:
-  = @recipe.ingredients
-%p
-  %b Preparation:
-  = @recipe.preparation
-%p
-  %b Summary:
-  = @recipe.summary
-%p
-  %b Link:
-  = @recipe.link
+    -#     %span.float-right= ingredient.energy.to_i.to_s + "kcal"
+    -#     /= ingredient.fat.to_i.to_s + "g"
+    -#     /= ingredient.protein.to_i.to_s + "g"
+    -#     /= ingredient.carbohydrate.to_i.to_s + "g"
 
-= link_to 'Edit', edit_recipe_path(@recipe)
-\|
-= link_to 'Back', recipes_path
+    %h3
+      %b Przygotowanie:
+    = @recipe.description
+    %hr
+    %small
+      %svg.recipe__nav-icon.fill-primary
+        %use{"xlink:href" => "#{asset_path('sprite.svg')}#icon-power"}
+      -# = @recipe.summary[:energy].to_i.to_s + "kcal"
+      2000 kcal
+      %svg.recipe__nav-icon.fill-primary
+        %use{"xlink:href" => "#{asset_path('sprite.svg')}#icon-heart"}
+      -# = " protein: #{@recipe.summary[:protein].to_i.to_s}g, "
+      -# = " tłuszczu: #{@recipe.summary[:fat].to_i.to_s}g, "
+      -# = " weglowodany: #{@recipe.summary[:carbohydrate].to_i.to_s}g"
+      protein 150g tłuszczu 20g weglowodany 5g
+    %hr
+    %p
+      %b Link:
+      = @recipe.link
+  .text-center.mb-3
+    -# - if can?(:edit, @recipe)
+    = edit_outline_button 'Edytuj', edit_recipe_path(@recipe)
+    \|
+    = button_to_outline_right 'Lista', recipes_path
