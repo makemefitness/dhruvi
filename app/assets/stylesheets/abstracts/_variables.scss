@@ -1,0 +1,95 @@
+/*
+COLORS
+
+Primary: #eb2f64
+Primary light: #FF3366
+Primary dark: #BA265D
+
+Grey light 1: #faf9f9
+Grey light 2: #f4f2f2
+Grey light 3: #f0eeee
+Grey light 4: #ccc
+
+Grey dark 1: #333
+Grey dark 2: #777
+Grey dark 3: #999
+
+*/
+:root {
+  --color-primary: #eb2f64;
+  --color-primary-light: #ff3366;
+  --color-primary-dark: #ba265d;
+  --color-primary-light-1: #d9fffc;
+
+  --color-white: #fff;
+
+  --color-grey-light-1: #faf9f9;
+  --color-grey-light-2: #f4f2f2;
+  --color-grey-light-3: #f0eeee;
+  --color-grey-light-4: #ccc;
+
+  --color-grey-dark-1: #333;
+  --color-grey-dark-2: #777;
+  --color-grey-dark-3: #999;
+
+  --line-light: 1px solid var(--color-grey-light-4);
+  --border-light: 1px solid var(--color-grey-light-3);
+
+  --shadow-light: 0 2rem 4rem rgba(0, 0, 0, 0.1);
+  --shadow-dark: 0 2rem 6rem rgba(0, 0, 0, 0.3);
+
+  --color-primary-blue: #3d84f7;
+  --color-primary-blue-light: #5997f9;
+  --color-primary-blue-dark: #166df9;
+}
+
+$bp-largest: 75em; // 1200px;
+$bp-large: 68.75em; // 1100px;
+$bp-medium: 56.25em;
+$bp-phones: 26.25em;
+.fill-primary {
+  fill: var(--color-primary) !important;
+}
+.fill-primary-light {
+  fill: var(--color-primary-light) !important;
+}
+
+.fill-white {
+  fill: #fff;
+}
+.color-black {
+  color: black;
+}
+.color-white {
+  color: #fff;
+  fill: #fff;
+  transition: 0.5s all;
+
+  &:hover {
+    color: var(--color-primary-light);
+    fill: var(--color-primary-light);
+  }
+}
+.bg-color-grey-dark-3 {
+  background-color: var(--color-grey-dark-3);
+}
+.bg-color-grey-light-2 {
+  background-color: var(--color-grey-light-2);
+}
+.bg-color-grey-light-4 {
+  background-color: var(--color-grey-light-4);
+}
+.br-3 {
+  border-radius: 0.3rem;
+}
+
+// Moja poocnicza do łamania długich wyrazøw
+.word-break {
+  word-break: break-all;
+}
+
+.bg-transparent {
+  &-8 {
+    background-color: rgba($color: #fff, $alpha: 0.8);
+  }
+}
