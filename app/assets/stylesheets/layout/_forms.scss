@@ -26,7 +26,7 @@
         rgba(#fff, 0.5) 57%,
         transparent 50%
       ),
-      url("../images/app_layout/healthyfoods.jpg");
+      url('app_layout/healthyfoods.jpg');
   }
 
   .receip__form {
@@ -36,7 +36,7 @@
         rgba(#fff, 0.5) 57%,
         transparent 50%
       ),
-      url("../images/app_layout/form.jpeg");
+      url('app_layout/form.jpg');
   }
   .selfi__form {
     background-image: linear-gradient(
@@ -45,7 +45,7 @@
         rgba(#fff, 0.5) 57%,
         transparent 50%
       ),
-      url("../images/app_layout/kamera.jpg");
+      url('app_layout/kamera.jpg');
   }
   .contact__form {
     background-image: linear-gradient(
@@ -54,7 +54,7 @@
         rgba(#fff, 0.5) 57%,
         transparent 50%
       ),
-      url("../images/customer_home/contact.jpg");
+      url('customer_home/contact.jpg');
   }
 
   .edit_customer__form {
@@ -64,7 +64,7 @@
         rgba(#fff, 0.5) 57%,
         transparent 50%
       ),
-      url("https://source.unsplash.com/h9Rx3zOYZws");
+      url('https://source.unsplash.com/h9Rx3zOYZws');
   }
   .login_customer__form {
     padding-top: 10vh !important;
@@ -76,7 +76,7 @@
         rgba(#fff, 0.5) 57%,
         transparent 50%
       ),
-      url("https://source.unsplash.com/d3bYmnZ0ank");
+      url('https://source.unsplash.com/d3bYmnZ0ank');
     background-size: cover;
     display: flex;
     flex-direction: column;
@@ -99,7 +99,7 @@
         rgba(#fff, 0.5) 57%,
         transparent 50%
       ),
-      url("https://source.unsplash.com/papgZtEFaAA");
+      url('https://source.unsplash.com/papgZtEFaAA');
   }
 }
 .form__links {
