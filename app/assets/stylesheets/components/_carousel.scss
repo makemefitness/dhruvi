@@ -208,7 +208,7 @@ $bp-phones: 26.25em;
     .col-1-z-3 {
       width: calc((100% - 2 * 3rem) / 3);
     }
-    @media only screen and(max-width: $bp-phones) {
+    @media only screen and (max-width: $bp-phones) {
       .card-container {
         width: 100%;
         margin: 3rem auto;
