@@ -21,8 +21,8 @@
         = alert
     - unless log_in?
       %main.dhruvi-help
-        %h1 
-          Nie jestes zalogowany
+        %main.main-view
+          = yield
     - else
       .my-container 
         %header.header

@@ -1,0 +1,41 @@
+%section.form-all.jumbotron.p-5.center
+  .login_customer__form.p-5
+    %h1.heading-secondary.heading-secondary__form Załóż konto
+    = form_for(resource, as: resource_name, url: registration_path(resource_name), html: {class: 'form'}) do |f|
+      = devise_error_messages!
+      .form__group
+        = f.file_field :avatar, class: "form__input"
+        = f.label :avatar, class: "form__label"
+        %br/
+      .form__group
+        = f.email_field :email, autofocus: true, autocomplete: "email", placeholder: 'Email', class: "form__input"
+        .field_with_errors
+          = "Email #{resource.errors.messages[:email][0]}" if resource.errors.messages[:email] != []
+        = f.label :email, class: "form__label"
+        %br/
+      -# .form__group
+      -#   = f.text_field :username, autocomplete: "username", class: "form__input"
+      -#   = f.label :username, class: "form__label"
+      -#   %br/
+      .form__group
+        - if @minimum_password_length
+          %em
+            (#{@minimum_password_length} znakow minimum)
+        = f.password_field :password, autocomplete: "off", class: "form__input"
+        .field_with_errors
+          = "Hasło #{resource.errors.messages[:password][0]}" if resource.errors.messages[:password] != []
+        = f.label :password, "Hasło", class: "form__label"
+        %small#passwordHelpInline.text-muted
+          Musi zawierć 6-20 znakow.
+        %br/
+      .form__group
+        = f.password_field :password_confirmation, autocomplete: "off", class: "form__input"
+        .field_with_errors
+          = "Potwierdz hasło #{resource.errors.messages[:password_confirmation][0]}" if resource.errors.messages[:password_confirmation] != []
+        = f.label :password_confirmation, "Potwierdz hasło", class: "form__label"
+        %br/
+      .actions-1
+        = f.button "Załóż konto", class: "my-btn my-btn--pink my-btn--width btn-lg"
+      .form__group
+        %h2.bg-transparent-8.p-3.mt-5.pull-left.br-3
+          = render "devise/shared/links"
