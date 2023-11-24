@@ -2,36 +2,29 @@
   %header
     %h1.h2
       Customers
-  %section.search-form
-    = form_for :customers, method: :get do |f|
-      .input-group
-        = label_tag :keywords, nil, class: "sr-only"
-        = text_field_tag :keywords, nil, placeholder: "First name, Surname lub Email", class: "form-control input-lg"
-        %span.input-group-prepend
-          = submit_tag "Search", class: "btn btn-primary"
+  -# %section.search-form
+  -#   = form_for :customers, method: :get do |f|
+  -#     .input-group
+  -#       = label_tag :keywords, nil, class: "sr-only"
+  -#       = text_field_tag :keywords, nil, placeholder: "First name, Surname lub Email", class: "form-control input-lg"
+  -#       %span.input-group-prepend
+  -#         = submit_tag "Search", class: "btn btn-primary"
 
   %section.search-results
     %header
-      %h1.h3
-        Resultaty
-    %table.table.table-striped
-      %thead
-        %tr
-          %th First Name
-          %th Surname
-          %th Email
-          %th Phone
-          %th Customer from
-      %tbody
-        - @customers.each do |customer|
-          %tr
-            %td
-              = customer.first_name
-            %td
-              = customer.last_name
-            %td
-              = customer.email
-            %td
-              = customer.phone_number
-            %td
+      %h1.h3 Results
+    - if @customers.present?
+      = render partial: "pager", locals: {keywords: @keywords, page: @page}
+    %ol.list-group
+      - @customers.each do |customer|
+        %li.list-group-item.d-flex.align-items-start
+          = gravatar_for customer
+          %div.m-3
+            %h3.float-right
+              %small Klientem od
               = customer.created_at.to_date
+            %h2
+              = customer.first_name 
+              = customer.last_name
+            %h5= customer.username
+            %h4.float-left= customer.email
