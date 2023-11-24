@@ -1,0 +1,7 @@
+.calendar-content-toggler#user-training-tasks
+  %h1.color-primary.inner-box
+    %b Zaplanowane treningi.
+  %ul.list-group#tasks-list
+    - if @customer.tasks.exists?
+      - @customer.tasks.each do |task|
+        = render(:partial => "partials/task", locals: {task: task})

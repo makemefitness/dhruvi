@@ -1,0 +1,31 @@
+.calendar-content-toggler#dieta
+  %h1.color-primary.line-bottom.line-top.inner-box 
+    %b.mr-auto Twoje zdjęcia.
+    .ml-auto.mr-3.mb-3
+      = add_button "Dodaj nowe zdjęcie", new_customer_customer_photo_path, title: "Dodaj nowe zdjęcie", remote: true
+  - unless customer_photos.empty?
+    - customer_photos.each do |customer_photo|
+      .dieta-sets
+        .dieta-image
+          = link_to customer_customer_photo_path(id: customer_photo.id), remote: true, style: "min-width:100%;" do
+            - if customer_photo.photo.attached?
+            
+              = image_tag(customer_photo.photo, class: "gallery__photo diet_pfoto")
+              .dieta-image__caption{key: "#{customer_photo.id}"}= customer_photo.title
+        .dieta-description.line-top.line-bottom
+          %h2
+            %b= link_to customer_photo.created_at.strftime("Zdjęcie z %d/%m/%Y"), customer_customer_photo_path(id: customer_photo.id), class: "diet-link", class: "color-primary", title: "Pokaz przepis", remote: true
+            // %h4.color-primary{key: "#{customer_photo.id}"}
+            -#//  = link_to "#{customer_photo.name}", customer_recipe_path(customer_photo.id), class: "diet-link", key: "#{customer_photo.id}", customer: "#{@customer.id}", diet: "#{customer_photo.id}", remote: true
+          
+          
+          = "#{customer_photo.title}"
+          %br
+          .center
+            %td= edit_outline_button 'Edytuj', edit_customer_customer_photo_path(id: customer_photo), remote: true
+            -# %td= link_to '', edit_customer_customer_photo_path(id: customer_photo), class: "fas fa-edit", title: "Edytuj"
+            \|
+            %td= delete_outline_button 'Usuń', customer_customer_photo_path(id: customer_photo.id), method: :delete, data: { confirm: 'Jestes pewien?' }, title: "Usuń zdjęcie", remote: true
+            -# %td= link_to '', customer_customer_photo_path(id: customer_photo.id), method: :delete, data: { confirm: 'Jestes pewien?' }, class: "delete-icon far fa-trash-alt", title: "Usuń zdjęcie"
+.box.ml-auto.mr-3.mb-3
+  = add_button "Dodaj nowe zdjęcie", new_customer_customer_photo_path, title: "Dodaj nowe zdjęcie", remote: true

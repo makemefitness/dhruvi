@@ -1,0 +1,18 @@
+.gallery
+  %figure.gallery__item
+    = image_pack_tag "images/app_layout/active-adult.jpg", alt: "logo", class: "gallery__photo"
+  %figure.gallery__item
+    = image_pack_tag "images/app_layout/aerobics-brand.jpg", alt: "logo", class: "gallery__photo"
+  %figure.gallery__item
+    = image_pack_tag "images/app_layout/adult-barbell.jpg", alt: "logo", class: "gallery__photo"
+  %figure.gallery__item
+    = image_pack_tag "images/app_layout/active-arms.jpg", alt: "logo", class: "gallery__photo"
+
+-# Alert area
+#alert-area
+  -if notice.present?
+    %aside.alert.alert-info.m-3
+      = notice
+  -if alert.present?
+    %aside.alert.alert-danger.m-3.alert-box{"data-alert"}
+      = alert

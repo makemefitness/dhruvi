@@ -9,6 +9,9 @@
     = csp_meta_tag
     %link{crossorigin: "anonymous", href: "https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css", integrity: "sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN", rel: "stylesheet"}/
     %link{:href => "https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css", :rel => "stylesheet"}/
+
+    %link{href: "https://unpkg.com/trix@2.0.0/dist/trix.css", rel: "stylesheet", type: "text/css"}/
+    %script{src: "https://unpkg.com/trix@2.0.0/dist/trix.umd.min.js", type: "text/javascript"}  
     
     = stylesheet_link_tag "application", "data-turbo-track": "reload"
     
@@ -55,26 +58,26 @@
         .content
           %nav.sidebar
             %ul.side-nav
-              %li.side-nav__item.side-nav__item--active
-                %a.side-nav__link{href: "#"}
+              %li{class: "#{(action_name == 'home' && controller_name == 'main')?'side-nav__item side-nav__item--active':'side-nav__item'}"}
+                %a.side-nav__link{href: "/"}
                   %svg.side-nav__icon
                     %use{"xlink:href" => "#{asset_path('sprite.svg')}#icon-home"}
-                  %span Domowa
-              %li.side-nav__item
-                %a.side-nav__link{href: "#"}
+                  %span Dashboard
+              %li{class: "#{(action_name == 'index' && controller_name == 'customers')?'side-nav__item side-nav__item--active':'side-nav__item'}"}
+                %a.side-nav__link{href: "/customers"}
                   %svg.side-nav__icon
                     %use{"xlink:href" => "#{asset_path('sprite.svg')}#icon-location-restroom"}
-                  %span Uzytkownicy
-              %li.side-nav__item
+                  %span Customers
+              %li{class: "#{(action_name == 'index' && controller_name == 'trenings')?'side-nav__item side-nav__item--active':'side-nav__item'}"}
                 %a.side-nav__link{href: "#"}
                   %svg.side-nav__icon
                     %use{"xlink:href" => "#{asset_path('sprite.svg')}#icon-accessibility"}
                   %span Treningi
-              %li.side-nav__item
-                %a.side-nav__link{href: "#"}
+              %li{class: "#{(controller_name == 'recipes')?'side-nav__item side-nav__item--active':'side-nav__item'}"}
+                %a.side-nav__link{href: "/recipes"}
                   %svg.side-nav__icon
                     %use{"xlink:href" => "#{asset_path('sprite.svg')}#icon-bowl"}
-                  %span Diety
+                  %span Recipes
             %span.legal &copy; 2019 Maciej Sypniewski.
           %main.main-view
             = yield

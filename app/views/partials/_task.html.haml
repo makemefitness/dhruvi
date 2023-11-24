@@ -1,0 +1,14 @@
+- if task.date
+  - day = task.date.mday
+  - date = task.date.to_datetime.to_f * 1000
+- id = task.id
+%li.list-group-item.checkbox
+  = form_for([:admin, @customer, task], html: {id: "task_is_complete#{id}", remote: true}) do |t|
+    -# %input{type: "hidden", value: "{'data':'#{task.date}'}", class: "task_is_complete_toggler"}
+    = t.check_box :is_complete, onchange: "toDo.ptTaskChange(#{id}, #{day}, #{date});", data: "#{task.date}", id: "#{id}"
+  -# %a{href:"#"}
+  -#   %input{type: "checkbox"}
+  %input{type: "hidden", class: "pttask", name: "pttask", value: "{'name':'#{task.training.name}','data':'#{task.date}','is_complete':'#{task.is_complete}','id':'#{id}'}"}
+  = link_to task.training.name, training_path(task.training)
+  = task.marks
+  = task.date

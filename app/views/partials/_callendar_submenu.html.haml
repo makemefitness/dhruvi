@@ -1,0 +1,39 @@
+%nav.sidebar.user-nav__user-sidebar#callendar_menu1
+  %ul.user-nav__user-callendar_menu
+    %li.user-nav__user-item
+      %a.user-nav__user__link{href: "#", "data-toggle": "modal", "data-target": "#exampleModal"}
+        %svg.side-nav__icon
+          %use{"xlink:href" => "#{asset_pack_path('images/sprite.svg')}#icon-pencil1"}
+        %span Dodaj własne zadanie!
+    
+    %li.user-nav__user-item
+      %a.user-nav__user__link{href: '/admin/users/sign_out', "data-method" => 'delete'}
+        %svg.side-nav__icon
+          %use{"xlink:href" => "#{asset_pack_path('images/sprite.svg')}#icon-power-off"}
+        %span Wyloguj
+
+/ Modal
+#exampleModal.modal.fade.color-black{"aria-hidden" => "true", "aria-labelledby" => "exampleModalLabel", :role => "dialog", :tabindex => "-1"}
+  .modal-dialog{:role => "document"}
+    .modal-content
+      .modal-header
+        %h5#exampleModalLabel.modal-title Dodaj nowe zadanie
+        %button.close{"aria-label" => "Close", "data-dismiss" => "modal", :type => "button"}
+          %span{"aria-hidden" => "true"} ×
+      .modal-body
+        %form
+          .form-group
+            %label{for: "task"}Zadanie:
+            %input.form-control.form-control-lg#task{type: "text", "aria-describedby": "Zadanie", placeholder: "Wpisz zadanie."}
+          .row
+            .col
+              %label{for: "task"}Data:
+              %input.form-control.form-control-lg#task-date{type: "date", "aria-describedby": "Zadanie", placeholder: "Pdaj date."}
+            .col
+              %label{for: "time"}Czas:
+              %input.form-control.form-control-lg#task-time{type: "time", "aria-describedby": "Zadanie", placeholder: "Pdaj czas."}
+      .modal-footer
+        %button.btn.btn-secondary{"data-dismiss" => "modal", :type => "button"} Zamknij
+        %button.btn.btn-primary{:type => "button", onclick: "toDo.addTaskClick()"} Dodaj
+%script
+

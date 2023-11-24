@@ -1,0 +1,26 @@
+- if task.appointment_date
+  - day = task.appointment_date.mday
+  - date = task.appointment_date.to_date
+  - time = task.appointment_date.strftime("%H:%M")
+- id = task.id
+
+%li.list-group-item.checkbox
+  - if main_admin == 'true'
+    .first
+      %a{:href => "/admin/customers/#{task.customer_id}"}= gravatar_for_customer_id(task.customer_id)
+      - if task.complete
+        %strike
+          %em= task.name
+      - else
+        = task.name
+      %span.pull-right
+        = "#{date} o: #{time}"
+        = link_to image_tag("check.gif", :title => "Zrobione!"), mark_complete_appointment_path(task.id)
+      
+  -else
+    %input{type: "hidden", value: "{'data':'#{date}'}", class: "task_is_complete_toggler"}
+    = check_box_tag onchange: "toDo.ptTaskChange(#{task.id}, #{day}, #{date});", data: "#{task.appointment_date}", id: "#{id}"
+    
+    = task.customer.name
+    = date
+  %input{type: "hidden", class: "pttask", name: "pttask", value: "{'name':'#{!current_admin_user ? task.user.name : task.customer.name}', 'time':'#{task.appointment_date.strftime("%H:%M")}', 'data':'#{date}','is_complete':'false','id':'#{id}'}"}

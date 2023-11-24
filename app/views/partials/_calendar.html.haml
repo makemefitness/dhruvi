@@ -1,0 +1,38 @@
+.callendar--header
+  .callendar--header-actions
+    %span#time-now
+    .callendar--header-actions-sub
+      .half
+        #callendar_submenu.menu-btn{title: "Menu"}
+          .btn-line
+          .btn-line
+          .btn-line
+        = render(:partial => "partials/callendar_submenu")
+        %span.heading-collored Dzisiejszy plan
+      .half
+        %a.color-white.calendar-link#user-tasks-link{href: '/static_pages/customershome', title: "Twoje zadania"}
+          %svg.side-nav__icon.fill-white.active.icons.calendar-menu-icon
+            %use{"xlink:href" => "#{asset_pack_path('images/sprite.svg')}#icon-calendar"}
+        %a.color-white.calendar-link#user-tasks-link{href: "/customers/#{customer.id}/customer_photos", title: "Twoje galeria postępu.", "data-remote": true}
+          %svg.side-nav__icon.fill-white.active.icons.calendar-menu-icon
+            %use{"xlink:href" => "#{asset_pack_path('images/sprite.svg')}#icon-camera"}
+        %a.color-white.calendar-link#user-training-tasks-link{href: "/admin/customers/#{customer.id}/tasks/", title: "Twoje treningi", "data-remote": true}
+          %svg.side-nav__icon.fill-white.icons.calendar-menu-icon
+            %use{"xlink:href" => "#{asset_pack_path('images/sprite.svg')}#icon-accessibility"}
+        %a.color-white.calendar-link#dieta-link{href: "/admin/customers/#{customer.id}/diet_sets/", title: "Twoja dieta", "data-remote": true}
+          %svg.side-nav__icon.fill-white.icons.calendar-menu-icon{title: "Dieta"}
+            %use{"xlink:href" => "#{asset_pack_path('images/sprite.svg')}#icon-forkandspoon", title: "Dieta"}
+        %a.color-white.calendar-link#conversations-link{href: "/conversations", title: "Twoje wiadomości", "data-remote": true}
+          %svg.side-nav__icon.fill-white.icons.calendar-menu-icon{title: "Dieta"}
+            %use{"xlink:href" => "#{asset_pack_path('images/sprite.svg')}#icon-chat", title: "Dieta"}
+        %a.color-white.calendar-link#user-goals-link{href: '/goals', title: "Twoje cele i wyniki", "data-remote": true}
+          %svg.side-nav__icon.fill-white.active.icons.calendar-menu-icon
+            %use{"xlink:href" => "#{asset_pack_path('images/sprite.svg')}#icon-signal"}
+  .callendar--header-callendar
+    .today-date
+      .date-marker
+        %h1.day#calendar-today 21
+        %p.month#calendar-month Marc
+      .date-tasks
+        %p 8 zadania
+    .main-callendar#calendar-box
