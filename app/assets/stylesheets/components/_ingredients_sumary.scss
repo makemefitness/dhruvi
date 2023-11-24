@@ -1,0 +1,17 @@
+.sum_ingredients_for_customer {
+  background-color: var(--color-primary-dark);
+  color: #fff;
+  font-size: 1.5rem;
+  line-height: 1.5rem;
+  position: fixed;
+  top: 15rem;
+  right: 5rem;
+  z-index: 100;
+  padding: 1.5rem;
+  border-radius: 0.3rem;
+  box-shadow: var(--shadow-dark);
+  transition: all 0.5s;
+  &:hover {
+    box-shadow: 0 2rem 6rem rgba(0, 0, 0, 0.6);
+  }
+}

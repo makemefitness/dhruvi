@@ -1,0 +1,23 @@
+#conversation-display .pagination {
+  font-size: 1rem;
+  & > * {
+    border: 1px solid #dee2e6;
+    border-left: 0;
+    padding: 0.5rem 0.75rem;
+  }
+  & .previous_page {
+    border-left: 1px solid #dee2e6;
+    border-top-left-radius: 3px;
+    border-bottom-left-radius: 3px;
+  }
+  & .next_page {
+    border-right: 1px solid #dee2e6;
+    border-top-right-radius: 3px;
+    border-bottom-right-radius: 3px;
+  }
+  .current {
+    background-color: var(--primary);
+    color: #dee2e6;
+    border: 1px solid var(--primary);
+  }
+}

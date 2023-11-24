@@ -1,0 +1,131 @@
+.mark-task {
+  &:after {
+    content: "";
+    width: 3rem;
+    height: 3rem;
+    background-image: url("../images/SVG/calendar.svg");
+    background-repeat: no-repeat;
+    background-size: 40%;
+    position: absolute;
+    top: -0.4rem;
+    left: 0.5rem;
+  }
+}
+.mark-pttask {
+  &:after {
+    content: "";
+    width: 3rem;
+    height: 3rem;
+    background-image: url("../images/SVG/accessibility.svg");
+    background-repeat: no-repeat;
+    background-size: 50%;
+    position: absolute;
+    top: -0.4rem;
+    left: 3.5rem;
+  }
+}
+.mark-pttask,
+.mark-task {
+  // box-sizing: content-box;
+  position: relative;
+  background-color: var(--color-primary-light);
+  width: 2.5rem;
+  height: 2.5rem;
+  // border: 0.3rem solid #fff;
+  border-radius: 100px;
+  display: flex;
+  justify-content: center;
+  &-before {
+    background-color: red;
+  }
+  &-done {
+    background-color: greenyellow;
+  }
+}
+.mark-pttask-done {
+  background-color: greenyellow;
+}
+
+#calendar-year-month-header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  & .fas {
+    padding: 0 1.5rem;
+    transition: 0.5s all;
+    &:hover {
+      color: var(--color-primary-light);
+      cursor: pointer;
+    }
+  }
+}
+
+#time-now {
+  font-size: 1rem;
+}
+.menu-btn {
+  width: 1.6rem;
+  height: 1.6rem;
+  display: flex;
+  position: relative;
+  margin-right: 1rem;
+  .btn-line {
+    width: 100%;
+    height: 2px;
+    background-color: #fff;
+
+    &:nth-of-type(2) {
+      position: absolute;
+      top: 45%;
+    }
+    &:nth-of-type(3) {
+      position: absolute;
+      bottom: 0%;
+    }
+  }
+}
+
+.user-nav__user-callendar_menu {
+  position: absolute;
+  transform: scaleY(0);
+  background-color: var(--color-grey-dark-2);
+  flex: 0 0 18%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  position: absolute;
+  // top: 0;
+  //left: 0;
+  min-width: 10%;
+  //display: none;
+  font-size: 1.2rem;
+  list-style: none;
+  margin-top: 1rem;
+  padding-left: 0;
+  transition: 0.7s all;
+}
+#callendar_menu1 {
+  min-width: 50%;
+  flex: 1;
+  position: absolute;
+  transform: translateY(1rem);
+}
+#callendar_submenu:hover + #callendar_menu1,
+#callendar_menu1:hover {
+  .user-nav__user-callendar_menu {
+    transform: scaleY(1);
+  }
+}
+
+// Manin part of callendar
+.callendar-admin {
+  & .callendar {
+    margin-right: 0;
+
+    &--header {
+      &-callendar {
+        display: block;
+      }
+    }
+  }
+}

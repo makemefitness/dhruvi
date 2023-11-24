@@ -1,0 +1,355 @@
+$bp-largest: 75em; // 1200px;
+$bp-large: 68.75em; // 1100px;
+$bp-medium: 56.25em;
+$bp-phones: 26.25em;
+main.datails {
+  font-size: 1.6rem;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  padding: 3.5rem;
+  @media only screen and (max-width: $bp-medium) {
+    padding: 0;
+  }
+  background-color: var(--color-grey-light-1);
+  border-bottom: var(--border-bottom);
+}
+
+.sub-main,
+.box-topper {
+  display: flex;
+}
+.user-review,
+.description,
+.box,
+.callendar,
+.right-side {
+  background-color: #fff;
+  box-shadow: var(--shadow-light);
+  padding: 3rem;
+  @media only screen and (max-width: $bp-phones) {
+    margin: 0;
+    padding: 3rem 0.1rem;
+  }
+  transition: 0.3s all;
+}
+.actions,
+.right-side {
+  box-shadow: var(--shadow-light);
+  padding: 0 0;
+  transition: 0.3s all;
+  @media only screen and (max-width: $bp-phones) {
+    display: none;
+  }
+}
+.box {
+  margin-top: 3.5rem;
+  @media only screen and (max-width: $bp-phones) {
+    margin: 0 !important;
+    padding: 3rem 0;
+  }
+}
+.callendar {
+  background-color: var(--color-grey-light-1);
+}
+.user-review {
+  flex: 0 0 30%;
+  margin-right: 3.5rem;
+
+  &__photo {
+    width: 100%;
+  }
+
+  &__details-pt {
+    font-size: 1.3rem;
+    padding: 1.5rem 0;
+    padding-top: 0.6rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    .pt__photo {
+      width: 7rem;
+      height: 6.5rem;
+      border-radius: 100rem;
+    }
+  }
+  &__inner-box {
+    padding: 0 1rem;
+    align-self: flex-end;
+  }
+}
+
+.description {
+  flex: 1;
+  flex-wrap: wrap;
+}
+.callendar {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+.right-side {
+  flex: 0 0 25%;
+}
+.actions {
+  // flex: 0 0 30%;
+
+  // display: none;
+}
+.right-side:hover {
+  box-shadow: var(--shadow-dark);
+}
+
+.callendar {
+  margin-right: 3.5rem;
+
+  // For phones
+  @media only screen and (max-width: $bp-phones) {
+    margin-right: 0;
+  }
+  // min-height: 60vh;
+  padding: 0;
+  .day-number {
+    margin: 0.5rem 0.5rem;
+  }
+  &--header {
+    position: relative;
+    min-height: 230px;
+    display: flex;
+    flex-direction: column;
+    background-image: linear-gradient(
+        105deg,
+        transparent 10%,
+        rgba(#333, 0.9) 30%,
+        rgba(#333, 1) 100%
+      ),
+      url('../images/app_layout/running.jpeg');
+    background-size: cover;
+    &:after {
+      content: '';
+      position: absolute;
+      width: 90%;
+      height: 1rem;
+      bottom: -1rem;
+      left: 5%;
+      color: red;
+      background-color: transparent;
+      box-shadow: var(--shadow-dark);
+    }
+    box-shadow: var(--shadow-dark);
+    color: #fff;
+    &-actions {
+      flex: 0 0 20%;
+      padding: 1rem;
+      &-sub {
+        display: flex;
+        align-items: center;
+        .half {
+          min-height: 2.5rem;
+          &:nth-of-type(1) {
+            flex: 0 0 50%;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+          }
+          &:nth-of-type(2) {
+            flex: 1;
+            display: flex;
+            justify-content: space-around;
+          }
+          .active {
+            border-bottom: 2px solid var(--color-primary-light);
+          }
+        }
+
+        .icons {
+          width: 2.5rem;
+          height: 2.5rem;
+          margin-right: 2rem;
+          fill: currentColor;
+          padding-bottom: 0.5rem;
+        }
+      }
+
+      #menu-callendar {
+      }
+    }
+
+    &-callendar {
+      flex: 1;
+      display: flex;
+
+      .today-date {
+        flex: 0 0 30%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        .date-marker {
+          display: flex;
+          flex-direction: column;
+          width: 10rem;
+          height: 10rem;
+          border-radius: 1000px;
+          background-image: linear-gradient(
+            to right bottom,
+            var(--color-primary-dark),
+            var(--color-primary-light),
+            rgb(247, 194, 194)
+          );
+          justify-content: center;
+          align-items: center;
+          margin-bottom: 3.5rem;
+        }
+      }
+
+      .main-callendar {
+        flex: 1;
+        display: flex;
+        justify-content: space-between;
+        padding: 1rem 3.5rem;
+      }
+    }
+  }
+
+  .day-of-week {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .today-mark {
+    background-color: #fff;
+    color: var(--color-primary);
+    display: flex;
+    justify-content: center;
+    height: 2.5rem;
+    width: 2.5rem;
+    border-radius: 100px;
+    font-weight: bolder;
+  }
+}
+
+.user-review:hover,
+.description:hover,
+.box:hover,
+.callendar:hover,
+.actions:hover,
+.today-action:hover {
+  box-shadow: var(--shadow-dark);
+}
+.callendar-deatials {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding: 1.5rem;
+  // justify-content: space-between;
+  flex-shrink: 5;
+  background-color: var(--color-grey-light-1);
+  .today-action {
+    background-color: #fff;
+    box-shadow: var(--shadow-light);
+    padding: 1rem;
+    display: flex;
+    flex-direction: row;
+    transition: all linear 0.2s;
+    &:hover {
+      box-shadow: var(--shadow-dark);
+    }
+    &:not(:last-of-type) {
+      margin-bottom: 3.5rem;
+    }
+    .today-action-time {
+      padding-right: 1rem;
+      border-right: 1px solid var(--color-grey-light-4);
+    }
+    .today-action-time-description {
+      padding-left: 1rem;
+    }
+  }
+}
+
+#dieta,
+#conversations {
+  padding: 0;
+  padding-top: 1rem;
+  display: flex;
+  flex-direction: column;
+
+  .dieta-sets {
+    display: flex;
+    &:nth-of-type(even) {
+      flex-direction: row-reverse;
+    }
+
+    .dieta-image,
+    .autophoto-image {
+      position: relative;
+      object-fit: cover;
+      width: 100%;
+      height: 280px;
+
+      max-height: 30rem;
+      display: flex;
+      overflow: hidden;
+      transition: 0.5s all linear;
+      img {
+        object-fit: cover;
+        position: relative;
+        width: 0;
+        height: 280px;
+        transition: 0.5s all linear;
+      }
+      img:first-of-type {
+        width: 100%;
+        height: 280px;
+      }
+      .diet_pfoto {
+        position: relative;
+      }
+      &__caption {
+        //width: 0;
+        position: absolute;
+        top: 0;
+        left: 0;
+        background-color: var(--color-primary-dark);
+        color: #fff;
+        padding: 1rem;
+      }
+    }
+
+    .dieta-description {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      text-align: center;
+      justify-self: end;
+      align-self: center;
+      padding: 1rem 0;
+      transition: 0.3s all linear;
+    }
+
+    &:hover .dieta-image,
+    &:hover .dieta-description {
+      box-shadow: 1rem 2rem 6rem var(--color-primary-dark);
+      img {
+        transform: scale(1.2);
+      }
+    }
+  }
+}
+#diet_set_print {
+  color: var(--color-primary-light);
+  cursor: pointer;
+  transition: 0.5s all;
+  &:hover {
+    color: var(--color-primary-dark);
+  }
+}
+
+#recipe_details {
+  // display: none;
+}
+.appintment_today {
+  animation: appointment_today 3s infinite;
+}

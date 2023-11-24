@@ -1,0 +1,12 @@
+.rows-3 {
+  width: 33%;
+  &:not(:last-of-type) {
+    margin-right: 3rem;
+  }
+}
+
+.my-row {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+}

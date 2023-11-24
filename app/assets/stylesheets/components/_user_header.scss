@@ -1,0 +1,27 @@
+.admin_panel_header {
+  margin-bottom: 3rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+
+  & div {
+    width: 100%;
+    margin: 1rem;
+    &:first-of-type {
+      margin-left: 0;
+    }
+    &:last-of-type {
+      margin-right: 0;
+    }
+  }
+  .box {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    & svg {
+      width: 3.5rem;
+      height: 3.5rem;
+    }
+  }
+}

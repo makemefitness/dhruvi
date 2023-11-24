@@ -1,0 +1,22 @@
+.main-view {
+  background-color: #fff;
+  flex: 1;
+  // max-width: 82%;
+
+  &-full-width {
+    // max-width: 100%;
+  }
+  // min-height: 80rem;
+}
+.main-view-korwa {
+  max-width: 82%;
+}
+.inner-container-1 {
+  font-size: 1.6rem;
+  width: 90%;
+  margin: auto;
+}
+
+.inner-container {
+  padding: 3rem;
+}

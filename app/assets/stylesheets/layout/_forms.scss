@@ -1,0 +1,110 @@
+.form-all {
+  // padding: 5rem;
+  background-image: linear-gradient(
+    to right bottom,
+    var(--color-grey-light-2),
+    var(--color-grey-light-1)
+  );
+  // padding: 3rem;
+  width: 100%;
+  margin: auto;
+  background-size: cover;
+  border-radius: 3px;
+  box-shadow: 0 1rem 2rem rgba(#000, 0.1);
+  transition: all 0.3s;
+
+  &:hover {
+    box-shadow: 1rem 1.5rem 4rem rgba(#000, 0.3);
+  }
+
+  // Moja specjalna do login form
+
+  .ingredient__form {
+    background-image: linear-gradient(
+        105deg,
+        rgba(#fff, 0.9) 0%,
+        rgba(#fff, 0.5) 57%,
+        transparent 50%
+      ),
+      url("../images/app_layout/healthyfoods.jpg");
+  }
+
+  .receip__form {
+    background-image: linear-gradient(
+        105deg,
+        rgba(#fff, 0.9) 0%,
+        rgba(#fff, 0.5) 57%,
+        transparent 50%
+      ),
+      url("../images/app_layout/form.jpeg");
+  }
+  .selfi__form {
+    background-image: linear-gradient(
+        105deg,
+        rgba(#fff, 0.9) 0%,
+        rgba(#fff, 0.5) 57%,
+        transparent 50%
+      ),
+      url("../images/app_layout/kamera.jpg");
+  }
+  .contact__form {
+    background-image: linear-gradient(
+        105deg,
+        rgba(#fff, 0.9) 0%,
+        rgba(#fff, 0.5) 57%,
+        transparent 50%
+      ),
+      url("../images/customer_home/contact.jpg");
+  }
+
+  .edit_customer__form {
+    background-image: linear-gradient(
+        105deg,
+        rgba(#fff, 0.9) 0%,
+        rgba(#fff, 0.5) 57%,
+        transparent 50%
+      ),
+      url("https://source.unsplash.com/h9Rx3zOYZws");
+  }
+  .login_customer__form {
+    padding-top: 10vh !important;
+    padding-bottom: 10vh !important;
+    width: 100%;
+    background-image: linear-gradient(
+        105deg,
+        rgba(#fff, 0.9) 0%,
+        rgba(#fff, 0.5) 57%,
+        transparent 50%
+      ),
+      url("https://source.unsplash.com/d3bYmnZ0ank");
+    background-size: cover;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    & form {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      & * {
+        min-width: 80%;
+        font-size: 2rem;
+      }
+    }
+  }
+  .profile_customer__form {
+    background-image: linear-gradient(
+        105deg,
+        rgba(#fff, 0.9) 0%,
+        rgba(#fff, 0.5) 57%,
+        transparent 50%
+      ),
+      url("https://source.unsplash.com/papgZtEFaAA");
+  }
+}
+.form__links {
+  font-size: 1.4rem;
+  width: 50%;
+  padding-left: 3rem;
+  padding-bottom: 3rem;
+}

@@ -1,0 +1,27 @@
+.inner-box,
+.dieta-image {
+  margin-top: 3rem;
+  padding: 1rem;
+  background-color: #fff;
+  box-shadow: var(--shadow-light);
+  transition: 0.5s all;
+
+  &:hover {
+    box-shadow: var(--shadow-dark);
+  }
+}
+.dieta-sets {
+  padding: 0;
+}
+.datails-diet {
+  width: 100%;
+  margin-top: 3rem;
+  padding: 1rem;
+  background-color: #fff;
+  box-shadow: var(--shadow-light);
+  transition: 0.5s all;
+
+  &:hover {
+    box-shadow: var(--shadow-dark);
+  }
+}
