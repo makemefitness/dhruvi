@@ -18,7 +18,7 @@
     -#     /= ingredient.carbohydrate.to_i.to_s + "g"
 
     %h3
-      %b Przygotowanie:
+      %b Method:
     = @recipe.description
     %hr
     %small
@@ -38,6 +38,6 @@
       = @recipe.link
   .text-center.mb-3
     -# - if can?(:edit, @recipe)
-    = edit_outline_button 'Edytuj', edit_recipe_path(@recipe)
+    = edit_outline_button 'Edit', edit_recipe_path(@recipe)
     \|
-    = button_to_outline_right 'Lista', recipes_path
+    = button_to_outline_right 'List', recipes_path
