@@ -1,9 +1,26 @@
 class IngredientsController < ApplicationController
   before_action :set_ingredient, only: %i[ show edit update destroy ]
 
-  # GET /ingredients or /ingredients.json
+  PAGE_SIZE = 30
   def index
-    @ingredients = Ingredient.all
+    @count = Ingredient.all.count
+    @page = (params[:page] || 0).to_i
+    # if params[:keywords].present?
+    #   @keywords = params[:keywords]
+    #   ingredient_search_term = IngredientSearchTerm.new(@keywords)
+    #   @ingredients = Customer.where(
+    #     ingredient_search_term.where_clause,
+    #     ingredient_search_term.where_args
+    #   ).order(ingredient_search_term.order).offset(PAGE_SIZE * @page).limit(PAGE_SIZE)
+    if params[:keywords].present?
+      @ingredients = Ingredient.where('lower(name) LIKE :search', search: "#{params[:keywords].downcase}%")
+    else
+      @ingredients = Ingredient.all.offset(PAGE_SIZE * @page).limit(PAGE_SIZE)
+    end
+    respond_to do |format|
+      format.html
+      format.json
+    end
   end
 
   # GET /ingredients/1 or /ingredients/1.json
