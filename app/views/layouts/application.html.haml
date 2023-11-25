@@ -78,86 +78,11 @@
                   %svg.side-nav__icon
                     %use{"xlink:href" => "#{asset_path('sprite.svg')}#icon-bowl"}
                   %span Recipes
-              %li.side-nav__item
-                %a.side-nav__link{href: "#"}
+              %li{class: "#{(controller_name == 'ingredients')?'side-nav__item side-nav__item--active':'side-nav__item'}"}
+                %a.side-nav__link{href: "/ingredients"}
                   %svg.side-nav__icon
-                    %use{"xlink:href" => "#{asset_path('sprite.svg')}#icon-location-food"}
+                    %use{"xlink:href" => "#{asset_path('sprite.svg')}#icon-bowl"}
                   %span Ingredients
             %span.legal &copy; 2019 Maciej Sypniewski.
           %main.main-view
             = yield
-        -#   - if get_type_of_login == 'users'
-        -#     = form_for :customers, method: :get, :html => {class: 'search'} do |f|
-        -#       = text_field_tag :q, nil, placeholder: "Składnik, Dieta", class: "search__input", data: {behavior: "autocomplete"}, id: 'search'
-        -#       %button.search__button
-        -#         %svg.search__icon
-        -#           %use{"xlink:href" => "#{asset_path('sprite.svg')}#icon-magnifying-glass"}
-        -#   ////////////////////////////////////////////////////////////////////////////////////////////////////
-        -#   <!-- = javascript_pack_tag 'javascript/search' -->
-        -#   %script
-        -#     let input = $('#search');
-        -#     let options = {
-        -#     getValue: "name",
-        -#     url: function(phrase){
-        -#     return "/search?q=" + phrase;
-        -#     },
-        -#     categories: [
-        -#     {listLocation: 'customers' ,header: "<strong>----- Klienci -----</strong>"},
-        -#     {listLocation: 'recipes' ,header: "<strong>----- Przepisy -----</strong>"},
-        -#     {listLocation: 'ingredients' ,header: "<strong>----- Składniki -----</strong>"}
-        -#     ],
-        -#     getValue: "name",
-        -#     list:{
-        -#     maxNumberOfElements: 20,
-        -#     onChooseEvent: function(){let url = input.getSelectedItemData().url;console.log(url);window.location.href = url;},
-        -#     showAnimation: {
-        -#     type: "fade", //normal|slide|fade
-        -#     time: 400,
-        -#     callback: function() {}
-        -#     },
-        -#     }}
-
-        -#     input.easyAutocomplete(options);
-
-        -#   ////////////////////////////////////////////////////////////////////////////////////////////////////
-
-
-        -#   <!-- USER-NAV -->
-        -#   %nav.user-nav
-        -#     %a.user-nav__icon-box{title: "Powiadomienia", href: "#{log_in? ? '/static_pages/' + get_type_of_login + 'home' : '#'}"}
-        -#       %svg.user-nav__icon
-        -#         -# %use{"xlink:href" => "#{asset_pack_path('images/sprite.svg')}#icon-bookmark"}
-        -#       %span.user-nav__notification= log_in? ? @notification_size : 0
-        -#     %a.user-nav__icon-box{title: "Alerty na dziś", href: "#{log_in? ? '/static_pages/' + get_type_of_login + 'home' : '#'}"}
-        -#       %svg.user-nav__icon
-        -#         -# %use{"xlink:href" => "#{asset_pack_path('images/sprite.svg')}#icon-calendar-o"}
-        -#       %span.user-nav__notification=  0
-        -#     %a.user-nav__icon-box{title: "Nowe Wiadomosci", href: "/conversations"}
-        -#       %svg.user-nav__icon
-        -#         -# %use{"xlink:href" => "#{asset_pack_path('images/sprite.svg')}#icon-envelope-o"}
-        -#       %span.user-nav__notification= 0
-        -#     .user-nav__user
-        -#       -# - if log_in?
-        -#       -#   = render "layouts/login_user_submenu"   
-        -#       -# - else
-        -#       -#   = link_to 'Zaloguj sie',  new_admin_customer_session_path
-                  
-        -# .content
-        -#   - if get_type_of_login == 'users'
-        -#     %nav.sidebar
-        -#       %ul.side-nav
-        -#         -# - if get_type_of_login == 'users'
-        -#         = render "layouts/admin_menu"
-        -#       -# - elsif get_type_of_login == 'customers'
-        -#         -# = render "layouts/customer_menu"  
-
-        -#       %a(href="http://www.msypniewski511.co.uk/")
-        -#         %span.legal &copy; 2019 Maciej Sypniewski.
-        -#   - unless log_in?
-        -#     %main.main-view.main-view
-        -#     %h1 
-        -#       Nie jestes zalogowany
-        -#       = yield
-        -#   - else
-        -#     %main.main-view.main-view-korwa
-        -#       = yield
