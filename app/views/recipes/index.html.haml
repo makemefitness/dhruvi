@@ -7,6 +7,7 @@
           %use{"xlink:href" => "#{asset_path('sprite.svg')}#icon-bowl"}
         Recipes list
         = @recipes.size
+      .ml-3.mr-3.mb-3 
       .ml-3.mr-3.mb-3
         = add_button "Add recipe", new_recipe_path, title: "Add recipe"
 
@@ -23,8 +24,8 @@
               -# - if recipe.ingredients.present?
               -#   - recipe.ingredients.each do |ingredient|
               -#     %small= ingredient.name
-              %small= recipe.ingredients
-              -# = recipe.description
+              -# %small= recipe.ingredients
+              = recipe.summary
           .recipe__summary-bottom
             %svg
               %use{"xlink:href" => "#{asset_path('sprite.svg')}#icon-clock-o"}
@@ -35,19 +36,19 @@
             -# = recipe.summary[:energy].to_i.to_s + "kcal"
             %svg
               %use{"xlink:href" => "#{asset_path('sprite.svg')}#icon-thumbs-o-up"}
-            Łatwe
+            Easy
             <!-- = recipe.summary -->
             .text-center.mt-3
               -# %span{title: "Publicznie dostęny?"}= yes_no_icon(recipe.open_approved).html_safe
               -# - if can?(:edit, recipe)
-              = edit_outline_button 'Edytuj', edit_recipe_path(recipe)
+              = edit_outline_button 'Edit', edit_recipe_path(recipe)
               -# - if can?(:delte, recipe)
               -# = link_to 'Usuń', [:admin, recipe], method: :delete, data: { confirm: 'Jesteś pewny?' }
-              = delete_outline_button 'Usuń', recipe_path(recipe), method: :delete, data: { confirm: 'Jesteś pewny?' }
+              = delete_outline_button 'Delete', recipe_path(recipe), method: :delete, data: { confirm: 'Jesteś pewny?' }
               
 
 
   %br
 
-= add_button "Add recipe", new_recipe_path, class: "m-3", title: "Add recipe"
+= add_button "New recipe", new_recipe_path, class: "m-3", title: "Add recipe"
 %hr

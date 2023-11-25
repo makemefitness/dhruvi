@@ -6,31 +6,31 @@
         - @recipe.errors.full_messages.each do |message|
           %li= message
   .form__group
-    = f.text_field :name, class: "form__input", placeholder: "Name of recipe", autofocus: true
+    = f.text_field :name, class: "form__input", placeholder: "Name", autofocus: true
     = f.label :name, 'Name', class: "form__label"
   .form__group
     - if @recipe.photo.attached?
       = image_tag(@recipe.photo, class: 'form__group--image')
       = link_to 'Delete', "/recipes/#{@recipe.id}?purge=true", method: :delete
-    = f.file_field :photo, value: 'Zdjecie', placeholder: "Zdjecie", style: "display:none;visibility:hidden;"
-    = f.label :photo, 'Wybierz zdjecie', class: 'form__label form__label-file' do
+    = f.file_field :photo, value: 'Photo', placeholder: "Photo", style: "display:none;visibility:hidden;"
+    = f.label :photo, 'Choose Photo', class: 'form__label form__label-file' do
       %svg.form__icon
         %use{"xlink:href" => "#{asset_path('sprite.svg')}#icon-camera"}
       Choose image
   .form__group
-    = f.label :ingredients, "Ingredients", class: "form__label"
-    = f.text_field :ingredients, class: "form__input", placeholder: "Ingredients"
-  .form__group
-    = f.text_area :preparation, class: "form__input", placeholder: "Preparation"#
-    = f.label :preparation, "Preparation", class: "form__label"
-  .form__group
     = f.text_field :summary, class: "form__input", placeholder: "Summary"
     = f.label :summary, "Summary", class: "form__label"
   .form__group
-    = f.text_field :link, class: "form__input", placeholder: "Source link"
-    = f.label :link, "Source link", class: "form__label"
+    = f.label :ingredients, "Ingredients", class: "form__label"
+    = f.text_field :ingredients, class: "form__input", placeholder: "Ingredients"
+  .form__group
+    -# = f.text_area :preparation, class: "form__input", placeholder: "Preparation"
+    -# = f.label :preparation, "Preparation", class: "form__label"
   .form__group
     = f.rich_text_area :description, class: "form__input", placeholder: "Description"
     = f.label :description, "Description", class: "form__label"
+  .form__group
+    = f.text_field :link, class: "form__input", placeholder: "Source link"
+    = f.label :link, "Source link", class: "form__label"
   .actions
     = f.submit 'Save', :class => 'my-btn my-btn--pink my-btn--width btn-lg'

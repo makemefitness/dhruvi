@@ -78,6 +78,11 @@
                   %svg.side-nav__icon
                     %use{"xlink:href" => "#{asset_path('sprite.svg')}#icon-bowl"}
                   %span Recipes
+              %li.side-nav__item
+                %a.side-nav__link{href: "#"}
+                  %svg.side-nav__icon
+                    %use{"xlink:href" => "#{asset_path('sprite.svg')}#icon-location-food"}
+                  %span Ingredients
             %span.legal &copy; 2019 Maciej Sypniewski.
           %main.main-view
             = yield

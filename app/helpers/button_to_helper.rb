@@ -19,7 +19,7 @@ module ButtonToHelper
 
   def add_button(text="", href="#", options={})
     link_to href, options do
-      "<span class='my-btn my-btn--pink p-1 pl-2 pr-2'><i class='fas fa-plus-circle text-light'></i> #{text}</span>".html_safe
+      "<span class='my-btn my-btn--pink p-1 pl-2 pr-2'><i class='fa fa-plus-circle text-light'></i> #{text}</span>".html_safe
     end
   end
 
@@ -43,19 +43,19 @@ module ButtonToHelper
 
   def edit_button(text="", href="#", options={})
     link_to href, options do
-      "<span class='my-btn my-btn--pink p-1 pl-2 pr-2'><i class='fas fa-edit text-light'></i> #{text}</span>".html_safe
+      "<span class='my-btn my-btn--pink p-1 pl-2 pr-2'><i class='fa fa-edit text-light'></i> #{text}</span>".html_safe
     end
   end
 
   def edit_outline_button(text="", href="#", options={})
     link_to href, options.merge({title:"Edytuj"}) do
-      "<span class='my-btn my-btn--outline-primary p-1 pl-2 pr-2'><i class='fas fa-edit'></i> #{text}</span>".html_safe
+      "<span class='my-btn my-btn--outline-primary p-1 pl-2 pr-2'><i class='fa fa-edit'></i> #{text}</span>".html_safe
     end
   end
 
   def edit_outline_button_non_border(text="", href="#" , title="Edytuj", options={})
     link_to href, options.merge({title:"Edytuj"}) do
-      "<span class='my-btn p-1 pl-2 pr-2' title='#{title}'><i class='fas fa-edit text-success' title='#{title}'> </i> #{text}</span>".html_safe
+      "<span class='my-btn p-1 pl-2 pr-2' title='#{title}'><i class='fa-solid fa-edit text-success' title='#{title}'> </i> #{text}</span>".html_safe
     end
   end
 
