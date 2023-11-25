@@ -2,8 +2,8 @@
   %ul.pagination
     - if page > 0
       %li.page-item.previous
-        = link_to "&larr; Poprzednia".html_safe, customers_path(keywords: keywords, page: page - 1), title: "Poprzednia strona", class: "page-link"
+        = link_to "&larr; Previous".html_safe, customers_path(keywords: keywords, page: page - 1), title: "Previous page", class: "page-link"
     %li.page-item
       %a.page-link= page+1
     %li.page-item.next
-      = link_to "Nastepna &rarr;".html_safe, customers_path(keywords: keywords, page: page + 1), title: "Nastepna strona", class: "page-link"
+      = link_to "Next &rarr;".html_safe, customers_path(keywords: keywords, page: page + 1), title: "Next page", class: "page-link"

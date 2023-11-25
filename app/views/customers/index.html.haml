@@ -12,7 +12,7 @@
 
   %section.search-results
     %header
-      %h1.h3 Results
+      -# %h1.h3 Results
     - if @customers.present?
       = render partial: "pager", locals: {keywords: @keywords, page: @page}
     %ol.list-group
@@ -21,7 +21,7 @@
           = gravatar_for customer
           %div.m-3
             %h3.float-right
-              %small Klientem od
+              %small Customer from
               = customer.created_at.to_date
             %h2
               = customer.first_name 
