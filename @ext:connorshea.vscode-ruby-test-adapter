@@ -1,0 +1,29 @@
+[2023-11-26 20:02:39.965] [INFO] Test Explorer found
+[2023-11-26 20:02:39.965] [INFO] Creating adapter for /home/maciej/dhruvi/dhruvi_app
+[2023-11-26 20:02:39.965] [INFO] Initializing Ruby adapter
+[2023-11-26 20:02:39.965] [INFO] Registering adapter for /home/maciej/dhruvi/dhruvi_app
+[2023-11-26 20:02:39.966] [INFO] Loading Ruby tests...
+[2023-11-26 20:02:39.966] [INFO] Loading Minitest tests...
+[2023-11-26 20:02:39.967] [INFO] Getting a list of Minitest tests in suite with the following command: bundle exec rake -R $EXT_DIR vscode:minitest:list
+[2023-11-26 20:02:39.976] [INFO] Initialization finished
+[2023-11-26 20:02:40.149] [INFO] Configuration changed
+[2023-11-26 20:02:40.163] [INFO] Configuration changed
+[2023-11-26 20:02:40.178] [INFO] Configuration changed
+[2023-11-26 20:02:42.827] [DEBUG] Passing raw output from dry-run into getJsonFromOutput.
+[2023-11-26 20:02:42.827] [DEBUG] START_OF_TEST_JSON{"version":"5.20.0","examples":[]}END_OF_TEST_JSON
+
+[2023-11-26 20:02:42.827] [DEBUG] Parsing the below JSON:
+[2023-11-26 20:02:42.827] [DEBUG] {"version":"5.20.0","examples":[]}
+[2023-11-26 20:07:59.997] [INFO] Test Explorer found
+[2023-11-26 20:07:59.997] [INFO] Creating adapter for /home/maciej/dhruvi/dhruvi_app
+[2023-11-26 20:07:59.997] [INFO] Initializing Ruby adapter
+[2023-11-26 20:07:59.997] [INFO] Registering adapter for /home/maciej/dhruvi/dhruvi_app
+[2023-11-26 20:07:59.998] [INFO] Loading Ruby tests...
+[2023-11-26 20:07:59.998] [INFO] Loading Minitest tests...
+[2023-11-26 20:07:59.999] [INFO] Getting a list of Minitest tests in suite with the following command: bundle exec rake -R $EXT_DIR vscode:minitest:list
+[2023-11-26 20:08:00.021] [INFO] Initialization finished
+[2023-11-26 20:08:01.781] [DEBUG] Passing raw output from dry-run into getJsonFromOutput.
+[2023-11-26 20:08:01.781] [DEBUG] START_OF_TEST_JSON{"version":"5.20.0","examples":[]}END_OF_TEST_JSON
+
+[2023-11-26 20:08:01.781] [DEBUG] Parsing the below JSON:
+[2023-11-26 20:08:01.781] [DEBUG] {"version":"5.20.0","examples":[]}
