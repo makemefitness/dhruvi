@@ -1,4 +1,4 @@
-= form_for @ingredient do |f|
+= form_for @ingredient, html: {class: 'form'} do |f|
   - if @ingredient.errors.any?
     #error_explanation
       %h2= "#{pluralize(@ingredient.errors.count, "error")} prohibited this ingredient from being saved:"
@@ -22,4 +22,4 @@
     = f.number_field :carbohydrate, class: "form__input", placeholder: "Quantity carbohydrate in 100g"
     = f.label :carbohydrate, class: "form__label"
   .actions
-    = f.submit 'Save', class: 'btn btn-danger btn-lg form-all__button'
+    = f.submit 'Save', :class => 'my-btn my-btn--pink my-btn--width btn-lg'

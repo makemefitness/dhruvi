@@ -1,21 +1,43 @@
-%p#notice= notice
+.recipe
+  .gallery
+    %figure.gallery__item
+      = image_tag "app_layout/herbs-2.jpeg", alt: "logo", class: "gallery__photo"
+    %figure.gallery__item
+      = image_tag "app_layout/healthyfoods.jpg", alt: "logo", class: "gallery__photo"
+    %figure.gallery__item
+      = image_tag "app_layout/herbs.jpeg", alt: "logo", class: "gallery__photo"
+  .recipe__header
+    %h1.recipe__heading
+      = @ingredient.name
+    .recipe__nav
+      - if params[:keywords].present?
+        %svg.recipe__nav-icon
+          %use{"xlink:href" => "#{asset_path('sprite.svg')}#icon-search"}
+        = @ingredients.count
+        results
+    .recipe__summary
+      %p
+        %b= @count
+        products
+  .container
+    %p#notice= notice
 
-%p
-  %b Name:
-  = @ingredient.name
-%p
-  %b Energy:
-  = @ingredient.energy
-%p
-  %b Protein:
-  = @ingredient.protein
-%p
-  %b Fat:
-  = @ingredient.fat
-%p
-  %b Carbohydrate:
-  = @ingredient.carbohydrate
+    %p
+      %b Product:
+      = @ingredient.name
+    %p
+      %b Kcal:
+      = @ingredient.energy
+    %p
+      %b Protein:
+      = @ingredient.protein
+    %p
+      %b Fat:
+      = @ingredient.fat
+    %p
+      %b Carbohydrate:
+      = @ingredient.carbohydrate
 
-= link_to 'Edit', edit_ingredient_path(@ingredient)
-\|
-= link_to 'Back', ingredients_path
+    = link_to 'Edytuj', edit_ingredient_path(@ingredient)
+    \|
+    = link_to 'Lista', ingredients_path

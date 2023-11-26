@@ -93,3 +93,21 @@
 [2023-11-26 20:42:17.884] [INFO] Sending autorun event
 [2023-11-26 20:47:24.190] [INFO] /home/maciej/dhruvi/dhruvi_app/app/assets/stylesheets/layout/_forms.scss was saved - checking if this effects /home/maciej/dhruvi/dhruvi_app
 [2023-11-26 20:47:24.190] [INFO] Sending autorun event
+[2023-11-26 20:54:27.896] [INFO] /home/maciej/dhruvi/dhruvi_app/app/views/ingredients/show.html.haml was saved - checking if this effects /home/maciej/dhruvi/dhruvi_app
+[2023-11-26 20:54:27.896] [INFO] Sending autorun event
+[2023-11-26 20:54:54.376] [INFO] /home/maciej/dhruvi/dhruvi_app/app/views/ingredients/show.html.haml was saved - checking if this effects /home/maciej/dhruvi/dhruvi_app
+[2023-11-26 20:54:54.377] [INFO] Sending autorun event
+[2023-11-26 20:55:34.131] [INFO] /home/maciej/dhruvi/dhruvi_app/app/views/ingredients/index.html.haml was saved - checking if this effects /home/maciej/dhruvi/dhruvi_app
+[2023-11-26 20:55:34.131] [INFO] Sending autorun event
+[2023-11-26 20:55:50.311] [INFO] /home/maciej/dhruvi/dhruvi_app/app/views/ingredients/new.html.haml was saved - checking if this effects /home/maciej/dhruvi/dhruvi_app
+[2023-11-26 20:55:50.311] [INFO] Sending autorun event
+[2023-11-26 20:56:27.179] [INFO] /home/maciej/dhruvi/dhruvi_app/app/views/ingredients/_form.html.haml was saved - checking if this effects /home/maciej/dhruvi/dhruvi_app
+[2023-11-26 20:56:27.179] [INFO] Sending autorun event
+[2023-11-26 20:57:06.396] [INFO] /home/maciej/dhruvi/dhruvi_app/app/views/ingredients/edit.html.haml was saved - checking if this effects /home/maciej/dhruvi/dhruvi_app
+[2023-11-26 20:57:06.396] [INFO] Sending autorun event
+[2023-11-26 20:57:33.405] [INFO] /home/maciej/dhruvi/dhruvi_app/app/views/ingredients/_form.html.haml was saved - checking if this effects /home/maciej/dhruvi/dhruvi_app
+[2023-11-26 20:57:33.405] [INFO] Sending autorun event
+[2023-11-26 20:58:44.510] [INFO] /home/maciej/dhruvi/dhruvi_app/app/views/recipes/edit.html.haml was saved - checking if this effects /home/maciej/dhruvi/dhruvi_app
+[2023-11-26 20:58:44.511] [INFO] Sending autorun event
+[2023-11-26 20:59:08.107] [INFO] /home/maciej/dhruvi/dhruvi_app/app/views/recipes/index.html.haml was saved - checking if this effects /home/maciej/dhruvi/dhruvi_app
+[2023-11-26 20:59:08.107] [INFO] Sending autorun event
