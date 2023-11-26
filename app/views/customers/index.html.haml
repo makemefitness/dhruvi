@@ -12,19 +12,17 @@
 
   %section.search-results
     %header
-      -# %h1.h3 Results
     - if @customers.present?
       = render partial: "pager", locals: {keywords: @keywords, page: @page}
     %ol.list-group
       - @customers.each do |customer|
-        %li.list-group-item.d-flex.align-items-start
+        %li.list-group-item.clearfix
           = gravatar_for customer
-          %div.m-3
-            %h3.float-right
-              %small Customer from
-              = customer.created_at.to_date
-            %h2
-              = customer.first_name 
-              = customer.last_name
-            %h5= customer.username
-            %h4.float-left= customer.email
+          %h3.float-right
+            %small Phone number:
+            = customer.phone_number
+          %h2
+            = customer.first_name 
+            = customer.last_name
+          %h5= customer.username
+          %h4.float-left= customer.email

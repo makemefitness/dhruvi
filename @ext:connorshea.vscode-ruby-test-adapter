@@ -27,3 +27,67 @@
 
 [2023-11-26 20:08:01.781] [DEBUG] Parsing the below JSON:
 [2023-11-26 20:08:01.781] [DEBUG] {"version":"5.20.0","examples":[]}
+[2023-11-26 20:10:36.213] [INFO] /home/maciej/dhruvi/dhruvi_app/app/controllers/recipes_controller.rb was saved - checking if this effects /home/maciej/dhruvi/dhruvi_app
+[2023-11-26 20:10:36.214] [INFO] Sending autorun event
+[2023-11-26 20:11:44.956] [INFO] /home/maciej/dhruvi/dhruvi_app/app/views/customers/index.html.haml was saved - checking if this effects /home/maciej/dhruvi/dhruvi_app
+[2023-11-26 20:11:44.956] [INFO] Sending autorun event
+[2023-11-26 20:12:49.361] [INFO] /home/maciej/dhruvi/dhruvi_app/app/views/customers/index.html.haml was saved - checking if this effects /home/maciej/dhruvi/dhruvi_app
+[2023-11-26 20:12:49.362] [INFO] Sending autorun event
+[2023-11-26 20:13:09.259] [INFO] /home/maciej/dhruvi/dhruvi_app/app/views/customers/index.html.haml was saved - checking if this effects /home/maciej/dhruvi/dhruvi_app
+[2023-11-26 20:13:09.259] [INFO] Sending autorun event
+[2023-11-26 20:13:30.792] [INFO] /home/maciej/dhruvi/dhruvi_app/app/views/customers/index.html.haml was saved - checking if this effects /home/maciej/dhruvi/dhruvi_app
+[2023-11-26 20:13:30.792] [INFO] Sending autorun event
+[2023-11-26 20:13:50.318] [INFO] /home/maciej/dhruvi/dhruvi_app/app/views/customers/index.html.haml was saved - checking if this effects /home/maciej/dhruvi/dhruvi_app
+[2023-11-26 20:13:50.318] [INFO] Sending autorun event
+[2023-11-26 20:14:56.136] [INFO] /home/maciej/dhruvi/dhruvi_app/app/views/ingredients/_form.html.haml was saved - checking if this effects /home/maciej/dhruvi/dhruvi_app
+[2023-11-26 20:14:56.136] [INFO] Sending autorun event
+[2023-11-26 20:15:38.370] [INFO] /home/maciej/dhruvi/dhruvi_app/app/views/ingredients/_form.html.haml was saved - checking if this effects /home/maciej/dhruvi/dhruvi_app
+[2023-11-26 20:15:38.370] [INFO] Sending autorun event
+[2023-11-26 20:16:48.381] [INFO] /home/maciej/dhruvi/dhruvi_app/app/views/ingredients/_form.html.haml was saved - checking if this effects /home/maciej/dhruvi/dhruvi_app
+[2023-11-26 20:16:48.381] [INFO] Sending autorun event
+[2023-11-26 20:17:33.377] [INFO] /home/maciej/dhruvi/dhruvi_app/app/views/ingredients/_form.html.haml was saved - checking if this effects /home/maciej/dhruvi/dhruvi_app
+[2023-11-26 20:17:33.377] [INFO] Sending autorun event
+[2023-11-26 20:17:51.741] [INFO] /home/maciej/dhruvi/dhruvi_app/app/views/ingredients/_form.html.haml was saved - checking if this effects /home/maciej/dhruvi/dhruvi_app
+[2023-11-26 20:17:51.741] [INFO] Sending autorun event
+[2023-11-26 20:18:59.598] [INFO] /home/maciej/dhruvi/dhruvi_app/app/views/ingredients/_form.html.haml was saved - checking if this effects /home/maciej/dhruvi/dhruvi_app
+[2023-11-26 20:18:59.598] [INFO] Sending autorun event
+[2023-11-26 20:20:27.291] [INFO] /home/maciej/dhruvi/dhruvi_app/app/views/ingredients/_form.html.haml was saved - checking if this effects /home/maciej/dhruvi/dhruvi_app
+[2023-11-26 20:20:27.291] [INFO] Sending autorun event
+[2023-11-26 20:20:39.191] [INFO] /home/maciej/dhruvi/dhruvi_app/app/views/ingredients/_form.html.haml was saved - checking if this effects /home/maciej/dhruvi/dhruvi_app
+[2023-11-26 20:20:39.192] [INFO] Sending autorun event
+[2023-11-26 20:21:04.390] [INFO] /home/maciej/dhruvi/dhruvi_app/app/views/ingredients/_form.html.haml was saved - checking if this effects /home/maciej/dhruvi/dhruvi_app
+[2023-11-26 20:21:04.390] [INFO] Sending autorun event
+[2023-11-26 20:21:43.915] [INFO] /home/maciej/dhruvi/dhruvi_app/app/views/ingredients/_pager.html.haml was saved - checking if this effects /home/maciej/dhruvi/dhruvi_app
+[2023-11-26 20:21:43.915] [INFO] Sending autorun event
+[2023-11-26 20:22:26.312] [INFO] /home/maciej/dhruvi/dhruvi_app/app/views/ingredients/edit.html.haml was saved - checking if this effects /home/maciej/dhruvi/dhruvi_app
+[2023-11-26 20:22:26.312] [INFO] Sending autorun event
+[2023-11-26 20:24:46.677] [INFO] /home/maciej/dhruvi/dhruvi_app/app/views/ingredients/index.html.haml was saved - checking if this effects /home/maciej/dhruvi/dhruvi_app
+[2023-11-26 20:24:46.678] [INFO] Sending autorun event
+[2023-11-26 20:25:13.768] [INFO] /home/maciej/dhruvi/dhruvi_app/app/views/ingredients/index.html.haml was saved - checking if this effects /home/maciej/dhruvi/dhruvi_app
+[2023-11-26 20:25:13.768] [INFO] Sending autorun event
+[2023-11-26 20:25:36.771] [INFO] /home/maciej/dhruvi/dhruvi_app/app/views/ingredients/_pager.html.haml was saved - checking if this effects /home/maciej/dhruvi/dhruvi_app
+[2023-11-26 20:25:36.771] [INFO] Sending autorun event
+[2023-11-26 20:25:56.798] [INFO] /home/maciej/dhruvi/dhruvi_app/app/views/ingredients/_pager.html.haml was saved - checking if this effects /home/maciej/dhruvi/dhruvi_app
+[2023-11-26 20:25:56.799] [INFO] Sending autorun event
+[2023-11-26 20:26:13.253] [INFO] /home/maciej/dhruvi/dhruvi_app/app/views/ingredients/_pager.html.haml was saved - checking if this effects /home/maciej/dhruvi/dhruvi_app
+[2023-11-26 20:26:13.253] [INFO] Sending autorun event
+[2023-11-26 20:26:25.337] [INFO] /home/maciej/dhruvi/dhruvi_app/app/views/ingredients/_pager.html.haml was saved - checking if this effects /home/maciej/dhruvi/dhruvi_app
+[2023-11-26 20:26:25.337] [INFO] Sending autorun event
+[2023-11-26 20:27:27.198] [INFO] /home/maciej/dhruvi/dhruvi_app/app/views/ingredients/index.html.haml was saved - checking if this effects /home/maciej/dhruvi/dhruvi_app
+[2023-11-26 20:27:27.198] [INFO] Sending autorun event
+[2023-11-26 20:28:23.812] [INFO] /home/maciej/dhruvi/dhruvi_app/app/views/ingredients/new.html.haml was saved - checking if this effects /home/maciej/dhruvi/dhruvi_app
+[2023-11-26 20:28:23.813] [INFO] Sending autorun event
+[2023-11-26 20:29:55.938] [INFO] /home/maciej/dhruvi/dhruvi_app/app/views/ingredients/index.html.haml was saved - checking if this effects /home/maciej/dhruvi/dhruvi_app
+[2023-11-26 20:29:55.938] [INFO] Sending autorun event
+[2023-11-26 20:32:05.394] [INFO] /home/maciej/dhruvi/dhruvi_app/app/views/ingredients/index.html.haml was saved - checking if this effects /home/maciej/dhruvi/dhruvi_app
+[2023-11-26 20:32:05.394] [INFO] Sending autorun event
+[2023-11-26 20:35:51.664] [INFO] /home/maciej/dhruvi/dhruvi_app/app/assets/stylesheets/layout/_forms.scss was saved - checking if this effects /home/maciej/dhruvi/dhruvi_app
+[2023-11-26 20:35:51.665] [INFO] Sending autorun event
+[2023-11-26 20:36:32.857] [INFO] /home/maciej/dhruvi/dhruvi_app/app/assets/stylesheets/layout/_forms.scss was saved - checking if this effects /home/maciej/dhruvi/dhruvi_app
+[2023-11-26 20:36:32.857] [INFO] Sending autorun event
+[2023-11-26 20:38:49.248] [INFO] /home/maciej/dhruvi/dhruvi_app/app/assets/stylesheets/layout/_forms.scss was saved - checking if this effects /home/maciej/dhruvi/dhruvi_app
+[2023-11-26 20:38:49.248] [INFO] Sending autorun event
+[2023-11-26 20:41:19.967] [INFO] /home/maciej/dhruvi/dhruvi_app/app/assets/stylesheets/layout/_forms.scss was saved - checking if this effects /home/maciej/dhruvi/dhruvi_app
+[2023-11-26 20:41:19.968] [INFO] Sending autorun event
+[2023-11-26 20:42:17.884] [INFO] /home/maciej/dhruvi/dhruvi_app/app/assets/stylesheets/layout/_forms.scss was saved - checking if this effects /home/maciej/dhruvi/dhruvi_app
+[2023-11-26 20:42:17.884] [INFO] Sending autorun event
