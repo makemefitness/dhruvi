@@ -1,29 +1,54 @@
-%h1 Listing ingredients
-
-%table
-  %thead
-    %tr
-      %th Name
-      %th Energy
-      %th Protein
-      %th Fat
-      %th Carbohydrate
-      %th
-      %th
-      %th
-
-  %tbody
-    - @ingredients.each do |ingredient|
-      %tr
-        %td= ingredient.name
-        %td= ingredient.energy
-        %td= ingredient.protein
-        %td= ingredient.fat
-        %td= ingredient.carbohydrate
-        %td= link_to 'Show', ingredient
-        %td= link_to 'Edit', edit_ingredient_path(ingredient)
-        %td= link_to 'Destroy', ingredient, method: :delete, data: { confirm: 'Are you sure?' }
-
-%br
+.recipe
+  .gallery{style:'height: 194px;'}
+    %figure.gallery__item
+      = image_tag "app_layout/herbs-2.jpeg", alt: "logo", class: "gallery__photo"
+    %figure.gallery__item
+      = image_tag "app_layout/healthyfoods.jpg", alt: "logo", class: "gallery__photo"
+    %figure.gallery__item
+      = image_tag "app_layout/herbs.jpeg", alt: "logo", class: "gallery__photo"
+    %figure.gallery__item
+      = image_tag "app_layout/jablko.jpg", alt: "logo", class: "gallery__photo"
+  .recipe__header
+    %h1.recipe__heading
+      Ingredients
+    .recipe__nav
+      - if params[:keywords].present?
+        %svg.recipe__nav-icon
+          %use{"xlink:href" => "#{asset_path('sprite.svg')}#icon-search"}
+        = @ingredients.count
+        results
+    .recipe__summary
+      %p
+        %b= @count
+        products
+  .pagination
+    - if @ingredients.present?
+      = render partial: "pager", locals: {keywords: @keywords, page: @page}
+  .ingrdients__list-header
+    %table
+      %thead
+        %tr
+          %th produkt
+          %th kcal
+          %th protein
+          %th fat
+          %th carbohydrate
+          %th
+          %th
+          %th
+      %tbody
+        - @ingredients.each do |ingredient|
+          %tr
+            %td= ingredient.name
+            %td= ingredient.energy
+            %td= ingredient.protein
+            %td= ingredient.fat
+            %td= ingredient.carbohydrate
+            %td= link_to 'Show', ingredient_path(ingredient)
+            %td= link_to 'Edit', edit_ingredient_path(ingredient)
+            %td= link_to 'Destroy', ingredient_path(ingredient), method: :delete, data: { confirm: 'Are you sure?' }
+  - if @ingredients.present?
+    = render partial: "pager", locals: {keywords: @keywords, page: @page}
+    %br
 
 = link_to 'New Ingredient', new_ingredient_path

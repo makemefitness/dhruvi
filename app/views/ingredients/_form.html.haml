@@ -6,20 +6,20 @@
         - @ingredient.errors.full_messages.each do |message|
           %li= message
 
-  .field
-    = f.label :name
-    = f.text_field :name
-  .field
-    = f.label :energy
-    = f.number_field :energy
-  .field
-    = f.label :protein
-    = f.number_field :protein
-  .field
-    = f.label :fat
-    = f.number_field :fat
-  .field
-    = f.label :carbohydrate
-    = f.number_field :carbohydrate
+  .form__group
+    = f.text_field :name, class: "form__input", placeholder: "Product name", autofocus: true
+    = f.label :name, class: "form__label"
+  .form__group
+    = f.number_field :energy, class: "form__input", placeholder: "Quantity kcal in 100g"
+    = f.label :energy, class: "form__label"
+  .form__group
+    = f.number_field :protein, class: "form__input", placeholder: "Quantity protein in 100g"
+    = f.label :protein, class: "form__label"
+  .form__group
+    = f.number_field :fat, class: "form__input", placeholder: "Quantity fat in 100g"
+    = f.label :fat, class: "form__label"
+  .form__group
+    = f.number_field :carbohydrate, class: "form__input", placeholder: "Quantity carbohydrate in 100g"
+    = f.label :carbohydrate, class: "form__label"
   .actions
-    = f.submit 'Save'
+    = f.submit 'Save', class: 'btn btn-danger btn-lg form-all__button'

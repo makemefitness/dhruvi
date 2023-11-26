@@ -1,7 +1,9 @@
-%h1 Editing ingredient
+%section.form-all
+  .ingredient__form
+    %h1.heading-secondary Edyt produkt
 
-= render 'form'
+    = render 'form'
 
-= link_to 'Show', @ingredient
-\|
-= link_to 'Back', ingredients_path
+  = link_to 'Show', @ingredient
+  \|
+  = link_to 'Back', ingredients_path
