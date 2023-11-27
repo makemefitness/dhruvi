@@ -1,10 +1,104 @@
 - provide(:title, 'Home')
 
 
-%h1 Main#home
-%p Find me in app/views/main/home.html.haml
+Tu bedzie strona
+= link_to "Edytuj dane logowania", edit_user_registration_path
+%hr
+= link_to "Wloguj", destroy_user_session_path, method: :delete
+
+%section
+  %h1 test autocomplete
+  = form_with url: search_path, local: true, method: :get do |form|
+    = form.text_field  :q, placeholder: 'Search', data: {behavior: "autocomplete"}, id: 'autoComplete', type: 'search', autocomplete: 'off'
+    -# %input#autoComplete{autocapitalize: "off", autocomplete: "off", autocorrect: "off", dir: "ltr", maxlength: "2048", spellcheck: "false", tabindex: "1", type: "search"}/
+    = form.button "saerch"
+<!-- = javascript_pack_tag 'javascript/search' -->
+%section
+  %h1 test easyAutocomplete
+  = form_with url: search_path, local: true, method: :get do |form|
+    = form.text_field  :q, placeholder: 'Search', data: {behavior: "autocomplete"}, id: 'dupa'
+    = form.button "saerch"
+<!-- = javascript_pack_tag 'javascript/search' -->
+%script
+  let input = $('#dupa');
+  let options = { 
+  <!-- getValue: "name",  -->
+  url: function(phrase){
+  return "/search?q=" + phrase;
+  },
+  listLocation: 'ingredients',
+  getValue: "name",
+  list:{onChooseEvent: function(){let url = input.getSelectedItemData().id;console.log(url)}}}
+
+  input.easyAutocomplete(options);
 
 
-= icon('fa-brands', 'font-awesome')
-= icon('fa-solid', 'user-secret')
-= icon('fa-regular', 'bell')
+
+%script{src: "https://cdn.jsdelivr.net/npm/@tarekraafat/autocomplete.js@10.2.7/dist/autoComplete.min.js"}
+%script
+  console.log('korwa')
+  $(function () {
+  console.log('Hello world')
+  })
+  const autoCompleteJS = new autoComplete({
+  placeHolder: "Search...",
+  threshold: 3,
+  resultsList: {
+  tag: "ul",
+  id: "autoComplete_list",
+  class: "results_list",
+  destination: "#autoComplete",
+  position: "afterend",
+  maxResults: 10,
+  noResults: true,
+  element: (list, data) => {
+  list.setAttribute("data-parent", "food-list");
+  },
+  submit: true,
+  },
+  data: {
+  src: async (query) => {
+  try {
+  // Fetch Data from external Source
+  const source = await fetch(`http://localhost:3000/search`);
+  // Data should be an array of `Objects` or `Strings`
+  const data = await source.json();
+  console.log(data)
+  -# const { name } = date
+  -# console.log("Name: " + name)
+  -# data.forEach(myFunction)
+  -# function myFunction(item, index) {
+  -# console.log(item. index)
+  -# }
+  const propertyValues = Object.entries(data);
+
+  const propertyNames = Object.keys(data);
+
+  console.log('Property name ' + propertyNames);
+
+  console.log(`Property values: ` + propertyValues);
+
+  console.log(Object.entries(propertyValues)[0][1][1])
+  const r = Object.entries(propertyValues)[0][1][1]
+  return r;
+  } catch (error) {
+  return error;
+  }
+  },
+  },
+  -# data: {
+  -# src: ["Sauce - Thousand Island", "Wild Boar - Tenderloin", "Goat - Whole Cut"],
+  -# cache: true,
+  -# },
+  resultItem: {
+  highlight: true
+  },
+  events: {
+  input: {
+  selection: (event) => {
+  const selection = event.detail.selection.value;
+  autoCompleteJS.input.value = selection;
+  }
+  }
+  }
+  });

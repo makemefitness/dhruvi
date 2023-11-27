@@ -34,3 +34,15 @@
     = f.label :link, "Source link", class: "form__label"
   .actions
     = f.submit 'Save', :class => 'my-btn my-btn--pink my-btn--width btn-lg'
+%script
+  let input = $('#recipe_ingredients');
+  let options = { 
+  <!-- getValue: "name",  -->
+  url: function(phrase){
+  return "/search?q=" + phrase;
+  },
+  listLocation: 'ingredients',
+  getValue: "name",
+  list:{onChooseEvent: function(){let id = input.getSelectedItemData().id;console.log(id);}}
+  }
+  input.easyAutocomplete(options);

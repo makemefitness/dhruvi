@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   get 'main/home'
   get 'main/help'
   get 'main/about'
+  get '/search', to: 'main#search'
 
   #-----------------------------------------------------------------------------------------#
   resources :customers, only: [:index]
