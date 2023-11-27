@@ -60,7 +60,7 @@ Tu bedzie strona
   src: async (query) => {
   try {
   // Fetch Data from external Source
-  const source = await fetch(`http://localhost:3000/search`);
+  const source = await fetch(`https://crm-dhruvi-bf3d5ae1f736.herokuapp.com/search`);
   // Data should be an array of `Objects` or `Strings`
   const data = await source.json();
   console.log(data)
