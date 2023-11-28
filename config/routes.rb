@@ -1,16 +1,23 @@
 Rails.application.routes.draw do
-  resources :ingredients
-  resources :recipes
-  devise_for :users
   get 'main/main'
   get 'main/home'
   get 'main/help'
   get 'main/about'
-  get '/search', to: 'main#search'
-  get '/autocomplete', to: 'main#autocomplete'
 
   #-----------------------------------------------------------------------------------------#
+  # search - json --------------------------------------------------------------------------#
+  get '/search', to: 'main#search'
+  get '/autocomplete', to: 'main#autocomplete'
+  get 'api/ingredients'
+  #-----------------------------------------------------------------------------------------#
+
+
+  #-----------------------------------------------------------------------------------------#
+  # resources ------------------------------------------------------------------------------#
   resources :customers, only: [:index]
+  resources :ingredients
+  resources :recipes
+  devise_for :users
   #-----------------------------------------------------------------------------------------#
 
 
