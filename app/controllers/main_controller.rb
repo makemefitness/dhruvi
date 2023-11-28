@@ -1,5 +1,5 @@
 class MainController < ApplicationController
-  before_action :authenticate_user!, only: [:main]
+  before_action :authenticate_user!, except: :search
   def main
   end
   def home
