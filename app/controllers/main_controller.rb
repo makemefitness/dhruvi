@@ -7,13 +7,23 @@ class MainController < ApplicationController
   def help
   end
 
+  def autocomplete
+    @ingredients = Ingredient.ransack(name_cont: params[:q]).result(distinct: true).limit(5)
+    @recipes =     Recipe.ransack(name_cont: params[:q]).result(distinct: true).limit(5)
+    respond_to do |format|
+      format.html {}
+      format.json {
+      }
+    end
+  end
+
   def search
     #@ingredients = Ingredient.all.map(&:name)
-    @ingredients = Ingredient.ransack(name_cont: params[:q]).result(distinct: true)
-    puts @ingredients.first.name
-    render json: {ingredients: @ingredients.map(&:name)}
+    @ingredients = Ingredient.ransack(name_cont: params[:q]).result(distinct: true).limit(5)
+    @recipes =     Recipe.ransack(name_cont: params[:q]).result(distinct: true).limit(5)
+    render json: {ingredients: @ingredients, recipes: @recipes}
     #@ingredients = Ingredient.ransack(name_cont: params[:q]).result(distinct: true)
-    # @recipes = Recipe.ransack(name_cont: params[:q]).result(distinct: true)
+    
     # respond_to do |format|
     #   format.html {}
     #   format.json {

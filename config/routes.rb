@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   get 'main/help'
   get 'main/about'
   get '/search', to: 'main#search'
+  get '/autocomplete', to: 'main#autocomplete'
 
   #-----------------------------------------------------------------------------------------#
   resources :customers, only: [:index]
