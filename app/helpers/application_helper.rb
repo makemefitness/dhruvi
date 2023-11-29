@@ -12,22 +12,22 @@ module ApplicationHelper
   def log_in?
     return current_user.present?
     return false
-    current_admin_customer.present? || current_admin_user.present?
+    current_customer.present? || current_user.present?
   end
 
   def get_login_user_name
-    if current_admin_customer.present?
-      current_admin_customer.username 
-    elsif current_admin_user.present?
-      current_admin_user.username
+    if current_customer.present?
+      current_customer.username 
+    elsif current_user.present?
+      current_user.email
     end
   end
 
   def get_login_user
-    if current_admin_customer.present?
-      current_admin_customer
-    elsif current_admin_user.present?
-      current_admin_user
+    if current_customer.present?
+      current_customer
+    elsif current_user.present?
+      current_user
     end
   end
 
@@ -35,11 +35,11 @@ module ApplicationHelper
   
   def get_type_of_login
     ####
-    return 'none'
+    # return 'none'
     if log_in?
-      if current_admin_user.present?
+      if current_user.present?
         'users'
-      elsif current_admin_customer.present?
+      elsif current_customer.present?
         'customers'
       else
         'none'

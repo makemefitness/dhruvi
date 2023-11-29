@@ -60,8 +60,37 @@
                 %use{"xlink:href" => "#{asset_path('sprite.svg')}#icon-chat"}
               %span.user-nav__notification 8
             .user-nav__user
-              = image_tag "Maciej.jpg", class: "user-nav__user-photo", alt: "Maciej"
-              %span.user-nav__user-name Maciej
+              - if log_in?
+                = gravatar_for_login(get_login_user)
+                /= image_pack_tag "images/Maciej.jpg", class: "user-nav__user-photo", alt: "Maciej"
+                %span.user-nav__user-name
+                  = get_login_user_name
+                  %svg.user-nav__icon.color-primary
+                    %use{"xlink:href" => "#{asset_path('sprite.svg')}#icon-caret-down"}
+                %nav.sidebar.user-nav__user-sidebar
+                  %ul.user-nav__user-menu
+                    %li.user-nav__user-item
+                      %a.user-nav__user__link{href: "/#{get_type_of_login}/edit"}
+                        %svg.side-nav__icon
+                          %use{"xlink:href" => "#{asset_path('sprite.svg')}#icon-pencil1"}
+                        %span Edytuj dane
+                    %li.user-nav__user-item.user-nav__user-theme-chooser
+                      %a.user-nav__user__link{href: '#'}
+                        %svg.side-nav__icon
+                          %use{"xlink:href" => "#{asset_path('sprite.svg')}#icon-paint-brush"}
+                        %span Wybierz temat
+                        %ul.user-nav__user-theme__choose#theme-chooser
+
+                    %li.user-nav__user-item
+                      %a.user-nav__user__link{href: '/users/sign_out', "data-method" => 'delete'}
+                        %svg.side-nav__icon
+                          %use{"xlink:href" => "#{asset_path('sprite.svg')}#icon-power-off"}
+                        %span Wyloguj
+
+              - else
+                = link_to 'Zaloguj sie',  new_customer_session_path
+                -# = image_tag "Maciej.jpg", class: "user-nav__user-photo", alt: "Maciej"
+                -# %span.user-nav__user-name Maciej
 
         .content
           %nav.sidebar

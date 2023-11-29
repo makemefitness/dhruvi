@@ -4,6 +4,10 @@ class MainController < ApplicationController
   end
   def home
   end
+
+  def customer
+    @customer = current_customer
+  end
   def help
   end
 

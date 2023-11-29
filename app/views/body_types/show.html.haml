@@ -1,0 +1,15 @@
+%p#notice= notice
+
+%p
+  %b Name:
+  = @body_type.name
+%p
+  %b Neat:
+  = @body_type.neat
+%p
+  %b Description:
+  = @body_type.description
+
+= link_to 'Edit', edit_body_type_path(@body_type)
+\|
+= link_to 'Back', body_types_path
