@@ -1,4 +1,5 @@
 class CustomersController < ApplicationController
+  before_action :authenticate_user!
   PAGE_SIZE = 15
   def index
     @page = (params[:page] || 0).to_i
