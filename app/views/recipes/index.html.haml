@@ -21,10 +21,9 @@
               = image_tag recipe.photo.variant(:thumb) if recipe.photo.attached?
             .recipe__details
               %b= link_to recipe.name, recipe_path(recipe)
-              -# - if recipe.ingredients.present?
-              -#   - recipe.ingredients.each do |ingredient|
-              -#     %small= ingredient.name
-              -# %small= recipe.ingredients
+              - if recipe.ingredients.present?
+                - recipe.ingredients.each do |ingredient|
+                  %small= ingredient.name
               = recipe.summary
           .recipe__summary-bottom
             %svg
@@ -32,8 +31,7 @@
             50min
             %svg
               %use{"xlink:href" => "#{asset_path('sprite.svg')}#icon-power"}
-            5000kcal
-            -# = recipe.summary[:energy].to_i.to_s + "kcal"
+            = recipe.ingredients_summary[:energy].to_i.to_s + "kcal"
             %svg
               %use{"xlink:href" => "#{asset_path('sprite.svg')}#icon-thumbs-o-up"}
             Easy

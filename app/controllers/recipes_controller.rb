@@ -17,16 +17,18 @@ class RecipesController < ApplicationController
   # GET /recipes/new
   def new
     @recipe = Recipe.new
+    @recipe.recipe_ingredients.build
   end
 
   # GET /recipes/1/edit
   def edit
+    @recipe.recipe_ingredients
   end
 
   # POST /recipes or /recipes.json
   def create
     @recipe = Recipe.new(recipe_params)
-
+    
     respond_to do |format|
       if @recipe.save
         format.html { redirect_to recipe_url(@recipe), notice: "Recipe was successfully created." }
@@ -69,6 +71,6 @@ class RecipesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def recipe_params
-      params.require(:recipe).permit(:photo, :name, :ingredients, :preparation, :summary, :link, :description)
+      params.require(:recipe).permit(:photo, :name, :preparation, :summary, :link, :description, recipe_ingredients_attributes: [:ingredient_id, :amount, :id, :_destroy])
     end
 end

@@ -20,19 +20,22 @@
   .form__group
     = f.text_field :summary, class: "form__input", placeholder: "Summary"
     = f.label :summary, "Summary", class: "form__label"
-  .form__group
-    = f.label :ingredients, "Ingredients", class: "form__label"
-    = f.text_field :ingredients, class: "form__input", placeholder: "Ingredients"
+
   .form__group
     -# = f.text_area :preparation, class: "form__input", placeholder: "Preparation"
     -# = f.label :preparation, "Preparation", class: "form__label"
   .form__group
-    = f.rich_text_area :description, class: "form__input", placeholder: "Description"
-    = f.label :description, "Description", class: "form__label"
+    = f.rich_text_area :description, class: "form__input", placeholder: "Preparation"
+    = f.label :description, "Preparation", class: "form__label"
   .form__group
     = f.text_field :link, class: "form__input", placeholder: "Source link"
     = f.label :link, "Source link", class: "form__label"
+  %h2 Ingredients
+  .form__group.skladnik
+    = f.fields_for :recipe_ingredients do |builder|
+      = render 'recipe_ingredient_fields', f: builder
   .actions
+    = link_to_add_association 'Add ingredient', f, :recipe_ingredients, data: {association_insertion_node: '.skladnik', association_insertion_method: :append }, class: 'my-btn my-btn--blue my-btn--width mb-3'
     = f.submit 'Save', :class => 'my-btn my-btn--pink my-btn--width btn-lg'
 %script
   let input = $('#recipe_ingredients');
