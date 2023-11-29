@@ -1,6 +1,11 @@
 Rails.application.routes.draw do
+  devise_for :customers, controllers: {
+    sessions: 'customers/sessions'
+  }
+  devise_for :users
   get 'main/main'
   get 'main/home'
+  get 'main/customer'
   get 'main/help'
   get 'main/about'
 
@@ -17,7 +22,8 @@ Rails.application.routes.draw do
   resources :customers, only: [:index]
   resources :ingredients
   resources :recipes
-  devise_for :users
+  resources :body_types
+  
   #-----------------------------------------------------------------------------------------#
 
 

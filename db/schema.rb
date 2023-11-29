@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2023_11_29_011039) do
+ActiveRecord::Schema[7.1].define(version: 2023_11_29_130559) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -52,6 +52,14 @@ ActiveRecord::Schema[7.1].define(version: 2023_11_29_011039) do
     t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
   end
 
+  create_table "body_types", force: :cascade do |t|
+    t.string "name", null: false
+    t.string "neat", null: false
+    t.string "description"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "customers", force: :cascade do |t|
     t.string "first_name", null: false
     t.string "last_name", null: false
@@ -64,10 +72,16 @@ ActiveRecord::Schema[7.1].define(version: 2023_11_29_011039) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "avatar"
+    t.string "encrypted_password", default: "", null: false
+    t.string "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.integer "weight"
     t.index "lower((email)::text)", name: "index_customers_on_lower_email"
     t.index "lower((first_name)::text) varchar_pattern_ops", name: "index_customers_on_lower_first_name_varchar_pattern_ops"
     t.index "lower((last_name)::text) varchar_pattern_ops", name: "index_customers_on_lower_last_name_varchar_pattern_ops"
     t.index ["email"], name: "index_customers_on_email", unique: true
+    t.index ["reset_password_token"], name: "index_customers_on_reset_password_token", unique: true
     t.index ["username"], name: "index_customers_on_username", unique: true
   end
 
@@ -109,6 +123,7 @@ ActiveRecord::Schema[7.1].define(version: 2023_11_29_011039) do
     t.datetime "remember_created_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "avatar"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end

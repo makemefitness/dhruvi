@@ -8,7 +8,7 @@ import '@rails/actiontext'
 
 import './src/jqury'
 import '@nathanvda/cocoon'
-
+import './components/thems'
 // $('recipe_ingredients').cocoon()
 // import './components/autocomplete'
 $(function () {
@@ -17,4 +17,6 @@ $(function () {
 // import 'jquery_ujs'
 // import 'popper'
 import 'bootstrap'
-document.addEventListener('turbo:load', function () {})
+document.addEventListener('turbo:load', function () {
+  alert('ladujesies')
+})

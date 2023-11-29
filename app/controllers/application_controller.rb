@@ -10,4 +10,13 @@ class ApplicationController < ActionController::Base
     end
     devise_parameter_sanitizer.permit(:account_update) { |u| u.permit(:username, :email, :password, :password_confirmation, :current_password) }
   end
+
+  def after_sign_in_path_for(resource)
+    if resource.is_a?(User)
+      '/'
+      # '/static_pages/usershome'
+    else
+      '/main/customer'
+    end
+  end
 end

@@ -1,0 +1,78 @@
+<section class="form-all">
+  <div class="edit_customer__form">
+    <h1 class="heading-secondary heading-secondary__form">Provide your personal details</h1>
+
+    <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put, class: 'form' }) do |f| %>
+      <%= devise_error_messages! %>
+      <div class="form-group">
+        <%= (image_tag resource.avatar_url, class: 'form__group--image') if resource.avatar? %>
+        <%= f.file_field :avatar, class: "form__input" %>
+        <%= f.label :avatar, class: "form__label" %>
+      </div>
+
+
+      <div class="form-group">
+        <%= f.text_field :first_name, autofocus: true, placeholder: "First Name", class: "form__input"  %>
+        <%= f.label :first_name, class: "form__label" %>
+      </div>
+
+      <div class="form-group">
+        <%= f.text_field :last_name, placeholder: "Last Name", class: "form__input"  %>
+        <%= f.label :last_name, class: "form__label" %>
+      </div>
+
+      <div class="form-group">
+        <%= f.text_field :username, placeholder: "Nick", class: "form__input"  %>
+        <%= f.label :username, class: "form__label" %>
+      </div>
+
+      <div class="form-group">
+        <%= f.email_field :email, placeholder: "Email", class: "form__input"  %>
+        <%= f.label :email, class: "form__label" %>
+      </div>
+
+      <div class="form-group">
+        <%= f.text_field :phone_number, placeholder: "Phone number", class: "form__input"  %>
+        <%= f.label :phone_number , class: "form__label"%>
+      </div>
+
+      <div class="form-group">
+        <%= f.text_field :sex, placeholder: "Sex", class: "form__input"  %>
+        <%= f.label :sex, class: "form__label" %>
+      </div>
+
+      <div class="form-group">
+        <%= f.text_field :age, placeholder: "Age", class: "form__input"  %>
+        <%= f.label :age, class: "form__label" %>
+      </div>
+
+      <div class="form-group">
+        <%= f.text_field :height, placeholder: "Height", class: "form__input"  %>
+        <%= f.label :height, class: "form__label" %>
+      </div>
+
+      <div class="form-group">
+        <%= f.text_field :weight, placeholder: "Weigth", class: "form__input"  %>
+        <%= f.label :weight, 'Waga', class: "form__label" %>
+      </div>
+
+  <div class="form-group">
+    <%= f.password_field :password, placeholder: "new-password", class: "form__input" %>
+    <%= f.label :password , class: "form__label" %>
+    <% if @minimum_password_length %>
+    <em>(<%= @minimum_password_length %> characters minimum)</em>
+    <% end %>
+  </div>
+
+  <div class="form-group">
+    <%= f.password_field :password_confirmation, placeholder: "confirm new-password" , class: "form__input"%>
+    <%= f.label :password_confirmation, class: "form__label"  %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit "Create account", :class => 'my-btn my-btn--pink my-btn--width btn-lg' %>
+  </div>
+<% end %>
+<div class='form__links'>
+<%= render "customers/shared/links" %>
+</div>

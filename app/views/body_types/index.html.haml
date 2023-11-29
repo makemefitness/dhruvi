@@ -1,0 +1,25 @@
+%h1 Listing body_types
+
+%table
+  %thead
+    %tr
+      %th Name
+      %th Neat
+      %th Description
+      %th
+      %th
+      %th
+
+  %tbody
+    - @body_types.each do |body_type|
+      %tr
+        %td= body_type.name
+        %td= body_type.neat
+        %td= body_type.description
+        %td= link_to 'Show', body_type
+        %td= link_to 'Edit', edit_body_type_path(body_type)
+        %td= link_to 'Destroy', body_type, method: :delete, data: { confirm: 'Are you sure?' }
+
+%br
+
+= link_to 'New Body type', new_body_type_path
