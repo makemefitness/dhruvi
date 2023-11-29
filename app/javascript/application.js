@@ -7,7 +7,9 @@ import 'trix'
 import '@rails/actiontext'
 
 import './src/jqury'
+import '@nathanvda/cocoon'
 
+// $('recipe_ingredients').cocoon()
 // import './components/autocomplete'
 $(function () {
   console.log('Hello world z korwy pierwszy start')

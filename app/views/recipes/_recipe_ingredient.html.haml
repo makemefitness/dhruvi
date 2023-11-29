@@ -1,0 +1,10 @@
+= f.text_field :ingredient_id, label: 'Ingredient'
+= f.number_field_tag :amount, label: 'Amount', type: 'number', value: '0'
+= f.text_field :_destroy, as: :hidden
+%script
+  $('.form__input').regexMask(/^\d+$/);
+  $("input[type=number]").keypress(function(event) {
+  if (!event.charCode) return true;          
+  ch = String.fromCharCode(event.charCode);
+  return (/[\d]/.test(ch));
+  });

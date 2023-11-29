@@ -23,6 +23,8 @@
     
     -# = javascript_importmap_tags
     = javascript_include_tag "application", "data-turbo-track": "reload", defer: true
+    -# = javascript_include_tag "jquery"
+    = javascript_include_tag :cocoon
   %body
     = flash_messages
     -if notice.present?
@@ -82,13 +84,13 @@
               %li{class: "#{(controller_name == 'recipes')?'side-nav__item side-nav__item--active':'side-nav__item'}"}
                 %a.side-nav__link{href: "/recipes"}
                   %svg.side-nav__icon
-                    %use{"xlink:href" => "#{asset_path('sprite.svg')}#icon-bowl"}
+                    %use{"xlink:href" => "#{asset_path('sprite.svg')}#icon-forkandspoon"}
                   %span Recipes
               %li{class: "#{(controller_name == 'ingredients')?'side-nav__item side-nav__item--active':'side-nav__item'}"}
                 %a.side-nav__link{href: "/ingredients"}
                   %svg.side-nav__icon
                     %use{"xlink:href" => "#{asset_path('sprite.svg')}#icon-bowl"}
                   %span Ingredients
-            %span.legal &copy; 2019 Maciej Sypniewski.
+            %span.legal &copy; 2023 Maciej Sypniewski.
           %main.main-view
             = yield

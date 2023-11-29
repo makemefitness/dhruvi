@@ -4,18 +4,20 @@
   .recipe__details
     %h1.heading-secondary
       %b= @recipe.name
+    %h3 
+      Summary:
+    = @recipe.summary 
     %h3
       %b Ingredients:
-      = @recipe.ingredients
-    -# - @recipe.recipeingredients.each do |ingredient|
-    -#   %p
-    -#     = Ingredient.find(ingredient.ingredient_id).name 
-    -#     = ingredient.amount.to_s + "g"
+    - @recipe.recipe_ingredients.each do |ingredient|
+      %p
+        = Ingredient.find(ingredient.ingredient_id).name 
+        = ingredient.amount.to_s + "g"
 
-    -#     %span.float-right= ingredient.energy.to_i.to_s + "kcal"
-    -#     /= ingredient.fat.to_i.to_s + "g"
-    -#     /= ingredient.protein.to_i.to_s + "g"
-    -#     /= ingredient.carbohydrate.to_i.to_s + "g"
+        %span.float-right= "energy: " + ingredient.energy.to_i.to_s + "kcal"
+        -# = ingredient.fat.to_i.to_s + "g"
+        -# = ingredient.protein.to_i.to_s + "g"
+        -# = ingredient.carbohydrate.to_i.to_s + "g"
 
     %h3
       %b Method:
@@ -24,14 +26,14 @@
     %small
       %svg.recipe__nav-icon.fill-primary
         %use{"xlink:href" => "#{asset_path('sprite.svg')}#icon-power"}
-      -# = @recipe.summary[:energy].to_i.to_s + "kcal"
-      2000 kcal
+      = @recipe.ingredients_summary[:energy].to_i.to_s + "kcal"
+
       %svg.recipe__nav-icon.fill-primary
         %use{"xlink:href" => "#{asset_path('sprite.svg')}#icon-heart"}
-      -# = " protein: #{@recipe.summary[:protein].to_i.to_s}g, "
-      -# = " tłuszczu: #{@recipe.summary[:fat].to_i.to_s}g, "
-      -# = " weglowodany: #{@recipe.summary[:carbohydrate].to_i.to_s}g"
-      protein 150g tłuszczu 20g weglowodany 5g
+      = " protein: #{@recipe.ingredients_summary[:protein].to_i.to_s}g, "
+      = " fat: #{@recipe.ingredients_summary[:fat].to_i.to_s}g, "
+      = " carbohydrates: #{@recipe.ingredients_summary[:carbohydrate].to_i.to_s}g"
+
     %hr
     %p
       %b Link:

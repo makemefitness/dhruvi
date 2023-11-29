@@ -50,3 +50,4 @@ gem "aws-sdk-s3", require: false
 gem 'ransack'
 gem "jquery-rails"
 gem "bootstrap"
+gem "cocoon", "~> 1.2"
