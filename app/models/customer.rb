@@ -34,4 +34,8 @@ class Customer < ApplicationRecord
       (9.99 * self.weight.to_f) + (6.25 * self.height.to_f) - (4.92 * (self.age).to_f) - 161.0
     end
   end
+
+  def name
+    self.first_name + " " + self.last_name
+  end
 end

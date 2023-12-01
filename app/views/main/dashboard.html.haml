@@ -1,12 +1,7 @@
 -provide(:title, "Domowa")
 .home-page
   = render partial: 'partials/user_home_header'
-  .inner-container
-    %header
-      %h1.heading-secondary.mt-0
-        .i.fa-solid.fa-user
-        Welcome in CRM Trener,
-        = current_user.email if current_user.present?
+
 
   %main.datails
     .admin_panel_header
@@ -37,41 +32,44 @@
       .callendar.p-3
         %nav
           .nav.nav-tabs#nav-tab{role:"tablist"}
-            %a.nav-item.nav-link.active#nav-appointment-tab{'data-toggle': "tab", href: "#nav-appointment", role: "tab", 'aria-controls':"nav-home", 'aria-selected': "true"} Appointments.
-            %a.nav-item.nav-link#nav-notifications-tab{'data-toggle': "tab", href: "#nav-notifications", role: "tab", 'aria-controls':"nav-home", 'aria-selected': "true"} Notifications.
+            %button#nav-home-tab.nav-link.active{"aria-controls" => "nav-home", "aria-selected" => "true", "data-bs-target" => "#nav-appointment", "data-bs-toggle" => "tab", role: "tab", type: "button"} Appointments
+            %button#nav-profile-tab.nav-link{"aria-controls" => "nav-profile", "aria-selected" => "false", "data-bs-target" => "#nav-notifications", "data-bs-toggle" => "tab", role: "tab", type: "button"} Notifications
         .tab-content#nav-tabContent
           .tab-pane.fade.show.active#nav-appointment{role: "tabpanel", 'aria-labelledby': "nav-home-tab"}
 
             %h1.color-primary Appointments.
             .list-group
-              %li.list-group-item.d-flex.justify-content-between.align-items-start
+              %li.list-group-item.d-flex.align-items-start
                 = gravatar_for(Customer.last(3)[0])
-                %div 
+                %div.w-100.align-items-start.ps-5
                   .d-flex.w-100.justify-content-between
-                    %h5.mb-1 List group item heading
+                    %h5.mb-1
+                      =  Customer.last(3)[0].name
                     %small.text-body-secondary Tomorow 12:15
-                  %p.mb-1 Some placeholder content in a paragraph.
-                  %small.text-body-secondary And some muted small print.
+                  %p.mb-1 Initial interview.
+                  %small.text-body-secondary Measurements and interviews.
               %a.list-group-item.list-group-item-action.active{"aria-current" => "true", href: "#"}
                 .d-flex.w-100.justify-content-between
                   %h5.mb-1 Maciej Sypniewski
                   %small Today 15:30
                 %p.mb-1 Measurments.
                 %small And some small print.
-              %li.list-group-item.d-flex.justify-content-between.align-items-start
+              %li.list-group-item.d-flex.align-items-start
                 = gravatar_for(Customer.last(2)[0])
-                %div 
+                %div.w-100.align-items-start.ps-5 
                   .d-flex.w-100.justify-content-between
-                    %h5.mb-1 List group item heading
+                    %h5.mb-1 
+                      =  Customer.last(2)[0].name
                     %small.text-body-secondary 3 days ago
-                  %p.mb-1 Some placeholder content in a paragraph.
+                  %p.mb-1 Confirmation of measurement and test results.
                   %small.text-body-secondary And some muted small print.
 
-              %li.list-group-item.d-flex.justify-content-between.align-items-start
+              %li.list-group-item.d-flex.align-items-start
                 = gravatar_for(Customer.last)
-                %div 
+                %div.w-100.align-items-start.ps-5
                   .d-flex.w-100.justify-content-between
-                    %h5.mb-1 List group item heading
+                    %h5.mb-1 
+                      =  Customer.last.name
                     %small.text-body-secondary 3 days ago
                   %p.mb-1 Some placeholder content in a paragraph.
                   %small.text-body-secondary And some muted small print.
