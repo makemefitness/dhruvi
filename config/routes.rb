@@ -31,7 +31,7 @@ Rails.application.routes.draw do
 
   #-----------------------------------------------------------------------------------------#
   # resources ------------------------------------------------------------------------------#
-  resources :customers, only: [:index]
+  resources :customers
   resources :ingredients
   resources :recipes
   resources :body_types

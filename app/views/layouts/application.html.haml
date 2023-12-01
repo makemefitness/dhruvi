@@ -73,19 +73,19 @@
                       %a.user-nav__user__link{href: "/#{get_type_of_login}/edit"}
                         %svg.side-nav__icon
                           %use{"xlink:href" => "#{asset_path('sprite.svg')}#icon-pencil1"}
-                        %span Edytuj dane
+                        %span Edit your data
                     %li.user-nav__user-item.user-nav__user-theme-chooser
                       %a.user-nav__user__link{href: '#'}
                         %svg.side-nav__icon
                           %use{"xlink:href" => "#{asset_path('sprite.svg')}#icon-paint-brush"}
-                        %span Wybierz temat
+                        %span Choose theme
                         %ul.user-nav__user-theme__choose#theme-chooser
 
                     %li.user-nav__user-item
                       %a.user-nav__user__link{href: '/users/sign_out', "data-method" => 'delete'}
                         %svg.side-nav__icon
                           %use{"xlink:href" => "#{asset_path('sprite.svg')}#icon-power-off"}
-                        %span Wyloguj
+                        %span Logout
 
               - else
                 = link_to 'Zaloguj sie',  new_customer_session_path

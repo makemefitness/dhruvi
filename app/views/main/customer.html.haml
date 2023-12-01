@@ -8,20 +8,20 @@
       = image_tag "app_layout/women.jpeg", alt: "logo", class: "gallery__photo"
     %figure.gallery__item
       = image_tag "https://source.unsplash.com/YUg5RwlnMKc", alt: "logo", class: "gallery__photo"
-  .customer_home-header__header
+  .customer_home-header__header.col.justify-content-between
     %h1.customer_home-header__heading
       = "Welcome #{get_login_user_name}"
-    .customer_home-header__nav
+    .me-3
       %svg.customer_home-header__nav-icon
         %use{"xlink:href" => "#{asset_path('sprite.svg')}#icon-hand-o-down"}
       Categories
       = link_to "Edit customer", edit_customer_registration_path
       |\
       = link_to "Log out", destroy_customer_session_path
-    .customer_home-header__summary
-      %p
-        %b= 7
-        recipes
+      -# .customer_home-header__summary
+      -#   %p
+      -#     %b= 7
+      -#     recipes
 %main.datails
   .user-review
     -# = image_tag current_customer.avatar, class: 'user-review__photo'

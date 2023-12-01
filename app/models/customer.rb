@@ -1,4 +1,6 @@
 class Customer < ApplicationRecord
+  attr_accessor :login
+  has_one_attached :avatar
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
@@ -14,7 +16,6 @@ class Customer < ApplicationRecord
     end
   end
 
-  attr_accessor :login
   validates :email, uniqueness: true
   validates :email, presence: true
   validates :username, uniqueness: true

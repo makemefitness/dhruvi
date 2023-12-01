@@ -7,6 +7,10 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
+  validates :email, uniqueness: true
+  validates :email, presence: true
+
+
   #Overide the lookup function that Devise uses when performing
   # a sig_in
   def self.find_first_by_auth_conditions(warden_conditions)

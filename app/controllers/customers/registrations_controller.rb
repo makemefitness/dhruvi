@@ -10,10 +10,10 @@ class Customers::RegistrationsController < Devise::RegistrationsController
   # end
 
   # POST /resource
-  def create
-    super
-    puts('-------------------------------------------------------------')
-  end
+  # def create
+  #   super
+  #   puts('-------------------------------------------------------------')
+  # end
 
   # GET /resource/edit
   # def edit
@@ -70,7 +70,9 @@ class Customers::RegistrationsController < Devise::RegistrationsController
     flash[:notice] = "Account succesfully updated"
     main_customer_path
   end
-
+  def after_sign_up_path_for(resource)
+    super(resource)
+  end
   ####################################################
   ####################################################
   # dosn't relogin admin to new customer acount      #
