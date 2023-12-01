@@ -1,28 +1,42 @@
-.inner-container-1
-  %header
-    %h1.h2
+.recipe
+  = render partial: 'partials/main_header'
+  .recipe__header
+    %h1.recipe__heading
       Customers
-  -# %section.search-form
-  -#   = form_for :customers, method: :get do |f|
-  -#     .input-group
-  -#       = label_tag :keywords, nil, class: "sr-only"
-  -#       = text_field_tag :keywords, nil, placeholder: "First name, Surname lub Email", class: "form-control input-lg"
-  -#       %span.input-group-prepend
-  -#         = submit_tag "Search", class: "btn btn-primary"
+    .recipe__nav
+      - if params[:keywords].present?
+        %svg.recipe__nav-icon
+          %use{"xlink:href" => "#{asset_path('sprite.svg')}#icon-search"}
+        = @customers.count
+        results
+    .recipe__summary
+      %p
+        %b= @count
+        customers
+  .container.p-5
+    %section.search-form
+      = form_for :customers, method: :get do |f|
+        .input-group
+          = label_tag :keywords, nil, class: "sr-only"
+          = text_field_tag :keywords, nil, placeholder: "First name, Surname lub Email", class: "form-control input-lg"
+          %span.input-group-prepend
+            = submit_tag "Search", class: "btn btn-primary"
 
-  %section.search-results
-    %header
-    - if @customers.present?
-      = render partial: "pager", locals: {keywords: @keywords, page: @page}
-    %ol.list-group
-      - @customers.each do |customer|
-        %li.list-group-item.clearfix
-          = gravatar_for customer
-          %h3.float-right
-            %small Phone number:
-            = customer.phone_number
-          %h2
-            = customer.first_name 
-            = customer.last_name
-          %h5= customer.username
-          %h4.float-left= customer.email
+    %section.search-results
+      %header
+      - if @customers.present?
+        = render partial: "pager", locals: {keywords: @keywords, page: @page}
+      %ol.list-group
+        - @customers.each do |customer|
+          %li.list-group-item.clearfix
+            = gravatar_for customer
+            %h3.float-right
+              %small Phone number:
+              = customer.phone_number
+            %h2
+              = customer.first_name 
+              = customer.last_name
+            %h5= customer.username
+            %h4.float-left= customer.email
+
+    = link_to 'Add new customer', new_customer_registration_path, class: 'my-btn my-btn--pink my-bottom__link my-3 ms-0 p-1 px-3'

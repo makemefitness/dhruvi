@@ -1,4 +1,7 @@
 class MainController < ApplicationController
+  before_action :authenticate_user!, only: [:dashboard]
+  def dashboard
+  end
   
   def main
   end
@@ -8,6 +11,7 @@ class MainController < ApplicationController
   def customer
     @customer = current_customer
   end
+
   def help
   end
 

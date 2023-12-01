@@ -9,6 +9,7 @@ import '@rails/actiontext'
 import './src/jqury'
 import '@nathanvda/cocoon'
 import './components/thems'
+import './components/calendar'
 // $('recipe_ingredients').cocoon()
 // import './components/autocomplete'
 $(function () {

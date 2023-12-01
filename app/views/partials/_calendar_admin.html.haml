@@ -10,21 +10,24 @@
           .btn-line
           .btn-line
         = render(:partial => "partials/callendar_submenu")
-        %span.heading-collored Dzisiejszy plan 1
+        %span.heading-collored Today plan 1
       .half
-        %a.color-white.calendar-link#user-tasks-link{href: '/static_pages/usershome', title: "Twoje zadania"}
+        %a.color-white.calendar-link#user-tasks-link{href: '/main/dashboard', title: "Your tasks"}
           %svg.side-nav__icon.fill-white.active.icons.calendar-menu-icon
-            %use{"xlink:href" => "#{asset_pack_path('images/sprite.svg')}#icon-calendar"}
+            %use{"xlink:href" => "#{asset_path('sprite.svg')}#icon-calendar"}
 
 
-        %a.color-white.calendar-link#conversations-link{href: "/conversations", title: "Twoje wiadomości", "data-remote": true}
+        %a.color-white.calendar-link#conversations-link{href: "/conversations", title: "Yours messages", "data-remote": true}
           %svg.side-nav__icon.fill-white.icons.calendar-menu-icon
-            %use{"xlink:href" => "#{asset_pack_path('images/sprite.svg')}#icon-chat"}
+            %use{"xlink:href" => "#{asset_path('sprite.svg')}#icon-chat"}
   .callendar--header-callendar
     .today-date
       .date-marker
-        %h1.day#calendar-today 21
-        %p.month#calendar-month Marc
+        %h1.day#calendar-today
+          = Date.current
+        %p.month#calendar-month 
+          = Time.now.strftime("%m")
       .date-tasks
-        %p= "#{@today.size} zadania"
+        -# %p= "#{@today.size} zadania"
+        %p= "10 tasks"
     .main-callendar#calendar-box

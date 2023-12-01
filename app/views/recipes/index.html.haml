@@ -1,15 +1,19 @@
 .recipe
   = render partial: 'partials/main_header'
-  .recipe__header.mt-1
+  .recipe__header
     %h1.recipe__heading
-      %h1.h2
-        %svg.side-nav__icon.mr-2
-          %use{"xlink:href" => "#{asset_path('sprite.svg')}#icon-bowl"}
-        Recipes list
-        = @recipes.size
-      .ml-3.mr-3.mb-3 
-      .ml-3.mr-3.mb-3
-        = add_button "Add recipe", new_recipe_path, title: "Add recipe"
+      Recipes
+    .recipe__nav
+      - if params[:keywords].present?
+        %svg.recipe__nav-icon
+          %use{"xlink:href" => "#{asset_path('sprite.svg')}#icon-search"}
+        = @recipes.count
+        results
+    .recipe__summary
+      %p
+        %b= @count
+        recipes
+
 
   -# = will_paginate @recipes, class: "line-bottom"
   .recipe__list-group

@@ -3,8 +3,9 @@ class RecipesController < ApplicationController
 
   # GET /recipes or /recipes.json
   def index
+    @count = Recipe.all.size
     if params[:keywords].present?
-      @recipes = Recipe.where('ingredients LIKE :search OR name LIKE :search OR preparation LIKE :search', search: "%#{params[:keywords]}%")
+      @recipes = Recipe.where('name LIKE :search OR preparation LIKE :search', search: "%#{params[:keywords]}%")
     else
       @recipes = Recipe.all
     end
