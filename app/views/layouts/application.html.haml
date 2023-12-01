@@ -96,16 +96,34 @@
                     %svg.side-nav__icon
                       %use{"xlink:href" => "#{asset_path('sprite.svg')}#icon-home"}
                     %span Dashboard
+                %li{class: "#{(controller_name == 'conversations' || controller_name == 'messages')?'side-nav__item side-nav__item--active':'side-nav__item'}"}
+                  %a.side-nav__link{href: "/"}
+                    %svg.side-nav__icon
+                      %use{"xlink:href" => "#{asset_path('sprite.svg')}#icon-envelope-o"}
+                    %span Messages
+                %li{class: "#{(action_name == 'index' && controller_name == 'today')?'side-nav__item side-nav__item--active':'side-nav__item'}"}
+                  %a.side-nav__link{href: "/"}
+                    %svg.side-nav__icon
+                      %use{"xlink:href" => "#{asset_path('sprite.svg')}#icon-calendar"}
+                    %span Timetable
                 %li{class: "#{(action_name == 'index' && controller_name == 'customers')?'side-nav__item side-nav__item--active':'side-nav__item'}"}
                   %a.side-nav__link{href: "/customers"}
                     %svg.side-nav__icon
                       %use{"xlink:href" => "#{asset_path('sprite.svg')}#icon-location-restroom"}
                     %span Customers
+                %li{class: "#{(controller_name == 'workload_parts' || controller_name == 'workload_weeks' || controller_name == 'workload_temps')?'side-nav__item side-nav__item--active':'side-nav__item'}"}
+                  %a.side-nav__link{href: "/"}
+                    %i.fas.fa-running.side-nav__icon{style:"font-size:2rem;"}
+                    %span Workloads
                 %li{class: "#{(action_name == 'index' && controller_name == 'trenings')?'side-nav__item side-nav__item--active':'side-nav__item'}"}
                   %a.side-nav__link{href: "#"}
                     %svg.side-nav__icon
                       %use{"xlink:href" => "#{asset_path('sprite.svg')}#icon-accessibility"}
-                    %span Treningi
+                    %span Exercises
+                %li{class: "#{(controller_name == 'diet_set_categories')||(controller_name == 'diet_set_templates')?'side-nav__item side-nav__item--active':'side-nav__item'}"}
+                  %a.side-nav__link{href: "/"}
+                    %i.fas.fa-concierge-bell.side-nav__icon{style:"font-size:2rem;"}
+                    %span Diets
                 %li{class: "#{(controller_name == 'recipes')?'side-nav__item side-nav__item--active':'side-nav__item'}"}
                   %a.side-nav__link{href: "/recipes"}
                     %svg.side-nav__icon
@@ -116,6 +134,11 @@
                     %svg.side-nav__icon
                       %use{"xlink:href" => "#{asset_path('sprite.svg')}#icon-bowl"}
                     %span Ingredients
+                %li{class: "#{(action_name == 'settings' && controller_name == 'static_pages')?'side-nav__item side-nav__item--active':'side-nav__item'}"}
+                  %a.side-nav__link{href: "/"}
+                    %svg.side-nav__icon
+                      %use{"xlink:href" => "#{asset_path('sprite.svg')}#icon-cog"}
+                    %span Settings
             - else
               %ul.side-nav
                 %li{class: "#{(action_name == 'customer' && controller_name == 'main')?'side-nav__item side-nav__item--active':'side-nav__item'}"}
