@@ -109,48 +109,48 @@
 #   )
 # end
 
-BodyType.create!(
-  name: 'Ectomorphic',
-  neat: '700,900',
-  description: 'A tall, slender person with long limbs.'
-)
-BodyType.create!(
-  name: 'Mesomorphic',
-  neat: '400,500',
-  description: 'A strong, muscular, well-built person.'
-)
-BodyType.create!(
-  name: 'Endomorphic',
-  neat: '200,400',
-  description: 'A squat, round person.'
-)
+# BodyType.create!(
+#   name: 'Ectomorphic',
+#   neat: '700,900',
+#   description: 'A tall, slender person with long limbs.'
+# )
+# BodyType.create!(
+#   name: 'Mesomorphic',
+#   neat: '400,500',
+#   description: 'A strong, muscular, well-built person.'
+# )
+# BodyType.create!(
+#   name: 'Endomorphic',
+#   neat: '200,400',
+#   description: 'A squat, round person.'
+# )
 
-Customer.create!(
-  first_name: 'Maciej',
-  last_name: 'Sypniewski',
-  username: 'Maciej',
-  email: 'msypniewski511@gmail.com',
-  phone_number: '000-000-000',
-  password: '123456',
-  password_confirmation: '123456', 
-  sex: true,
-  age: 39,
-  height: 174,
-  weight: 67
-)
+# Customer.create!(
+#   first_name: 'Maciej',
+#   last_name: 'Sypniewski',
+#   username: 'Maciej',
+#   email: 'msypniewski511@gmail.com',
+#   phone_number: '000-000-000',
+#   password: '123456',
+#   password_confirmation: '123456', 
+#   sex: true,
+#   age: 39,
+#   height: 174,
+#   weight: 67
+# )
 
-Customer.create!(
-  first_name: 'Rysiek',
-  last_name: 'Sypniewski',
-  username: 'Rysiek',
-  email: 'richsoft@yahoo.co.uk',
-  phone_number: '000-000-001',
-  password: '123456',
-  password_confirmation: '123456',
-  sex: true,
-  age: 63,
-  height: 154,
-  weight: 100
-)
+# Customer.create!(
+#   first_name: 'Rysiek',
+#   last_name: 'Sypniewski',
+#   username: 'Rysiek',
+#   email: 'richsoft@yahoo.co.uk',
+#   phone_number: '000-000-001',
+#   password: '123456',
+#   password_confirmation: '123456',
+#   sex: true,
+#   age: 63,
+#   height: 154,
+#   weight: 100
+# )
 
 puts

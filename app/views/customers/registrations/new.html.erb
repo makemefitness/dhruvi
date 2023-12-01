@@ -2,10 +2,10 @@
   <div class="edit_customer__form">
     <h1 class="heading-secondary heading-secondary__form">Provide your personal details</h1>
 
-    <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put, class: 'form' }) do |f| %>
+    <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { class: 'form' }) do |f| %>
       <%= devise_error_messages! %>
       <div class="form-group">
-        <%= (image_tag resource.avatar_url, class: 'form__group--image') if resource.avatar? %>
+        <%= (image_tag resource.avatar, class: 'form__group--image') if resource.avatar? %>
         <%= f.file_field :avatar, class: "form__input" %>
         <%= f.label :avatar, class: "form__label" %>
       </div>

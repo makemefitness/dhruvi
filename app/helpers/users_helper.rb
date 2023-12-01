@@ -2,7 +2,7 @@ module UsersHelper
 
   # Returns the Gravatar for the given user.
   def gravatar_for(user)
-    if user.avatar.present?
+    if user.avatar.attached?
       image_tag(user.avatar, alt: user.first_name, class: "gravatar")
     else
       gravatar_id = Digest::MD5::hexdigest(user.email.downcase)
@@ -13,7 +13,8 @@ module UsersHelper
 
   def gravatar_for_login(user)
     if user.avatar.present?
-      image_tag(user.avatar_url.to_s, alt: "zdjecie #{user.username}", class: "user-nav__user-photo user-nav__user-photo-#{get_type_of_login}")
+      # image_tag(user.avatar, alt: "zdjecie #{user.email}", class: "user-nav__user-photo user-nav__user-photo-#{get_type_of_login}")
+      image_tag(user.avatar, alt: "zdjecie #{user.email}", class: "user-nav__user-photo user-nav__user-photo-#{get_type_of_login}") if user.avatar.attached?
     else
       gravatar_id = Digest::MD5::hexdigest(user.email.downcase)
       gravatar_url = "https://secure.gravatar.com/avatar/#{gravatar_id}"

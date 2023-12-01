@@ -39,7 +39,9 @@
       %section 
         %p 
           Customer
-        = link_to "Customer login", new_customer_session_path 
+        = link_to "Customer login", new_customer_session_path
+        Or
+        = link_to "Create account", new_customer_registration_path, class: 'btn btn-primary'
     -#   %section
     -#     %p
     -#       Soon customer home page

@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
 class Customers::RegistrationsController < Devise::RegistrationsController
-  # before_action :configure_sign_up_params, only: [:create]
-  # before_action :configure_account_update_params, only: [:update]
+  before_action :configure_sign_up_params, only: [:create]
+  before_action :configure_account_update_params, only: [:update]
 
   # GET /resource/sign_up
   # def new
@@ -12,6 +12,7 @@ class Customers::RegistrationsController < Devise::RegistrationsController
   # POST /resource
   # def create
   #   super
+  #   puts('-------------------------------------------------------------')
   # end
 
   # GET /resource/edit
@@ -22,6 +23,8 @@ class Customers::RegistrationsController < Devise::RegistrationsController
   # PUT /resource
   # def update
   #   super
+  #   redirect_to main_customer_path(@customer)
+  #   return
   # end
 
   # DELETE /resource
@@ -38,25 +41,42 @@ class Customers::RegistrationsController < Devise::RegistrationsController
   #   super
   # end
 
-  # protected
+  protected
 
   # If you have extra params to permit, append them to the sanitizer.
-  # def configure_sign_up_params
-  #   devise_parameter_sanitizer.permit(:sign_up, keys: [:attribute])
-  # end
+  def configure_sign_up_params
+    devise_parameter_sanitizer.permit(:sign_up, keys: [:avatar, :first_name, :last_name, :email, :username, :password, :password_confirmation, :email, :phone_number, :sex, :age, :height, :avatar, :weight])
+  end
 
   # If you have extra params to permit, append them to the sanitizer.
-  # def configure_account_update_params
-  #   devise_parameter_sanitizer.permit(:account_update, keys: [:attribute])
-  # end
+  def configure_account_update_params
+    devise_parameter_sanitizer.permit(:account_update, keys: [:avatar, :first_name, :last_name, :email, :username, :password, :password_confirmation, :email, :phone_number, :sex, :age, :height, :avatar, :weight])
+  end
 
   # The path used after sign up.
-  # def after_sign_up_path_for(resource)
-  #   super(resource)
-  # end
+  def after_sign_up_path_for(resource)
+    # super(resource)
+    '/main/customer'
+  end
+
+  def after_account_update_path_for(resource)
+    # super(resource)
+    '/main/customer'
+  end
 
   # The path used after sign up for inactive accounts.
-  # def after_inactive_sign_up_path_for(resource)
-  #   super(resource)
-  # end
+  def after_update_path_for(resource)
+    puts 'this is happening yoyo mama'
+    flash[:notice] = "Account succesfully updated"
+    main_customer_path
+  end
+  def after_sign_up_path_for(resource)
+    super(resource)
+  end
+  ####################################################
+  ####################################################
+  # dosn't relogin admin to new customer acount      #
+  #################################################### 
+  def sign_up(customers, resource)
+  end
 end
