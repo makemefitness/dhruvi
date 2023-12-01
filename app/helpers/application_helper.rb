@@ -10,8 +10,8 @@ module ApplicationHelper
   end
 
   def log_in?
-    return current_user.present?
-    return false
+    # return current_user.present?
+    # return false
     current_customer.present? || current_user.present?
   end
 

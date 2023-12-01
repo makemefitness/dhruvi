@@ -15,6 +15,7 @@ Rails.application.routes.draw do
     controllers: 'users',
     views: 'users'
   }
+  get 'main/dashboard'
   get 'main/main'
   get 'main/home'
   get 'main/customer'

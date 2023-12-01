@@ -3,13 +3,13 @@
     %li.user-nav__user-item
       %a.user-nav__user__link{href: "#", "data-toggle": "modal", "data-target": "#exampleModal"}
         %svg.side-nav__icon
-          %use{"xlink:href" => "#{asset_pack_path('images/sprite.svg')}#icon-pencil1"}
+          %use{"xlink:href" => "#{asset_path('sprite.svg')}#icon-pencil1"}
         %span Dodaj własne zadanie!
     
     %li.user-nav__user-item
       %a.user-nav__user__link{href: '/admin/users/sign_out', "data-method" => 'delete'}
         %svg.side-nav__icon
-          %use{"xlink:href" => "#{asset_pack_path('images/sprite.svg')}#icon-power-off"}
+          %use{"xlink:href" => "#{asset_path('sprite.svg')}#icon-power-off"}
         %span Wyloguj
 
 / Modal

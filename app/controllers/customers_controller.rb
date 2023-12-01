@@ -2,6 +2,7 @@ class CustomersController < ApplicationController
   before_action :authenticate_user!, expect: [:create, :update]
   PAGE_SIZE = 15
   def index
+    @count = Customer.all.count
     @page = (params[:page] || 0).to_i
     if params[:keywords].present?
       @keywords = params[:keywords]

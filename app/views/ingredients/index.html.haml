@@ -20,35 +20,35 @@
     .recipe__summary
       %p
         %b= @count
-        products
-  .pagination
+        ingredients
+  .container.p-5
+    .pagination
+      - if @ingredients.present?
+        = render partial: "pager", locals: {keywords: @keywords, page: @page}
+    .ingrdients__list-header
+      %table.table.table-bordered
+        %thead
+          %tr
+            %th produkt
+            %th kcal
+            %th protein
+            %th fat
+            %th carbohydrate
+            %th
+            %th
+            %th
+        %tbody
+          - @ingredients.each do |ingredient|
+            %tr
+              %td= ingredient.name
+              %td= ingredient.energy
+              %td= ingredient.protein
+              %td= ingredient.fat
+              %td= ingredient.carbohydrate
+              %td= link_to 'Show', ingredient_path(ingredient)
+              %td= link_to 'Edit', edit_ingredient_path(ingredient)
+              %td= link_to 'Destroy', ingredient_path(ingredient), method: :delete, data: { confirm: 'Are you sure?' }
     - if @ingredients.present?
       = render partial: "pager", locals: {keywords: @keywords, page: @page}
-  .ingrdients__list-header
-    %table
-      %thead
-        %tr
-          %th produkt
-          %th kcal
-          %th protein
-          %th fat
-          %th carbohydrate
-          %th
-          %th
-          %th
-      %tbody
-        - @ingredients.each do |ingredient|
-          %tr
-            %td= ingredient.name
-            %td= ingredient.energy
-            %td= ingredient.protein
-            %td= ingredient.fat
-            %td= ingredient.carbohydrate
-            %td= link_to 'Show', ingredient_path(ingredient)
-            %td= link_to 'Edit', edit_ingredient_path(ingredient)
-            %td= link_to 'Destroy', ingredient_path(ingredient), method: :delete, data: { confirm: 'Are you sure?' }
-  - if @ingredients.present?
-    = render partial: "pager", locals: {keywords: @keywords, page: @page}
-    %br
 
-= link_to 'New Ingredient', new_ingredient_path, class: 'my-bottom__link'
+    = link_to 'New Ingredient', new_ingredient_path, class: 'my-btn my-btn--pink my-bottom__link my-3 ms-0 p-1'

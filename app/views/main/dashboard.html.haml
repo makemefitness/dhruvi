@@ -1,0 +1,129 @@
+-provide(:title, "Domowa")
+.home-page
+  = render partial: 'partials/user_home_header'
+  .inner-container
+    %header
+      %h1.heading-secondary.mt-0
+        .i.fa-solid.fa-user
+        Welcome in CRM Trener,
+        = current_user.email if current_user.present?
+
+  %main.datails
+    .admin_panel_header
+      .box
+        %svg.fill-primary-light
+          %use{"xlink:href" => "#{asset_path('sprite.svg')}#icon-group"}
+        -# = link_to "#{current_user.people_count} klientów", "/admin/customers"
+        = link_to "#{Customer.all.size} customers", "/customers"
+      .box
+        %svg.fill-primary-light
+          %use{"xlink:href" => "#{asset_path('sprite.svg')}#icon-bowl"}
+        -# = link_to "#{current_user.recipes.size} przepisów", "/recipes"
+        = link_to "#{Recipe.all.size} recipes", "/recipes"
+      .box
+        %svg.fill-primary-light
+          %use{"xlink:href" => "#{asset_path('sprite.svg')}#icon-lift"}
+        -# = link_to "#{current_user.workload_weeks.size} workloads", "/trainings"
+        = link_to "25 workloads", "/trainings"
+      .box
+        %svg.fill-primary-light
+          %use{"xlink:href" => "#{asset_path('sprite.svg')}#icon-forkandspoon"}
+        -# = link_to "#{Admin::DietSetTemplate.all.size} diet", diet_set_templates_path
+        = link_to "50 diets", '/main/dashboard'
+
+
+    .sub-main
+      // CALENDAR
+      .callendar.p-3
+        %nav
+          .nav.nav-tabs#nav-tab{role:"tablist"}
+            %a.nav-item.nav-link.active#nav-appointment-tab{'data-toggle': "tab", href: "#nav-appointment", role: "tab", 'aria-controls':"nav-home", 'aria-selected': "true"} Appointments.
+            %a.nav-item.nav-link#nav-notifications-tab{'data-toggle': "tab", href: "#nav-notifications", role: "tab", 'aria-controls':"nav-home", 'aria-selected': "true"} Notifications.
+        .tab-content#nav-tabContent
+          .tab-pane.fade.show.active#nav-appointment{role: "tabpanel", 'aria-labelledby': "nav-home-tab"}
+
+            %h1.color-primary Appointments.
+            .list-group
+              %li.list-group-item.d-flex.justify-content-between.align-items-start
+                = gravatar_for(Customer.last(3)[0])
+                %div 
+                  .d-flex.w-100.justify-content-between
+                    %h5.mb-1 List group item heading
+                    %small.text-body-secondary Tomorow 12:15
+                  %p.mb-1 Some placeholder content in a paragraph.
+                  %small.text-body-secondary And some muted small print.
+              %a.list-group-item.list-group-item-action.active{"aria-current" => "true", href: "#"}
+                .d-flex.w-100.justify-content-between
+                  %h5.mb-1 Maciej Sypniewski
+                  %small Today 15:30
+                %p.mb-1 Measurments.
+                %small And some small print.
+              %li.list-group-item.d-flex.justify-content-between.align-items-start
+                = gravatar_for(Customer.last(2)[0])
+                %div 
+                  .d-flex.w-100.justify-content-between
+                    %h5.mb-1 List group item heading
+                    %small.text-body-secondary 3 days ago
+                  %p.mb-1 Some placeholder content in a paragraph.
+                  %small.text-body-secondary And some muted small print.
+
+              %li.list-group-item.d-flex.justify-content-between.align-items-start
+                = gravatar_for(Customer.last)
+                %div 
+                  .d-flex.w-100.justify-content-between
+                    %h5.mb-1 List group item heading
+                    %small.text-body-secondary 3 days ago
+                  %p.mb-1 Some placeholder content in a paragraph.
+                  %small.text-body-secondary And some muted small print.
+              -# = will_paginate @tasks
+              -# - @tasks.each do |task|
+                
+              -#   = render partial: "partials/appointment", locals: {task: task, main_admin: 'true'}
+              -# = will_paginate @tasks
+          .tab-pane.fade.show#nav-notifications{role: "tabpanel", 'aria-labelledby': "nav-home-tab"}
+            -# TODO Notfixvation more descriptive
+            %h1.color-primary Notifications
+            -# = will_paginate @notification
+            %ul.list-group.max-height-5.overflow-auto
+              -# - @notification.each do |notification|
+              -#   = render notification
+              -#   -# %li.list-group-item.checkbox
+              -#   -#   = notification.body.html_safe
+              -#   -#   = link_to "Zatwierdz #{notification.object_name}", "/admin/#{notification.object_name}s/#{notification.object_id}/edit" if (['recipe', 'ingredient', 'diet_set_template']).include?(notification.object_name)
+              -#   -#   = link_to "Zatwierdz #{notification.object_name}", "/workload_weeks/#{notification.object_id}/edit" if 'workloadweek' == notification.object_name
+              -#   -#   = link_to "Zatwierdz #{notification.object_name}", "/trainings/#{notification.object_id}/edit" if 'training' == notification.object_name
+      .right-side.p-3
+        .callendar-admin
+          .callendar
+            = render(:partial => "partials/calendar_admin", locals: {customer: @user})
+
+    // MAIN SECTION
+    %section.section-main
+      .customer-main#main-content
+      
+        // Taks SECTION
+        .calendar-content-toggler.calendar.inner-box#user-tasks
+          %h1.color-primary Your scheduled tasks.
+          %ul.list-group#tasks-list
+        // Trainings SECTION
+#recipe_details
+
+
+
+
+= javascript_tag 'javascript/calenndarTabMenu'
+= javascript_tag 'javascript/customer_recipe'
+
+%script
+  function timeNow(){
+  let dt = new Date();
+  let time = dt.getHours() + " : " + dt.getMinutes();
+  let day = dt.getDay();
+  $('#time-now').text(time);
+  $('h1.day').text(dt.getDate());
+  }
+
+  setInterval(function() {
+  timeNow();
+  }, 1000);
+  $('day-number').removeClass('today-mark');
