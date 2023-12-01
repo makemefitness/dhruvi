@@ -1,8 +1,20 @@
 Rails.application.routes.draw do
   devise_for :customers, controllers: {
-    sessions: 'customers/sessions'
+    sessions: 'customers/sessions',
+    registrations: 'customers/registrations',
+    confirmations: 'customers/confirmations',
+    passwords: 'customers/passwords',
+    controllers: 'customers',
+    views: 'customers'
   }
-  devise_for :users
+  devise_for :users, path: 'users', controllers: {
+    sessions: 'users/sessions',
+    registrations: 'users/registrations',
+    confirmations: 'users/confirmations',
+    passwords: 'users/passwords',
+    controllers: 'users',
+    views: 'users'
+  }
   get 'main/main'
   get 'main/home'
   get 'main/customer'
