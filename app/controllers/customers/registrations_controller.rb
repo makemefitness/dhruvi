@@ -56,7 +56,7 @@ class Customers::RegistrationsController < Devise::RegistrationsController
   # The path used after sign up.
   def after_sign_up_path_for(resource)
     # super(resource)
-    '/main/customer'
+    new_customer_session_path
   end
 
   def after_account_update_path_for(resource)
@@ -70,9 +70,7 @@ class Customers::RegistrationsController < Devise::RegistrationsController
     flash[:notice] = "Account succesfully updated"
     main_customer_path
   end
-  def after_sign_up_path_for(resource)
-    super(resource)
-  end
+
   ####################################################
   ####################################################
   # dosn't relogin admin to new customer acount      #
