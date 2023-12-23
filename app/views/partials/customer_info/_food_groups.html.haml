@@ -1,0 +1,12 @@
+%table.table.table-striped.table-borderless.table-hover.table-sm
+  %thead.thead-dark
+    %tr
+      %th Nazwa
+      %th{colspan: "3"} Akcje
+    %tbody
+      - @admin_food_groups.each do |admin_food_group|
+        %tr
+          %td= admin_food_group.name
+          %td= link_to 'Szczegóły', admin_food_group
+          %td= link_to 'Edytuj', edit_admin_food_group_path(admin_food_group)
+          %td= link_to 'Usun', admin_food_group, method: :delete, data: { confirm: 'Are you sure?' }

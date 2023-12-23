@@ -134,7 +134,7 @@
                     %svg.side-nav__icon
                       %use{"xlink:href" => "#{asset_path('sprite.svg')}#icon-bowl"}
                     %span Ingredients
-                %li{class: "#{(action_name == 'settings' && controller_name == 'static_pages')?'side-nav__item side-nav__item--active':'side-nav__item'}"}
+                %li{class: "#{(action_name == 'settings' && controller_name == 'main')?'side-nav__item side-nav__item--active':'side-nav__item'}"}
                   %a.side-nav__link{href: "/"}
                     %svg.side-nav__icon
                       %use{"xlink:href" => "#{asset_path('sprite.svg')}#icon-cog"}

@@ -15,6 +15,13 @@ class MainController < ApplicationController
   def help
   end
 
+  def settings
+    @goals = Goal.all
+    @lifestyles = Lifestyle.all
+    @habits = Habit.all
+    @exercise_per_weeks = ExercisePerWeek.all
+  end
+
   def autocomplete
     @ingredients = Ingredient.ransack(name_cont: params[:q]).result(distinct: true).limit(5)
     @recipes =     Recipe.ransack(name_cont: params[:q]).result(distinct: true).limit(5)

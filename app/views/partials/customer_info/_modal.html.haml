@@ -1,0 +1,23 @@
+.modal.fade{"aria-hidden" => "true", :id => "myModal-#{type}#{object.id}", "aria-labelledby" => "exampleModalLabel", :role => "dialog", :tabindex => "-1"}
+  .modal-dialog.modal-lg{:role => "document"}
+    .modal-content
+      .modal-header
+        %h5#exampleModalLabel.modal-title Opcja "#{title} i muj test"
+        %button.close{"aria-label" => "Close", "data-dismiss" => "modal", :type => "button"}
+          %span{"aria-hidden" => "true"} ×
+      .modal-body
+        - unless type == 'exercise'
+          %h3 Nazwa:
+          %span.nazwa= object.name if defined? object.name
+          - if object.description.present?
+            %h4 Opis:
+            %span.nazwa= object.description
+        - else
+          %h3 Ilosc cwiczen:
+          %span.nazwa= object.days if defined? object.days
+          %h4 Szczegøły cwiczen:
+          %span.nazwa= object.additional_info if defined? object.additional_info
+      .modal-footer
+        %button.btn.btn-secondary{"data-dismiss" => "modal", :type => "button"} Close
+        /%button.btn.btn-primary{"data-target" => "#myResponseModal", "data-toggle" => "modal", :type => "button"}
+        /  Response ...

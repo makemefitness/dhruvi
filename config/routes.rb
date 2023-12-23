@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  resources :habits
+  resources :exercise_per_weeks
+  resources :goals
+  resources :lifestyles
   devise_for :customers, controllers: {
     sessions: 'customers/sessions',
     registrations: 'customers/registrations',
@@ -16,6 +20,7 @@ Rails.application.routes.draw do
     views: 'users'
   }
   get 'main/dashboard'
+  get 'main/settings'
   get 'main/main'
   get 'main/home'
   get 'main/customer'

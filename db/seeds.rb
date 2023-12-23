@@ -153,4 +153,103 @@
 #   weight: 100
 # )
 
+Lifestyle.create!(
+  name: 'Office workf',
+  description: 'Office workf'
+)
+
+Lifestyle.create!(
+  name: 'Physical work',
+  description: 'Physical work'
+)
+
+Lifestyle.create!(
+  name: 'Shift work',
+  description: 'Shift work'
+)
+
+Lifestyle.create!(
+  name: 'Mixed work, physical and mental, all day long',
+  description: 'Mixed work, physical and mental, all day long'
+)
+
+Goal.create!(
+  name: 'Reduction',
+  description: 'Reduction'
+)
+
+Goal.create!(
+  name: 'Adjust body weight',
+  description: 'Adjust body weight'
+)
+
+Goal.create!(
+  name: 'Improvement of quality',
+  description: 'Improvement of quality'
+)
+
+Goal.create!(
+  name: 'Motor training, strength, speed, endurance',
+  description: 'Motor training, strength, speed, endurance'
+)
+
+ExercisePerWeek.create!(
+  days: 1
+)
+
+ExercisePerWeek.create!(
+  days: 2
+)
+
+ExercisePerWeek.create!(
+  days: 3
+)
+
+ExercisePerWeek.create!(
+  days: 4
+)
+
+ExercisePerWeek.create!(
+  days: 5
+)
+
+ExercisePerWeek.create!(
+  additional_info: 'additional activity - field to enter in time and type'
+)
+
+Habit.create!(
+  name: 'I eat a lot of sugar in my diet',
+  description: 'I eat a lot of sugar in my diet'
+)
+
+Habit.create!(
+  name: 'I dont sleep well',
+  description: 'I dont sleep well'
+)
+
+Habit.create!(
+  name: 'I drink a lot of coffee',
+  description: 'I drink a lot of coffee'
+)
+
+Habit.create!(
+  name: 'I am snacking',
+  description: 'I am snacking'
+)
+
+Habit.create!(
+  name: 'Alcohol',
+  description: 'Alcohol'
+)
+
+Habit.create!(
+  name: 'I digest food poorly',
+  description: 'I digest food poorly'
+)
+
+Habit.create!(
+  name: 'Other...',
+  description: 'Other...'
+)
+
 puts

@@ -1,0 +1,23 @@
+%h1 Listing lifestyles
+
+%table
+  %thead
+    %tr
+      %th Name
+      %th Description
+      %th
+      %th
+      %th
+
+  %tbody
+    - @lifestyles.each do |lifestyle|
+      %tr
+        %td= lifestyle.name
+        %td= lifestyle.description
+        %td= link_to 'Show', lifestyle
+        %td= link_to 'Edit', edit_lifestyle_path(lifestyle)
+        %td= link_to 'Destroy', lifestyle, method: :delete, data: { confirm: 'Are you sure?' }
+
+%br
+
+= link_to 'New Lifestyle', new_lifestyle_path

@@ -1,0 +1,23 @@
+%h1 Listing exercise_per_weeks
+
+%table
+  %thead
+    %tr
+      %th Days
+      %th Additional info
+      %th
+      %th
+      %th
+
+  %tbody
+    - @exercise_per_weeks.each do |exercise_per_week|
+      %tr
+        %td= exercise_per_week.days
+        %td= exercise_per_week.additional_info
+        %td= link_to 'Show', exercise_per_week
+        %td= link_to 'Edit', edit_exercise_per_week_path(exercise_per_week)
+        %td= link_to 'Destroy', exercise_per_week, method: :delete, data: { confirm: 'Are you sure?' }
+
+%br
+
+= link_to 'New Exercise per week', new_exercise_per_week_path
