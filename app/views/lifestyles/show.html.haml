@@ -1,0 +1,12 @@
+%p#notice= notice
+
+%p
+  %b Name:
+  = @lifestyle.name
+%p
+  %b Description:
+  = @lifestyle.description
+
+= link_to 'Edit', edit_lifestyle_path(@lifestyle)
+\|
+= link_to 'Back', lifestyles_path

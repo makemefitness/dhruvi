@@ -1,0 +1,27 @@
+.inner-container-2.mt-3
+  %table.table.table-light.table-striped
+    %thead.thead-dark
+      %tr
+        %th Nazwa
+        %th Opis
+        %th Przepisów
+        %th{colspan: '3'} Akcja
+
+    %tbody
+      - objects.each do |object|
+        %tr
+          %td= object.name
+          %td= object.description
+          /%td= link_to 'Szczegøły', object
+          %td= "#{object.association_size}"
+          %td
+            %button.btn.btn-success{"data-target" => "#myModal-#{object.class.to_s}#{object.id}", "data-toggle" => "modal", :type => "button"}
+              Szczegoły...
+          %td= link_to 'Edytuj', "#{object.class.root_path}/#{object.id}/edit", class: 'btn btn-info'
+          - unless object.has_associations?
+            %td= link_to 'Usun', object, method: :delete, data: { confirm: 'Jestes pewien?' }, class: 'btn btn-danger'
+          - else
+            %td{"data-content" => "#{Admin::Goal.count_of_profiles(object)} klientów przypisanych do tej opcji!", "data-toggle" => "popover", :title => "Nie możesz usunąć"}= link_to '-------', "#", class: 'btn btn-light'
+        = render partial: 'admin/partials/modal', locals: {object: object, title: objects.polish_name, type: "#{object.class.to_s}"}
+  %br
+  = link_to "Nowa #{objects.polish_name}", objects.new_object_path, class: 'my-btn my-btn--pink my-btn--3'

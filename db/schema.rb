@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2023_11_29_130559) do
+ActiveRecord::Schema[7.1].define(version: 2023_12_23_053709) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -85,12 +85,40 @@ ActiveRecord::Schema[7.1].define(version: 2023_11_29_130559) do
     t.index ["username"], name: "index_customers_on_username", unique: true
   end
 
+  create_table "exercise_per_weeks", force: :cascade do |t|
+    t.integer "days", default: 0, null: false
+    t.string "additional_info"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "goals", force: :cascade do |t|
+    t.string "name", null: false
+    t.string "description"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "habits", force: :cascade do |t|
+    t.string "name", default: "None", null: false
+    t.string "description"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "ingredients", force: :cascade do |t|
     t.string "name", null: false
     t.integer "energy", null: false
     t.integer "protein", null: false
     t.integer "fat", null: false
     t.integer "carbohydrate", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "lifestyles", force: :cascade do |t|
+    t.string "name", null: false
+    t.string "description"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

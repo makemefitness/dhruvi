@@ -1,0 +1,12 @@
+%p#notice= notice
+
+%p
+  %b Days:
+  = @exercise_per_week.days
+%p
+  %b Additional info:
+  = @exercise_per_week.additional_info
+
+= link_to 'Edit', edit_exercise_per_week_path(@exercise_per_week)
+\|
+= link_to 'Back', exercise_per_weeks_path

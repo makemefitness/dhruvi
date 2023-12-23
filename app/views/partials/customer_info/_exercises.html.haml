@@ -1,0 +1,26 @@
+.inner-container-3.mt-3
+  /%button.btn.btn-primary.mb-3{type: 'button'}
+  /  %span.m-3 Ilosci treningow.
+  /  %span.badge.badge-light #{@admin_exercise_per_weeks.size.to_s if @admin_exercise_per_weeks.present?}
+  %table.table.table-striped
+    %thead.thead-dark
+      %tr
+        %th Days
+        %th Additional information
+        %th{colspan: "3"}
+
+    %tbody
+      - exercise_per_weeks.each do |exercise_per_week|
+        %tr
+          %td= exercise_per_week.days
+          %td= exercise_per_week.additional_info
+          /%td= link_to 'Szegoły', exercise_per_week
+          %td
+            %button.btn.btn-success{"data-target" => "#myModal-exercise#{exercise_per_week.id}", "data-toggle" => "modal", :type => "button"}
+              Details...
+          %td= link_to 'Edyt', edit_exercise_per_week_path(exercise_per_week), remote: true, class: 'btn my-btn--pink'
+          %td= link_to 'Delete', exercise_per_week, method: :delete, data: { confirm: 'Are you sure?' }, remote: true, class: 'btn btn-danger'
+        = render partial: 'partials/customer_info/modal', locals: {object: exercise_per_week, title: 'Exercise intensity', type: 'exercise'}
+  %br
+
+  = link_to 'Nowa opcja', new_exercise_per_week_path, class: 'my-btn my-btn--pink my-btn--3', remote: true

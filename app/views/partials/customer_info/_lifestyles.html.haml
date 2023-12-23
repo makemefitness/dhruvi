@@ -1,0 +1,29 @@
+.inner-container-2.mt-3
+  %table.table.table-light.table-striped
+    %thead.thead-dark
+      %tr
+        %th Name
+        %th Description
+        %th Customers
+        %th{colspan: '3'}
+
+    %tbody
+      - lifestyles.each do |lifestyle|
+        %tr
+          %td= lifestyle.name
+          %td= lifestyle.description
+          /%td= link_to 'Szczegoły', lifestyle_path(lifestyle), remote: true
+          %td= 10 #"#{Lifestyle.profiles(lifestyle)}"
+          %td
+            %button.btn.btn-success{"data-target" => "#myModal-lifestyle#{lifestyle.id}", "data-toggle" => "modal", :type => "button"}
+              Details...
+          %td= link_to 'Edytuj', edit_lifestyle_path(lifestyle), remote: true, class: 'btn my-btn--pink'
+          - unless false # Lifestyle.has_profiles?(lifestyle)
+            %td= link_to 'Delete', lifestyle_path(lifestyle), method: :delete, data: { confirm: 'Are you sure?' }, remote: true, class: 'btn btn-danger'
+          - else
+            %td{"data-content" => "#{Lifestyle.profiles(lifestyle)} customers!", "data-toggle" => "popover", :title => "You can not delete"}= link_to '-------', "#", class: 'btn btn-light'
+        = render partial: 'partials/customer_info/modal', locals: {object: lifestyle, title: 'Lifestyle', type: 'lifestyle'}
+
+  %br
+  
+  = link_to 'New', new_lifestyle_path, class: 'my-btn my-btn--pink my-btn--3', remote: true

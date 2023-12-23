@@ -1,0 +1,16 @@
+= form_for @exercise_per_week do |f|
+  - if @exercise_per_week.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@exercise_per_week.errors.count, "error")} prohibited this exercise_per_week from being saved:"
+      %ul
+        - @exercise_per_week.errors.full_messages.each do |message|
+          %li= message
+
+  .field
+    = f.label :days
+    = f.number_field :days
+  .field
+    = f.label :additional_info
+    = f.text_field :additional_info
+  .actions
+    = f.submit 'Save'

@@ -1,0 +1,2 @@
+class ExercisePerWeek < ApplicationRecord
+end

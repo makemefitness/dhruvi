@@ -1,0 +1,78 @@
+.modal.fade{"aria-hidden" => "true", :id => "myModalForm", "aria-labelledby" => "exampleModalLabel", :role => "dialog", :tabindex => "-1"}
+  .modal-dialog{:role => "document"}
+    .modal-content
+
+      = form_for resource do |f|
+        .modal-header
+          %h1.color-primary#exampleModalLabel.modal-title Ustal termin.
+          %button.close{"aria-label" => "Close", "data-dismiss" => "modal", :type => "button"}
+            %span{"aria-hidden" => "true"} ×
+
+            - if resource.errors.any?
+              #error_explanation
+                %h2= "#{pluralize(resource.errors.count, "error")} prohibited this admin_goal from being saved:"
+                %ul
+                  - resource.errors.full_messages.each do |message|
+                    %li= message
+        .modal-body
+
+          -# Termin
+          .form-group
+            = f.label :appointment_date, 'Termin'
+            = f.text_field :appointment_date, class: 'form-control datapicker', required: true
+
+          .form-group
+            = f.label :description, 'Opis'
+            = f.text_area :description, class: 'form-control'
+
+          .form-group
+            = f.label :tag_list, 'Typ spotkania'
+            = f.select :tag_list, ['Konsultacja', 'Trening', 'Dieta', 'Kontrola'], {}, class: "form-control"
+
+          .form-group
+            = f.label :description, 'Opis'
+            = f.text_area :description, class: 'form-control'
+            //%trix-editor{input: "description"}
+
+          -# ##############################################################################################################################
+          -# Recurring
+          .form-group
+            = f.label :recurring_type, "Rekurencyjnie?"
+            = f.select :recurring_type, options_for_select([["Brak", 0], ["Tygodniowo", 1], ["Dwutygodniowo", 2], ["Czterotygodniowo", 3]]), {}, class: "form-control"
+
+          .form-group
+            = f.label :recurring_amount, "Ile razy?"
+            = f.select :recurring_amount, options_for_select([2, 3, 4, 5, 6, 7, 8, 9, 10]), {}, class: "form-control"
+            -# = f.select :recurring_period, Appointment.recurring_periods.keys.to_a
+          -# ##############################################################################################################################
+          .form-group
+            = f.label :customer_id, "Klient"
+            - if !customer
+              = f.select :customer_id, recipients_options(Customer.all),{ include_blank: true },{ class: 'form-control chosen-select-1' }
+                
+            - else
+              = f.collection_select(:customer_id, Customer.all, :id, :name, { include_blank: true },{ class: 'form-control chosen-select' })
+            -# = f.submit 'Zapisz spotkanie!', class: 'btn btn-primary'
+        .modal-footer
+          /%button.btn.btn-primary{"data-target" => "#myResponseModal", "data-toggle" => "modal", :type => "button"}
+          /  Response ...
+          .actions
+            = f.submit 'Zapisz', class: 'btn btn-primary', type: 'submit', id: 'save', "onClick": "submit_form();"
+            %button.btn.btn-secondary{"data-dismiss" => "modal", :type => "button"} Close
+            %script
+              $('#myModalForm').modal();
+              function submit_form() {
+              $('#myModalForm').modal('hide');
+              setTimeout(function() {
+              $(".modal-backdrop").remove();
+              }, 1000)
+              }
+              -# import { Polish } from "flatpickr/dist/l10n/pl";
+              flatpickr(".datapicker", {
+              altInput: true,
+              enableTime: true,
+              defaultDate: "#{date}"
+              });
+              $('#myModalForm').on('shown.bs.modal', function () {
+              $('.chosen-select-1', this).chosen();
+              });
