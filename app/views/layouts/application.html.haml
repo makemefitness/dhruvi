@@ -38,12 +38,42 @@
         %header.header
           = image_tag "logo.png", alt: "logo", class: "logo"
           <!-- FORMULARZ -->
-          = form_for :customers, method: :get, :html => {class: 'search'} do |f|
-            = text_field_tag :keywords, nil, placeholder: "First name, Surname lub Email", class: "search__input"
-            %button.search__button
+          -# = form_for :customers, method: :get, :html => {class: 'search'} do |f|
+          -#   = text_field_tag :keywords, nil, placeholder: "First name, Surname lub Email", class: "search__input"
+          -#   %button.search__button
+          -#     %svg.search__icon
+          -#       %use{"xlink:href" => "#{asset_path('sprite.svg')}#icon-magnifying-glass"}
+          = form_with url: search_path, local: true, method: :get, html: { class: 'search'} do |form|
+            = form.text_field  :q, placeholder: 'First name, Surname lub Email', data: {behavior: "autocomplete"}, id: 'easyAutocomplete', class: 'search__input'
+            = form.button "search", class: 'search__button' do
               %svg.search__icon
                 %use{"xlink:href" => "#{asset_path('sprite.svg')}#icon-magnifying-glass"}
-
+          ////////////////////////////////////////////////////////////////////////////////////////////////////
+          <!-- = javascript_pack_tag 'javascript/search' -->
+          %script
+            let input = $('#easyAutocomplete');
+            let options = { 
+            getValue: "name",
+            url: function(phrase){
+            return "/search?q=" + phrase;
+            },
+            categories: [
+            {
+            listLocation: 'customers',
+            header: "<strong>Customers</strong>"
+            },
+            {
+            listLocation: 'ingredients',
+            header: "<strong>Ingredients</strong>"
+            },
+            {
+            listLocation: 'recipes',
+            header: "<strong>Recipes</strong>"
+            }
+            ],
+            list:{onChooseEvent: function(){let url = input.getSelectedItemData().url;console.log(url);window.location.href = url;}}}
+            input.easyAutocomplete(options);
+          ////////////////////////////////////////////////////////////////////////////////////////////////////
           <!-- USER-NAV -->
           %nav.user-nav
             .user-nav__icon-box

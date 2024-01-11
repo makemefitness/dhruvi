@@ -33,8 +33,31 @@ class MainController < ApplicationController
   end
 
   def search
-    @ingredients = Ingredient.ransack(name_cont: params[:q]).result(distinct: true).limit(5)
+    puts "-----------------------------"
+    puts params[:q]
+    @customers = search_customer
+    # @customers = Customer.ransack(name_count: params[:q])
+    # @customers = Ingredient.ransack(name_cont: params[:q]).result(distinct: true).limit(5)
+    @ingredients = Ingredient.ransack(name_cont: params[:q]).result(distinct: true).limit(2)
     @recipes =     Recipe.ransack(name_cont: params[:q]).result(distinct: true).limit(5)
-    render json: {ingredients: @ingredients, recipes: @recipes}
+    # render json: {customers: @customers, ingredients: @ingredients, recipes: @recipes}
+    respond_to do |format|
+      format.html {}
+      format.json {
+      }
+    end
+  end
+
+  private
+  
+  def search_customer
+    if params[:q].present? 
+      @keywords = params[:q]
+      customer_search_term = CustomerSearchTerm.new(@keywords)
+      @customers = Customer.where(
+        customer_search_term.where_clause,
+        customer_search_term.where_args
+      ).order(customer_search_term.order).limit(2)
+    end
   end
 end

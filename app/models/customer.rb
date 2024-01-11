@@ -1,5 +1,6 @@
 class Customer < ApplicationRecord
   attr_accessor :login
+
   has_one_attached :avatar
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
@@ -38,4 +39,8 @@ class Customer < ApplicationRecord
   def name
     self.first_name + " " + self.last_name
   end
+
+  # def self.ransackable_attributes(auth_object = nil)
+  #   ["email", "first_name", "id_value", "last_name", "username"]
+  # end
 end
