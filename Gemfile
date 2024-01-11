@@ -31,6 +31,7 @@ end
 group :development do
   gem "web-console"
   gem 'html2haml'
+  gem 'solargraph'
 end
 
 group :test do
