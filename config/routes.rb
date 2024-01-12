@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+
   resources :habits
   resources :exercise_per_weeks
   resources :goals
@@ -37,7 +38,9 @@ Rails.application.routes.draw do
 
   #-----------------------------------------------------------------------------------------#
   # resources ------------------------------------------------------------------------------#
-  resources :customers
+  resources :customers do
+    resource :profil
+  end
   resources :ingredients
   resources :recipes
   resources :body_types

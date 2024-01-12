@@ -1,0 +1,15 @@
+%p#notice= notice
+
+%p
+  %b Contusions:
+  = @profil.contusions
+%p
+  %b Sickness:
+  = @profil.sickness
+%p
+  %b Description:
+  = @profil.description
+
+= link_to 'Edit', edit_profil_path(@profil)
+\|
+= link_to 'Back', profils_path

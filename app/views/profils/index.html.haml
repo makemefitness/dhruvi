@@ -1,0 +1,25 @@
+%h1 Listing profils
+
+%table
+  %thead
+    %tr
+      %th Contusions
+      %th Sickness
+      %th Description
+      %th
+      %th
+      %th
+
+  %tbody
+    - @profils.each do |profil|
+      %tr
+        %td= profil.contusions
+        %td= profil.sickness
+        %td= profil.description
+        %td= link_to 'Show', profil
+        %td= link_to 'Edit', edit_profil_path(profil)
+        %td= link_to 'Destroy', profil, method: :delete, data: { confirm: 'Are you sure?' }
+
+%br
+
+= link_to 'New Profil', new_profil_path

@@ -71,7 +71,7 @@
             header: "<strong>Recipes</strong>"
             }
             ],
-            list:{onChooseEvent: function(){let url = input.getSelectedItemData().url;console.log(url);window.location.href = url;}}}
+            list:{maxNumberOfElements: 20,onChooseEvent: function(){let url = input.getSelectedItemData().url;console.log(url);window.location.href = url;},theme: "plate-dark",showAnimation: {type: "fade", time: 400,callback: function() {}},}}
             input.easyAutocomplete(options);
           ////////////////////////////////////////////////////////////////////////////////////////////////////
           <!-- USER-NAV -->
@@ -136,7 +136,7 @@
                     %svg.side-nav__icon
                       %use{"xlink:href" => "#{asset_path('sprite.svg')}#icon-calendar"}
                     %span Timetable
-                %li{class: "#{(action_name == 'index' && controller_name == 'customers')?'side-nav__item side-nav__item--active':'side-nav__item'}"}
+                %li{class: "#{(controller_name == 'customers')?'side-nav__item side-nav__item--active':'side-nav__item'}"}
                   %a.side-nav__link{href: "/customers"}
                     %svg.side-nav__icon
                       %use{"xlink:href" => "#{asset_path('sprite.svg')}#icon-location-restroom"}
