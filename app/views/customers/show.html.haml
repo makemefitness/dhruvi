@@ -1,0 +1,146 @@
+.inner-container-1
+  %header.header-main.mt-5
+    .left
+      %h1
+        %svg.side-nav__icon.mr-0.fill-primary
+          %use{"xlink:href" => "#{asset_path('sprite.svg')}#icon-user"}
+        .color-primary= "Customer: #{@customer.name}"
+    .right
+
+
+  %nav
+    %ul.nav.nav-tabs#nav-tab{role:"tablist",style:"font-size:;"}
+      %li.nav-item{role:"presentation"}
+        %button.nav-link.active#profile-tab{'data-bs-toggle': "tab",'data-bs-target': "#customer_profile", "data-togle":"tab", role: "tab", "aria-controls": "customer_profile", "aria-selected": true} Profile
+      %li.nav-item{role:"presentation"}
+        %button.nav-link#cautions-tab{'data-bs-toggle': "tab",'data-bs-target': "#customer_cautions", "data-togle":"tab", role: "tab", "aria-controls": "customer_cautions", "aria-selected": false} Additional information
+      %li.nav-item{role:"presentation"}
+        %button.nav-link#diets-tab{'data-bs-toggle': "tab",'data-bs-target': "#customer_diets", "data-togle":"tab", role: "tab", "aria-controls": "customer_diets", "aria-selected": false} Diets
+      %li.nav-item{role:"presentation"}
+        %button.nav-link#trainings-tab{'data-bs-toggle': "tab",'data-bs-target': "#customer_trainings", "data-togle":"tab", role: "tab", "aria-controls": "customer_trainings", "aria-selected": false} Training plan
+      %li.nav-item{role:"presentation"}
+        %button.nav-link#goals-list-tab{'data-bs-toggle': "tab",'data-bs-target': "#customer-goals-list", "data-togle":"tab", role: "tab", "aria-controls": "customer-goals-list", "aria-selected": false} Goals
+      %li.nav-item{role:"presentation"}
+        %button.nav-link#photos-tab{'data-bs-toggle': "tab",'data-bs-target': "#customer_photos", "data-togle":"tab", role: "tab", "aria-controls": "customer_photos", "aria-selected": false} Photos.
+    
+
+%main.datails.tab-content#nav-tabContent
+  #customer_profile.tab-pane.show.active
+    .sub-main
+      - if @customer.present?
+        .user-review
+          = link_to "Edit personal data", edit_customer_path(@customer.id)
+          .user-review__photo
+            = image_tag @customer.avatar, class: 'user-review__photo' if @customer.avatar.present?
+            -# = image_tag @customer.avatar_url, class: 'user-review__photo' if @customer.avatar.present?
+            %p.paragraph
+              - unless @customer.profil.present?
+                %h1 No set goal
+                // = link_to 'Utworz profil', new_customer_profil_path(@customer)
+              - else
+                %h1.color-primary= "#{@customer.name}"
+          .user-review__details
+          
+            %ul.list.line-top.line-bottom
+              %h4 Details:
+              %li.list__item.list__item-table
+                %b Nick:
+                %span= @customer.username
+              %li.list__item
+                .list__item-table
+                  %b Phone number:
+                  %span
+                    %a{href: "tel:#{@customer.phone_number}"}
+                      =@customer.phone_number
+              %li.list__item
+                .list__item-table
+                  %b Email:
+                  %span
+                    %a{href: "mailto:#{@customer.email}?Subject=Trener%20Osobisty", target: "_top"}
+                      =@customer.email
+              %br
+              %li.list__item.list__item-table
+                %b Date of registration:
+                %span= @customer.created_at.strftime("%m-%d-%Y")
+
+            .user-review__details-pt.mb-3.line-bottom
+              -# = gravatar_for (User.find_by_email("sypniewski.ryszard@gmail.com").nil? ? User.first : User.find_by_email("sypniewski.ryszard@gmail.com"), 65)
+              = image_tag "Rysiu.png", alt: "logo", class: "pt__photo"
+              %p Your personal trainer
+              
+            
+
+        .description
+          - unless @customer.profil.present?
+            %h1 No set goal
+            = link_to 'Create a profile', new_customer_profil_path(@customer)
+          - else
+            %h1.heading-secondary.mt-0= "Goal: #{@customer.profil.goal}"
+            %br/
+            = link_to 'Edit profile', edit_customer_profil_path(@customer)
+          %ul.list.line-top
+            %h3.color-primary Your personal datails:
+            %li.list__item
+              .list__item-table
+                %b.color-primary Yours BMR:
+                %span= @customer.bmr.to_f.round(2)
+            %li.list__item.list__item-table
+              %b Body type:
+              %span= @customer.body_type
+            %li.list__item.list__item-table
+              %b Weight:
+              %span= @customer.weight
+            %li.list__item.list__item-table
+              %b height:
+              %span= @customer.height
+            %li.list__item.list__item-table
+              %b Age:
+              %span= @customer.actual_age
+            %li.list__item.list__item-table
+              %b Sex:
+              %span= @customer.sex
+          %ul.list.line-top
+            %h3.color-primary Additional info:
+            %li.list__item.list__item-table
+              %b Life style:
+              %span= @customer.profil.lifestyle if @customer.profil
+          %ul.list.line-bottom.line-top
+            %h3.color-primary Bad habits:
+            - if @customer.profil.present? 
+              - @customer.profil.habits.each do |habit|
+                %li.list__item.list__item-table
+                  = habit.name
+
+  .tab-pane.fade#customer_cautions
+
+    .sub-main
+      .rows-3.box
+        %ul.list.line-bottom.line-top
+          %h3.color-primary Injuries:
+          %li.list__item.list__item-table= @customer.profil.contusions if @customer.profil
+      .rows-3.box
+        %ul.list.line-bottom.line-top
+          %h3.color-primary  Sickness:
+          %li.list__item.list__item-table= @customer.profil.sickness if @customer.profil
+      .rows-3.box
+        %ul.list.line-bottom.line-top
+          %h3.color-primary Marks:
+          %li.list__item.list__item-table= @customer.profil.description if @customer.profil
+    .sub-main
+      .rows-3.box{style:"width:-webkit-fill-available;"}
+        %ul.list.line-bottom.line-top
+          %h3.color-primary Food groups:
+          %li.list__item.list__item-table
+            vegetarian
+          -# - @customer.admin_food_groups.each do |habit|
+          -#   %li.list__item.list__item-table
+          -#     = habit.name
+      .rows-3.box{style:"width:-webkit-fill-available;"}
+        %ul.list.line-bottom.line-top
+          %h3.color-primary Food categories:
+
+          -# - @customer.admin_ingredients_categories.each do |habit|
+          -#   %li.list__item.list__item-table
+          -#     = habit.name
+  -# Customers goals
+  .tab-pane.fade#customer-goals-list

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2023_12_23_053709) do
+ActiveRecord::Schema[7.1].define(version: 2024_01_11_123446) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -66,7 +66,6 @@ ActiveRecord::Schema[7.1].define(version: 2023_12_23_053709) do
     t.string "email", null: false
     t.string "username", null: false
     t.string "phone_number", null: false
-    t.boolean "sex", null: false
     t.integer "age", null: false
     t.integer "height", null: false
     t.datetime "created_at", null: false
@@ -77,9 +76,12 @@ ActiveRecord::Schema[7.1].define(version: 2023_12_23_053709) do
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
     t.integer "weight"
+    t.integer "sex"
+    t.bigint "body_type_id"
     t.index "lower((email)::text)", name: "index_customers_on_lower_email"
     t.index "lower((first_name)::text) varchar_pattern_ops", name: "index_customers_on_lower_first_name_varchar_pattern_ops"
     t.index "lower((last_name)::text) varchar_pattern_ops", name: "index_customers_on_lower_last_name_varchar_pattern_ops"
+    t.index ["body_type_id"], name: "index_customers_on_body_type_id"
     t.index ["email"], name: "index_customers_on_email", unique: true
     t.index ["reset_password_token"], name: "index_customers_on_reset_password_token", unique: true
     t.index ["username"], name: "index_customers_on_username", unique: true
@@ -106,6 +108,15 @@ ActiveRecord::Schema[7.1].define(version: 2023_12_23_053709) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "habits_profiles", id: false, force: :cascade do |t|
+    t.bigint "habit_id", null: false
+    t.bigint "profil_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["habit_id"], name: "index_habits_profiles_on_habit_id"
+    t.index ["profil_id"], name: "index_habits_profiles_on_profil_id"
+  end
+
   create_table "ingredients", force: :cascade do |t|
     t.string "name", null: false
     t.integer "energy", null: false
@@ -121,6 +132,18 @@ ActiveRecord::Schema[7.1].define(version: 2023_12_23_053709) do
     t.string "description"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "profils", force: :cascade do |t|
+    t.integer "customer_id"
+    t.integer "goal_id"
+    t.integer "lifestyle_id"
+    t.string "contusions"
+    t.string "sickness"
+    t.string "description"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["customer_id"], name: "index_profils_on_customer_id"
   end
 
   create_table "recipe_ingredients", force: :cascade do |t|
@@ -158,6 +181,8 @@ ActiveRecord::Schema[7.1].define(version: 2023_12_23_053709) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "habits_profiles", "habits"
+  add_foreign_key "habits_profiles", "profils"
   add_foreign_key "recipe_ingredients", "ingredients"
   add_foreign_key "recipe_ingredients", "recipes"
 end

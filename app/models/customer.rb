@@ -2,11 +2,16 @@ class Customer < ApplicationRecord
   attr_accessor :login
 
   has_one_attached :avatar
+  has_one :body_type
+  has_one :profil, dependent: :destroy
+
+  # Default sex
+  enum sex: [:man, :woman]
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
-  #Overide the lookup function that Devise uses when performing
+  # Overide the lookup function that Devise uses when performing
   # a sig_in
   def self.find_first_by_auth_conditions(warden_conditions)
     conditions = warden_conditions.dup
@@ -29,18 +34,23 @@ class Customer < ApplicationRecord
   validates :weight, presence: true
   
   def bmr
-    if self.sex == true
-      (9.99 * self.weight.to_f) + (6.25 * self.height.to_f) - (4.92 * (self.age).to_f) + 5.0
-    else
-      (9.99 * self.weight.to_f) + (6.25 * self.height.to_f) - (4.92 * (self.age).to_f) - 161.0
-    end
+    tmp = (9.99 * weight.to_f) + (6.25 * height.to_f) - (4.92 * actual_age.to_f)
+    sex == :man ? tmp + 5 : tmp - 161.0
   end
 
   def name
-    self.first_name + " " + self.last_name
+    first_name + " " + last_name
+  end
+  
+  def actual_age
+    DateTime.now.year - age
   end
 
-  # def self.ransackable_attributes(auth_object = nil)
-  #   ["email", "first_name", "id_value", "last_name", "username"]
-  # end
+  def body_type
+    return BodyType.find(body_type_id).name if body_type_id.present?
+
+    'Not set up'
+  end
+
+  ransack_alias :name, :customer_first_name_or_customer_last_name_or_customer_email
 end

@@ -1,0 +1,31 @@
+= form_for @profil, url: customer_profil_path, html: { class: 'form' } do |f|
+  - if @profil.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@profil.errors.count, "error")} prohibited this profil from being saved:"
+      %ul
+        - @profil.errors.full_messages.each do |message|
+          %li= message
+  .form-group
+    = f.label :goal_id, "Goal", class: "form__label"
+    = f.select(:goal_id, Goal.all.collect {|p| [ p.name, p.id ] }, placeholder: "Goal", class: "form__input")
+  .form-group
+    = f.label :lifestyle_id, "Life style", class: "form__label"
+    = f.select(:lifestyle_id, Lifestyle.all.collect {|p| [ p.name, p.id ] }, placeholder: "Life style", class: "form__input")
+  .form-group
+    = f.label :habit_ids, "Bad habits", class: "form__label mb-3"
+    - for habit in Habit.all
+      %div
+        = check_box_tag "profil[habit_ids][]", habit.id, @profil.habits.include?(habit)
+        = habit.name
+  %br/
+  .form-group
+    = f.text_area :contusions, placeholder: "Injuries", class: "form__input"
+    = f.label :contusions, "Injuries", class: "form__label"
+  .form-group
+    = f.text_area :sickness, placeholder: "Medical history", class: "form__input"
+    = f.label :sickness, "Medical history", class: "form__label"
+  .form-group
+    = f.text_area :description, autocomplete: "Additional informations", class: "form__input"
+    = f.label :description, "Additional informations", class: "form__label"
+  .actions
+    = f.submit "Save", :class => 'my-btn my-btn--pink my-btn--width btn-lg'

@@ -1,19 +1,17 @@
 class MainController < ApplicationController
   before_action :authenticate_user!, only: [:dashboard]
-  def dashboard
-  end
+
+  def dashboard; end
   
-  def main
-  end
-  def home
-  end
+  def main; end
+
+  def home; end
 
   def customer
     @customer = current_customer
   end
 
-  def help
-  end
+  def help; end
 
   def settings
     @goals = Goal.all
@@ -33,14 +31,10 @@ class MainController < ApplicationController
   end
 
   def search
-    puts "-----------------------------"
-    puts params[:q]
     @customers = search_customer
-    # @customers = Customer.ransack(name_count: params[:q])
-    # @customers = Ingredient.ransack(name_cont: params[:q]).result(distinct: true).limit(5)
-    @ingredients = Ingredient.ransack(name_cont: params[:q]).result(distinct: true).limit(2)
+    # @customers = Customer.ransack(name_count: params[:q]).result(distinct: true).limit(5)
+    @ingredients = Ingredient.ransack(name_cont: params[:q]).result(distinct: true).limit(5)
     @recipes =     Recipe.ransack(name_cont: params[:q]).result(distinct: true).limit(5)
-    # render json: {customers: @customers, ingredients: @ingredients, recipes: @recipes}
     respond_to do |format|
       format.html {}
       format.json {
@@ -57,7 +51,7 @@ class MainController < ApplicationController
       @customers = Customer.where(
         customer_search_term.where_clause,
         customer_search_term.where_args
-      ).order(customer_search_term.order).limit(2)
+      ).order(customer_search_term.order).limit(5)
     end
   end
 end
