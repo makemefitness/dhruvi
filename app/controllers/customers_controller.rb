@@ -8,7 +8,7 @@ class CustomersController < ApplicationController
     if params[:keywords].present?
       customer_search_by_term
     else
-      @customers = Customer.all.offset(PAGE_SIZE * @page).limit(15)
+      @customers = Customer.all.offset(PAGE_SIZE * @page).limit(15).order('created_at DESC')
     end
   end
 
@@ -57,11 +57,11 @@ class CustomersController < ApplicationController
 
   # This can also be put somewhere as a static method for reuse in different controllers.
   def try_create_and_upload_blob!(uploaded_file)
-    return nil if uploaded_file.blank?
+    # return nil if uploaded_file.blank?
 
-    ActiveStorage::Blob.create_and_upload!(
-      io: uploaded_file.to_io,
-      filename: uploaded_file.original_filename,
-    )
+    # ActiveStorage::Blob.create_and_upload!(
+    #   io: uploaded_file.to_io,
+    #   filename: uploaded_file.original_filename,
+    # )
   end
 end

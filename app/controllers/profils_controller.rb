@@ -63,7 +63,7 @@ class ProfilsController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def profil_params
-    params.require(:profil).permit(:contusions, :sickness, :description, :goal_id, :lifestyle_id, habit_ids: [])
+    params.require(:profil).permit(:contusions, :sickness, :description, :goal_id, :protein, :fat, :carbohydrate, :lifestyle_id, habit_ids: [])
   end
 
   def set_customer

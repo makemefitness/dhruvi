@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_01_11_123446) do
+ActiveRecord::Schema[7.1].define(version: 2024_01_16_110912) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -143,6 +143,9 @@ ActiveRecord::Schema[7.1].define(version: 2024_01_11_123446) do
     t.string "description"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.float "protein", default: 0.0
+    t.float "carbohydrate", default: 0.0
+    t.float "fat", default: 0.0
     t.index ["customer_id"], name: "index_profils_on_customer_id"
   end
 

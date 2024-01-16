@@ -27,5 +27,19 @@
   .form-group
     = f.text_area :description, autocomplete: "Additional informations", class: "form__input"
     = f.label :description, "Additional informations", class: "form__label"
+
+  %fieldset
+    %legend Nutrition
+    .form-group
+      = f.text_field :protein, autocomplete: "Protein", class: "form__input"
+      = f.label :protein, "Protein", class: "form__label"
+    
+    .form-group
+      = f.text_field :carbohydrate, autocomplete: "Carbohydrate", class: "form__input"
+      = f.label :carbohydrate, "Carbohydrate", class: "form__label"
+
+    .form-group
+      = f.text_field :fat, autocomplete: "Fat", class: "form__input"
+      = f.label :fat, "Fat", class: "form__label"
   .actions
     = f.submit "Save", :class => 'my-btn my-btn--pink my-btn--width btn-lg'
