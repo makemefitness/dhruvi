@@ -41,6 +41,22 @@ class Customer < ApplicationRecord
   def name
     first_name + " " + last_name
   end
+
+  def tdee
+    profil ? bmr * styl_iloraz + cel : 0
+  end
+
+  def styl_iloraz
+    lifestyle.description.to_f
+  end
+
+  def cel
+    profil.goal_kcal
+  end
+
+  def lifestyle
+    Lifestyle.where(id: profil.lifestyle_id).first
+  end
   
   def actual_age
     DateTime.now.year - age

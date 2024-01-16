@@ -80,10 +80,12 @@
             = link_to 'Edit profile', edit_customer_profil_path(@customer)
           %ul.list.line-top
             %h3.color-primary Your personal datails:
-            %li.list__item
-              .list__item-table
-                %b.color-primary Yours BMR:
-                %span= @customer.bmr.to_f.round(2)
+            %li.list__item.list__item-table
+              %b BMR:
+              %span= @customer.bmr.to_f.round(2)
+            %li.list__item.list__item-table
+              %b TDEE:
+              %span= @customer.tdee.to_f.round(2)
             %li.list__item.list__item-table
               %b Body type:
               %span= @customer.body_type
@@ -144,3 +146,51 @@
           -#     = habit.name
   -# Customers goals
   .tab-pane.fade#customer-goals-list
+  -# Zapotrzebowanie kaloryczne
+  .tab-pane.fade.datails#customer_diets
+    - unless @customer.profil.present?
+      %h1 Goal is not set up.
+      = link_to 'Create profile', new_customer_profil_path(@customer)
+    - else
+      .details.box
+        %h3.color-primary Caloric requirement - TDEE
+        = @customer.tdee.round(0).to_s + " kcal"
+        %table.table
+          %thead
+            %tr
+              %th Component
+              %th g/kg MC
+              %th g daly
+              %th Breakfast
+              %th Lunch
+              %th Dinner
+              %th Snack 1
+              %th Snack 2
+          %tbody
+            %tr
+              %td Protein
+              %td= (@customer.profil.protein).round(2)
+              %td= "#{@customer.profil.weight_protein}g"
+              %td= "#{@customer.profil.dayly_protein}g"
+              %td= "#{@customer.profil.dayly_protein}g"
+              %td= "#{@customer.profil.dayly_protein}g"
+              %td= "#{@customer.profil.przekoski_protein}g"
+              %td= "#{@customer.profil.przekoski_protein}g"
+            %tr
+              %td Carbohydrates
+              %td= @customer.profil.carbohydrate.round(2)
+              %td= "#{@customer.profil.weight_carbohydrate}g"
+              %td= "#{@customer.profil.dayly_carbohydrate}g"
+              %td= "#{@customer.profil.dayly_carbohydrate}g"
+              %td= "#{@customer.profil.dayly_carbohydrate}g"
+              %td= "#{@customer.profil.przekoski_carbohydrate}g"
+              %td= "#{@customer.profil.przekoski_carbohydrate}g"
+            %tr
+              %td Fat
+              %td= @customer.profil.fat.round(2)
+              %td= "#{@customer.profil.weight_fat}g"
+              %td= "#{@customer.profil.dayly_fat}g"
+              %td= "#{@customer.profil.dayly_fat}g"
+              %td= "#{@customer.profil.dayly_fat}g"
+              %td= "#{@customer.profil.przekoski_fat}g"
+              %td= "#{@customer.profil.przekoski_fat}g"
