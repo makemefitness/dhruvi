@@ -235,3 +235,40 @@
 [2024-01-11 09:00:21.707] [INFO] Sending autorun event
 [2024-01-11 09:01:13.365] [INFO] /home/maciej/dhruvi/dhruvi_app/app/controllers/main_controller.rb was saved - checking if this effects /home/maciej/dhruvi/dhruvi_app
 [2024-01-11 09:01:13.367] [INFO] Sending autorun event
+[2024-01-12 12:59:43.676] [INFO] Test Explorer found
+[2024-01-12 12:59:43.677] [INFO] Creating adapter for /home/maciej/ruby_for_rails/test/gatherer
+[2024-01-12 12:59:43.677] [INFO] Initializing Ruby adapter
+[2024-01-12 12:59:43.677] [INFO] Registering adapter for /home/maciej/ruby_for_rails/test/gatherer
+[2024-01-12 12:59:43.677] [INFO] Loading Ruby tests...
+[2024-01-12 12:59:43.678] [INFO] Loading Minitest tests...
+[2024-01-12 12:59:43.678] [INFO] Getting a list of Minitest tests in suite with the following command: bundle exec rake -R $EXT_DIR vscode:minitest:list
+[2024-01-12 12:59:43.689] [INFO] Initialization finished
+[2024-01-12 12:59:45.180] [DEBUG] Passing raw output from dry-run into getJsonFromOutput.
+[2024-01-12 12:59:45.180] [DEBUG] START_OF_TEST_JSON{"version":"5.21.1","examples":[]}END_OF_TEST_JSON
+
+[2024-01-12 12:59:45.180] [DEBUG] Parsing the below JSON:
+[2024-01-12 12:59:45.180] [DEBUG] {"version":"5.21.1","examples":[]}
+[2024-01-12 14:07:11.309] [INFO] /home/maciej/ruby_for_rails/test/gatherer/spec/models/project_spec.rb was saved - checking if this effects /home/maciej/ruby_for_rails/test/gatherer
+[2024-01-12 14:07:11.310] [INFO] Sending autorun event
+[2024-01-12 14:07:24.745] [INFO] /home/maciej/ruby_for_rails/test/gatherer/spec/models/project_spec.rb was saved - checking if this effects /home/maciej/ruby_for_rails/test/gatherer
+[2024-01-12 14:07:24.745] [INFO] Sending autorun event
+[2024-01-12 14:08:02.792] [INFO] /home/maciej/ruby_for_rails/test/gatherer/spec/models/project_spec.rb was saved - checking if this effects /home/maciej/ruby_for_rails/test/gatherer
+[2024-01-12 14:08:02.793] [INFO] Sending autorun event
+[2024-01-12 14:08:28.591] [INFO] /home/maciej/ruby_for_rails/test/gatherer/spec/models/project_spec.rb was saved - checking if this effects /home/maciej/ruby_for_rails/test/gatherer
+[2024-01-12 14:08:28.592] [INFO] Sending autorun event
+[2024-01-12 14:37:19.160] [INFO] /home/maciej/ruby_for_rails/test/gatherer/spec/models/task_spec.rb was saved - checking if this effects /home/maciej/ruby_for_rails/test/gatherer
+[2024-01-12 14:37:19.160] [INFO] Sending autorun event
+[2024-01-12 14:37:35.122] [INFO] /home/maciej/ruby_for_rails/test/gatherer/spec/models/task_spec.rb was saved - checking if this effects /home/maciej/ruby_for_rails/test/gatherer
+[2024-01-12 14:37:35.123] [INFO] Sending autorun event
+[2024-01-12 14:38:38.531] [INFO] /home/maciej/ruby_for_rails/test/gatherer/app/models/task.rb was saved - checking if this effects /home/maciej/ruby_for_rails/test/gatherer
+[2024-01-12 14:38:38.531] [INFO] Sending autorun event
+[2024-01-12 14:39:08.076] [INFO] /home/maciej/ruby_for_rails/test/gatherer/app/models/task.rb was saved - checking if this effects /home/maciej/ruby_for_rails/test/gatherer
+[2024-01-12 14:39:08.076] [INFO] Sending autorun event
+[2024-01-12 14:39:36.845] [INFO] /home/maciej/ruby_for_rails/test/gatherer/app/models/task.rb was saved - checking if this effects /home/maciej/ruby_for_rails/test/gatherer
+[2024-01-12 14:39:36.845] [INFO] Sending autorun event
+[2024-01-12 14:40:46.002] [INFO] /home/maciej/ruby_for_rails/test/gatherer/app/models/task.rb was saved - checking if this effects /home/maciej/ruby_for_rails/test/gatherer
+[2024-01-12 14:40:46.002] [INFO] Sending autorun event
+[2024-01-12 14:42:44.314] [INFO] /home/maciej/ruby_for_rails/test/gatherer/spec/models/project_spec.rb was saved - checking if this effects /home/maciej/ruby_for_rails/test/gatherer
+[2024-01-12 14:42:44.314] [INFO] Sending autorun event
+[2024-01-12 14:43:36.770] [INFO] /home/maciej/ruby_for_rails/test/gatherer/app/models/project.rb was saved - checking if this effects /home/maciej/ruby_for_rails/test/gatherer
+[2024-01-12 14:43:36.770] [INFO] Sending autorun event
