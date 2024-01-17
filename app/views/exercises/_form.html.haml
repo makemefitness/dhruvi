@@ -1,0 +1,34 @@
+= form_for @exercise, html: {class: 'form'} do |f|
+  - if @exercise.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@exercise.errors.count, "error")} prohibited this exercise from being saved:"
+      %ul
+        - @exercise.errors.full_messages.each do |message|
+          %li= message
+
+  .form__group
+    = f.text_field :name, class: "form__input", placeholder: "Name", autofocus: true
+    = f.label :name, class: "form__label"
+  .form__group
+    - if @exercise.gif.attached?
+      = image_tag(@exercise.gif, class: 'form__group--image')
+      = link_to 'Delete', "/exercises/#{@exercise.id}?purge=true", method: :delete
+    = f.file_field :gif, value: 'gif', placeholder: "gif", style: "display:none;visibility:hidden;"
+    = f.label :gif, 'Choose gif', class: 'form__label form__label-file' do
+      %svg.form__icon
+        %use{"xlink:href" => "#{asset_path('sprite.svg')}#icon-camera"}
+      Choose image
+  .form__group.form__group-1
+    = f.text_area :instructions, class: "form__input", placeholder: "Instructions"
+    = f.label :instructions, class: "form__label"
+  .form__group
+    = f.collection_select :equipment_id, Equipment.order(:name), :id, :name, class: "form__input"
+    = f.label :equipment, class: "form__label"
+  .form__group
+    = f.collection_select :body_part_id, BodyPart.order(:name), :id, :name, class: "form__input"
+    = f.label :body_part, class: "form__label"
+  .form__group
+    = f.collection_select :target_id, Target.order(:name), :id, :name, class: "form__input"
+    = f.label :target, class: "form__label"
+  .actions1
+    = f.submit 'Save', :class => 'my-btn my-btn--pink my-btn--width btn-lg'

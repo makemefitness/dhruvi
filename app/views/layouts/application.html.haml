@@ -145,8 +145,8 @@
                   %a.side-nav__link{href: "/"}
                     %i.fas.fa-running.side-nav__icon{style:"font-size:2rem;"}
                     %span Workloads
-                %li{class: "#{(action_name == 'index' && controller_name == 'trenings')?'side-nav__item side-nav__item--active':'side-nav__item'}"}
-                  %a.side-nav__link{href: "#"}
+                %li{class: "#{(controller_name == 'exercises')?'side-nav__item side-nav__item--active':'side-nav__item'}"}
+                  %a.side-nav__link{href: "/exercises"}
                     %svg.side-nav__icon
                       %use{"xlink:href" => "#{asset_path('sprite.svg')}#icon-accessibility"}
                     %span Exercises

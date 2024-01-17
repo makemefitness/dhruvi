@@ -22,7 +22,8 @@
         .recipe__list-group-item
           .main
             .recipe__photo-summary
-              = image_tag recipe.photo.variant(:thumb) if recipe.photo.attached?
+              = image_tag recipe.photo if recipe.photo.attached?
+              -# = image_tag recipe.photo.variant(:thumb) if recipe.photo.attached?
             .recipe__details
               %b= link_to recipe.name, recipe_path(recipe)
               - if recipe.ingredients.present?
