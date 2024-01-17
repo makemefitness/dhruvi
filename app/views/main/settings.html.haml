@@ -1,34 +1,64 @@
 .inner-container#admin-pane
-  %ul.nav.nav-tabs#adminMenuOptions{role: 'tablist'}
-    %li.nav-item
-      %a.nav-link.active#nav-goals{"aria-controls" => "goals", "aria-selected" => "true", "data-bs-toggle" => "tab", "data-bs-target" => "#goals", :role => "tab"}
-        %button.btn.btn-primary{type: 'button'}
-          %span.m-3 Goals
-          %span.badge.badge-light #{@goals.size.to_s if @goals.present?}
-    %li.nav-item
-      %a.nav-link#nav-lifestyles{"aria-controls" => "lifestyles", "aria-selected" => "false", "data-bs-toggle" => "tab", "data-bs-target" => "#lifestyles", :role => "tab"}
-        %button.btn.btn-primary{type: 'button'}
-          %span.m-3 Lifestyles
-          %span.badge.badge-light #{@lifestyles.size.to_s if @lifestyles.present?}
-    %li.nav-item
-      %a.nav-link#nav-habits{"aria-controls" => "habits", "aria-selected" => "false", "data-bs-toggle" => "tab", "data-bs-target" => "#habits", :role => "tab"}
-        %button.btn.btn-primary{type: 'button'}
-          %span.m-3 Habits
-          %span.badge.badge-light #{@habits.size.to_s if @habits.present?}
-    %li.nav-item
-      %a.nav-link#nav-exercises{"aria-controls" => "exercises", "aria-selected" => "false", "data-bs-toggle" => "tab", "data-bs-target" => "#exercises", :role => "tab"}
-        %button.btn.btn-primary{type: 'button'}
-          %span.m-3 Exercises per week
-          %span.badge.badge-light #{@exercise_per_weeks.size.to_s if @exercise_per_weeks.present?}
+  .box.mt-0
+    %h1 Customer details settings
+    %ul.nav.nav-tabs#adminMenuOptions{role: 'tablist'}
+      %li.nav-item
+        %a.nav-link.active#nav-goals{"aria-controls" => "goals", "aria-selected" => "true", "data-bs-toggle" => "tab", "data-bs-target" => "#goals", :role => "tab"}
+          %button.btn.btn-primary{type: 'button'}
+            %span.m-3 Goals
+            %span.badge.badge-light #{@goals.size.to_s if @goals.present?}
+      %li.nav-item
+        %a.nav-link#nav-lifestyles{"aria-controls" => "lifestyles", "aria-selected" => "false", "data-bs-toggle" => "tab", "data-bs-target" => "#lifestyles", :role => "tab"}
+          %button.btn.btn-primary{type: 'button'}
+            %span.m-3 Lifestyles
+            %span.badge.badge-light #{@lifestyles.size.to_s if @lifestyles.present?}
+      %li.nav-item
+        %a.nav-link#nav-habits{"aria-controls" => "habits", "aria-selected" => "false", "data-bs-toggle" => "tab", "data-bs-target" => "#habits", :role => "tab"}
+          %button.btn.btn-primary{type: 'button'}
+            %span.m-3 Habits
+            %span.badge.badge-light #{@habits.size.to_s if @habits.present?}
+      %li.nav-item
+        %a.nav-link#nav-exercises{"aria-controls" => "exercises", "aria-selected" => "false", "data-bs-toggle" => "tab", "data-bs-target" => "#exercises", :role => "tab"}
+          %button.btn.btn-primary{type: 'button'}
+            %span.m-3 Exercises per week
+            %span.badge.badge-light #{@exercise_per_weeks.size.to_s if @exercise_per_weeks.present?}
 
-  / Content
-  .tab-content#adminMenuOptionsContent
-    .tab-pane.fade.show.active#goals{role: 'tabpanel', 'aria-labelledby': 'nav-goals'}
-      = render partial: 'partials/customer_info/goals', locals: {goals: @goals}
-    .tab-pane.fade#lifestyles{role: 'tabpanel', 'aria-labelledby': 'nav-lifestyles'}
-      = render partial: 'partials/customer_info/lifestyles', locals: {lifestyles: @lifestyles}
-    .tab-pane.fade#habits{role: 'tabpanel', 'aria-labelledby': 'nav-habits'}
-      = render partial: 'partials/customer_info/habits', locals: {habits: @habits}
-    .tab-pane.fade#exercises{role: 'tabpanel', 'aria-labelledby': 'nav-exercises'}
-      = render partial: 'partials/customer_info/exercises', locals: {exercise_per_weeks: @exercise_per_weeks}
-  #modal-anchor
+    / Content
+    .tab-content#adminMenuOptionsContent
+      .tab-pane.fade.show.active#goals{role: 'tabpanel', 'aria-labelledby': 'nav-goals'}
+        = render partial: 'partials/customer_info/goals', locals: {goals: @goals}
+      .tab-pane.fade#lifestyles{role: 'tabpanel', 'aria-labelledby': 'nav-lifestyles'}
+        = render partial: 'partials/customer_info/lifestyles', locals: {lifestyles: @lifestyles}
+      .tab-pane.fade#habits{role: 'tabpanel', 'aria-labelledby': 'nav-habits'}
+        = render partial: 'partials/customer_info/habits', locals: {habits: @habits}
+      .tab-pane.fade#exercises{role: 'tabpanel', 'aria-labelledby': 'nav-exercises'}
+        = render partial: 'partials/customer_info/exercises', locals: {exercise_per_weeks: @exercise_per_weeks}
+    #modal-anchor
+
+  .box
+    %h1 Exercises details settings
+    %ul.nav.nav-tabs#exercisesOptions{role: 'tablist'}
+      %li.nav-item
+        %a.nav-link.active#nav-equipment{"aria-controls" => "equipment", "aria-selected" => "true", "data-bs-toggle" => "tab", "data-bs-target" => "#equipment", :role => "tab"}
+          %button.btn.btn-primary{type: 'button'}
+            %span.m-3 Equipment
+            %span.badge.badge-light #{@equipments.size.to_s if @equipments.present?}
+      %li.nav-item
+        %a.nav-link#nav-body_parts{"aria-controls" => "body_parts", "aria-selected" => "false", "data-bs-toggle" => "tab", "data-bs-target" => "#body_parts", :role => "tab"}
+          %button.btn.btn-primary{type: 'button'}
+            %span.m-3 Body parts
+            %span.badge.badge-light #{@body_parts.size.to_s if @body_parts.present?}
+      %li.nav-item
+        %a.nav-link#nav-targets{"aria-controls" => "targets", "aria-selected" => "false", "data-bs-toggle" => "tab", "data-bs-target" => "#targets", :role => "tab"}
+          %button.btn.btn-primary{type: 'button'}
+            %span.m-3 Targets
+            %span.badge.badge-light #{@targets.size.to_s if @targets.present?}
+
+    / Content
+    .tab-content#exercisesOptionsContent
+      .tab-pane.fade.show.active#equipment{role: 'tabpanel', 'aria-labelledby': 'nav-equipment'}
+        = render partial: 'partials/exercises/resources', locals: {resources: @equipments}
+      .tab-pane.fade#body_parts{role: 'tabpanel', 'aria-labelledby': 'nav-lifestyles'}
+        = render partial: 'partials/exercises/resources', locals: {resources: @body_parts}
+      .tab-pane.fade#targets{role: 'tabpanel', 'aria-labelledby': 'nav-targets'}
+        = render partial: 'partials/exercises/resources', locals: {resources: @targets}

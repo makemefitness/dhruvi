@@ -13,8 +13,8 @@
           %td= goal.name
           %td= goal.description
           /%td= link_to 'Szczegøły', goal
-          -# %td= "#{Goal.count_of_profiles(goal)}"
-          %td= 10
+          %td= "#{Goal.count_of_profiles(goal)}"
+
           %td
             %button.btn.btn-success{"data-target" => "#myModal-goal#{goal.id}", "data-toggle" => "modal", :type => "button"}
               Details...
