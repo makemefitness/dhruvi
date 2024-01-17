@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_01_17_160801) do
+ActiveRecord::Schema[7.1].define(version: 2024_01_17_181124) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -104,6 +104,19 @@ ActiveRecord::Schema[7.1].define(version: 2024_01_17_160801) do
     t.string "additional_info"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "exercises", force: :cascade do |t|
+    t.string "name"
+    t.text "instructions"
+    t.bigint "equipment_id", null: false
+    t.bigint "body_part_id", null: false
+    t.bigint "target_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["body_part_id"], name: "index_exercises_on_body_part_id"
+    t.index ["equipment_id"], name: "index_exercises_on_equipment_id"
+    t.index ["target_id"], name: "index_exercises_on_target_id"
   end
 
   create_table "goals", force: :cascade do |t|
@@ -202,6 +215,9 @@ ActiveRecord::Schema[7.1].define(version: 2024_01_17_160801) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "exercises", "body_parts"
+  add_foreign_key "exercises", "equipment"
+  add_foreign_key "exercises", "targets"
   add_foreign_key "habits_profiles", "habits"
   add_foreign_key "habits_profiles", "profils"
   add_foreign_key "recipe_ingredients", "ingredients"

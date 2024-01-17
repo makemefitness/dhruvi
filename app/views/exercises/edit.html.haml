@@ -1,0 +1,10 @@
+%section.form-all
+  .profile_customer__form
+    %h1.heading-secondary.heading-secondary__form Editing exercise
+
+    = render 'form'
+    .ml-2.p-5
+
+      = link_to 'Show', @exercise, class: 'my-bottom__link'
+      \|
+      = link_to 'Back', exercises_path, class: 'my-bottom__link'

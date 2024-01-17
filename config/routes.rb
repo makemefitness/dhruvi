@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :exercises
 
   resources :habits
   resources :exercise_per_weeks

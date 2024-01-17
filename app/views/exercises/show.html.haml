@@ -1,0 +1,30 @@
+.recipe
+  = render partial: 'partials/main_header'
+  .recipe__header
+    %h1.recipe__heading
+      = @exercise.name
+    .recipe__nav
+  .row.align-items-center.p-5
+    .col
+      = image_tag @exercise.gif if @exercise.gif.attached?
+    .col.align-items-center
+
+      %p
+        %b Name:
+        = @exercise.name
+      %p
+        %b Instructions:
+        = @exercise.instructions
+      %p
+        %b Equipment:
+        = @exercise.equipment.name
+      %p
+        %b Body part:
+        = @exercise.body_part.name
+      %p
+        %b Target:
+        = @exercise.target.name
+
+  = link_to 'Edit', edit_exercise_path(@exercise)
+  \|
+  = link_to 'Back', exercises_path

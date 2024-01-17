@@ -1,0 +1,61 @@
+.recipe
+  = render partial: 'partials/main_header'
+  .recipe__header
+    %h1.recipe__heading
+      Exercises
+    .recipe__nav
+      - if params[:keywords].present?
+        %svg.recipe__nav-icon
+          %use{"xlink:href" => "#{asset_path('sprite.svg')}#icon-search"}
+        = @exercises.count
+        results
+    .recipe__summary
+      %p
+        %b= @exercises.count
+        exercises
+
+  .recipe__list-group
+    - @exercises.each do |exercise|
+      %a{href: "/exercises/#{exercise.id}"}  
+        .recipe__list-group-item
+          .main
+            .recipe__photo-summary
+              = image_tag exercise.gif if exercise.gif.attached?
+            .recipe__details
+              %b= link_to exercise.name, exercise_path(exercise)
+              = exercise.instructions
+          .recipe__summary-bottom
+            -# %svg
+            -#   %use{"xlink:href" => "#{asset_path('sprite.svg')}#icon-clock-o"}
+            -# = exercise.equipment.name
+            %svg
+              %use{"xlink:href" => "#{asset_path('sprite.svg')}#icon-user"}
+            = exercise.body_part.name
+            %svg
+              %use{"xlink:href" => "#{asset_path('sprite.svg')}#icon-thumbs-o-up"}
+            = exercise.target.name
+            <!-- = recipe.summary -->
+            .text-center.mt-3
+              -# %span{title: "Publicznie dostęny?"}= yes_no_icon(recipe.open_approved).html_safe
+              -# - if can?(:edit, recipe)
+              = edit_outline_button 'Edit', edit_exercise_path(exercise)
+              -# - if can?(:delte, recipe)
+              -# = link_to 'Usuń', [:admin, recipe], method: :delete, data: { confirm: 'Jesteś pewny?' }
+              = delete_outline_button 'Delete', exercise, method: :delete, data: { confirm: 'Are you sure?' }
+              
+
+
+  -# %br
+  -#   %tr
+  -#     %td= exercise.name
+  -#     %td= exercise.instructions
+  -#     %td= exercise.equipment.name
+  -#     %td= exercise.body_part.name
+  -#     %td= exercise.target.name
+  -#     %td= link_to 'Show', exercise
+  -#     %td= link_to 'Edit', edit_exercise_path(exercise)
+  -#     %td= link_to 'Destroy', exercise, method: :delete, data: { confirm: 'Are you sure?' }
+
+  %br
+
+  = link_to 'New Exercise', new_exercise_path, class: 'my-bottom__link', title: "Add exercise"
