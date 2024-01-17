@@ -13,7 +13,7 @@
           %td= lifestyle.name
           %td= lifestyle.description
           /%td= link_to 'Szczegoły', lifestyle_path(lifestyle), remote: true
-          %td= 10 #"#{Lifestyle.profiles(lifestyle)}"
+          %td= "#{Lifestyle.profiles(lifestyle)}"
           %td
             %button.btn.btn-success{"data-target" => "#myModal-lifestyle#{lifestyle.id}", "data-toggle" => "modal", :type => "button"}
               Details...

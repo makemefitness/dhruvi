@@ -153,103 +153,118 @@
 #   weight: 100
 # )
 
-Lifestyle.create!(
-  name: 'Office workf',
-  description: 'Office workf'
-)
+# Lifestyle.create!(
+#   name: 'Office workf',
+#   description: 'Office workf'
+# )
 
-Lifestyle.create!(
-  name: 'Physical work',
-  description: 'Physical work'
-)
+# Lifestyle.create!(
+#   name: 'Physical work',
+#   description: 'Physical work'
+# )
 
-Lifestyle.create!(
-  name: 'Shift work',
-  description: 'Shift work'
-)
+# Lifestyle.create!(
+#   name: 'Shift work',
+#   description: 'Shift work'
+# )
 
-Lifestyle.create!(
-  name: 'Mixed work, physical and mental, all day long',
-  description: 'Mixed work, physical and mental, all day long'
-)
+# Lifestyle.create!(
+#   name: 'Mixed work, physical and mental, all day long',
+#   description: 'Mixed work, physical and mental, all day long'
+# )
 
-Goal.create!(
-  name: 'Reduction',
-  description: 'Reduction'
-)
+# Goal.create!(
+#   name: 'Reduction',
+#   description: 'Reduction'
+# )
 
-Goal.create!(
-  name: 'Adjust body weight',
-  description: 'Adjust body weight'
-)
+# Goal.create!(
+#   name: 'Adjust body weight',
+#   description: 'Adjust body weight'
+# )
 
-Goal.create!(
-  name: 'Improvement of quality',
-  description: 'Improvement of quality'
-)
+# Goal.create!(
+#   name: 'Improvement of quality',
+#   description: 'Improvement of quality'
+# )
 
-Goal.create!(
-  name: 'Motor training, strength, speed, endurance',
-  description: 'Motor training, strength, speed, endurance'
-)
+# Goal.create!(
+#   name: 'Motor training, strength, speed, endurance',
+#   description: 'Motor training, strength, speed, endurance'
+# )
 
-ExercisePerWeek.create!(
-  days: 1
-)
+# ExercisePerWeek.create!(
+#   days: 1
+# )
 
-ExercisePerWeek.create!(
-  days: 2
-)
+# ExercisePerWeek.create!(
+#   days: 2
+# )
 
-ExercisePerWeek.create!(
-  days: 3
-)
+# ExercisePerWeek.create!(
+#   days: 3
+# )
 
-ExercisePerWeek.create!(
-  days: 4
-)
+# ExercisePerWeek.create!(
+#   days: 4
+# )
 
-ExercisePerWeek.create!(
-  days: 5
-)
+# ExercisePerWeek.create!(
+#   days: 5
+# )
 
-ExercisePerWeek.create!(
-  additional_info: 'additional activity - field to enter in time and type'
-)
+# ExercisePerWeek.create!(
+#   additional_info: 'additional activity - field to enter in time and type'
+# )
 
-Habit.create!(
-  name: 'I eat a lot of sugar in my diet',
-  description: 'I eat a lot of sugar in my diet'
-)
+# Habit.create!(
+#   name: 'I eat a lot of sugar in my diet',
+#   description: 'I eat a lot of sugar in my diet'
+# )
 
-Habit.create!(
-  name: 'I dont sleep well',
-  description: 'I dont sleep well'
-)
+# Habit.create!(
+#   name: 'I dont sleep well',
+#   description: 'I dont sleep well'
+# )
 
-Habit.create!(
-  name: 'I drink a lot of coffee',
-  description: 'I drink a lot of coffee'
-)
+# Habit.create!(
+#   name: 'I drink a lot of coffee',
+#   description: 'I drink a lot of coffee'
+# )
 
-Habit.create!(
-  name: 'I am snacking',
-  description: 'I am snacking'
-)
+# Habit.create!(
+#   name: 'I am snacking',
+#   description: 'I am snacking'
+# )
 
-Habit.create!(
-  name: 'Alcohol',
-  description: 'Alcohol'
-)
+# Habit.create!(
+#   name: 'Alcohol',
+#   description: 'Alcohol'
+# )
 
-Habit.create!(
-  name: 'I digest food poorly',
-  description: 'I digest food poorly'
-)
+# Habit.create!(
+#   name: 'I digest food poorly',
+#   description: 'I digest food poorly'
+# )
 
-Habit.create!(
-  name: 'Other...',
-  description: 'Other...'
-)
+# Habit.create!(
+#   name: 'Other...',
+#   description: 'Other...'
+# )
 
+
+# Equipments
+["assisted","band","barbell","body weight","bosu ball","cable","dumbbell","elliptical machine","ez barbell","hammer","kettlebell","leverage machine","medicine ball","olympic barbell","resistance band","roller","rope","skierg machine","sled machine","smith machine","stability ball","stationary bike","stepmill machine","tire","trap bar","upper body ergometer","weighted","wheel roller"].each do |equipment|
+  Equipment.find_or_create_by!(name: equipment)
+end
+
+# Body parts
+["back","cardio","chest","lower arms","lower legs","neck","shoulders","upper arms","upper legs","waist"].each do |body_part|
+  BodyPart.find_or_create_by!(name: body_part)
+end
+
+# targets
+["abductors","abs","adductors","biceps","calves","cardiovascular system","delts","forearms","glutes","hamstrings","lats","levator scapulae","pectorals","quads","serratus anterior","spine","traps","triceps","upper back"].each do |target|
+  Target.find_or_create_by!(name: target)
+end
 puts

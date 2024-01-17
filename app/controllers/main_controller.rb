@@ -18,6 +18,9 @@ class MainController < ApplicationController
     @lifestyles = Lifestyle.all
     @habits = Habit.all
     @exercise_per_weeks = ExercisePerWeek.all
+    @equipments = Equipment.all.order(:name)
+    @body_parts = BodyPart.all.order(:name)
+    @targets = Target.order(:name)
   end
 
   def autocomplete
