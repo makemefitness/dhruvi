@@ -1,0 +1,10 @@
+%nav
+  %ul.pagination
+    - if page > 0
+      %li.page-item.previous
+        = link_to "&larr; Previous".html_safe, exercises_path(keywords: keywords, page: page - 1), title: "Previous page", class: "page-link"
+    %li.page-item
+      %a.page-link= page+1
+    - if @exercises_count / @PAGE_SIZE >= page+1
+      %li.page-item.next
+        = link_to "Next &rarr;".html_safe, exercises_path(keywords: keywords, page: page + 1), title: "Next page", class: "page-link"

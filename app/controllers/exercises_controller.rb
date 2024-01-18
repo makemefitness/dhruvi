@@ -3,11 +3,20 @@ class ExercisesController < ApplicationController
 
   # GET /exercises or /exercises.json
   def index
-    @exercises = Exercise.order(:name)
+    @PAGE_SIZE = 6
+    @exercises_count = Exercise.all.size
+    @page = (params[:page] || 0).to_i
+    if params[:keywords].present?
+      @exercises = Exercise.where(name: params[:keywords]).offset(@PAGE_SIZE * @page).limit(6).order(:name)
+    else
+      @exercises = Exercise.all.offset(@PAGE_SIZE * @page).limit(6).order(:name)
+    end
   end
 
   # GET /exercises/1 or /exercises/1.json
   def show
+    @same_muscle_group = Exercise.where(body_part_id: @exercise.body_part_id)
+    @same_equipment = Exercise.where(equipment_id: @exercise.equipment_id)
   end
 
   # GET /exercises/new
@@ -16,8 +25,7 @@ class ExercisesController < ApplicationController
   end
 
   # GET /exercises/1/edit
-  def edit
-  end
+  def edit; end
 
   # POST /exercises or /exercises.json
   def create
