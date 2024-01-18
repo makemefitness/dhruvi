@@ -7,7 +7,7 @@ class ExercisesController < ApplicationController
     @exercises_count = Exercise.all.size
     @page = (params[:page] || 0).to_i
     if params[:keywords].present?
-      @exercises = Exercise.where(name: params[:keywords]).offset(@PAGE_SIZE * @page).limit(6).order(:name)
+      @exercises = Exercise.where('lower(name) LIKE :search', search: "#{params[:keywords].downcase}%").offset(@PAGE_SIZE * @page).limit(6).order(:name)
     else
       @exercises = Exercise.all.offset(@PAGE_SIZE * @page).limit(6).order(:name)
     end

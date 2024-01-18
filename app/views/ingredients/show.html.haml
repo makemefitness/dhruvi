@@ -20,11 +20,14 @@
         %b= @count
         products
   .container
-    %p#notice= notice
 
     %p
       %b Product:
       = @ingredient.name
+    - if @ingredient.ingredient_category_id != nil
+      %p= IngredientCategory.where(id: @ingredient.ingredient_category_id).first.name
+    - else
+      %p No category
     %p
       %b Kcal:
       = @ingredient.energy

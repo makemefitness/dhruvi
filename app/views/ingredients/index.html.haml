@@ -21,34 +21,39 @@
       %p
         %b= @count
         ingredients
-  .container.p-5
+  .container
+  .p-5
     .pagination
       - if @ingredients.present?
         = render partial: "pager", locals: {keywords: @keywords, page: @page}
-    .ingrdients__list-header
-      %table.table.table-bordered
-        %thead
+    %table.table.table-hover.table-sm
+      %thead.table-light
+        %tr
+          %th Name
+          %th Category
+          %th Energy
+          %th Protein
+          %th Fat
+          %th Carbohydrate
+          %th
+          %th
+          %th
+      %tbody
+        - @ingredients.each do |ingredient|
           %tr
-            %th produkt
-            %th kcal
-            %th protein
-            %th fat
-            %th carbohydrate
-            %th
-            %th
-            %th
-        %tbody
-          - @ingredients.each do |ingredient|
-            %tr
-              %td= ingredient.name
-              %td= ingredient.energy
-              %td= ingredient.protein
-              %td= ingredient.fat
-              %td= ingredient.carbohydrate
-              %td= link_to 'Show', ingredient_path(ingredient)
-              %td= link_to 'Edit', edit_ingredient_path(ingredient)
-              %td= link_to 'Destroy', ingredient_path(ingredient), method: :delete, data: { confirm: 'Are you sure?' }
-    - if @ingredients.present?
-      = render partial: "pager", locals: {keywords: @keywords, page: @page}
+            %td= ingredient.name
+            - if ingredient.ingredient_category_id != nil
+              %td= ngredientCategory.where(id: ingredient.ingredient_category_id).first.name
+            - else
+              %td ---
+            %td= ingredient.energy
+            %td= ingredient.protein
+            %td= ingredient.fat
+            %td= ingredient.carbohydrate
+            %td= link_to 'Show', ingredient_path(ingredient)
+            %td= link_to 'Edit', edit_ingredient_path(ingredient)
+            %td= link_to 'Destroy', ingredient_path(ingredient), method: :delete, data: { confirm: 'Are you sure?' }
+  - if @ingredients.present?
+    = render partial: "pager", locals: {keywords: @keywords, page: @page}
 
     = link_to 'New Ingredient', new_ingredient_path, class: 'my-btn my-btn--pink my-bottom__link my-3 ms-0 p-1'
