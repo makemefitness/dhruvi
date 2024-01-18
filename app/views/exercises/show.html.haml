@@ -5,26 +5,39 @@
       = @exercise.name
     .recipe__nav
   .row.align-items-center.p-5
-    .col
-      = image_tag @exercise.gif if @exercise.gif.attached?
+    .col-md-6
+      = image_tag(@exercise.gif, style: 'width:70%;') if @exercise.gif.attached?
     .col.align-items-center
-
-      %p
-        %b Name:
-        = @exercise.name
-      %p
-        %b Instructions:
-        = @exercise.instructions
+      %h2= @exercise.name
+      %br/
+      %br/
+      %p= @exercise.instructions
       %p
         %b Equipment:
         = @exercise.equipment.name
-      %p
+      %p.paragraph
         %b Body part:
         = @exercise.body_part.name
-      %p
+      %p.paragraph
         %b Target:
         = @exercise.target.name
-
-  = link_to 'Edit', edit_exercise_path(@exercise)
-  \|
-  = link_to 'Back', exercises_path
+      %h3 Exercises that target the same muscle group
+      - @same_muscle_group.each do |exercise|
+        = link_to exercise.name, exercise_path(exercise)
+        |
+      %h3 Exercises that use the same equipment
+      - @same_equipment.each do |exercise|
+        = link_to exercise.name, exercise_path(exercise)
+        |
+  -# .row.p-5
+  -#   .col
+  -#     %h3 Exercises that target the same muscle group
+  -#     - @same_muscle_group.each do |exercise|
+  -#       = link_to exercise.name, exercise_path(exercise)
+  -#     %h3 Exercises that use the same equipment
+  -#     - @same_equipment.each do |exercise|
+  -#       = link_to exercise.name, exercise_path(exercise)
+  .text-center.mb-3
+    = link_to 'Edit', edit_exercise_path(@exercise)
+    \|
+    = link_to 'Back', exercises_path
