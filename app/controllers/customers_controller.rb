@@ -1,6 +1,6 @@
 class CustomersController < ApplicationController
   before_action :authenticate_user!, expect: %i[create update]
-  before_action :set_customer, only: %i[show edit update]
+  before_action :set_customer, only: %i[show edit update destroy]
   PAGE_SIZE = 15
   def index
     @count = Customer.all.count
@@ -34,6 +34,18 @@ class CustomersController < ApplicationController
         format.js { render :edit}
       end
     end    
+  end
+
+  def destroy
+    @customer.destroy
+
+    name = @customer.name
+    @customer.destroy
+    @customers = Customer.all
+    respond_to do |format|
+      format.html { redirect_to customers_url, notice: "Customer #{name} has been deleted!" }
+      format.json { head :no_content }
+    end
   end
 
   private
