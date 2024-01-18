@@ -13,9 +13,9 @@ class IngredientsController < ApplicationController
     #     ingredient_search_term.where_args
     #   ).order(ingredient_search_term.order).offset(PAGE_SIZE * @page).limit(PAGE_SIZE)
     if params[:keywords].present?
-      @ingredients = Ingredient.where('lower(name) LIKE :search', search: "#{params[:keywords].downcase}%")
+      @ingredients = Ingredient.where('lower(name) LIKE :search', search: "#{params[:keywords].downcase}%").order(:name)
     else
-      @ingredients = Ingredient.all.offset(PAGE_SIZE * @page).limit(PAGE_SIZE)
+      @ingredients = Ingredient.all.order(:name).offset(PAGE_SIZE * @page).limit(PAGE_SIZE)
     end
     respond_to do |format|
       format.html
@@ -82,6 +82,6 @@ class IngredientsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def ingredient_params
-      params.require(:ingredient).permit(:name, :energy, :protein, :fat, :carbohydrate)
+      params.require(:ingredient).permit(:name, :energy, :protein, :fat, :carbohydrate, :ingredient_category_id)
     end
 end

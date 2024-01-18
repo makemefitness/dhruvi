@@ -9,6 +9,9 @@
   .form__group
     = f.text_field :name, class: "form__input", placeholder: "Product name", autofocus: true
     = f.label :name, class: "form__label"
+  .form-group
+    =f.collection_select(:ingredient_category_id, IngredientCategory.all, :id, :name, placeholder: "Category", class: "form__input")
+    =f.label :ingredient_category_id, "Category", class: "form__label"
   .form__group
     = f.number_field :energy, class: "form__input", placeholder: "Quantity kcal in 100g"
     = f.label :energy, class: "form__label"

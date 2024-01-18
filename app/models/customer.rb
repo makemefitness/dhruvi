@@ -47,7 +47,7 @@ class Customer < ApplicationRecord
   end
 
   def styl_iloraz
-    lifestyle.description.to_f
+    lifestyle ? lifestyle.description.to_f : 100
   end
 
   def cel
