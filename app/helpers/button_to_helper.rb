@@ -66,7 +66,7 @@ module ButtonToHelper
   end
 
   def delete_outline_button(text="", href="#", options={})
-    link_to href, options.merge({title: "Usuń!", method: :delete, data: { confirm: 'Jesteś pewny?' }}) do
+    link_to href, options.merge({title: "Delete!", data: { "turbo-method": :delete }}) do
       # "<span class='my-btn my-btn--outline-primary p-1 pl-2 pr-2'><i class='fas fa-minus-circle'></i> #{text}</span>".html_safe
       "<span class='my-btn my-btn--outline-primary p-1 pl-2 pr-2'><i class='fas fa-trash-alt'></i> #{text}</span>".html_safe
     end

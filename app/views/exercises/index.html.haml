@@ -23,72 +23,84 @@
             = submit_tag "Search", class: "btn btn-primary"
 
   %section.search-results.px-5
-    %header
-      - if @exercises.present? && @exercises_count > 6
-        = render partial: "pager", locals: {keywords: @keywords, page: @page}
-    - @exercises.each do |exercise|
-      .card.mb-3.p-1
-        .row.g-0
-          .col-md-2
-            %a{href: "/exercises/#{exercise.id}"}
-              = image_tag(exercise.gif, class: "img-fluid rounded-start") if exercise.gif.attached?
-          .col-md-10
-            .card-body
-              %h2.card-title= link_to exercise.name, exercise_path(exercise)
-              %p.card-text= exercise.instructions
-              %p.card-text
-                Body part:
-                %small.text-body-secondary= exercise.body_part.name
-              %p.card-text
-                Target:
-                %small.text-body-secondary= exercise.target.name
-              %p.card-text
-                Equipment:
-                %small.text-body-secondary= exercise.equipment.name
-              -# %span{title: "Publicznie dostęny?"}= yes_no_icon(recipe.open_approved).html_safe
-              -# - if can?(:edit, recipe)
-              = edit_outline_button 'Edit', edit_exercise_path(exercise)
-              -# - if can?(:delte, recipe)
-              -# = link_to 'Usuń', [:admin, recipe], method: :delete, data: { confirm: 'Jesteś pewny?' }
-              = delete_outline_button 'Delete', exercise, method: :delete, data: { confirm: 'Are you sure?' }
+    .tab-content#nav-tabContent
+      #list-view.tab-pane.show.active
+        %header
+          - if @exercises.present? && @exercises_count > 6
+            = render partial: "pager", locals: {keywords: @keywords, page: @page}
+        - @exercises.each do |exercise|
+          .card.mb-3.p-1
+            .row.g-0
+              .col-md-2
+                %a{href: "/exercises/#{exercise.id}"}
+                  = image_tag(exercise.gif, class: "img-fluid rounded-start") if exercise.gif.attached?
+              .col-md-10
+                .card-body
+                  %h2.card-title= link_to exercise.name, exercise_path(exercise)
+                  %p.card-text= exercise.instructions
+                  %p.card-text
+                    Body part:
+                    %small.text-body-secondary= exercise.body_part.name
+                  %p.card-text
+                    Target:
+                    %small.text-body-secondary= exercise.target.name
+                  %p.card-text
+                    Equipment:
+                    %small.text-body-secondary= exercise.equipment.name
+                  -# %span{title: "Publicznie dostęny?"}= yes_no_icon(recipe.open_approved).html_safe
+                  -# - if can?(:edit, recipe)
+                  .d-flex.mt-3
+                    = edit_outline_button 'Edit', edit_exercise_path(exercise)
+                    -# - if can?(:delte, recipe)
+                    -# = link_to 'Usuń', [:admin, recipe], method: :delete, data: { confirm: 'Jesteś pewny?' }
+                    -# = button_to 'Delete', exercise_path(exercise.id), method: :delete, class: 'my-btn my-btn--outline-primary p-1 pl-2 pr-2'
+                    = button_to "<i class=\"fas fa-trash-alt\"> </i> Delete".html_safe, exercise_path(exercise), method: :delete, class: "my-btn my-btn--outline-primary p-1 pl-2 pr-2 ml-5", style: "margin-left: 5px;"
 
-    - if @exercises.present? && @exercises_count > 6
-      = render partial: "pager", locals: {keywords: @keywords, page: @page}
+        - if @exercises.present? && @exercises_count > 6
+          = render partial: "pager", locals: {keywords: @keywords, page: @page}
 
-    = link_to 'New Exercise', new_exercise_path, class: 'my-btn my-btn--pink my-bottom__link my-3 ms-0 p-1 px-3', title: "Add exercise"
-  %br/
-  %hr/
-  %br/
-  .recipe__list-group
-    - @exercises.each do |exercise|
-      %a{href: "/exercises/#{exercise.id}"}  
-        .recipe__list-group-item
-          .main
-            .recipe__photo-summary
-              = image_tag exercise.gif if exercise.gif.attached?
-            .recipe__details
-              %b= link_to exercise.name, exercise_path(exercise)
-              = exercise.instructions
-          .recipe__summary-bottom
-            -# %svg
-            -#   %use{"xlink:href" => "#{asset_path('sprite.svg')}#icon-clock-o"}
-            -# = exercise.equipment.name
-            %svg
-              %use{"xlink:href" => "#{asset_path('sprite.svg')}#icon-user"}
-            = exercise.body_part.name
-            %svg
-              %use{"xlink:href" => "#{asset_path('sprite.svg')}#icon-thumbs-o-up"}
-            = exercise.target.name
-            <!-- = recipe.summary -->
-            .text-center.mt-3
-              -# %span{title: "Publicznie dostęny?"}= yes_no_icon(recipe.open_approved).html_safe
-              -# - if can?(:edit, recipe)
-              = edit_outline_button 'Edit', edit_exercise_path(exercise)
-              -# - if can?(:delte, recipe)
-              -# = link_to 'Usuń', [:admin, recipe], method: :delete, data: { confirm: 'Jesteś pewny?' }
-              = delete_outline_button 'Delete', exercise, method: :delete, data: { confirm: 'Are you sure?' }
-            
+        = link_to 'New Exercise', new_exercise_path, class: 'my-btn my-btn--pink my-bottom__link my-3 ms-0 p-1 px-3', title: "Add exercise"
+ 
+      .tab-pane.fade#card-view
+        .recipe__list-group
+          - @exercises.each do |exercise|
+            %a{href: "/exercises/#{exercise.id}"}  
+              .recipe__list-group-item
+                .main
+                  .recipe__photo-summary{style: "height: auto;"}
+                    = image_tag exercise.gif if exercise.gif.attached?
+                  .recipe__details
+                    %b= link_to exercise.name, exercise_path(exercise)
+                    = exercise.instructions
+                .recipe__summary-bottom
+                  -# %svg
+                  -#   %use{"xlink:href" => "#{asset_path('sprite.svg')}#icon-clock-o"}
+                  -# = exercise.equipment.name
+                  %svg
+                    %use{"xlink:href" => "#{asset_path('sprite.svg')}#icon-user"}
+                  = exercise.body_part.name
+                  %svg
+                    %use{"xlink:href" => "#{asset_path('sprite.svg')}#icon-thumbs-o-up"}
+                  = exercise.target.name
+                  <!-- = recipe.summary -->
+                  .text-center.mt-3
+                    -# %span{title: "Publicznie dostęny?"}= yes_no_icon(recipe.open_approved).html_safe
+                    -# - if can?(:edit, recipe)
+                    = edit_outline_button 'Edit', edit_exercise_path(exercise)
+                    -# - if can?(:delte, recipe)
+                    -# = link_to 'Usuń', [:admin, recipe], method: :delete, data: { confirm: 'Jesteś pewny?' }
+                    = delete_outline_button 'Delete', exercise, method: :delete, data: { confirm: 'Are you sure?' }
+                  
 
-  %br
+        %br
 
-  = link_to 'New Exercise', new_exercise_path, class: 'my-bottom__link', title: "Add exercise"
+        = link_to 'New Exercise', new_exercise_path, class: 'my-btn my-btn--pink my-bottom__link my-3 ms-0 p-1 px-3', title: "Add exercise"
+
+  %nav
+    %ul.nav.nav-tabs#nav-tab{role:"tablist",style:"font-size:;"}
+      %li.nav-item{role:"presentation"}
+        %button.nav-link.active#profile-tab{'data-bs-toggle': "tab",'data-bs-target': "#list-view", "data-togle":"tab", role: "tab", "aria-controls": "list-view", "aria-selected": true} List view
+      %li.nav-item{role:"presentation"}
+        %button.nav-link#cautions-tab{'data-bs-toggle': "tab",'data-bs-target': "#card-view", "data-togle":"tab", role: "tab", "aria-controls": "card-view", "aria-selected": false} Card view
+
+  %main.datails.tab-content#nav-tabContent
