@@ -32,7 +32,7 @@
           %ul.list-group.list-group-horizontal
             %li.list-group-item 
               = gravatar_for customer
-            %li.list-group-item.w-100 
+            %li.list-group-item.w-100
               %h3
                 %small Phone number:
                 = customer.phone_number
@@ -42,7 +42,7 @@
               %h5= customer.username
               %h4.float-left= customer.email
             %li.list-group-item.clearfix
-              = button_to "<i class=\"fas fa-trash-alt\"> </i> Delete".html_safe, customer, method: :delete, class: "my-btn my-btn--outline-primary p-1 pl-2 pr-2 ml-5", style: "margin-left: 5px;"
+              = button_to "<i class=\"fas fa-trash-alt\"></i> Delete".html_safe, customer, method: :delete, class: "my-btn my-btn--outline-primary p-1 pl-2 pr-2 ml-5", style: "margin-left: 5px;width:100px;"
 
 
     = link_to 'Add new customer', new_customer_registration_path, class: 'my-btn my-btn--pink my-bottom__link my-3 ms-0 p-1 px-3'
