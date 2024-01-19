@@ -1,3 +1,5 @@
+import './todolist'
+
 class MyCalendarClass {
   constructor() {
     // this.daysName = ["Pon", "Wto", "Śro", "Czw", "Pią", "Sob", "Nie"];

@@ -144,7 +144,7 @@ class ToDoListClass {
   }
 }
 
-window.onload = function () {
+window.addEventListener('load', () => {
   toDo = new ToDoListClass()
-  toDo.loadTasks()
-}
+  // toDo.loadTasks()
+})
