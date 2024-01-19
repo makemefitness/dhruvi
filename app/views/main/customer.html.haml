@@ -71,9 +71,16 @@
 
 
 
-    .actions
+    .actions.mb-5{style:"
+        width: 100%;
+        margin: auto;
+        border-radius: 8px;
+        background: linear-gradient(225deg, #bab9b9, #dddcdc);
+        box-shadow:  inset -7px 7px 14px #636363,
+             inset 7px -7px 14px #ffffff;
+    "}
       - if @customer.present?
-        .user-review__photo
+        .user-review__photo.p-5
           = image_tag @customer.avatar, class: 'user-review__photo' if @customer.avatar.present?
           %p.paragraph.px-5
             - unless @customer.profil.present?
@@ -100,35 +107,43 @@
             .user-review__details-pt.mb-3.line-bottom
               %p Twøj osobisty trener
               = image_tag "Rysiu.png", alt: "logo", class: "pt__photo"
-    - if @customer.present?
-      .user-review__photo
-        = image_tag @customer.avatar, class: 'user-review__photo' if @customer.avatar.present?
-        %p.paragraph.px-5
-          - unless @customer.profil.present?
-            %h1 Brak ustalonego celu
-            = link_to 'Utworz profil', new_admin_customer_profil_path(@customer)
-          - else
-            %h1.color-primary.px-5= "#{@customer.name}"
-        .user-review__details.px-5
-          %ul.list.line-top
-            %h3.color-primary Twoje dane osobiste:
-            %li.list__item
-              .list__item-table
-                %b.color-primary Twoj wskaznik BMR:
-                %span= @customer.bmr.to_f.round(2)
-            %li.list__item.list__item-table
-              %b Typ budowy ciała:
-              %span= @customer.body_type
-            %li.list__item.list__item-table
-              %b Twoja waga:
-              %span= @customer.weight
-            %li.list__item.list__item-table
-              %b Twoj zwrost:
-              %span= @customer.height
-          .user-review__details-pt.mb-3.line-bottom
-            %p Twøj osobisty trener
-            = image_tag "Rysiu.png", alt: "logo", class: "pt__photo"
-  -# .box#calendar-box
+    .mb-5{style:"
+        width: 100%;
+        margin: auto;
+        border-radius: 8px;
+        background: linear-gradient(225deg, #bab9b9, #dddcdc);
+        box-shadow:  inset -7px 7px 14px #636363,
+             inset 7px -7px 14px #ffffff;
+    "}
+      - if @customer.present?
+        .user-review__photo.p-5
+          = image_tag @customer.avatar, class: 'user-review__photo' if @customer.avatar.present?
+          %p.paragraph.px-5
+            - unless @customer.profil.present?
+              %h1 Brak ustalonego celu
+              = link_to 'Utworz profil', new_admin_customer_profil_path(@customer)
+            - else
+              %h1.color-primary.px-5= "#{@customer.name}"
+          .user-review__details.px-5
+            %ul.list.line-top
+              %h3.color-primary Twoje dane osobiste:
+              %li.list__item
+                .list__item-table
+                  %b.color-primary Twoj wskaznik BMR:
+                  %span= @customer.bmr.to_f.round(2)
+              %li.list__item.list__item-table
+                %b Typ budowy ciała:
+                %span= @customer.body_type
+              %li.list__item.list__item-table
+                %b Twoja waga:
+                %span= @customer.weight
+              %li.list__item.list__item-table
+                %b Twoj zwrost:
+                %span= @customer.height
+            .user-review__details-pt.mb-3.line-bottom
+              %p Twøj osobisty trener
+              = image_tag "Rysiu.png", alt: "logo", class: "pt__photo"
+    -# .box#calendar-box
             
 %script
   function timeNow(){
@@ -150,7 +165,7 @@
   .customer_home-header__header
     %h3.customer_home-header__heading
       %h3.text-center.color-primary.mt-5= "Goal: #{@customer.profil.goal}"
-%main.datails{style:"background:#cfcece;"}
+%main.datails.mb-5{style:"background:#cfcece;"}
   .callendar{style:"margin:auto;padding:1rem;background:#cfcece;max-width:90vw;"}
     .callendar--header{style:"
         width: 100%;
@@ -238,13 +253,13 @@
             .day-number 1
 
     .callendar-deatials.px-0{style:"background-color: #cfcece;"}
-      .calendar.inner-box#user-tasks{style:"border-radius: 8px;
+      .calendar.inner-box#user-tasks.mb-5{style:"border-radius: 8px;
               background: linear-gradient(225deg, #dad6d6, #ffffff);
               box-shadow:  -10px 10px 12px #636262,
              10px -10px 12px #ffffff;"}
         %h1.color-primary Your scheduled tasks.
         %ul.list-group#tasks-list
-      .calendar.inner-box#user-raining-tasks{style:"border-radius: 8px;
+      .calendar.inner-box#user-raining-tasks.mb-5{style:"border-radius: 8px;
               background: linear-gradient(225deg, #dad6d6, #ffffff);
               box-shadow:  -10px 10px 12px #636262,
              10px -10px 12px #ffffff;"}
@@ -268,9 +283,16 @@
 
 
 
-    .actions
+    .actions.mb-5{style:"
+        width: 100%;
+        margin: auto;
+        border-radius: 8px;
+        background: linear-gradient(225deg, #bab9b9, #dddcdc);
+        box-shadow:  -7px 7px 14px #636363,
+             7px -7px 14px #ffffff;
+    "}
       - if @customer.present?
-        .user-review__photo
+        .user-review__photo.p-5
           = image_tag @customer.avatar, class: 'user-review__photo' if @customer.avatar.present?
           %p.paragraph.px-5
             - unless @customer.profil.present?
@@ -297,35 +319,44 @@
             .user-review__details-pt.mb-3.line-bottom
               %p Twøj osobisty trener
               = image_tag "Rysiu.png", alt: "logo", class: "pt__photo"
-    - if @customer.present?
-      .user-review__photo
-        = image_tag @customer.avatar, class: 'user-review__photo' if @customer.avatar.present?
-        %p.paragraph.px-5
-          - unless @customer.profil.present?
-            %h1 Brak ustalonego celu
-            = link_to 'Utworz profil', new_admin_customer_profil_path(@customer)
-          - else
-            %h1.color-primary.px-5= "#{@customer.name}"
-        .user-review__details.px-5
-          %ul.list.line-top
-            %h3.color-primary Twoje dane osobiste:
-            %li.list__item
-              .list__item-table
-                %b.color-primary Twoj wskaznik BMR:
-                %span= @customer.bmr.to_f.round(2)
-            %li.list__item.list__item-table
-              %b Typ budowy ciała:
-              %span= @customer.body_type
-            %li.list__item.list__item-table
-              %b Twoja waga:
-              %span= @customer.weight
-            %li.list__item.list__item-table
-              %b Twoj zwrost:
-              %span= @customer.height
-          .user-review__details-pt.mb-3.line-bottom
-            %p Twøj osobisty trener
-            = image_tag "Rysiu.png", alt: "logo", class: "pt__photo"
-  -# .box#calendar-box
+
+    .my-5{style:"
+        width: 100%;
+        margin: auto;
+        border-radius: 8px;
+        background: linear-gradient(225deg, #bab9b9, #dddcdc);
+        box-shadow:  -7px 7px 14px #636363,
+             7px -7px 14px #ffffff;
+    "}
+      - if @customer.present?
+        .user-review__photo.p-5.mb-5
+          = image_tag @customer.avatar, class: 'user-review__photo' if @customer.avatar.present?
+          %p.paragraph.px-5
+            - unless @customer.profil.present?
+              %h1 Brak ustalonego celu
+              = link_to 'Utworz profil', new_admin_customer_profil_path(@customer)
+            - else
+              %h1.color-primary.px-5= "#{@customer.name}"
+          .user-review__details.px-5
+            %ul.list.line-top
+              %h3.color-primary Twoje dane osobiste:
+              %li.list__item
+                .list__item-table
+                  %b.color-primary Twoj wskaznik BMR:
+                  %span= @customer.bmr.to_f.round(2)
+              %li.list__item.list__item-table
+                %b Typ budowy ciała:
+                %span= @customer.body_type
+              %li.list__item.list__item-table
+                %b Twoja waga:
+                %span= @customer.weight
+              %li.list__item.list__item-table
+                %b Twoj zwrost:
+                %span= @customer.height
+            .user-review__details-pt.mb-3.line-bottom
+              %p Twøj osobisty trener
+              = image_tag "Rysiu.png", alt: "logo", class: "pt__photo"
+    -# .box#calendar-box
 
 
 
