@@ -127,4 +127,5 @@ window.addEventListener('load', () => {
     cal.showHeader(currentMonth, currentYear) +
     cal.showCalendar(currentMonth, currentYear)
   toDo.loadTasks()
+  toDo.findPTTasks()
 })

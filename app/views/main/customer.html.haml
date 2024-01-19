@@ -55,11 +55,19 @@
         %ul.list-group#tasks-list
           - if @customer.tasks.exists?
             - @customer.tasks.each do |task|
-              %li.list-group-item.checkbox
-                %input{type: "checkbox"}
-                = link_to task.exercise.name, exercise_path(task.exercise)
+              - day = task.date.mday
+              - date = task.date.to_datetime.to_f * 1000
+              - id = task.id
+              %li.list-group-item.d-flex.justify-content-between.align-items-center
+                .row
+                  .col-2
+                    = form_for([@customer, task], html: {id: "task_is_complete#{id}", remote: true}) do |t|
+                      = t.check_box :is_complete, onchange: "toDo.ptTaskChange(#{id}, #{day}, #{date});", data: "#{task.date}", id: "#{id}"
+                      %input{type: "hidden", class: "pttask", name: "pttask", value: "{'name':'#{task.exercise.name}','data':'#{task.date}','is_complete':'#{task.is_complete}','id':'#{id}'}"}
+                  .col-10
+                    = link_to task.exercise.name, exercise_path(task.exercise)
                 = task.marks
-
+                = task.date
 
 
 
