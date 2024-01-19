@@ -1,17 +1,17 @@
 .customer_home-header
   .customer_home-header__header
-    %h1.customer_home-header__heading
-      %h5.heading-secondary.mt-3= "Goal: #{@customer.profil.goal}"
+    %h3.customer_home-header__heading
+      %h3.text-center.color-primary.mt-5= "Goal: #{@customer.profil.goal}"
 %main.datails{style:"background:#cfcece;"}
-  .callendar{style:"margin:auto;padding:1rem;background:#cfcece;"}
+  .callendar{style:"margin:auto;padding:1rem;background:#cfcece;max-width:90vw;"}
     .callendar--header{style:"
         width: 100%;
         margin: auto;
         height: 350px;
         border-radius: 8px;
         background: linear-gradient(225deg, #bab9b9, #dddcdc);
-        box-shadow:  -7px 7px 14px #636363,
-             7px -7px 14px #ffffff;
+        box-shadow:  inset -7px 7px 14px #636363,
+             inset 7px -7px 14px #ffffff;
     "}
       .callendar--header-actions
         %span#time-now
@@ -43,14 +43,14 @@
     .callendar-deatials.px-0{style:"background-color: #cfcece;"}
       .calendar.inner-box#user-tasks{style:"border-radius: 8px;
               background: linear-gradient(225deg, #dad6d6, #ffffff);
-              box-shadow:  -10px 10px 12px #636262,
-             10px -10px 12px #ffffff;"}
+              box-shadow:  inset -10px 10px 12px #636262,
+             inset 10px -10px 12px #ffffff;"}
         %h1.color-primary Your scheduled tasks.
-        %ul.list-group#tasks-list
+        %ul.list-group#tasks-list{style:"background:#cfcece;"}
       .calendar.inner-box#user-raining-tasks{style:"border-radius: 8px;
               background: linear-gradient(225deg, #dad6d6, #ffffff);
-              box-shadow:  -10px 10px 12px #636262,
-             10px -10px 12px #ffffff;"}
+              box-shadow:  inset -10px 10px 12px #636262,
+             inset 10px -10px 12px #ffffff;"}
         %h1.color-primary Scheduled training sessions.
         %ul.list-group#tasks-list
           - if @customer.tasks.exists?
@@ -146,109 +146,157 @@
   let today = new Date().getDate();
   $(".day-number:contains('" + today + "')").addClass('today-mark');
 
-
-
-
-
-
 .customer_home-header
   .customer_home-header__header
-    %h1.customer_home-header__heading
-      %h5.heading-secondary.mt-0= "Cel: #{@customer.profil.goal}"
-%main.datails.p-2
-  .card
-    .callendar
-      .callendar--header
-        .callendar--header-actions
-          %span#time-now
-          .callendar--header-actions-sub
-            .half
-              #callendar_submenu.menu-btn{title: "Menu"}
-                .btn-line
-                .btn-line
-                .btn-line
-              = render(:partial => "partials/callendar_submenu")
-              %span.heading-collored Today's plan
-            .half
-              %svg.side-nav__icon.fill-white.active.icons
-                %use{"xlink:href" => "#{asset_path('sprite.svg')}#icon-accessibility"}
-              %svg.side-nav__icon.fill-white.icons{title: "Dieta"}
-                %use{"xlink:href" => "#{asset_path('sprite.svg')}#icon-forkandspoon", title: "Diet"}
-        .callendar--header-callendar
-          .today-date
-            .date-marker
-              %h1.day#calendar-today-1
-                = Date.current
-              %p.month#calendar-month-1
-                = Time.now.strftime("%m")
-              .date-tasks
-                -# %p= "#{@today.size} zadania"
-                %p= "10 tasks"
-          .main-callendar
-            .day-of-week 
-              .day-name Pon
-              .day-number 0
-              .day-number 4
-              .day-number 11
-              .day-number 18
-              .day-number 25
-            .day-of-week
-              .day-name Wto
-              .day-number 0
-              .day-number 5
-              .day-number 12
-              .day-number 19
-              .day-number 26
-            .day-of-week 
-              .day-name Sro
-              .day-number 0
-              .day-number 6
-              .day-number 13
-              .day-number 20
-              .day-number 27
-            .day-of-week 
-              .day-name Czw
-              .day-number 0
-              .day-number 7
-              .day-number 14
-              .day-number 21
-              .day-number 28
-            .day-of-week 
-              .day-name Pia
-              .day-number 1
-              .day-number 8
-              .day-number 15
-              .day-number 22
-              .day-number 29
-            .day-of-week 
-              .day-name Sob
-              .day-number 2
-              .day-number 9
-              .day-number 16
-              .day-number 23
-              .day-number 30
-            .day-of-week 
-              .day-name Nie
-              .day-number 3
-              .day-number 10
-              .day-number 17
-              .day-number 24
-              .day-number 1
- 
-      .callendar-deatials
-        .calendar.inner-box#user-tasks
-          %h1.color-primary Your scheduled tasks.
-          %ul.list-group#tasks-list
-        .calendar.inner-box#user-raining-tasks
-          %h1.color-primary Scheduled training sessions.
-          %ul.list-group#tasks-list
-            - if @customer.tasks.exists?
-              - @customer.tasks.each do |task|
-                %li.list-group-item.checkbox
-                  %input{type: "checkbox"}
-                  = link_to task.exercise.name, exercise_path(task.exercise)
-                  = task.marks
+    %h3.customer_home-header__heading
+      %h3.text-center.color-primary.mt-5= "Goal: #{@customer.profil.goal}"
+%main.datails{style:"background:#cfcece;"}
+  .callendar{style:"margin:auto;padding:1rem;background:#cfcece;max-width:90vw;"}
+    .callendar--header{style:"
+        width: 100%;
+        margin: auto;
+        height: 350px;
+        border-radius: 8px;
+        background: linear-gradient(225deg, #bab9b9, #dddcdc);
+        box-shadow:  -7px 7px 14px #636363,
+             7px -7px 14px #ffffff;
+    "}
+      .callendar--header-actions
+        %span#time-now
+        .callendar--header-actions-sub
+          .half
+            #callendar_submenu.menu-btn{title: "Menu"}
+              .btn-line
+              .btn-line
+              .btn-line
+            = render(:partial => "partials/callendar_submenu")
+            %span Today's plan
+          .half
+            %svg.side-nav__icon.fill-white.active.icons
+              %use{"xlink:href" => "#{asset_path('sprite.svg')}#icon-accessibility"}
+            %svg.side-nav__icon.fill-white.icons{title: "Dieta"}
+              %use{"xlink:href" => "#{asset_path('sprite.svg')}#icon-forkandspoon", title: "Diet"}
+      .callendar--header-callendar
+        .today-date
+          .date-marker
+            %h1.day#calendar-today
+              = Date.current
+            %p.month#calendar-month 
+              = Time.now.strftime("%m")
+          .date-tasks
+            -# %p= "#{@today.size} zadania"
+            %p= "10 tasks"
+        .main-callendar
+          .day-of-week 
+            .day-name Pon
+            .day-number 0
+            .day-number 4
+            .day-number 11
+            .day-number 18
+            .day-number 25
+          .day-of-week
+            .day-name Wto
+            .day-number 0
+            .day-number 5
+            .day-number 12
+            .day-number 19
+            .day-number 26
+          .day-of-week 
+            .day-name Sro
+            .day-number 0
+            .day-number 6
+            .day-number 13
+            .day-number 20
+            .day-number 27
+          .day-of-week 
+            .day-name Czw
+            .day-number 0
+            .day-number 7
+            .day-number 14
+            .day-number 21
+            .day-number 28
+          .day-of-week 
+            .day-name Pia
+            .day-number 1
+            .day-number 8
+            .day-number 15
+            .day-number 22
+            .day-number 29
+          .day-of-week 
+            .day-name Sob
+            .day-number 2
+            .day-number 9
+            .day-number 16
+            .day-number 23
+            .day-number 30
+          .day-of-week 
+            .day-name Nie
+            .day-number 3
+            .day-number 10
+            .day-number 17
+            .day-number 24
+            .day-number 1
 
+    .callendar-deatials.px-0{style:"background-color: #cfcece;"}
+      .calendar.inner-box#user-tasks{style:"border-radius: 8px;
+              background: linear-gradient(225deg, #dad6d6, #ffffff);
+              box-shadow:  -10px 10px 12px #636262,
+             10px -10px 12px #ffffff;"}
+        %h1.color-primary Your scheduled tasks.
+        %ul.list-group#tasks-list
+      .calendar.inner-box#user-raining-tasks{style:"border-radius: 8px;
+              background: linear-gradient(225deg, #dad6d6, #ffffff);
+              box-shadow:  -10px 10px 12px #636262,
+             10px -10px 12px #ffffff;"}
+        %h1.color-primary Scheduled training sessions.
+        %ul.list-group#tasks-list
+          - if @customer.tasks.exists?
+            - @customer.tasks.each do |task|
+              - day = task.date.mday
+              - date = task.date.to_datetime.to_f * 1000
+              - id = task.id
+              %li.list-group-item.d-flex.justify-content-between.align-items-center{}
+                .row
+                  .col-2
+                    = form_for([@customer, task], html: {id: "task_is_complete#{id}", remote: true}) do |t|
+                      = t.check_box :is_complete, onchange: "toDo.ptTaskChange(#{id}, #{day}, #{date});", data: "#{task.date}", id: "#{id}"
+                      %input{type: "hidden", class: "pttask", name: "pttask", value: "{'name':'#{task.exercise.name}','data':'#{task.date}','is_complete':'#{task.is_complete}','id':'#{id}'}"}
+                  .col-10
+                    = link_to task.exercise.name, exercise_path(task.exercise)
+                = task.marks
+                = task.date
+
+
+
+    .actions
+      - if @customer.present?
+        .user-review__photo
+          = image_tag @customer.avatar, class: 'user-review__photo' if @customer.avatar.present?
+          %p.paragraph.px-5
+            - unless @customer.profil.present?
+              %h1 Brak ustalonego celu
+              = link_to 'Utworz profil', new_admin_customer_profil_path(@customer)
+            - else
+              %h1.color-primary.px-5= "#{@customer.name}"
+          .user-review__details.px-5
+            %ul.list.line-top
+              %h3.color-primary Twoje dane osobiste:
+              %li.list__item
+                .list__item-table
+                  %b.color-primary Twoj wskaznik BMR:
+                  %span= @customer.bmr.to_f.round(2)
+              %li.list__item.list__item-table
+                %b Typ budowy ciała:
+                %span= @customer.body_type
+              %li.list__item.list__item-table
+                %b Twoja waga:
+                %span= @customer.weight
+              %li.list__item.list__item-table
+                %b Twoj zwrost:
+                %span= @customer.height
+            .user-review__details-pt.mb-3.line-bottom
+              %p Twøj osobisty trener
+              = image_tag "Rysiu.png", alt: "logo", class: "pt__photo"
     - if @customer.present?
       .user-review__photo
         = image_tag @customer.avatar, class: 'user-review__photo' if @customer.avatar.present?
@@ -277,4 +325,135 @@
           .user-review__details-pt.mb-3.line-bottom
             %p Twøj osobisty trener
             = image_tag "Rysiu.png", alt: "logo", class: "pt__photo"
+  -# .box#calendar-box
+
+
+
+
+-# .customer_home-header
+-#   .customer_home-header__header
+-#     %h1.customer_home-header__heading
+-#       %h5.heading-secondary.mt-0= "Cel: #{@customer.profil.goal}"
+-# %main.datails.p-2
+-#   .card
+-#     .callendar
+-#       .callendar--header
+-#         .callendar--header-actions
+-#           %span#time-now
+-#           .callendar--header-actions-sub
+-#             .half
+-#               #callendar_submenu.menu-btn{title: "Menu"}
+-#                 .btn-line
+-#                 .btn-line
+-#                 .btn-line
+-#               = render(:partial => "partials/callendar_submenu")
+-#               %span.heading-collored Today's plan
+-#             .half
+-#               %svg.side-nav__icon.fill-white.active.icons
+-#                 %use{"xlink:href" => "#{asset_path('sprite.svg')}#icon-accessibility"}
+-#               %svg.side-nav__icon.fill-white.icons{title: "Dieta"}
+-#                 %use{"xlink:href" => "#{asset_path('sprite.svg')}#icon-forkandspoon", title: "Diet"}
+-#         .callendar--header-callendar
+-#           .today-date
+-#             .date-marker
+-#               %h1.day#calendar-today-1
+-#                 = Date.current
+-#               %p.month#calendar-month-1
+-#                 = Time.now.strftime("%m")
+-#               .date-tasks
+-#                 -# %p= "#{@today.size} zadania"
+-#                 %p= "10 tasks"
+-#           .main-callendar
+-#             .day-of-week 
+-#               .day-name Pon
+-#               .day-number 0
+-#               .day-number 4
+-#               .day-number 11
+-#               .day-number 18
+-#               .day-number 25
+-#             .day-of-week
+-#               .day-name Wto
+-#               .day-number 0
+-#               .day-number 5
+-#               .day-number 12
+-#               .day-number 19
+-#               .day-number 26
+-#             .day-of-week 
+-#               .day-name Sro
+-#               .day-number 0
+-#               .day-number 6
+-#               .day-number 13
+-#               .day-number 20
+-#               .day-number 27
+-#             .day-of-week 
+-#               .day-name Czw
+-#               .day-number 0
+-#               .day-number 7
+-#               .day-number 14
+-#               .day-number 21
+-#               .day-number 28
+-#             .day-of-week 
+-#               .day-name Pia
+-#               .day-number 1
+-#               .day-number 8
+-#               .day-number 15
+-#               .day-number 22
+-#               .day-number 29
+-#             .day-of-week 
+-#               .day-name Sob
+-#               .day-number 2
+-#               .day-number 9
+-#               .day-number 16
+-#               .day-number 23
+-#               .day-number 30
+-#             .day-of-week 
+-#               .day-name Nie
+-#               .day-number 3
+-#               .day-number 10
+-#               .day-number 17
+-#               .day-number 24
+-#               .day-number 1
+ 
+-#       .callendar-deatials
+-#         .calendar.inner-box#user-tasks
+-#           %h1.color-primary Your scheduled tasks.
+-#           %ul.list-group#tasks-list
+-#         .calendar.inner-box#user-raining-tasks
+-#           %h1.color-primary Scheduled training sessions.
+-#           %ul.list-group#tasks-list
+-#             - if @customer.tasks.exists?
+-#               - @customer.tasks.each do |task|
+-#                 %li.list-group-item.checkbox
+-#                   %input{type: "checkbox"}
+-#                   = link_to task.exercise.name, exercise_path(task.exercise)
+-#                   = task.marks
+
+-#     - if @customer.present?
+-#       .user-review__photo
+-#         = image_tag @customer.avatar, class: 'user-review__photo' if @customer.avatar.present?
+-#         %p.paragraph.px-5
+-#           - unless @customer.profil.present?
+-#             %h1 Brak ustalonego celu
+-#             = link_to 'Utworz profil', new_admin_customer_profil_path(@customer)
+-#           - else
+-#             %h1.color-primary.px-5= "#{@customer.name}"
+-#         .user-review__details.px-5
+-#           %ul.list.line-top
+-#             %h3.color-primary Twoje dane osobiste:
+-#             %li.list__item
+-#               .list__item-table
+-#                 %b.color-primary Twoj wskaznik BMR:
+-#                 %span= @customer.bmr.to_f.round(2)
+-#             %li.list__item.list__item-table
+-#               %b Typ budowy ciała:
+-#               %span= @customer.body_type
+-#             %li.list__item.list__item-table
+-#               %b Twoja waga:
+-#               %span= @customer.weight
+-#             %li.list__item.list__item-table
+-#               %b Twoj zwrost:
+-#               %span= @customer.height
+-#           .user-review__details-pt.mb-3.line-bottom
+-#             %p Twøj osobisty trener
+-#             = image_tag "Rysiu.png", alt: "logo", class: "pt__photo"
           
