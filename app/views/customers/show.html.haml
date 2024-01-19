@@ -194,3 +194,23 @@
               %td= "#{@customer.profil.dayly_fat}g"
               %td= "#{@customer.profil.przekoski_fat}g"
               %td= "#{@customer.profil.przekoski_fat}g"
+
+  .tab-pane.fade.datails#customer_trainings
+    .datails.box
+      - unless @customer.tasks.empty?
+        %table.table
+          %thead
+            %tr
+              %th Date
+              %th Exercises
+              %th Time
+              %th 
+          %tbody
+            - @customer.tasks.each do |task|
+              %tr
+                %td= link_to task.date, customer_task_path(@customer, task), title: "Details"
+                %td= task.exercise.name
+                %td= task.time
+                %td= link_to 'Delete', customer_task_path(@customer, task), method: :delete, data: { confirm: 'Are you sure?' }
+
+      = link_to 'Add exercise', new_customer_task_path(@customer), class: "line-top"

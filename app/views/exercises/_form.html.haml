@@ -19,7 +19,7 @@
         %use{"xlink:href" => "#{asset_path('sprite.svg')}#icon-camera"}
       Choose image
   .form__group.form__group-1
-    = f.text_area :instructions, class: "form__input", placeholder: "Instructions"
+    = f.text_area :instructions, class: "form__input", placeholder: "Instructions", rows: 15
     = f.label :instructions, class: "form__label"
   .form__group
     = f.collection_select :equipment_id, Equipment.order(:name), :id, :name, class: "form__input"

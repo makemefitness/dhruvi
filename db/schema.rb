@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_01_18_101005) do
+ActiveRecord::Schema[7.1].define(version: 2024_01_19_083924) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -208,6 +208,19 @@ ActiveRecord::Schema[7.1].define(version: 2024_01_18_101005) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "tasks", force: :cascade do |t|
+    t.bigint "customer_id", null: false
+    t.bigint "exercise_id", null: false
+    t.date "date"
+    t.integer "time"
+    t.boolean "is_complete"
+    t.text "marks"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["customer_id"], name: "index_tasks_on_customer_id"
+    t.index ["exercise_id"], name: "index_tasks_on_exercise_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -231,4 +244,6 @@ ActiveRecord::Schema[7.1].define(version: 2024_01_18_101005) do
   add_foreign_key "ingredients", "ingredient_categories"
   add_foreign_key "recipe_ingredients", "ingredients"
   add_foreign_key "recipe_ingredients", "recipes"
+  add_foreign_key "tasks", "customers"
+  add_foreign_key "tasks", "exercises"
 end
