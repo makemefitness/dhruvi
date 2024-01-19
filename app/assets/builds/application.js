@@ -17917,6 +17917,7 @@
       );
       document.getElementById("tasks-list").innerHTML = tasksHTML;
       this.markCallendar();
+      this.findPTTasks();
     }
     toggleTaskStatus(index) {
       this.tasks[index].isComplete = !this.tasks[index].isComplete;
@@ -18010,6 +18011,42 @@
         targetTaskTime.value = "";
         $("exampleModal").dispose();
       }
+    }
+    findPTTasks() {
+      let tmp = "";
+      let tmp2 = {};
+      let elements = document.getElementsByClassName("pttask");
+      for (let i2 = 0; i2 < elements.length; i2++) {
+        tmp = elements[i2].value.replace(/'/g, '"');
+        tmp2 = JSON.parse(tmp);
+        if (this.checkCurrentCalendar(tmp2.data)) {
+          const stocks = [...document.querySelectorAll(".day-number")].filter(
+            (elements2) => elements2.textContent == new Date(tmp2.data).getDate()
+          );
+          stocks[0].classList.add("mark-pttask");
+          stocks[0].setAttribute("title", tmp2.name);
+          if (document.getElementById(tmp2.id).checked) {
+            stocks[0].classList.add("mark-task-done");
+          } else {
+            stocks[0].classList.remove("mark-task-done");
+          }
+        }
+      }
+      elements = [];
+    }
+    checkCurrentCalendar(date) {
+      return document.getElementById("month").value == new Date(date).getMonth() && document.getElementById("year").value == new Date(date).getFullYear();
+    }
+    ptTaskChange(id2, day, date) {
+      console.log(`Task ma numer ${id2}`);
+      const stocks = [...document.querySelectorAll(".day-number")].filter(
+        (elements) => elements.textContent == day
+      );
+      if (this.checkCurrentCalendar(new Date(date))) {
+        stocks[0].classList.toggle("mark-task-done");
+      }
+      let task = `#task_is_complete${id2}`;
+      $(document.querySelector(task))[0].requestSubmit();
     }
   };
   window.addEventListener("load", () => {
@@ -18118,6 +18155,7 @@
     document.getElementById("calendar-month").innerText = cal.showCurrentMonth();
     document.getElementById("calendar-box").innerHTML = cal.showHeader(currentMonth, currentYear) + cal.showCalendar(currentMonth, currentYear);
     toDo.loadTasks();
+    toDo.findPTTasks();
   });
 
   // app/javascript/application.js

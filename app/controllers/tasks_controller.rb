@@ -1,6 +1,7 @@
 class TasksController < ApplicationController
   before_action :set_customer, expect: [:destroy, :show]
   before_action :set_task, only: %i[ show edit update destroy ]
+  skip_before_action :verify_authenticity_token, only: :update
 
   # GET /tasks or /tasks.json
   def index
@@ -42,7 +43,7 @@ class TasksController < ApplicationController
     @task = Task.find(params[:id])
     respond_to do |format|
       if @task.update(task_params)
-        format.html { redirect_to customer_path(@customer), notice: 'Training has been updated!' }
+        format.html { redirect_to main_customer_path(@customer), notice: 'Training has been updated!' }
         format.json { render :index, status: :created, location: @task }
         format.js {}
       else
@@ -75,6 +76,6 @@ class TasksController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def task_params
-    params.require(:task).permit(:exercise_id, :date, :time, :marks)
+    params.require(:task).permit(:exercise_id, :date, :time, :marks, :is_complete)
   end
 end

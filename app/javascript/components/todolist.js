@@ -23,6 +23,7 @@ class ToDoListClass {
     )
     document.getElementById('tasks-list').innerHTML = tasksHTML
     this.markCallendar()
+    this.findPTTasks()
   }
 
   toggleTaskStatus(index) {
@@ -141,6 +142,47 @@ class ToDoListClass {
       $('exampleModal').dispose()
       // $('exampleModal').modal('dispose')
     }
+  }
+
+  findPTTasks() {
+    let tmp = ''
+    let tmp2 = {}
+    let elements = document.getElementsByClassName('pttask')
+    for (let i = 0; i < elements.length; i++) {
+      tmp = elements[i].value.replace(/'/g, '"')
+      tmp2 = JSON.parse(tmp)
+      if (this.checkCurrentCalendar(tmp2.data)) {
+        const stocks = [...document.querySelectorAll('.day-number')].filter(
+          (elements) => elements.textContent == new Date(tmp2.data).getDate()
+        ) //note that `includes` is case sensitive
+        stocks[0].classList.add('mark-pttask')
+        stocks[0].setAttribute('title', tmp2.name)
+        if (document.getElementById(tmp2.id).checked) {
+          stocks[0].classList.add('mark-task-done')
+        } else {
+          stocks[0].classList.remove('mark-task-done')
+        }
+      }
+    }
+    elements = []
+  }
+
+  checkCurrentCalendar(date) {
+    return (
+      document.getElementById('month').value == new Date(date).getMonth() &&
+      document.getElementById('year').value == new Date(date).getFullYear()
+    )
+  }
+  ptTaskChange(id, day, date) {
+    console.log(`Task ma numer ${id}`)
+    const stocks = [...document.querySelectorAll('.day-number')].filter(
+      (elements) => elements.textContent == day
+    )
+    if (this.checkCurrentCalendar(new Date(date))) {
+      stocks[0].classList.toggle('mark-task-done')
+    }
+    let task = `#task_is_complete${id}`
+    $(document.querySelector(task))[0].requestSubmit()
   }
 }
 
