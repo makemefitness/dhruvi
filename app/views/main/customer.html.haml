@@ -7,7 +7,7 @@
     .callendar--header{style:"
         width: 100%;
         margin: auto;
-        height: 300px;
+        height: 350px;
         border-radius: 8px;
         background: linear-gradient(225deg, #bab9b9, #dddcdc);
         box-shadow:  -7px 7px 14px #636363,
@@ -31,60 +31,15 @@
       .callendar--header-callendar
         .today-date
           .date-marker
-            %h1.day 21
-            %p.month Marc
+            %h1.day#calendar-today
+              = Date.current
+            %p.month#calendar-month 
+              = Time.now.strftime("%m")
           .date-tasks
-            %p 4 tasks
-        .main-callendar
-          .day-of-week 
-            .day-name Mon
-            .day-number 0
-            .day-number 4
-            .day-number 11
-            .day-number 18
-            .day-number 25
-          .day-of-week
-            .day-name Thu
-            .day-number 0
-            .day-number 5
-            .day-number 12
-            .day-number 19
-            .day-number 26
-          .day-of-week 
-            .day-name Wen
-            .day-number 0
-            .day-number 6
-            .day-number 13
-            .day-number 20
-            .day-number 27
-          .day-of-week 
-            .day-name Thru
-            .day-number 0
-            .day-number 7
-            .day-number 14
-            .day-number 21
-            .day-number 28
-          .day-of-week 
-            .day-name Fri
-            .day-number 1
-            .day-number 8
-            .day-number 15
-            .day-number 22
-            .day-number 29
-          .day-of-week 
-            .day-name Sut
-            .day-number 2
-            .day-number 9
-            .day-number 16
-            .day-number 23
-            .day-number 30
-          .day-of-week 
-            .day-name Sun
-            .day-number 3
-            .day-number 10
-            .day-number 17
-            .day-number 24
-            .day-number 1
+            -# %p= "#{@today.size} zadania"
+            %p= "10 tasks"
+        .main-callendar#calendar-box
+
     .callendar-deatials.px-0{style:"background-color: #cfcece;"}
       .calendar.inner-box#user-tasks{style:"border-radius: 8px;
               background: linear-gradient(225deg, #dad6d6, #ffffff);
@@ -165,6 +120,7 @@
           .user-review__details-pt.mb-3.line-bottom
             %p Twøj osobisty trener
             = image_tag "Rysiu.png", alt: "logo", class: "pt__photo"
+  -# .box#calendar-box
             
 %script
   function timeNow(){
@@ -213,60 +169,64 @@
         .callendar--header-callendar
           .today-date
             .date-marker
-              %h1.day 21
-              %p.month Marc
-            .date-tasks
-              %p 4 tasks
+              %h1.day#calendar-today-1
+                = Date.current
+              %p.month#calendar-month-1
+                = Time.now.strftime("%m")
+              .date-tasks
+                -# %p= "#{@today.size} zadania"
+                %p= "10 tasks"
           .main-callendar
             .day-of-week 
-              .day-name Mon
+              .day-name Pon
               .day-number 0
               .day-number 4
               .day-number 11
               .day-number 18
               .day-number 25
             .day-of-week
-              .day-name Thu
+              .day-name Wto
               .day-number 0
               .day-number 5
               .day-number 12
               .day-number 19
               .day-number 26
             .day-of-week 
-              .day-name Wen
+              .day-name Sro
               .day-number 0
               .day-number 6
               .day-number 13
               .day-number 20
               .day-number 27
             .day-of-week 
-              .day-name Thru
+              .day-name Czw
               .day-number 0
               .day-number 7
               .day-number 14
               .day-number 21
               .day-number 28
             .day-of-week 
-              .day-name Fri
+              .day-name Pia
               .day-number 1
               .day-number 8
               .day-number 15
               .day-number 22
               .day-number 29
             .day-of-week 
-              .day-name Sut
+              .day-name Sob
               .day-number 2
               .day-number 9
               .day-number 16
               .day-number 23
               .day-number 30
             .day-of-week 
-              .day-name Sun
+              .day-name Nie
               .day-number 3
               .day-number 10
               .day-number 17
               .day-number 24
               .day-number 1
+ 
       .callendar-deatials
         .calendar.inner-box#user-tasks
           %h1.color-primary Your scheduled tasks.

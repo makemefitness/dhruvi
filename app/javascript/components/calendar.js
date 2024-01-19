@@ -107,6 +107,8 @@ class MyCalendarClass {
     document.getElementById('calendar-box').innerHTML =
       this.showHeader(currentMonth, currentYear) +
       this.showCalendar(currentMonth, currentYear)
+
+    //--------------------------------------------------
     toDo.loadTasks()
     toDo.findPTTasks()
   }
@@ -122,4 +124,5 @@ window.addEventListener('load', () => {
   document.getElementById('calendar-box').innerHTML =
     cal.showHeader(currentMonth, currentYear) +
     cal.showCalendar(currentMonth, currentYear)
+  toDo.loadTasks()
 })

@@ -17995,13 +17995,13 @@
     document.getElementById("calendar-today").innerText = cal.showToday();
     document.getElementById("calendar-month").innerText = cal.showCurrentMonth();
     document.getElementById("calendar-box").innerHTML = cal.showHeader(currentMonth, currentYear) + cal.showCalendar(currentMonth, currentYear);
+    toDo.loadTasks();
   });
 
   // app/javascript/components/todolist.js
   var ToDoListClass = class {
     constructor() {
       this.tasks = JSON.parse(localStorage.getItem("TASKS"));
-      console.log(this.tasks);
       if (!this.tasks) {
         this.tasks = [
           {
@@ -18014,7 +18014,6 @@
       }
     }
     loadTasks() {
-      console.log(this.tasks);
       localStorage.setItem("TASKS", JSON.stringify(this.tasks));
       let tasksHTML = this.tasks.reduce(
         (html, task, index) => html += this.generateTaskHtml(task, index),
@@ -18042,7 +18041,7 @@
             </label>
           </div>
           <div class="col-md-10 col-xs-10 col-lg-10 col-sm-10 task-text ${task.isComplete ? "complete" : ""}">
-            ${task.time} - ${task.task}
+            ${new Date(task.date).toLocaleDateString()} - ${task.task}
           </div>
           <div class="col-md-1 col-xs-1 col-lg-1 col-sm-1 delete-icon-area">
             <a class="" href="#" onClick="toDo.deleteTask(event, ${index})"><i id="deleteTask" data-id="${index}" class="delete-icon far fa-trash-alt"></i></a>
@@ -18054,16 +18053,18 @@
     markCallendar() {
       let elements = document.getElementsByClassName("day-number");
       let today = (/* @__PURE__ */ new Date()).getDate();
+      let calendarMonth = document.getElementById("month").value;
+      let calendarYear = document.getElementById("year").value;
       for (let i2 = 0; i2 < elements.length; i2++) {
         elements[i2].classList.remove("mark-task");
         elements[i2].classList.remove("mark-task-done");
       }
       this.tasks.forEach((task) => {
-        console.log(task.date);
         let day = new Date(task.date).getDate();
-        console.log(day);
+        let month = new Date(task.date).getMonth();
+        let year = new Date(task.date).getFullYear();
         for (let i2 = 0; i2 < elements.length; i2++) {
-          if (elements[i2].textContent == day) {
+          if (elements[i2].textContent == day && month == calendarMonth && year == calendarYear) {
             if (task.isComplete) {
               elements[i2].classList.add("mark-task");
               elements[i2].classList.add("mark-task-done");
@@ -18091,8 +18092,7 @@
       let targetTask = document.getElementById("task");
       let targetTaskDate = document.getElementById("task-date");
       let targetTaskTime = document.getElementById("task-time");
-      time = !(time == "") ? time : "Brak godz.";
-      console.log(time + " - To jeets task");
+      time = !(time == "") ? time : "No time.";
       let newTask = {
         task,
         isComplete: false,
@@ -18112,7 +18112,7 @@
         targetTask.value = "";
         targetTaskDate.value = "";
         targetTaskTime.value = "";
-        $("exampleModal").modal("dispose");
+        $("exampleModal").dispose();
       }
     }
   };
@@ -18120,18 +18120,6 @@
     toDo = new ToDoListClass();
     toDo.loadTasks();
   };
-
-  // app/javascript/application.js
-  $(function() {
-    console.log("Hello world z korwy pierwszy start");
-  });
-  document.addEventListener("turbo:load", function() {
-    alert("ladujesies");
-  });
-  $(function() {
-    $('[data-toggle="popover"]').popover();
-  });
-  $(".dropdown-toggle").dropdown();
 })();
 /*! Bundled license information:
 
