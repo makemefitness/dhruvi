@@ -4,6 +4,8 @@ class Customer < ApplicationRecord
   has_one_attached :avatar
   has_one :body_type
   has_one :profil, dependent: :destroy
+  has_many :tasks
+  has_many :exercises, through: :tasks
 
   # Default sex
   enum sex: [:man, :woman]

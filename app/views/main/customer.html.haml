@@ -23,86 +23,82 @@
                 .btn-line
                 .btn-line
                 .btn-line
-              %span.heading-collored Dzisiejszy plan
+              %span.heading-collored Today's plan
             .half
               %svg.side-nav__icon.fill-white.active.icons
                 %use{"xlink:href" => "#{asset_path('sprite.svg')}#icon-accessibility"}
               %svg.side-nav__icon.fill-white.icons{title: "Dieta"}
-                %use{"xlink:href" => "#{asset_path('sprite.svg')}#icon-forkandspoon", title: "Dieta"}
+                %use{"xlink:href" => "#{asset_path('sprite.svg')}#icon-forkandspoon", title: "Diet"}
         .callendar--header-callendar
           .today-date
             .date-marker
               %h1.day 21
               %p.month Marc
             .date-tasks
-              %p 4 zadania
+              %p 4 tasks
           .main-callendar
             .day-of-week 
-              .day-name Pon
+              .day-name Mon
               .day-number 0
               .day-number 4
               .day-number 11
               .day-number 18
               .day-number 25
             .day-of-week
-              .day-name Wto
+              .day-name Thu
               .day-number 0
               .day-number 5
               .day-number 12
               .day-number 19
               .day-number 26
             .day-of-week 
-              .day-name Sro
+              .day-name Wen
               .day-number 0
               .day-number 6
               .day-number 13
               .day-number 20
               .day-number 27
             .day-of-week 
-              .day-name Czw
+              .day-name Thru
               .day-number 0
               .day-number 7
               .day-number 14
               .day-number 21
               .day-number 28
             .day-of-week 
-              .day-name Pia
+              .day-name Fri
               .day-number 1
               .day-number 8
               .day-number 15
               .day-number 22
               .day-number 29
             .day-of-week 
-              .day-name Sob
+              .day-name Sut
               .day-number 2
               .day-number 9
               .day-number 16
               .day-number 23
               .day-number 30
             .day-of-week 
-              .day-name Nie
+              .day-name Sun
               .day-number 3
               .day-number 10
               .day-number 17
               .day-number 24
               .day-number 1
       .callendar-deatials
-        .today-action
-          .today-action-time
-            DZISIAJ
-            %br
-            Spacer
-            %br 1 godz
-          .today-action-time-description
-            Bieg wraz z seriæ pompek
-        .today-action
-          .today-action-time
-            DZISIAJ
-            %br
-            Spacer
-            %br 1 godz
-          .today-action-time-description
-            Bieg wraz z seriæ pompek2
+        .calendar.inner-box#user-tasks
+          %h1.color-primary Your scheduled tasks.
+          %ul.list-group#tasks-list
+        .calendar.inner-box#user-raining-tasks
+          %h1.color-primary Scheduled training sessions.
+          %ul.list-group#tasks-list
+            - if @customer.tasks.exists?
+              - @customer.tasks.each do |task|
+                %li.list-group-item.checkbox
+                  %input{type: "checkbox"}
+                  = link_to task.exercise.name, exercise_path(task.exercise)
+                  = task.marks
 
 
 

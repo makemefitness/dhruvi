@@ -1,0 +1,10 @@
+.inner-container
+  .datails.box
+    %h1.heading-secondary= "#{@task.date} time: #{@task.time}min."
+    %h2 Exercise:
+    %h3= @task.exercise.name
+    %h2 Marks:
+    %h3= @task.marks
+    = edit_outline_button 'Edit', edit_customer_task_path(@customer, @task)
+    \|
+    = edit_outline_button 'Back', customer_path(@customer)

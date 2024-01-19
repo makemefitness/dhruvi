@@ -42,6 +42,7 @@ Rails.application.routes.draw do
   # resources ------------------------------------------------------------------------------#
   resources :customers do
     resource :profil
+    resources :tasks
   end
   resources :ingredients
   resources :recipes
