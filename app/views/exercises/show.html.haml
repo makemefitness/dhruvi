@@ -38,6 +38,6 @@
   -#     - @same_equipment.each do |exercise|
   -#       = link_to exercise.name, exercise_path(exercise)
   .text-center.mb-3
-    = link_to 'Edit', edit_exercise_path(@exercise)
+    = link_to 'Edit', edit_exercise_path(@exercise), class: "my-btn my-btn--pink my-btn--3"
     \|
-    = link_to 'Back', exercises_path
+    = link_to 'Back', exercises_path, class: "my-btn my-btn--pink my-btn--3"

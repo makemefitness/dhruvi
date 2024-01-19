@@ -13,6 +13,41 @@
       %p
         %b= @exercises_count
         exercises
+  %ul.nav.px-5.pt-1#trainings_submenu
+    %li.nav-item
+      = link_to "All exercises", exercises_path, remote: true
+    &nbsp; &nbsp; 
+    %li.nav-item.dropdown
+      - if Target.all.size > 0
+      
+        %button#dropdownMenuOffset.btn.btn-outline-secondary.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-offset" => "10,20", "data-bs-toggle" => "dropdown", :type => "button"}
+          Target
+        #category_menu.dropdown-menu.dropdown-menu-right{"aria-labelledby" => "dropdownMenuOffset"}
+          - Target.all.each do |category|
+            = link_to category.name, "/exercises?target=#{category.id}", class: "dropdown-item", remote: true
+          .dropdown-divider
+          = link_to "Add target", new_exercise_path, class: "dropdown-item", remote: true
+    &nbsp; &nbsp; 
+    %li.nav-item.dropdown
+      - if BodyPart.all.size > 0
+      
+        %button#dropdownMenuOffset.btn.btn-outline-secondary.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-offset" => "10,20", "data-bs-toggle" => "dropdown", :type => "button"}
+          Body Part
+        #category_menu.dropdown-menu.dropdown-menu-right{"aria-labelledby" => "dropdownMenuOffset"}
+          - BodyPart.all.each do |category|
+            = link_to category.name, "/exercises?bodypart=#{category.id}", class: "dropdown-item", remote: true
+          .dropdown-divider
+          = link_to "Add BodyPart", new_exercise_path, class: "dropdown-item", remote: true
+  -# .dropdown
+  -#   %a.btn.btn-secondary.dropdown-toggle{"aria-expanded" => "false", "data-bs-toggle" => "dropdown", href: "#", role: "button"}
+  -#     Dropdown link
+  -#   %ul.dropdown-menu
+  -#     %li
+  -#       %a.dropdown-item{href: "#"} Action
+  -#     %li
+  -#       %a.dropdown-item{href: "#"} Another action
+  -#     %li
+  -#       %a.dropdown-item{href: "#"} Something else here
   .p-5
     %section
       = form_for :customers, method: :get do |f|
@@ -104,3 +139,4 @@
         %button.nav-link#cautions-tab{'data-bs-toggle': "tab",'data-bs-target': "#card-view", "data-togle":"tab", role: "tab", "aria-controls": "card-view", "aria-selected": false} Card view
 
   %main.datails.tab-content#nav-tabContent
+

@@ -18004,6 +18004,10 @@
   document.addEventListener("turbo:load", function() {
     alert("ladujesies");
   });
+  $(function() {
+    $('[data-toggle="popover"]').popover();
+  });
+  $(".dropdown-toggle").dropdown();
 })();
 /*! Bundled license information:
 
