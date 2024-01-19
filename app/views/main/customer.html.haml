@@ -1,19 +1,10 @@
 .customer_home-header
-  .gallery
-    %figure.gallery__item
-      = image_tag "main_header/art-bicycle.jpg", alt: "logo", class: "gallery__photo"
-    %figure.gallery__item
-      = image_tag "main_header/casual-close.jpg", alt: "logo", class: "gallery__photo"
-    %figure.gallery__item
-      = image_tag "main_header/berries.jpg", alt: "logo", class: "gallery__photo"
-    %figure.gallery__item
-      = image_tag "main_header/appetizer.jpg", alt: "logo", class: "gallery__photo"
   .customer_home-header__header
     %h1.customer_home-header__heading
-      %h1.heading-secondary.mt-0= "Cel: #{@customer.profil.goal}"
+      %h2.heading-secondary.mt-0= "Cel: #{@customer.profil.goal}"
 %main.datails
   .sub-main
-    .callendar
+    .callendar1
       .callendar--header
         .callendar--header-actions
           %span#time-now
@@ -104,36 +95,63 @@
 
 
 
-
-    .actions
-      - if @customer.present?
-        .user-review__photo
-          = image_tag @customer.avatar, class: 'user-review__photo' if @customer.avatar.present?
-          %p.paragraph.px-5
-            - unless @customer.profil.present?
-              %h1 Brak ustalonego celu
-              = link_to 'Utworz profil', new_admin_customer_profil_path(@customer)
-            - else
-              %h1.color-primary.px-5= "#{@customer.name}"
-          .user-review__details.px-5
-            %ul.list.line-top
-              %h3.color-primary Twoje dane osobiste:
-              %li.list__item
-                .list__item-table
-                  %b.color-primary Twoj wskaznik BMR:
-                  %span= @customer.bmr.to_f.round(2)
-              %li.list__item.list__item-table
-                %b Typ budowy ciała:
-                %span= @customer.body_type
-              %li.list__item.list__item-table
-                %b Twoja waga:
-                %span= @customer.weight
-              %li.list__item.list__item-table
-                %b Twoj zwrost:
-                %span= @customer.height
-            .user-review__details-pt.mb-3.line-bottom
-              %p Twøj osobisty trener
-              = image_tag "Rysiu.png", alt: "logo", class: "pt__photo"
+  - if @customer.present?
+    .user-review__photo
+      = image_tag @customer.avatar, class: 'user-review__photo' if @customer.avatar.present?
+      %p.paragraph.px-5
+        - unless @customer.profil.present?
+          %h1 Brak ustalonego celu
+          = link_to 'Utworz profil', new_admin_customer_profil_path(@customer)
+        - else
+          %h1.color-primary.px-5= "#{@customer.name}"
+      .user-review__details.px-5
+        %ul.list.line-top
+          %h3.color-primary Twoje dane osobiste:
+          %li.list__item
+            .list__item-table
+              %b.color-primary Twoj wskaznik BMR:
+              %span= @customer.bmr.to_f.round(2)
+          %li.list__item.list__item-table
+            %b Typ budowy ciała:
+            %span= @customer.body_type
+          %li.list__item.list__item-table
+            %b Twoja waga:
+            %span= @customer.weight
+          %li.list__item.list__item-table
+            %b Twoj zwrost:
+            %span= @customer.height
+        .user-review__details-pt.mb-3.line-bottom
+          %p Twøj osobisty trener
+          = image_tag "Rysiu.png", alt: "logo", class: "pt__photo"
+  .actions
+    - if @customer.present?
+      .user-review__photo
+        = image_tag @customer.avatar, class: 'user-review__photo' if @customer.avatar.present?
+        %p.paragraph.px-5
+          - unless @customer.profil.present?
+            %h1 Brak ustalonego celu
+            = link_to 'Utworz profil', new_admin_customer_profil_path(@customer)
+          - else
+            %h1.color-primary.px-5= "#{@customer.name}"
+        .user-review__details.px-5
+          %ul.list.line-top
+            %h3.color-primary Twoje dane osobiste:
+            %li.list__item
+              .list__item-table
+                %b.color-primary Twoj wskaznik BMR:
+                %span= @customer.bmr.to_f.round(2)
+            %li.list__item.list__item-table
+              %b Typ budowy ciała:
+              %span= @customer.body_type
+            %li.list__item.list__item-table
+              %b Twoja waga:
+              %span= @customer.weight
+            %li.list__item.list__item-table
+              %b Twoj zwrost:
+              %span= @customer.height
+          .user-review__details-pt.mb-3.line-bottom
+            %p Twøj osobisty trener
+            = image_tag "Rysiu.png", alt: "logo", class: "pt__photo"
             
 %script
   function timeNow(){
