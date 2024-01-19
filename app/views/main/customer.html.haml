@@ -1,10 +1,198 @@
 .customer_home-header
   .customer_home-header__header
     %h1.customer_home-header__heading
-      %h2.heading-secondary.mt-0= "Cel: #{@customer.profil.goal}"
-%main.datails
-  .sub-main
-    .callendar1
+      %h5.heading-secondary.mt-3= "Goal: #{@customer.profil.goal}"
+%main.datails{style:"background:#cfcece;"}
+  .callendar{style:"margin:auto;padding:1rem;background:#cfcece;"}
+    .callendar--header{style:"
+        width: 100%;
+        margin: auto;
+        height: 300px;
+        border-radius: 8px;
+        background: linear-gradient(225deg, #bab9b9, #dddcdc);
+        box-shadow:  -7px 7px 14px #636363,
+             7px -7px 14px #ffffff;
+    "}
+      .callendar--header-actions
+        %span#time-now
+        .callendar--header-actions-sub
+          .half
+            .menu-btn{title: "Menu"}
+              .btn-line
+              .btn-line
+              .btn-line
+            %span Today's plan
+          .half
+            %svg.side-nav__icon.fill-white.active.icons
+              %use{"xlink:href" => "#{asset_path('sprite.svg')}#icon-accessibility"}
+            %svg.side-nav__icon.fill-white.icons{title: "Dieta"}
+              %use{"xlink:href" => "#{asset_path('sprite.svg')}#icon-forkandspoon", title: "Diet"}
+      .callendar--header-callendar
+        .today-date
+          .date-marker
+            %h1.day 21
+            %p.month Marc
+          .date-tasks
+            %p 4 tasks
+        .main-callendar
+          .day-of-week 
+            .day-name Mon
+            .day-number 0
+            .day-number 4
+            .day-number 11
+            .day-number 18
+            .day-number 25
+          .day-of-week
+            .day-name Thu
+            .day-number 0
+            .day-number 5
+            .day-number 12
+            .day-number 19
+            .day-number 26
+          .day-of-week 
+            .day-name Wen
+            .day-number 0
+            .day-number 6
+            .day-number 13
+            .day-number 20
+            .day-number 27
+          .day-of-week 
+            .day-name Thru
+            .day-number 0
+            .day-number 7
+            .day-number 14
+            .day-number 21
+            .day-number 28
+          .day-of-week 
+            .day-name Fri
+            .day-number 1
+            .day-number 8
+            .day-number 15
+            .day-number 22
+            .day-number 29
+          .day-of-week 
+            .day-name Sut
+            .day-number 2
+            .day-number 9
+            .day-number 16
+            .day-number 23
+            .day-number 30
+          .day-of-week 
+            .day-name Sun
+            .day-number 3
+            .day-number 10
+            .day-number 17
+            .day-number 24
+            .day-number 1
+    .callendar-deatials.px-0{style:"background-color: #cfcece;"}
+      .calendar.inner-box#user-tasks{style:"border-radius: 8px;
+              background: linear-gradient(225deg, #dad6d6, #ffffff);
+              box-shadow:  -10px 10px 12px #636262,
+             10px -10px 12px #ffffff;"}
+        %h1.color-primary Your scheduled tasks.
+        %ul.list-group#tasks-list
+      .calendar.inner-box#user-raining-tasks{style:"border-radius: 8px;
+              background: linear-gradient(225deg, #dad6d6, #ffffff);
+              box-shadow:  -10px 10px 12px #636262,
+             10px -10px 12px #ffffff;"}
+        %h1.color-primary Scheduled training sessions.
+        %ul.list-group#tasks-list
+          - if @customer.tasks.exists?
+            - @customer.tasks.each do |task|
+              %li.list-group-item.checkbox
+                %input{type: "checkbox"}
+                = link_to task.exercise.name, exercise_path(task.exercise)
+                = task.marks
+
+
+
+
+    .actions
+      - if @customer.present?
+        .user-review__photo
+          = image_tag @customer.avatar, class: 'user-review__photo' if @customer.avatar.present?
+          %p.paragraph.px-5
+            - unless @customer.profil.present?
+              %h1 Brak ustalonego celu
+              = link_to 'Utworz profil', new_admin_customer_profil_path(@customer)
+            - else
+              %h1.color-primary.px-5= "#{@customer.name}"
+          .user-review__details.px-5
+            %ul.list.line-top
+              %h3.color-primary Twoje dane osobiste:
+              %li.list__item
+                .list__item-table
+                  %b.color-primary Twoj wskaznik BMR:
+                  %span= @customer.bmr.to_f.round(2)
+              %li.list__item.list__item-table
+                %b Typ budowy ciała:
+                %span= @customer.body_type
+              %li.list__item.list__item-table
+                %b Twoja waga:
+                %span= @customer.weight
+              %li.list__item.list__item-table
+                %b Twoj zwrost:
+                %span= @customer.height
+            .user-review__details-pt.mb-3.line-bottom
+              %p Twøj osobisty trener
+              = image_tag "Rysiu.png", alt: "logo", class: "pt__photo"
+    - if @customer.present?
+      .user-review__photo
+        = image_tag @customer.avatar, class: 'user-review__photo' if @customer.avatar.present?
+        %p.paragraph.px-5
+          - unless @customer.profil.present?
+            %h1 Brak ustalonego celu
+            = link_to 'Utworz profil', new_admin_customer_profil_path(@customer)
+          - else
+            %h1.color-primary.px-5= "#{@customer.name}"
+        .user-review__details.px-5
+          %ul.list.line-top
+            %h3.color-primary Twoje dane osobiste:
+            %li.list__item
+              .list__item-table
+                %b.color-primary Twoj wskaznik BMR:
+                %span= @customer.bmr.to_f.round(2)
+            %li.list__item.list__item-table
+              %b Typ budowy ciała:
+              %span= @customer.body_type
+            %li.list__item.list__item-table
+              %b Twoja waga:
+              %span= @customer.weight
+            %li.list__item.list__item-table
+              %b Twoj zwrost:
+              %span= @customer.height
+          .user-review__details-pt.mb-3.line-bottom
+            %p Twøj osobisty trener
+            = image_tag "Rysiu.png", alt: "logo", class: "pt__photo"
+            
+%script
+  function timeNow(){
+  let dt = new Date();
+  let time = dt.getHours() + " : " + dt.getMinutes();
+  let day = dt.getDay();
+  $('#time-now').text(time);
+  $('h1.day').text(dt.getDate());
+  }
+
+  setInterval(function() {
+  timeNow();
+  }, 1000);
+  $('day-number').removeClass('today-mark');
+  let today = new Date().getDate();
+  $(".day-number:contains('" + today + "')").addClass('today-mark');
+
+
+
+
+
+
+  .customer_home-header
+  .customer_home-header__header
+    %h1.customer_home-header__heading
+      %h5.heading-secondary.mt-0= "Cel: #{@customer.profil.goal}"
+%main.datails.p-2
+  .card
+    .callendar
       .callendar--header
         .callendar--header-actions
           %span#time-now
@@ -91,38 +279,6 @@
                   = link_to task.exercise.name, exercise_path(task.exercise)
                   = task.marks
 
-
-
-
-
-  - if @customer.present?
-    .user-review__photo
-      = image_tag @customer.avatar, class: 'user-review__photo' if @customer.avatar.present?
-      %p.paragraph.px-5
-        - unless @customer.profil.present?
-          %h1 Brak ustalonego celu
-          = link_to 'Utworz profil', new_admin_customer_profil_path(@customer)
-        - else
-          %h1.color-primary.px-5= "#{@customer.name}"
-      .user-review__details.px-5
-        %ul.list.line-top
-          %h3.color-primary Twoje dane osobiste:
-          %li.list__item
-            .list__item-table
-              %b.color-primary Twoj wskaznik BMR:
-              %span= @customer.bmr.to_f.round(2)
-          %li.list__item.list__item-table
-            %b Typ budowy ciała:
-            %span= @customer.body_type
-          %li.list__item.list__item-table
-            %b Twoja waga:
-            %span= @customer.weight
-          %li.list__item.list__item-table
-            %b Twoj zwrost:
-            %span= @customer.height
-        .user-review__details-pt.mb-3.line-bottom
-          %p Twøj osobisty trener
-          = image_tag "Rysiu.png", alt: "logo", class: "pt__photo"
   .actions
     - if @customer.present?
       .user-review__photo
