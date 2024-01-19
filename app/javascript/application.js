@@ -10,6 +10,7 @@ import './src/jqury'
 import '@nathanvda/cocoon'
 import './components/thems'
 import './components/calendar'
+import './components/todolist'
 // $('recipe_ingredients').cocoon()
 // import './components/autocomplete'
 $(function () {

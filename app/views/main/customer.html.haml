@@ -17,10 +17,11 @@
         %span#time-now
         .callendar--header-actions-sub
           .half
-            .menu-btn{title: "Menu"}
+            #callendar_submenu.menu-btn{title: "Menu"}
               .btn-line
               .btn-line
               .btn-line
+            = render(:partial => "partials/callendar_submenu")
             %span Today's plan
           .half
             %svg.side-nav__icon.fill-white.active.icons
@@ -186,7 +187,7 @@
 
 
 
-  .customer_home-header
+.customer_home-header
   .customer_home-header__header
     %h1.customer_home-header__heading
       %h5.heading-secondary.mt-0= "Cel: #{@customer.profil.goal}"
@@ -308,19 +309,4 @@
           .user-review__details-pt.mb-3.line-bottom
             %p Twøj osobisty trener
             = image_tag "Rysiu.png", alt: "logo", class: "pt__photo"
-            
-%script
-  function timeNow(){
-  let dt = new Date();
-  let time = dt.getHours() + " : " + dt.getMinutes();
-  let day = dt.getDay();
-  $('#time-now').text(time);
-  $('h1.day').text(dt.getDate());
-  }
-
-  setInterval(function() {
-  timeNow();
-  }, 1000);
-  $('day-number').removeClass('today-mark');
-  let today = new Date().getDate();
-  $(".day-number:contains('" + today + "')").addClass('today-mark');
+          

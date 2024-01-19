@@ -1,39 +1,38 @@
 %nav.sidebar.user-nav__user-sidebar#callendar_menu1
   %ul.user-nav__user-callendar_menu
     %li.user-nav__user-item
-      %a.user-nav__user__link{href: "#", "data-toggle": "modal", "data-target": "#exampleModal"}
+      %a.user-nav__user__link{href: "#", "data-bs-toggle": "modal", "data-bs-target": "#exampleModal", type: "button"}
         %svg.side-nav__icon
           %use{"xlink:href" => "#{asset_path('sprite.svg')}#icon-pencil1"}
-        %span Dodaj własne zadanie!
+        %span Add new task!
     
     %li.user-nav__user-item
       %a.user-nav__user__link{href: '/admin/users/sign_out', "data-method" => 'delete'}
         %svg.side-nav__icon
           %use{"xlink:href" => "#{asset_path('sprite.svg')}#icon-power-off"}
-        %span Wyloguj
+        %span Logout
 
 / Modal
 #exampleModal.modal.fade.color-black{"aria-hidden" => "true", "aria-labelledby" => "exampleModalLabel", :role => "dialog", :tabindex => "-1"}
   .modal-dialog{:role => "document"}
     .modal-content
       .modal-header
-        %h5#exampleModalLabel.modal-title Dodaj nowe zadanie
-        %button.close{"aria-label" => "Close", "data-dismiss" => "modal", :type => "button"}
-          %span{"aria-hidden" => "true"} ×
+        %h5#exampleModalLabel.modal-title Add new task
+        %button.btn-close{"aria-label" => "Close", "data-bs-dismiss" => "modal", :type => "button"}
       .modal-body
         %form
           .form-group
-            %label{for: "task"}Zadanie:
-            %input.form-control.form-control-lg#task{type: "text", "aria-describedby": "Zadanie", placeholder: "Wpisz zadanie."}
+            %label{for: "task"}Task:
+            %input.form-control.form-control-lg#task{type: "text", "aria-describedby": "Zadanie", placeholder: "Zasanie."}
           .row
             .col
-              %label{for: "task"}Data:
-              %input.form-control.form-control-lg#task-date{type: "date", "aria-describedby": "Zadanie", placeholder: "Pdaj date."}
+              %label{for: "task"}Date:
+              %input.form-control.form-control-lg#task-date{type: "date", "aria-describedby": "Zadanie", placeholder: "Date."}
             .col
-              %label{for: "time"}Czas:
-              %input.form-control.form-control-lg#task-time{type: "time", "aria-describedby": "Zadanie", placeholder: "Pdaj czas."}
+              %label{for: "time"}Time:
+              %input.form-control.form-control-lg#task-time{type: "time", "aria-describedby": "Zadanie", placeholder: "Czas."}
       .modal-footer
-        %button.btn.btn-secondary{"data-dismiss" => "modal", :type => "button"} Zamknij
-        %button.btn.btn-primary{:type => "button", onclick: "toDo.addTaskClick()"} Dodaj
+        %button.btn.btn-secondary{"data-bs-dismiss" => "modal", :type => "button"} Close
+        %button.btn.btn-primary{:type => "button", onclick: "toDo.addTaskClick()"} Add task
 %script
 
