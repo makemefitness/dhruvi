@@ -199,10 +199,11 @@
           %span#time-now
           .callendar--header-actions-sub
             .half
-              .menu-btn{title: "Menu"}
+              #callendar_submenu.menu-btn{title: "Menu"}
                 .btn-line
                 .btn-line
                 .btn-line
+              = render(:partial => "partials/callendar_submenu")
               %span.heading-collored Today's plan
             .half
               %svg.side-nav__icon.fill-white.active.icons
@@ -280,7 +281,6 @@
                   = link_to task.exercise.name, exercise_path(task.exercise)
                   = task.marks
 
-  .actions
     - if @customer.present?
       .user-review__photo
         = image_tag @customer.avatar, class: 'user-review__photo' if @customer.avatar.present?

@@ -18005,10 +18005,10 @@
       if (!this.tasks) {
         this.tasks = [
           {
-            task: "Tu mozesz dodawac w\u0142asne zadania",
+            task: "You can add your own tasks here.",
             isComplete: false,
             date: /* @__PURE__ */ new Date(),
-            time: "Brak godz."
+            time: "No time."
           }
         ];
       }
