@@ -11,7 +11,7 @@ main.datails {
   @media only screen and (max-width: $bp-medium) {
     padding: 0;
   }
-  background-color: var(--color-grey-light-1);
+  // background-color: var(--color-grey-light-1);
   border-bottom: var(--border-bottom);
 }
 
@@ -25,7 +25,7 @@ main.datails {
 .callendar,
 .right-side {
   background-color: #fff;
-  box-shadow: var(--shadow-light);
+  // box-shadow: var(--shadow-light);
   padding: 3rem;
   @media only screen and (max-width: $bp-phones) {
     margin: 0;
@@ -35,7 +35,7 @@ main.datails {
 }
 .actions,
 .right-side {
-  box-shadow: var(--shadow-light);
+  // box-shadow: var(--shadow-light);
   padding: 0 0;
   transition: 0.3s all;
   @media only screen and (max-width: $bp-phones) {
@@ -123,7 +123,7 @@ main.datails {
         rgba(#333, 0.9) 30%,
         rgba(#333, 1) 100%
       ),
-      url('../images/app_layout/running.jpeg');
+      url('../app_layout/running.jpeg');
     background-size: cover;
     &:after {
       content: '';
@@ -185,6 +185,9 @@ main.datails {
         flex-direction: column;
         justify-content: center;
         align-items: center;
+        @media only screen and (max-width: $bp-phones) {
+          display: none;
+        }
         .date-marker {
           display: flex;
           flex-direction: column;
@@ -233,7 +236,6 @@ main.datails {
 .user-review:hover,
 .description:hover,
 .box:hover,
-.callendar:hover,
 .actions:hover,
 .today-action:hover {
   box-shadow: var(--shadow-dark);
@@ -245,7 +247,7 @@ main.datails {
   padding: 1.5rem;
   // justify-content: space-between;
   flex-shrink: 5;
-  background-color: var(--color-grey-light-1);
+  // background-color: var(--color-grey-light-1);
   .today-action {
     background-color: #fff;
     box-shadow: var(--shadow-light);
