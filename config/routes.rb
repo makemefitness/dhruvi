@@ -1,4 +1,18 @@
 Rails.application.routes.draw do
+  root "main#home"
+  get 'main/dashboard'
+  get 'main/settings'
+  get 'main/main'
+  get 'main/home'
+  get 'main/customer'
+  get 'main/help'
+  get 'main/about'
+
+  #-----------------------------------------------------------------------------------------#
+  # search - json --------------------------------------------------------------------------#
+  get '/search', to: 'main#search'
+  get '/autocomplete', to: 'main#autocomplete'
+  get 'api/ingredients'
   resources :ingredient_categories
   resources :exercises
 
@@ -22,21 +36,6 @@ Rails.application.routes.draw do
     controllers: 'users',
     views: 'users'
   }
-  get 'main/dashboard'
-  get 'main/settings'
-  get 'main/main'
-  get 'main/home'
-  get 'main/customer'
-  get 'main/help'
-  get 'main/about'
-
-  #-----------------------------------------------------------------------------------------#
-  # search - json --------------------------------------------------------------------------#
-  get '/search', to: 'main#search'
-  get '/autocomplete', to: 'main#autocomplete'
-  get 'api/ingredients'
-  #-----------------------------------------------------------------------------------------#
-
 
   #-----------------------------------------------------------------------------------------#
   # resources ------------------------------------------------------------------------------#
@@ -56,7 +55,4 @@ Rails.application.routes.draw do
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
   # Can be used by load balancers and uptime monitors to verify that the app is live.
   get "up" => "rails/health#show", as: :rails_health_check
-
-  # Defines the root path route ("/")
-  root "main#home"
 end
