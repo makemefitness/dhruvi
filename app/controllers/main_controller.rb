@@ -1,5 +1,6 @@
 class MainController < ApplicationController
   before_action :authenticate_user!, only: [:dashboard]
+  layout 'customer', only: [:customer]
 
   def dashboard; end
   
