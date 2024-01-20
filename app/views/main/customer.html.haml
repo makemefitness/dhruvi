@@ -1,23 +1,24 @@
-.customer_home-header
-  .customer_home-header__header
-    %h3.customer_home-header__heading
-      %h3.text-center.color-primary.mt-5= "Goal: #{@customer.profil.goal}"
-%main.datails{style:"background:#cfcece;"}
-  .callendar{style:"margin:auto;padding:1rem;background:#cfcece;max-width:90vw;"}
+-# .customer_home-header
+-#   .customer_home-header__header
+-#     %h3.customer_home-header__heading
+-#       %h3.text-center.color-primary.mt-5= "Goal: #{@customer.profil.goal}"
+%main.datails
+  .callendar{style:"margin:auto;padding:1rem;max-width:90vw;"}
     .callendar--header{style:"
         width: 100%;
         margin: auto;
         height: 350px;
+        color: black;
         border-radius: 8px;
-        background: linear-gradient(225deg, #bab9b9, #dddcdc);
-        box-shadow:  inset -7px 7px 14px #636363,
-             inset 7px -7px 14px #ffffff;
+        background: #ffffff;
+        box-shadow: -12px 12px 30px #6b6b6b,
+           12px -12px 30px #ffffff;
     "}
       .callendar--header-actions
         %span#time-now
         .callendar--header-actions-sub
           .half
-            #callendar_submenu.menu-btn{title: "Menu"}
+            #callendar_submenu.menu-btn{title: "Menu", style: "background-color: #000;"}
               .btn-line
               .btn-line
               .btn-line
@@ -40,17 +41,17 @@
             %p= "10 tasks"
         .main-callendar#calendar-box
 
-    .callendar-deatials.px-0{style:"background-color: #cfcece;"}
+    .callendar-deatials.px-0
       .calendar.inner-box#user-tasks{style:"border-radius: 8px;
-              background: linear-gradient(225deg, #dad6d6, #ffffff);
-              box-shadow:  inset -10px 10px 12px #636262,
-             inset 10px -10px 12px #ffffff;"}
+              background: #ffffff;
+              box-shadow: -12px 12px 30px #6b6b6b,
+             12px -12px 30px #ffffff;"}
         %h1.color-primary Your scheduled tasks.
         %ul.list-group#tasks-list{style:"background:#cfcece;"}
-      .calendar.inner-box#user-raining-tasks{style:"border-radius: 8px;
-              background: linear-gradient(225deg, #dad6d6, #ffffff);
-              box-shadow:  inset -10px 10px 12px #636262,
-             inset 10px -10px 12px #ffffff;"}
+      .calendar.inner-box.mt-5#user-raining-tasks{style:"border-radius: 8px;
+              background: #ffffff;
+              box-shadow: -12px 12px 30px #6b6b6b,
+             12px -12px 30px #ffffff;"}
         %h1.color-primary Scheduled training sessions.
         %ul.list-group#tasks-list
           - if @customer.tasks.exists?
@@ -75,12 +76,12 @@
         width: 100%;
         margin: auto;
         border-radius: 8px;
-        background: linear-gradient(225deg, #bab9b9, #dddcdc);
-        box-shadow:  inset -7px 7px 14px #636363,
-             inset 7px -7px 14px #ffffff;
+        background: #ffffff;
+        box-shadow: -12px 12px 30px #6b6b6b,
+           12px -12px 30px #ffffff;
     "}
       - if @customer.present?
-        .user-review__photo.p-5
+        .user-review__photo.p-3
           = image_tag @customer.avatar, class: 'user-review__photo' if @customer.avatar.present?
           %p.paragraph.px-5
             - unless @customer.profil.present?
@@ -111,12 +112,12 @@
         width: 100%;
         margin: auto;
         border-radius: 8px;
-        background: linear-gradient(225deg, #bab9b9, #dddcdc);
-        box-shadow:  inset -7px 7px 14px #636363,
-             inset 7px -7px 14px #ffffff;
+        background: #ffffff;
+        box-shadow: -12px 12px 30px #6b6b6b,
+           12px -12px 30px #ffffff;
     "}
       - if @customer.present?
-        .user-review__photo.p-5
+        .user-review__photo.p-3
           = image_tag @customer.avatar, class: 'user-review__photo' if @customer.avatar.present?
           %p.paragraph.px-5
             - unless @customer.profil.present?
