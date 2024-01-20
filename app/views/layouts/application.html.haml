@@ -71,7 +71,7 @@
             header: "<strong>Recipes</strong>"
             }
             ],
-            list:{maxNumberOfElements: 20,onChooseEvent: function(){let url = input.getSelectedItemData().url;console.log(url);window.location.href = url;},theme: "plate-dark",showAnimation: {type: "fade", time: 400,callback: function() {}},}}
+            list:{maxNumberOfElements: 20,onChooseEvent: function(){let url = input.getSelectedItemData().url;console.log(url);window.location.href = url;},showAnimation: {type: "fade", time: 400,callback: function() {}},}}
             input.easyAutocomplete(options);
           ////////////////////////////////////////////////////////////////////////////////////////////////////
           <!-- USER-NAV -->
@@ -150,7 +150,7 @@
                     %svg.side-nav__icon
                       %use{"xlink:href" => "#{asset_path('sprite.svg')}#icon-accessibility"}
                     %span Exercises
-                %li{class: "#{(controller_name == 'diet_set_categories')||(controller_name == 'diet_set_templates')?'side-nav__item side-nav__item--active':'side-nav__item'}"}
+                %li{class: "#{(controller_name == 'diet_set_categories')||(controller_name == 'diet_set_templates'||(controller_name == 'diet_sets'))?'side-nav__item side-nav__item--active':'side-nav__item'}"}
                   %a.side-nav__link{href: "/"}
                     %i.fas.fa-concierge-bell.side-nav__icon{style:"font-size:2rem;"}
                     %span Diets

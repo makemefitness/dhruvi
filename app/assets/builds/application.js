@@ -742,8 +742,8 @@
             };
             return document3;
           }
-          find.matches = function(expr, elements) {
-            return find(expr, null, null, elements);
+          find.matches = function(expr, elements2) {
+            return find(expr, null, null, elements2);
           };
           find.matchesSelector = function(elem, expr) {
             setDocument(elem);
@@ -1558,23 +1558,23 @@
         };
         var rneedsContext = jQuery2.expr.match.needsContext;
         var rsingleTag = /^<([a-z][^\/\0>:\x20\t\r\n\f]*)[\x20\t\r\n\f]*\/?>(?:<\/\1>|)$/i;
-        function winnow(elements, qualifier, not) {
+        function winnow(elements2, qualifier, not) {
           if (isFunction(qualifier)) {
-            return jQuery2.grep(elements, function(elem, i2) {
+            return jQuery2.grep(elements2, function(elem, i2) {
               return !!qualifier.call(elem, i2, elem) !== not;
             });
           }
           if (qualifier.nodeType) {
-            return jQuery2.grep(elements, function(elem) {
+            return jQuery2.grep(elements2, function(elem) {
               return elem === qualifier !== not;
             });
           }
           if (typeof qualifier !== "string") {
-            return jQuery2.grep(elements, function(elem) {
+            return jQuery2.grep(elements2, function(elem) {
               return indexOf.call(qualifier, elem) > -1 !== not;
             });
           }
-          return jQuery2.filter(qualifier, elements, not);
+          return jQuery2.filter(qualifier, elements2, not);
         }
         jQuery2.filter = function(expr, elems, not) {
           var elem = elems[0];
@@ -2555,9 +2555,9 @@
           // Get a promise resolved when queues of a certain type
           // are emptied (fx is the type by default)
           promise: function(type, obj) {
-            var tmp, count = 1, defer = jQuery2.Deferred(), elements = this, i2 = this.length, resolve = function() {
+            var tmp, count = 1, defer = jQuery2.Deferred(), elements2 = this, i2 = this.length, resolve = function() {
               if (!--count) {
-                defer.resolveWith(elements, [elements]);
+                defer.resolveWith(elements2, [elements2]);
               }
             };
             if (typeof type !== "string") {
@@ -2566,7 +2566,7 @@
             }
             type = type || "fx";
             while (i2--) {
-              tmp = dataPriv.get(elements[i2], type + "queueHooks");
+              tmp = dataPriv.get(elements2[i2], type + "queueHooks");
               if (tmp && tmp.empty) {
                 count++;
                 tmp.empty.add(resolve);
@@ -2643,10 +2643,10 @@
           defaultDisplayMap[nodeName2] = display;
           return display;
         }
-        function showHide(elements, show) {
-          var display, elem, values = [], index = 0, length = elements.length;
+        function showHide(elements2, show) {
+          var display, elem, values = [], index = 0, length = elements2.length;
           for (; index < length; index++) {
-            elem = elements[index];
+            elem = elements2[index];
             if (!elem.style) {
               continue;
             }
@@ -2670,10 +2670,10 @@
           }
           for (index = 0; index < length; index++) {
             if (values[index] != null) {
-              elements[index].style.display = values[index];
+              elements2[index].style.display = values[index];
             }
           }
-          return elements;
+          return elements2;
         }
         jQuery2.fn.extend({
           show: function() {
@@ -5240,8 +5240,8 @@
           },
           serializeArray: function() {
             return this.map(function() {
-              var elements = jQuery2.prop(this, "elements");
-              return elements ? jQuery2.makeArray(elements) : this;
+              var elements2 = jQuery2.prop(this, "elements");
+              return elements2 ? jQuery2.makeArray(elements2) : this;
             }).filter(function() {
               var type = this.type;
               return this.name && !jQuery2(this).is(":disabled") && rsubmittable.test(this.nodeName) && !rsubmitterTypes.test(type) && (this.checked || !rcheckableType.test(type));
@@ -9705,13 +9705,13 @@
       if (event.target === document || event.target === trapElement || trapElement.contains(event.target)) {
         return;
       }
-      const elements = SelectorEngine.focusableChildren(trapElement);
-      if (elements.length === 0) {
+      const elements2 = SelectorEngine.focusableChildren(trapElement);
+      if (elements2.length === 0) {
         trapElement.focus();
       } else if (this._lastTabNavDirection === TAB_NAV_BACKWARD) {
-        elements[elements.length - 1].focus();
+        elements2[elements2.length - 1].focus();
       } else {
-        elements[0].focus();
+        elements2[0].focus();
       }
     }
     _handleKeydown(event) {
@@ -10309,8 +10309,8 @@
     }
     const domParser = new window.DOMParser();
     const createdDocument = domParser.parseFromString(unsafeHtml, "text/html");
-    const elements = [].concat(...createdDocument.body.querySelectorAll("*"));
-    for (const element of elements) {
+    const elements2 = [].concat(...createdDocument.body.querySelectorAll("*"));
+    for (const element of elements2) {
       const elementName = element.nodeName.toLowerCase();
       if (!Object.keys(allowList).includes(elementName)) {
         element.remove();
@@ -17305,8 +17305,8 @@
       selector = root;
       root = document;
     }
-    const elements = root.querySelectorAll(selector);
-    return toArray(elements);
+    const elements2 = root.querySelectorAll(selector);
+    return toArray(elements2);
   }
   function findElement(root, selector) {
     if (typeof root == "string") {
@@ -17948,30 +17948,30 @@
     `;
     }
     markCallendar() {
-      let elements = document.getElementsByClassName("day-number");
+      let elements2 = document.getElementsByClassName("day-number");
       let today = (/* @__PURE__ */ new Date()).getDate();
       let calendarMonth = document.getElementById("month").value;
       let calendarYear = document.getElementById("year").value;
-      for (let i2 = 0; i2 < elements.length; i2++) {
-        elements[i2].classList.remove("mark-task");
-        elements[i2].classList.remove("mark-task-done");
+      for (let i2 = 0; i2 < elements2.length; i2++) {
+        elements2[i2].classList.remove("mark-task");
+        elements2[i2].classList.remove("mark-task-done");
       }
       this.tasks.forEach((task) => {
         let day = new Date(task.date).getDate();
         let month = new Date(task.date).getMonth();
         let year = new Date(task.date).getFullYear();
-        for (let i2 = 0; i2 < elements.length; i2++) {
-          if (elements[i2].textContent == day && month == calendarMonth && year == calendarYear) {
+        for (let i2 = 0; i2 < elements2.length; i2++) {
+          if (elements2[i2].textContent == day && month == calendarMonth && year == calendarYear) {
             if (task.isComplete) {
-              elements[i2].classList.add("mark-task");
-              elements[i2].classList.add("mark-task-done");
+              elements2[i2].classList.add("mark-task");
+              elements2[i2].classList.add("mark-task-done");
             } else if (!task.isComplete && day < today) {
-              elements[i2].classList.add("mark-task");
-              elements[i2].classList.add("mark-task-before");
+              elements2[i2].classList.add("mark-task");
+              elements2[i2].classList.add("mark-task-before");
             } else {
-              elements[i2].classList.add("mark-task");
+              elements2[i2].classList.add("mark-task");
             }
-            elements[i2].title = task.task;
+            elements2[i2].title = task.task;
           }
         }
       });
@@ -18015,13 +18015,13 @@
     findPTTasks() {
       let tmp = "";
       let tmp2 = {};
-      let elements = document.getElementsByClassName("pttask");
-      for (let i2 = 0; i2 < elements.length; i2++) {
-        tmp = elements[i2].value.replace(/'/g, '"');
+      let elements2 = document.getElementsByClassName("pttask");
+      for (let i2 = 0; i2 < elements2.length; i2++) {
+        tmp = elements2[i2].value.replace(/'/g, '"');
         tmp2 = JSON.parse(tmp);
         if (this.checkCurrentCalendar(tmp2.data)) {
           const stocks = [...document.querySelectorAll(".day-number")].filter(
-            (elements2) => elements2.textContent == new Date(tmp2.data).getDate()
+            (elements3) => elements3.textContent == new Date(tmp2.data).getDate()
           );
           stocks[0].classList.add("mark-pttask");
           stocks[0].setAttribute("title", tmp2.name);
@@ -18032,7 +18032,7 @@
           }
         }
       }
-      elements = [];
+      elements2 = [];
     }
     checkCurrentCalendar(date) {
       return document.getElementById("month").value == new Date(date).getMonth() && document.getElementById("year").value == new Date(date).getFullYear();
@@ -18040,7 +18040,7 @@
     ptTaskChange(id2, day, date) {
       console.log(`Task ma numer ${id2}`);
       const stocks = [...document.querySelectorAll(".day-number")].filter(
-        (elements) => elements.textContent == day
+        (elements2) => elements2.textContent == day
       );
       if (this.checkCurrentCalendar(new Date(date))) {
         stocks[0].classList.toggle("mark-task-done");
@@ -18157,6 +18157,151 @@
     toDo.loadTasks();
     toDo.findPTTasks();
   });
+
+  // app/javascript/components/dietSetSummary.js
+  window.addEventListener("load", () => {
+    setTimeout(function() {
+      summaryDiet();
+    }, 1e3);
+    document.getElementById("info-toggler").addEventListener("click", () => {
+      document.getElementById("table-toggler").classList.toggle("table-toggler-js");
+    });
+    allElements();
+  });
+  function allElements() {
+    conteners = document.getElementsByClassName("nested-fields-diets");
+    for (let i2 = 0; i2 < conteners.length; i2++) {
+      iterateElements(conteners[i2]);
+    }
+    function iterateElements(contener) {
+      if (contener.style.display != "none") {
+        elements = contener.getElementsByClassName("particular-ingredient");
+        console.log("Poszczegulnych ingredientow" + elements.length);
+        for (let i2 = 0; i2 < elements.length; i2++) {
+          if (elements[i2].style.display != "none") {
+            applyToEachElement(
+              elements[i2].getElementsByClassName("particular-ingredient-id")[0],
+              elements.length
+            );
+          }
+        }
+      }
+    }
+    function applyToEachElement(element, iterator) {
+      sum_energy = 0;
+      sum_protein = 0;
+      sum_fat = 0;
+      sum_carb = 0;
+      fetchPromise = fetch(`/admin/ingredients/${element.value}.json`);
+      fetchPromise.then((response) => {
+        return response.json();
+      }).then((data) => {
+        energy = data.energy * element.parentElement.nextElementSibling.getElementsByTagName(
+          "input"
+        )[0].value / 100;
+        sum_energy += energy;
+        protein = data.protein * element.parentElement.nextElementSibling.getElementsByTagName(
+          "input"
+        )[0].value / 100;
+        sum_protein += protein;
+        fat = data.fat * element.parentElement.nextElementSibling.getElementsByTagName(
+          "input"
+        )[0].value / 100;
+        sum_fat += fat;
+        carb = data.carbohydrate * element.parentElement.nextElementSibling.getElementsByTagName(
+          "input"
+        )[0].value / 100;
+        sum_carb += carb;
+        element.parentElement.nextElementSibling.nextElementSibling.getElementsByClassName(
+          "energy"
+        )[0].innerHTML = `Energii: <span class="energi">${energy.toFixed(
+          2
+        )}</span>kcal | Protein: <span class="protein">${protein.toFixed(
+          2
+        )}</span>g | T\u0142uszczu: <span class="fat">${fat.toFixed(
+          2
+        )}</span>g| Weglowo: <span class="carb">${carb.toFixed(2)}</span>g`;
+        showInTable(
+          sum_energy.toFixed(0),
+          sum_protein.toFixed(0),
+          sum_fat.toFixed(0),
+          sum_carb.toFixed(0)
+        );
+        document.getElementsByClassName("wynik")[0].innerText = `
+  Energii: ${sum_energy.toFixed(0)}kcal | Prot: ${sum_protein.toFixed(
+          0
+        )}g | T\u0142u: ${sum_fat.toFixed(0)}g| Wegl: ${sum_carb.toFixed(0)}g`;
+      });
+    }
+    function applyToEachElement1(element) {
+      sum_energy = 0;
+      sum_protein = 0;
+      sum_fat = 0;
+      fetchPromise = fetch(`/admin/ingredients/${element.value}.json`);
+      fetchPromise.then((response) => {
+        return response.json();
+      }).then((data) => {
+        energy = data.energy * element.parentElement.nextElementSibling.getElementsByTagName(
+          "input"
+        )[0].value / 100;
+        sum_energy += energy;
+        protein = data.protein * element.parentElement.nextElementSibling.getElementsByTagName(
+          "input"
+        )[0].value / 100;
+        sum_protein += protein;
+        fat = data.fat * element.parentElement.nextElementSibling.getElementsByTagName(
+          "input"
+        )[0].value / 100;
+        sum_fat += fat;
+        element.parentElement.nextElementSibling.nextElementSibling.getElementsByClassName(
+          "energy"
+        )[0].innerText = `Energii: ${energy.toFixed(
+          2
+        )}kcal | Protein: ${protein.toFixed(2)}g | T\u0142uszczu: ${fat.toFixed(2)}g`;
+        document.getElementsByClassName("wynik")[0].innerText = `
+  Energii: ${sum_energy.toFixed(0)}kcal | Prot: ${sum_protein.toFixed(
+          0
+        )}g | T\u0142u: ${sum_fat.toFixed(0)}g`;
+        showInTable();
+      });
+    }
+    function showInTable(energy2, protein2, fat2, carb2) {
+      document.getElementsByClassName("tab-energy")[0].innerText = energy2 + "kcal";
+      document.getElementsByClassName("tab-protein")[0].innerText = protein2 + "g";
+      document.getElementsByClassName("tab-fat")[0].innerText = fat2 + "g";
+      document.getElementsByClassName("tab-carb")[0].innerText = carb2 + "g";
+    }
+  }
+  function summaryDiet() {
+    const diets = document.getElementsByClassName("nested-fields-diets");
+    for (let i2 = 0; i2 < diets.length; i2++) {
+      sum_energy = 0;
+      sum_protein = 0;
+      sum_fat = 0;
+      sum_carb = 0;
+      for (let y2 = 0; y2 < diets[i2].getElementsByClassName("energy").length; y2++) {
+        sum_energy = sum_energy + parseFloat(
+          diets[i2].getElementsByClassName("energy")[y2].getElementsByClassName("energi")[0].innerText
+        );
+        sum_protein = sum_protein + parseFloat(
+          diets[i2].getElementsByClassName("energy")[y2].getElementsByClassName("protein")[0].innerText
+        );
+        sum_fat = sum_fat + parseFloat(
+          diets[i2].getElementsByClassName("energy")[y2].getElementsByClassName("fat")[0].innerText
+        );
+        sum_carb = sum_carb + parseFloat(
+          diets[i2].getElementsByClassName("energy")[y2].getElementsByClassName("carb")[0].innerText
+        );
+        diets[i2].getElementsByClassName(
+          "particular-diet-summary"
+        )[0].innerHTML = `<span>Energii zmienone: ${sum_energy.toFixed(
+          0
+        )}kcal | Prot: ${sum_protein.toFixed(0)}g | T\u0142u: ${sum_fat.toFixed(
+          0
+        )}g| Wegl: ${sum_carb.toFixed(0)}g</span>`;
+      }
+    }
+  }
 
   // app/javascript/application.js
   $(function() {

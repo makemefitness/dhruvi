@@ -12,6 +12,7 @@ import './components/thems'
 
 import './components/calendar'
 import './components/todolist'
+import './components/dietSetSummary'
 // $('recipe_ingredients').cocoon()
 // import './components/autocomplete'
 $(function () {

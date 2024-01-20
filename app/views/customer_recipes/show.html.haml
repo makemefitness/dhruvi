@@ -1,0 +1,38 @@
+.recipe
+  = image_tag(@recipe.photo, class: "recipe__show-photo") if @recipe.photo.attached?
+  .recipe__details
+    %h1.heading-secondary
+      %b= @recipe.name
+    %h3
+      %b Składniki:
+    - @recipe.recipeingredients.each do |ingredient|
+      %p
+        = Ingredient.find(ingredient.ingredient_id).name 
+        = ingredient.amount.to_s + "g"
+
+        %span.float-right= ingredient.energy.to_i.to_s + "kcal"
+        /= ingredient.fat.to_i.to_s + "g"
+        /= ingredient.protein.to_i.to_s + "g"
+        /= ingredient.carbohydrate.to_i.to_s + "g"
+    %h3
+      %b Method:
+    = @recipe.description
+    %hr
+    %small
+      %svg.recipe__nav-icon.fill-primary
+        %use{"xlink:href" => "#{asset_path('images/sprite.svg')}#icon-power"}
+      = @recipe.summary[:energy].to_i.to_s + "kcal"
+      %svg.recipe__nav-icon.fill-primary
+        %use{"xlink:href" => "#{asset_path('images/sprite.svg')}#icon-heart"}
+      = " protein: #{@recipe.summary[:protein].to_i.to_s}g, "
+      = " fat: #{@recipe.summary[:fat].to_i.to_s}g, "
+      = " carbohydrates: #{@recipe.summary[:carbohydrate].to_i.to_s}g"
+    %hr
+    %p
+      %b Link:
+      = @recipe.link
+
+
+= link_to 'Edit', edit_customer_recipe_path(@customer_recipe)
+\|
+= link_to 'Back', customer_recipes_path

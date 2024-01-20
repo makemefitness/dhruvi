@@ -1,0 +1,62 @@
+= @pizda
+= form_for :customers, method: :get, :html => {class: 'search'}, remote: true do |f|
+
+  = text_field_tag :q, nil, placeholder: "Wybierz diete", id: 'search_diet', data: {behavior: "autocomplete"}
+
+#korwa
+  %script
+    let korwa = $('#search_diet');
+    let url = "/customer_recipes/new/"
+    let korwa2 = { 
+    getValue: "name",
+    url: function(phrase){
+    return "/diet_search?q=" + phrase;
+    },
+    categories: [
+    {listLocation: 'recipes' ,header: "<strong>----- Przepisy -----</strong>"},
+    ],
+    getValue: "name",
+    list:{
+    maxNumberOfElements: 20,
+    onChooseEvent: function(){let id = korwa.getSelectedItemData().id;console.log(url);window.location.href = url+id;},
+    showAnimation: {
+    type: "fade", //normal|slide|fade
+    time: 400,
+    callback: function() {}
+    },
+    }}
+
+    korwa.easyAutocomplete(korwa2);
+
+
+    function korwa3(url){
+
+    url += '.json'
+    console.log(url)
+    fetch('/admin/recipes/2.json').then(function(response) {
+    console.log(response.headers.get('Content-Type'));
+    console.log(response.headers.get('Date'));
+
+    console.log(response.status);
+    console.log(response.statusText);
+    console.log(response.type);
+    console.log(response.url);
+    });
+
+
+    fetch(url).then(function(response) {
+    if (response.status !== 200) {
+    console.log('Looks like there was a problem. Status Code: ' +
+    response.status);
+    return;
+    }
+
+    // Examine the text in the response
+    response.json().then(function(data) {
+    console.log(data);
+    });
+    }
+    ).catch(function(err) {
+    console.log('Fetch Error :-S', err);
+    });
+    }

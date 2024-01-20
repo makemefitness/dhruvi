@@ -1,0 +1,25 @@
+%h1 Listing customer_recipes
+
+%table
+  %thead
+    %tr
+      %th Name
+      %th Recipe
+      %th Diet set
+      %th
+      %th
+      %th
+
+  %tbody
+    - @customer_recipes.each do |customer_recipe|
+      %tr
+        %td= customer_recipe.name
+        %td= customer_recipe.recipe
+        %td= customer_recipe.diet_set
+        %td= link_to 'Show', customer_recipe
+        %td= link_to 'Edit', edit_customer_recipe_path(customer_recipe)
+        %td= link_to 'Destroy', customer_recipe, method: :delete, data: { confirm: 'Are you sure?' }
+
+%br
+
+= link_to 'New Customer recipe', new_customer_recipe_path

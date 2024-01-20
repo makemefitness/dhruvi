@@ -1,0 +1,23 @@
+%h1 Listing diet_sets
+
+%table
+  %thead
+    %tr
+      %th Name
+      %th Customer
+      %th
+      %th
+      %th
+
+  %tbody
+    - @diet_sets.each do |diet_set|
+      %tr
+        %td= diet_set.name
+        %td= diet_set.customer
+        %td= link_to 'Show', diet_set
+        %td= link_to 'Edit', edit_diet_set_path(diet_set)
+        %td= link_to 'Destroy', diet_set, method: :delete, data: { confirm: 'Are you sure?' }
+
+%br
+
+= link_to 'New Diet set', new_diet_set_path

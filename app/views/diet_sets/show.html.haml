@@ -1,0 +1,33 @@
+.recipe
+  .gallery
+
+    %figure.gallery__item
+      = image_tag "app_layout/plate-white-fish-chilli.jpg", alt: "logo", class: "gallery__photo"
+    %figure.gallery__item
+      = image_tag "app_layout/dish-food.jpeg", alt: "logo", class: "gallery__photo"
+    %figure.gallery__item
+      = image_tag "app_layout/truskawka.jpeg", alt: "logo", class: "gallery__photo"
+%main.datails
+  .sub-main
+    .datails
+      .datails.box
+        %h3.color-primary
+        %p
+          %b Customer:
+          = @diet_set.customer.name
+        %p
+          %b Set name:
+          = @diet_set.name
+        %hr
+        - @diet_set.customer_recipes.each do |recipe|
+          = recipe.name
+          -# = image_tag Recipe.find(recipe.recipe_id).photo, class: "gallery__photo", style: "width:100px;"
+          = image_tag(Recipe.find(recipe.recipe_id).photo, class: "gallery__photo", style: "width:100px;") if Recipe.find(recipe.recipe_id).photo.attached?
+          = Recipe.find(recipe.recipe_id).name
+          = Recipe.find(recipe.recipe_id).summary
+          = recipe.summary
+
+          %hr
+        = link_to 'Edit set', edit_customer_diet_set_path(@diet_set.customer, @diet_set)
+        \|
+        = link_to "Return to the client's website", customer_path(@customer)

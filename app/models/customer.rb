@@ -6,6 +6,7 @@ class Customer < ApplicationRecord
   has_one :profil, dependent: :destroy
   has_many :tasks
   has_many :exercises, through: :tasks
+  has_many :diet_sets
 
   # Default sex
   enum sex: [:man, :woman]

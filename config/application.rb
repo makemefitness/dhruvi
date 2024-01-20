@@ -40,5 +40,9 @@ module DhruviApp
     config.generators.system_tests = nil
     config.assets.enabled = true
     # config.assets.initialize_on_precompile = false
+    config.generators do |g|
+      g.stylesheets     false
+      g.javascripts     false
+    end
   end
 end

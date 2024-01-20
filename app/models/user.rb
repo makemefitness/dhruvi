@@ -21,4 +21,8 @@ class User < ApplicationRecord
       where(conditions).first
     end
   end
+
+  def remember_me
+    true
+  end
 end

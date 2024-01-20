@@ -11,6 +11,7 @@ class MainController < ApplicationController
 
   def customer
     @customer = current_customer
+    @diet_sets = @customer.diet_sets
   end
 
   def help; end

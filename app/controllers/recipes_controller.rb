@@ -5,14 +5,27 @@ class RecipesController < ApplicationController
   def index
     @count = Recipe.all.size
     if params[:keywords].present?
-      @recipes = Recipe.where('name LIKE :search OR preparation LIKE :search', search: "%#{params[:keywords]}%")
+      @recipes = Recipe.where('ingredients LIKE :search OR name LIKE :search OR preparation LIKE :search', search: "#{params[:keywords]}%")
+    elsif params[:term].present?
+      puts "korwa jest term"
+      @recipes = Recipe.where('name LIKE :search', search: "#{params[:term]}%")
+      @recipes.map(&:name)
     else
       @recipes = Recipe.all
+    end
+    respond_to do |format|
+      format.html {}
+      format.json { render json: @recipes }
     end
   end
 
   # GET /recipes/1 or /recipes/1.json
   def show
+    @ingredients_list = @recipe.recipe_ingredients
+    respond_to do |format|
+      format.html {}
+      format.json { render json: @ingredients_list }
+    end
   end
 
   # GET /recipes/new
@@ -23,7 +36,7 @@ class RecipesController < ApplicationController
 
   # GET /recipes/1/edit
   def edit
-    @recipe.recipe_ingredients
+    # @recipe.recipe_ingredients
   end
 
   # POST /recipes or /recipes.json
