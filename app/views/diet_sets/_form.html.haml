@@ -1,0 +1,206 @@
+= form_for([@customer, @diet_set], html: { class: 'form' }) do |f|
+
+  - if @diet_set.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@diet_set.errors.count, "error")} prohibited this diet_set from being saved:"
+      %ul
+        - @diet_set.errors.full_messages.each do |message|
+          %li= message
+
+  .form__group
+    = f.text_field :name, class: "form__input", placeholder: "Set name", autofocus: true
+    = f.label :name, "Set name", class: "form__label"
+  %hr
+  %h2 Recipe list
+  .form__group.przepisy
+    = f.fields_for :customer_recipes do |builder|
+      = render 'customer_recipe_fields', f: builder
+
+
+
+
+
+    = link_to_add_association 'Add recipe', f, :customer_recipes, data: {association_insertion_node: '.przepisy', association_insertion_method: :append }, :class => 'my-btn my-btn--pink my-btn--width btn-lg'
+
+    //////////////////////////////////////////////////////////////////////////////////////
+    -# = link_to 'Co jest', customer_recipes_moja_path(@diet_set.id)
+
+
+  .actions
+    = f.button 'Save', :class => 'my-btn my-btn--pink my-btn--width btn-lg'
+
+  - if @customer.profil
+    .sum_ingredients_for_customer
+      %span#info-toggler Info
+      %table.table#table-toggler
+        %thead
+          %tr
+            %th
+            %th Energy
+            %th Protein
+            %th Fat
+            %th Carb
+        %tbody
+          %tr
+            %th{scope: 'row'} Whole day
+            %td= "#{@customer.tdee.round(0)}kcal"
+            %td= "#{@customer.profil.weight_protein}g"
+            %td= "#{@customer.profil.weight_fat}g"
+            %td= "#{@customer.profil.weight_carbohydrate}g"
+          %tr
+            %th{scope: 'row'} GMain meals x 3:
+            %td
+            %td= "#{@customer.profil.dayly_protein}g"
+            %td= "#{@customer.profil.dayly_fat}g"
+            %td= "#{@customer.profil.dayly_carbohydrate}g"
+          %tr
+            %th{scope: 'row'} Snacks x 2:
+            %td
+            %td= "#{@customer.profil.przekoski_protein}g"
+            %td= "#{@customer.profil.przekoski_fat}g"
+            %td= "#{@customer.profil.przekoski_carbohydrate}g"
+          %tr
+            %th{scope: 'row'} Current diet:
+            %td.tab-energy
+            %td.tab-protein
+            %td.tab-fat
+            %td.tab-carb
+      %a{class: "btn btn-primary", onclick: "calculateIngredients();"}Calculate
+    .wynik
+%script
+  
+  const oblicz = () => {
+  conteners = document.getElementsByClassName('nested-fields');
+  console.log("Działa?")
+  console.log(conteners.length)
+  for(let i = 0; i < conteners.length; i++){
+  iterateElements(conteners[i].getElementsByClassName('search-box')[0].getElementsByTagName('fieldset')[0].getElementsByClassName('skladnik')[0]);
+  }
+
+  function iterateElements(contener){
+  console.log(contener)
+  elements = contener.getElementsByClassName('form__input-wider');
+  for(let i = 0; i < elements.length; i++){
+  console.log("----element----" + i)
+  console.log(applyToEachElement(elements[i]));
+  }
+  }
+
+  function applyToEachElement(element){
+  sum_energy = 0;
+  fetchPromise = fetch(`/ingredients/${element.value}.json`);
+  fetchPromise.then(response => {
+  return response.json();
+  }).then(data => {
+  energy = data.energy * element.parentElement.nextElementSibling.getElementsByTagName('input')[0].value/100
+  sum_energy += energy 
+  console.log(sum_energy + "-----ENERGY----")
+  protein = data.protein * element.parentElement.nextElementSibling.getElementsByTagName('input')[0].value/100
+  fat = data.fat * element.parentElement.nextElementSibling.getElementsByTagName('input')[0].value/100
+  element.parentElement.nextElementSibling.nextElementSibling.getElementsByClassName('energy')[0].innerText = `Energy: ${energy.toFixed(2)}kcal | Protein: ${protein.toFixed(2)}g | Fat: ${fat.toFixed(2)}g`
+  document.getElementsByClassName('sum_ingredients')[0].innerText = `${sum_energy.toFixed(0)}`
+  });
+  }
+  }
+  oblicz()
+  -# conteners = document.getElementsByClassName('nested-fields');
+  -# console.log("Działa?")
+  -# console.log(conteners.length)
+  -# for(let i = 0; i < conteners.length; i++){
+  -# iterateElements(conteners[i].getElementsByClassName('search-box')[0].getElementsByTagName('fieldset')[0].getElementsByClassName('skladnik')[0]);
+  -# }
+
+  -# function iterateElements(contener){
+  -# console.log(contener)
+  -# elements = contener.getElementsByClassName('form__input-wider');
+  -# for(let i = 0; i < elements.length; i++){
+  -# console.log("----element----" + i)
+  -# console.log(applyToEachElement(elements[i]));
+  -# }
+  -# }
+
+  -# function applyToEachElement(element){
+  -# sum_energy = 0;
+  -# fetchPromise = fetch(`/ingredients/${element.value}.json`);
+  -# fetchPromise.then(response => {
+  -# return response.json();
+  -# }).then(data => {
+  -# energy = data.energy * element.parentElement.nextElementSibling.getElementsByTagName('input')[0].value/100
+  -# sum_energy += energy 
+  -# console.log(sum_energy + "-----ENERGY----")
+  -# protein = data.protein * element.parentElement.nextElementSibling.getElementsByTagName('input')[0].value/100
+  -# fat = data.fat * element.parentElement.nextElementSibling.getElementsByTagName('input')[0].value/100
+  -# element.parentElement.nextElementSibling.nextElementSibling.getElementsByClassName('energy')[0].innerText = `Energy: ${energy.toFixed(2)}kcal | Protein: ${protein.toFixed(2)}g | Fat: ${fat.toFixed(2)}g`
+  -# document.getElementsByClassName('sum_ingredients')[0].innerText = `${sum_energy.toFixed(0)}`
+  -# });
+  -# }
+  window.addEventListener('load', ()=>{
+  allElements();
+  });
+  function calculateIngredients(event) {
+  allElements();
+  }
+  function allElements() {
+  // Poszczegolne przepisy
+  conteners = document.getElementsByClassName('nested-fields-diets');
+  
+  for(let i = 0; i < conteners.length; i++){
+  // Iterowanie przez poszczegolne ingredient pola
+  iterateElements(conteners[i])
+  }
+  function iterateElements(contener){
+  if(contener.style.display != 'none'){
+  elements = contener.getElementsByClassName('particular-ingredient');
+  
+  for(let i = 0; i < elements.length; i++){
+  if(elements[i].style.display != 'none'){
+  applyToEachElement(elements[i].getElementsByClassName('particular-ingredient-id')[0]);
+  }
+  }
+  }
+  }
+  function applyToEachElement(element){
+  sum_energy = 0;
+  sum_protein = 0;
+  sum_fat = 0;
+  sum_carb = 0;
+  fetchPromise = fetch(`/ingredients/${element.value}.json`);
+  fetchPromise.then(response => {
+  return response.json();
+  }).then(data => {
+  energy = data.energy * element.parentElement.nextElementSibling.getElementsByTagName('input')[0].value/100;
+  sum_energy += energy;
+  //console.log(sum_energy + "-----ENERGY----")
+  protein = data.protein * element.parentElement.nextElementSibling.getElementsByTagName('input')[0].value/100;
+  sum_protein += protein;
+  fat = data.fat * element.parentElement.nextElementSibling.getElementsByTagName('input')[0].value/100;
+  sum_fat += fat;
+  carb = data.carbohydrate * element.parentElement.nextElementSibling.getElementsByTagName('input')[0].value/100;
+  sum_carb += carb;
+  element.parentElement.nextElementSibling.nextElementSibling.getElementsByClassName('energy')[0].innerText = `Energii: ${energy.toFixed(2)}kcal | Protein: ${protein.toFixed(2)}g | Tłuszczu: ${fat.toFixed(2)}g| Weglowo: ${carb.toFixed(2)}g`
+  document.getElementsByClassName('wynik')[0].innerText = `
+  Energii: ${sum_energy.toFixed(0)}kcal | Prot: ${sum_protein.toFixed(0)}g | Tłu: ${sum_fat.toFixed(0)}g| Wegl: ${sum_carb.toFixed(0)}g`
+  });
+  }
+  ////////////////////////////////////////////
+  function applyToEachElement1(element){
+  sum_energy = 0;
+  sum_protein = 0;
+  sum_fat = 0;
+  fetchPromise = fetch(`/ingredients/${element.value}.json`);
+  fetchPromise.then(response => {
+  return response.json();
+  }).then(data => {
+  energy = data.energy * element.parentElement.nextElementSibling.getElementsByTagName('input')[0].value/100
+  sum_energy += energy 
+  //console.log(sum_energy + "-----ENERGY----")
+  protein = data.protein * element.parentElement.nextElementSibling.getElementsByTagName('input')[0].value/100
+  sum_protein += protein
+  fat = data.fat * element.parentElement.nextElementSibling.getElementsByTagName('input')[0].value/100
+  sum_fat += fat
+  element.parentElement.nextElementSibling.nextElementSibling.getElementsByClassName('energy')[0].innerText = `Energii: ${energy.toFixed(2)}kcal | Protein: ${protein.toFixed(2)}g | Tłuszczu: ${fat.toFixed(2)}g`
+  document.getElementsByClassName('wynik')[0].innerText = `
+  Energii: ${sum_energy.toFixed(0)}kcal | Prot: ${sum_protein.toFixed(0)}g | Tłu: ${sum_fat.toFixed(0)}g`
+  });
+  }
+  }

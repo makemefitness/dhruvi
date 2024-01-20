@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  resources :customer_recipes
+  resources :diet_sets
+
+  get '/add_meal/:id', to: 'diet_sets#add_meal'
   root "main#home"
   get 'main/dashboard'
   get 'main/settings'
@@ -7,12 +11,18 @@ Rails.application.routes.draw do
   get 'main/customer'
   get 'main/help'
   get 'main/about'
+  get 'customer_recipes/moja'
+  get '/customer_recipes/new/:id', to: 'customer_recipes#new'
 
   #-----------------------------------------------------------------------------------------#
   # search - json --------------------------------------------------------------------------#
   get '/search', to: 'main#search'
   get '/autocomplete', to: 'main#autocomplete'
   get 'api/ingredients'
+  get '/api/recipes', to: 'api#recipes'
+  get '/diet_search', to: 'customer_recipes#diet_search'
+
+
   resources :ingredient_categories
   resources :exercises
 
@@ -42,6 +52,9 @@ Rails.application.routes.draw do
   resources :customers do
     resource :profil
     resources :tasks
+    resources :diet_sets do
+        resources :customer_recipes
+      end
   end
   resources :ingredients
   resources :recipes

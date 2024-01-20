@@ -1,0 +1,86 @@
+.nested-fields
+  = link_to_remove_association "Delete recipe", f
+  .form__group
+    = f.label :name, "Name", class: "form__label"
+    = f.text_field :name, class: "form__input form__input-customer_diet"
+  .form_group
+    = f.label :recipe_name, "Select a recipe", class: "form__label"
+    = f.collection_select :recipe_id, Recipe.order(:name), :id, :name, {include_blank: true, class: "form__input form__input-customer_diet form__input-customer_diet-recipe-select", style: "width: 100%;"}, {onChange: "buildAssociationForCustomerDiets(event)"}
+    //= f.text_field :recipe_name, class: "form__input", data: { autocomplete_source: Recipe.order(:name).map(&:name)}
+    //= f.text_field :recipe_name, class: "form__input", data: { autocomplete_source:_recipes_path}
+  .search-box
+    %fieldset
+      %legend List of ingredients
+      %h2 List of ingredients
+      .skladnik
+        = f.fields_for :customer_diets do |builder|
+          = render 'customer_diets_fields', f: builder
+      = link_to_add_association 'Add ingredients', f, :customer_diets, data: {data_association_insertion_traversal: :after, association_insertion_node: '.skladnik', association_insertion_method: :append }, class: 'my-btn my-btn--blue my-btn--width mb-3  btn-lg mt-3 add-fields-skladnik'
+    .sum_ingredients
+    .sum_recipe
+
+%script
+  function buildAssociationForCustomerDiets(event) {
+  let ingredient_id;
+  let amount;
+  let wraperFormFields = event.target.parentElement.parentElement
+  //console.log(event.target.parentElement.parentElement)
+  window.recipesURL = `/admin/recipes/${event.target.value}.json`
+  fetchPromise = fetch(`/admin/recipes/${event.target.value}.json`);
+  fetchPromise.then(response => {
+  return response.json();
+  }).then(data => {
+  for(let i = 0; i < data.length; i++){
+  //console.log(data.length);
+  //console.log(wraperFormFields.getElementsByClassName('form__input-wider').length)
+  // ToDO use params of wraper container
+  if (i >= wraperFormFields.getElementsByClassName('form__input-wider').length){
+  wraperFormFields.getElementsByClassName('add_fields')[0].click();
+  }
+  //document.getElementsByClassName('add_fields')[0].click();
+  wraperFormFields.getElementsByClassName('form__input-wider')[i].value = data[i].ingredient_id
+  wraperFormFields.getElementsByClassName('form__input-ingredient-amount')[i].value = data[i].amount
+  }
+  });
+  setTimeout(function(){ calculateIngredients(); }, 500);
+  setTimeout(function(){ summaryIngredients(); }, 500);
+
+  }
+  //association_insertion_node: '.skladnik'
+  //////////////////////////////////////////
+  // Calvulate all ingredients
+  function summaryIngredients(){
+
+  // Find all ingredients
+  let ingredients = document.getElementsByClassName('particular-ingredient');
+
+  for(let i = 0; i < ingredients.length; i++){
+  applyToEachElementTmp(ingredients[i]);
+  }
+  }
+
+  function applyToEachElementTmp(element){
+  let sum_energy = 0;
+  let sum_protein = 0;
+  let sum_fat = 0;
+  let energy = 0;
+  let protein = 0;
+  let fat = 0;
+  let carb = 0;
+  fetchPromise = fetch(`/admin/ingredients/${element.getElementsByClassName('particular-ingredient-id')[0].value}.json`);
+  fetchPromise.then(response => {
+  return response.json();
+  }).then(data => {
+  iloraz = element.getElementsByClassName('particular-ingredient-amount')[0].value/100;
+  energy += data.energy * iloraz;
+  protein += data.protein * iloraz;
+  fat += data.fat * iloraz;
+  carb = data.carbohydrate * iloraz;
+  value = `Energii: ${energy.toFixed(2)}kcal | Protein: ${protein.toFixed(2)}g | Tłuszczu: ${fat.toFixed(2)}g | Weglowodany: ${carb.toFixed(2)}g`
+  setParticularIngredientSummary(element, value)
+  });
+  };
+
+  function setParticularIngredientSummary(element, value){
+  element.getElementsByClassName('energy')[0].innerText = value
+  }

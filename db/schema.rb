@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_01_19_083924) do
+ActiveRecord::Schema[7.1].define(version: 2024_01_20_123939) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -66,6 +66,26 @@ ActiveRecord::Schema[7.1].define(version: 2024_01_19_083924) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "customer_diets", force: :cascade do |t|
+    t.bigint "customer_recipe_id", null: false
+    t.bigint "ingredient_id", null: false
+    t.integer "amount"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["customer_recipe_id"], name: "index_customer_diets_on_customer_recipe_id"
+    t.index ["ingredient_id"], name: "index_customer_diets_on_ingredient_id"
+  end
+
+  create_table "customer_recipes", force: :cascade do |t|
+    t.string "name"
+    t.bigint "recipe_id", null: false
+    t.bigint "diet_set_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["diet_set_id"], name: "index_customer_recipes_on_diet_set_id"
+    t.index ["recipe_id"], name: "index_customer_recipes_on_recipe_id"
+  end
+
   create_table "customers", force: :cascade do |t|
     t.string "first_name", null: false
     t.string "last_name", null: false
@@ -91,6 +111,14 @@ ActiveRecord::Schema[7.1].define(version: 2024_01_19_083924) do
     t.index ["email"], name: "index_customers_on_email", unique: true
     t.index ["reset_password_token"], name: "index_customers_on_reset_password_token", unique: true
     t.index ["username"], name: "index_customers_on_username", unique: true
+  end
+
+  create_table "diet_sets", force: :cascade do |t|
+    t.string "name"
+    t.bigint "customer_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["customer_id"], name: "index_diet_sets_on_customer_id"
   end
 
   create_table "equipment", force: :cascade do |t|
@@ -236,6 +264,11 @@ ActiveRecord::Schema[7.1].define(version: 2024_01_19_083924) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "customer_diets", "customer_recipes"
+  add_foreign_key "customer_diets", "ingredients"
+  add_foreign_key "customer_recipes", "diet_sets"
+  add_foreign_key "customer_recipes", "recipes"
+  add_foreign_key "diet_sets", "customers"
   add_foreign_key "exercises", "body_parts"
   add_foreign_key "exercises", "equipment"
   add_foreign_key "exercises", "targets"

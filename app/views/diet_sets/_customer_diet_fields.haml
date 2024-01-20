@@ -1,0 +1,18 @@
+.nested-fields.wider.particular-ingredient
+  = link_to_remove_association "Usun produkt", f, onclick: ""
+  .form-group-1.customer-diets
+    .form__group-1
+      = f.collection_select :ingredient_id, Ingredient.order(:name), :id, :name, {include_blank: true, autofocus: true}, {class: "form__input-wider particular-ingredient-id", onChange: "oblicz()"}
+      = f.label 'Ingredient', class: "form__label"
+    .form__group-2
+      = f.number_field :amount, class: "form__input form__input-ingredient-amount particular-ingredient-amount", placeholder: "Weight", onChange: "oblicz()"
+      = f.label 'Weight', class: "form__label"
+    .summary-ingredients
+      %span.energy
+      %i.fas.fa-exclamation{style: "color: red;"}
+      %i.fas.fa-check{style: "color: yellowgreen;"}
+      %i.fas.fa-question{style: "color: blue;"}
+      -# = f.ingredient_id
+
+      //= f.text_field :ingredient, data: { autocomplete_source: admin_api_ingredients_path}, class: 'product_category_name'
+%script

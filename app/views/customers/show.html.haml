@@ -194,6 +194,23 @@
               %td= "#{@customer.profil.dayly_fat}g"
               %td= "#{@customer.profil.przekoski_fat}g"
               %td= "#{@customer.profil.przekoski_fat}g"
+      .datails.box
+        %h3.color-primary Diet sets
+        - unless @customer.diet_sets.empty?
+          %table.table
+            %thead
+              %tr
+                %th Set
+                %th{colspan: 3} Action
+            %tbody
+              - @customer.diet_sets.each do |task|
+                %tr
+
+                  %td= link_to task.name, customer_diet_set_path(@customer, task)
+                  %td= link_to 'Edit', edit_customer_diet_set_path(@customer, task)
+                  %td= link_to 'Delete', customer_diet_set_path(@customer, task), method: :delete, data: { confirm: 'Are you sure?' }
+        = link_to 'Add a new diet set', new_customer_diet_set_path(@customer), class: "line-top"
+      
 
   .tab-pane.fade.datails#customer_trainings
     .datails.box

@@ -25,6 +25,10 @@ class IngredientsController < ApplicationController
 
   # GET /ingredients/1 or /ingredients/1.json
   def show
+    respond_to do |format|
+      format.html {}
+      format.json { render json: @ingredient }
+    end
   end
 
   # GET /ingredients/new

@@ -27,8 +27,9 @@
           .half
             %svg.side-nav__icon.fill-white.active.icons
               %use{"xlink:href" => "#{asset_path('sprite.svg')}#icon-accessibility"}
-            %svg.side-nav__icon.fill-white.icons{title: "Dieta"}
-              %use{"xlink:href" => "#{asset_path('sprite.svg')}#icon-forkandspoon", title: "Diet"}
+            %a(href="#dieta-1") 
+              %svg.side-nav__icon.fill-white.icons{title: "Dieta"}
+                %use{"xlink:href" => "#{asset_path('sprite.svg')}#icon-forkandspoon", title: "Diet"}
       .callendar--header-callendar
         .today-date
           .date-marker
@@ -144,7 +145,28 @@
             .user-review__details-pt.mb-3.line-bottom
               %p Twøj osobisty trener
               = image_tag "Rysiu.png", alt: "logo", class: "pt__photo"
-    -# .box#calendar-box
+        -# .box#calendar-box
+    #dieta-1.inner-box.mb-5{style:"
+        width: 100%;
+        margin: auto;
+        border-radius: 8px;
+        background: #ffffff;
+        box-shadow: -12px 12px 30px #6b6b6b,
+           12px -12px 30px #ffffff;
+    "}
+      %h1.color-primary Your diet sets to choose from.
+      - unless @diet_sets.empty?
+        - @diet_sets.each do |diet|
+          .dieta-sets.mb-5
+            - diet.customer_recipes.each do |recipe|
+              .mb-5
+                .dieta-image-1.w-100
+                  = image_tag(Recipe.find(recipe.recipe_id).photo, class: "w-100") if Recipe.find(recipe.recipe_id).photo.attached?
+                .dieta-description
+                  %h2.color-primary= diet.name
+                  %a{href: "#"}
+                    = recipe.name
+                    = Recipe.find(recipe.recipe_id).name
             
 %script
   function timeNow(){

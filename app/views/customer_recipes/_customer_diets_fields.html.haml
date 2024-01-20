@@ -1,0 +1,9 @@
+.nested-fields
+  = link_to_remove_association "Remove ingredient", f
+  .form-group
+    .form__group-1
+      = f.collection_select :ingredient_id, Ingredient.order(:name), :id, :name, include_blank: true, autofocus: true
+      = f.label 'Ingredient', class: "form__label"
+    .form__group-2
+      = f.text_field :amount, class: "form__input", placeholder: "Amount in grams"
+      = f.label 'Amount in grams', class: "form__label"
