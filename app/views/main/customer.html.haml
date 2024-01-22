@@ -2,8 +2,8 @@
 -#   .customer_home-header__header
 -#     %h3.customer_home-header__heading
 -#       %h3.text-center.color-primary.mt-5= "Goal: #{@customer.profil.goal}"
-%main.datails
-  .callendar{style:"margin:auto;padding:1rem;max-width:90vw;"}
+%main.datails#home
+  .callendar{style:"margin:auto;padding:2rem;"}
     .callendar--header{style:"
         width: 100%;
         margin: auto;
@@ -25,8 +25,9 @@
             = render(:partial => "partials/callendar_submenu")
             %span Today's plan
           .half
-            %svg.side-nav__icon.fill-white.active.icons
-              %use{"xlink:href" => "#{asset_path('sprite.svg')}#icon-accessibility"}
+            %a(href="#user-raining-tasks") 
+              %svg.side-nav__icon.fill-white.active.icons
+                %use{"xlink:href" => "#{asset_path('sprite.svg')}#icon-accessibility"}
             %a(href="#dieta-1") 
               %svg.side-nav__icon.fill-white.icons{title: "Dieta"}
                 %use{"xlink:href" => "#{asset_path('sprite.svg')}#icon-forkandspoon", title: "Diet"}
@@ -109,7 +110,7 @@
             .user-review__details-pt.mb-3.line-bottom
               %p Twøj osobisty trener
               = image_tag "Rysiu.png", alt: "logo", class: "pt__photo"
-    .mb-5{style:"
+    #profile.mb-5{style:"
         width: 100%;
         margin: auto;
         border-radius: 8px;
