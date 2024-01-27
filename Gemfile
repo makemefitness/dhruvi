@@ -26,6 +26,7 @@ group :development, :test do
   gem 'capybara'
   gem 'selenium-webdriver', '~> 4.4'
   gem 'guard-rspec', require: false
+  gem 'simplecov', require: false, group: :test
 end
 
 group :development do

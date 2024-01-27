@@ -297,3 +297,8 @@
 [2024-01-27 17:51:04.971] [INFO] Sending autorun event
 [2024-01-27 17:51:18.698] [INFO] /home/maciej/dhruvi/dhruvi_app/app/views/main/customer.html.haml was saved - checking if this effects /home/maciej/dhruvi/dhruvi_app
 [2024-01-27 17:51:18.698] [INFO] Sending autorun event
+[2024-01-27 20:55:41.781] [INFO] Configuration changed
+[2024-01-27 21:11:10.109] [INFO] /home/maciej/dhruvi/dhruvi_app/Gemfile was saved - checking if this effects /home/maciej/dhruvi/dhruvi_app
+[2024-01-27 21:11:10.109] [INFO] Sending autorun event
+[2024-01-27 21:13:09.973] [INFO] /home/maciej/dhruvi/dhruvi_app/spec/rails_helper.rb was saved - checking if this effects /home/maciej/dhruvi/dhruvi_app
+[2024-01-27 21:13:09.973] [INFO] Sending autorun event
