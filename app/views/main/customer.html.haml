@@ -2,173 +2,175 @@
 -#   .customer_home-header__header
 -#     %h3.customer_home-header__heading
 -#       %h3.text-center.color-primary.mt-5= "Goal: #{@customer.profil.goal}"
-%main.datails#home
-  .callendar{style:"margin:auto;padding:2rem;"}
-    .callendar--header{style:"
-        width: 100%;
-        margin: auto;
-        height: 350px;
-        color: black;
-        border-radius: 8px;
-        background: #ffffff;
-        box-shadow: -12px 12px 30px #6b6b6b,
-           12px -12px 30px #ffffff;
-    "}
-      .callendar--header-actions
-        %span#time-now
-        .callendar--header-actions-sub
-          .half
-            #callendar_submenu.menu-btn{title: "Menu", style: "background-color: #000;"}
-              .btn-line
-              .btn-line
-              .btn-line
-            = render(:partial => "partials/callendar_submenu")
-            %span Today's plan
-          .half
-            %a(href="#user-raining-tasks") 
-              %svg.side-nav__icon.fill-white.active.icons
-                %use{"xlink:href" => "#{asset_path('sprite.svg')}#icon-accessibility"}
-            %a(href="#dieta-1") 
-              %svg.side-nav__icon.fill-white.icons{title: "Dieta"}
-                %use{"xlink:href" => "#{asset_path('sprite.svg')}#icon-forkandspoon", title: "Diet"}
-      .callendar--header-callendar
-        .today-date
-          .date-marker
-            %h1.day#calendar-today
-              = Date.current
-            %p.month#calendar-month 
-              = Time.now.strftime("%m")
-          .date-tasks
-            -# %p= "#{@today.size} zadania"
-            %p= "10 tasks"
-        .main-callendar#calendar-box
+%main.datails
+  
+  .callendar.scrollspy-example{"data-bs-offset" => "0", "data-bs-smooth-scroll" => "true", "data-bs-spy" => "scroll", "data-bs-target" => "#menu_bottom", tabindex: "0", style:"margin:auto;padding:2rem;"}
+    %section#home
+      .callendar--header{style:"
+          width: 100%;
+          margin: auto;
+          height: 350px;
+          color: black;
+          border-radius: 8px;
+          background: #ffffff;
+          box-shadow: -12px 12px 30px #6b6b6b,
+            12px -12px 30px #ffffff;
+      "}
+        .callendar--header-actions
+          %span#time-now
+          .callendar--header-actions-sub
+            .half
+              #callendar_submenu.menu-btn{title: "Menu", style: "background-color: #000;"}
+                .btn-line
+                .btn-line
+                .btn-line
+              = render(:partial => "partials/callendar_submenu")
+              %span Today's plan
+            .half
+              %a(href="#user-raining-tasks") 
+                %svg.side-nav__icon.fill-white.active.icons
+                  %use{"xlink:href" => "#{asset_path('sprite.svg')}#icon-accessibility"}
+              %a(href="#dieta-1") 
+                %svg.side-nav__icon.fill-white.icons{title: "Dieta"}
+                  %use{"xlink:href" => "#{asset_path('sprite.svg')}#icon-forkandspoon", title: "Diet"}
+        .callendar--header-callendar
+          .today-date
+            .date-marker
+              %h1.day#calendar-today
+                = Date.current
+              %p.month#calendar-month 
+                = Time.now.strftime("%m")
+            .date-tasks
+              -# %p= "#{@today.size} zadania"
+              %p= "10 tasks"
+          .main-callendar#calendar-box
 
-    .callendar-deatials.px-0
-      .calendar.inner-box#user-tasks{style:"border-radius: 8px;
-              background: #ffffff;
-              box-shadow: -12px 12px 30px #6b6b6b,
-             12px -12px 30px #ffffff;"}
-        %h1.color-primary Your scheduled tasks.
-        %ul.list-group#tasks-list{style:"background:#cfcece;"}
-      .calendar.inner-box.mt-5#user-raining-tasks{style:"border-radius: 8px;
-              background: #ffffff;
-              box-shadow: -12px 12px 30px #6b6b6b,
-             12px -12px 30px #ffffff;"}
-        %h1.color-primary Scheduled training sessions.
-        %ul.list-group#tasks-list
-          - if @customer.tasks.exists?
-            - @customer.tasks.each do |task|
-              - day = task.date.mday
-              - date = task.date.to_datetime.to_f * 1000
-              - id = task.id
-              %li.list-group-item.d-flex.justify-content-between.align-items-center
-                .row
-                  .col-2
-                    = form_for([@customer, task], html: {id: "task_is_complete#{id}", remote: true}) do |t|
-                      = t.check_box :is_complete, onchange: "toDo.ptTaskChange(#{id}, #{day}, #{date});", data: "#{task.date}", id: "#{id}"
-                      %input{type: "hidden", class: "pttask", name: "pttask", value: "{'name':'#{task.exercise.name}','data':'#{task.date}','is_complete':'#{task.is_complete}','id':'#{id}'}"}
-                  .col-10
-                    = link_to task.exercise.name, exercise_path(task.exercise)
-                = task.marks
-                = task.date
+      .callendar-deatials.px-0
+        .calendar.inner-box#user-tasks{style:"border-radius: 8px;
+                background: #ffffff;
+                box-shadow: -12px 12px 30px #6b6b6b,
+              12px -12px 30px #ffffff;"}
+          %h1.color-primary Your scheduled tasks.
+          %ul.list-group#tasks-list{style:"background:#cfcece;"}
+        .calendar.inner-box.mt-5#user-raining-tasks{style:"border-radius: 8px;
+                background: #ffffff;
+                box-shadow: -12px 12px 30px #6b6b6b,
+              12px -12px 30px #ffffff;"}
+          %h1.color-primary Scheduled training sessions.
+          %ul.list-group#tasks-list
+            - if @customer.tasks.exists?
+              - @customer.tasks.each do |task|
+                - day = task.date.mday
+                - date = task.date.to_datetime.to_f * 1000
+                - id = task.id
+                %li.list-group-item.d-flex.justify-content-between.align-items-center
+                  .row
+                    .col-2
+                      = form_for([@customer, task], html: {id: "task_is_complete#{id}", remote: true}) do |t|
+                        = t.check_box :is_complete, onchange: "toDo.ptTaskChange(#{id}, #{day}, #{date});", data: "#{task.date}", id: "#{id}"
+                        %input{type: "hidden", class: "pttask", name: "pttask", value: "{'name':'#{task.exercise.name}','data':'#{task.date}','is_complete':'#{task.is_complete}','id':'#{id}'}"}
+                    .col-10
+                      = link_to task.exercise.name, exercise_path(task.exercise)
+                  = task.marks
+                  = task.date
 
-
-
-    .actions.mb-5{style:"
-        width: 100%;
-        margin: auto;
-        border-radius: 8px;
-        background: #ffffff;
-        box-shadow: -12px 12px 30px #6b6b6b,
-           12px -12px 30px #ffffff;
-    "}
-      - if @customer.present?
-        .user-review__photo.p-3
-          = image_tag @customer.avatar, class: 'user-review__photo' if @customer.avatar.present?
-          %p.paragraph.px-5
-            - unless @customer.profil.present?
-              %h1 Brak ustalonego celu
-              = link_to 'Utworz profil', new_admin_customer_profil_path(@customer)
-            - else
-              %h1.color-primary.px-5= "#{@customer.name}"
-          .user-review__details.px-5
-            %ul.list.line-top
-              %h3.color-primary Twoje dane osobiste:
-              %li.list__item
-                .list__item-table
-                  %b.color-primary Twoj wskaznik BMR:
-                  %span= @customer.bmr.to_f.round(2)
-              %li.list__item.list__item-table
-                %b Typ budowy ciała:
-                %span= @customer.body_type
-              %li.list__item.list__item-table
-                %b Twoja waga:
-                %span= @customer.weight
-              %li.list__item.list__item-table
-                %b Twoj zwrost:
-                %span= @customer.height
-            .user-review__details-pt.mb-3.line-bottom
-              %p Twøj osobisty trener
-              = image_tag "Rysiu.png", alt: "logo", class: "pt__photo"
-    #profile.mb-5{style:"
-        width: 100%;
-        margin: auto;
-        border-radius: 8px;
-        background: #ffffff;
-        box-shadow: -12px 12px 30px #6b6b6b,
-           12px -12px 30px #ffffff;
-    "}
-      - if @customer.present?
-        .user-review__photo.p-3
-          = image_tag @customer.avatar, class: 'user-review__photo' if @customer.avatar.present?
-          %p.paragraph.px-5
-            - unless @customer.profil.present?
-              %h1 Brak ustalonego celu
-              = link_to 'Utworz profil', new_admin_customer_profil_path(@customer)
-            - else
-              %h1.color-primary.px-5= "#{@customer.name}"
-          .user-review__details.px-5
-            %ul.list.line-top
-              %h3.color-primary Twoje dane osobiste:
-              %li.list__item
-                .list__item-table
-                  %b.color-primary Twoj wskaznik BMR:
-                  %span= @customer.bmr.to_f.round(2)
-              %li.list__item.list__item-table
-                %b Typ budowy ciała:
-                %span= @customer.body_type
-              %li.list__item.list__item-table
-                %b Twoja waga:
-                %span= @customer.weight
-              %li.list__item.list__item-table
-                %b Twoj zwrost:
-                %span= @customer.height
-            .user-review__details-pt.mb-3.line-bottom
-              %p Twøj osobisty trener
-              = image_tag "Rysiu.png", alt: "logo", class: "pt__photo"
-        -# .box#calendar-box
-    #dieta-1.inner-box.mb-5{style:"
-        width: 100%;
-        margin: auto;
-        border-radius: 8px;
-        background: #ffffff;
-        box-shadow: -12px 12px 30px #6b6b6b,
-           12px -12px 30px #ffffff;
-    "}
-      %h1.color-primary Your diet sets to choose from.
-      - unless @diet_sets.empty?
-        - @diet_sets.each do |diet|
-          .dieta-sets.mb-5
-            - diet.customer_recipes.each do |recipe|
-              .mb-5
-                .dieta-image-1.w-100
-                  = image_tag(Recipe.find(recipe.recipe_id).photo, class: "w-100") if Recipe.find(recipe.recipe_id).photo.attached?
-                .dieta-description
-                  %h2.color-primary= diet.name
-                  %a{href: "#"}
-                    = recipe.name
-                    = Recipe.find(recipe.recipe_id).name
-            
+    %section#profile
+      .my-5{style:"
+          width: 100%;
+          margin: auto;
+          border-radius: 8px;
+          background: #ffffff;
+          box-shadow: -12px 12px 30px #6b6b6b,
+            12px -12px 30px #ffffff;
+      "}
+        - if @customer.present?
+          .user-review__photo.p-3
+            = image_tag @customer.avatar, class: 'user-review__photo' if @customer.avatar.present?
+            %p.paragraph.px-5
+              - unless @customer.profil.present?
+                %h1 Brak ustalonego celu
+                = link_to 'Utworz profil', new_admin_customer_profil_path(@customer)
+              - else
+                %h1.color-primary.px-5= "#{@customer.name}"
+            .user-review__details.px-5
+              %ul.list.line-top
+                %h3.color-primary Twoje dane osobiste:
+                %li.list__item
+                  .list__item-table
+                    %b.color-primary Twoj wskaznik BMR:
+                    %span= @customer.bmr.to_f.round(2)
+                %li.list__item.list__item-table
+                  %b Typ budowy ciała:
+                  %span= @customer.body_type
+                %li.list__item.list__item-table
+                  %b Twoja waga:
+                  %span= @customer.weight
+                %li.list__item.list__item-table
+                  %b Twoj zwrost:
+                  %span= @customer.height
+              .user-review__details-pt.mb-3.line-bottom
+                %p Twøj osobisty trener
+                = image_tag "Rysiu.png", alt: "logo", class: "pt__photo"
+          -# .box#calendar-box
+    %section#dieta-1.my-5
+      .inner-box.my-5{style:"
+          width: 100%;
+          margin: auto;
+          border-radius: 8px;
+          background: #ffffff;
+          box-shadow: -12px 12px 30px #6b6b6b,
+            12px -12px 30px #ffffff;
+      "}
+        %h1.color-primary Your diet sets to choose from.
+        - unless @diet_sets.empty?
+          - @diet_sets.each do |diet|
+            .dieta-sets.mb-5
+              - diet.customer_recipes.each do |recipe|
+                .mb-5
+                  .dieta-image-1.w-100
+                    = image_tag(Recipe.find(recipe.recipe_id).photo, class: "w-100") if Recipe.find(recipe.recipe_id).photo.attached?
+                  .dieta-description
+                    %h2.color-primary= diet.name
+                    %a{href: "#"}
+                      = recipe.name
+                      = Recipe.find(recipe.recipe_id).name
+    -# %section#druga_opcja
+    -#   .my-5{style:"
+    -#         width: 100%;
+    -#         margin: auto;
+    -#         border-radius: 8px;
+    -#         background: #ffffff;
+    -#         box-shadow: -12px 12px 30px #6b6b6b,
+    -#           12px -12px 30px #ffffff;
+    -#     "}
+    -#     - if @customer.present?
+    -#       .user-review__photo.p-3
+    -#         = image_tag @customer.avatar, class: 'user-review__photo' if @customer.avatar.present?
+    -#         %p.paragraph.px-5
+    -#           - unless @customer.profil.present?
+    -#             %h1 Brak ustalonego celu
+    -#             = link_to 'Utworz profil', new_admin_customer_profil_path(@customer)
+    -#           - else
+    -#             %h1.color-primary.px-5= "#{@customer.name}"
+    -#         .user-review__details.px-5
+    -#           %ul.list.line-top
+    -#             %h3.color-primary Twoje dane osobiste:
+    -#             %li.list__item
+    -#               .list__item-table
+    -#                 %b.color-primary Twoj wskaznik BMR:
+    -#                 %span= @customer.bmr.to_f.round(2)
+    -#             %li.list__item.list__item-table
+    -#               %b Typ budowy ciała:
+    -#               %span= @customer.body_type
+    -#             %li.list__item.list__item-table
+    -#               %b Twoja waga:
+    -#               %span= @customer.weight
+    -#             %li.list__item.list__item-table
+    -#               %b Twoj zwrost:
+    -#               %span= @customer.height
+    -#           .user-review__details-pt.mb-3.line-bottom
+    -#             %p Twøj osobisty trener
+    -#             = image_tag "Rysiu.png", alt: "logo", class: "pt__photo"
 %script
   function timeNow(){
   let dt = new Date();

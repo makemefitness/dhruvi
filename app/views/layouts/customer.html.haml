@@ -40,7 +40,7 @@
             = yield
             .nav-container{style:"position: sticky !important; bottom: 0 !important;"}
               .navigation
-                %ul
+                %ul#menu_bottom
                   %li.list.active
                     %a{href: "#home"}
                       %span.icon
@@ -60,7 +60,7 @@
                       %span.text Diets
                       %span.circle
                   %li.list
-                    %a{href: "javascript: void(0)"}
+                    %a{href: "#druga_opcja"}
                       %span.icon
                         %i.fa-solid.fa-camera
                       %span.text Photos
@@ -79,12 +79,67 @@
   function activeLink() {
   list.forEach((item) => {
   item.classList.remove('active')
-  console.log(item)
   })
   this.classList.add('active')
   }
 
   list.forEach((item) => item.addEventListener('click', activeLink))
+
+  -# Javascript spy
+  const sections = document.querySelectorAll('section');
+  console.log(sections)
+  const navLinks = document.querySelectorAll('ul#menu_bottom li')
+  console.log(navLinks)
+  window.onscroll = () => {
+  sections.forEach(sec => {
+  let top = window.scrollY;
+  let offset = sec.offsetTop;
+  let height = sec.offsetHeight;
+  let realHeight = sec.scrollHeight
+  let id = sec.getAttribute('id')
+  console.log(`top: ${top}, real height: ${realHeight}, offset: ${offset}`)
+  if(top >= realHeight){
+  console.log(`height: ${height}`)
+  console.log(`Roznica: ${offset + height}`)
+  console.log(sec)
+  console.log(`top: ${top}, offset: ${realHeight}`)
+  console.log(id)
+  let active_element = document.querySelector('ul#menu_bottom li a[href*=' + id + ']')
+  active_element.parentElement.classList.add("active")
+  console.log(document.querySelector('ul#menu_bottom li a[href*=' + id + ']').parentElement)
+
+
+
+  navLinks.forEach(links => {
+  console.log(links)
+  links.classList.remove("active")
+  -# document.querySelector('ul#menu_bottom li).classList.add('active')
+  })
+  -# let active_element = document.querySelector('ul#menu_bottom li a[href*=' + id + ']')
+  active_element.parentElement.classList.add("active")
+  }
+  
+  })
+  }
+  -# window.onscroll = () => {
+  -# console.log("korwa")
+  -# sections.forEach(sec => {
+  -# let top = window.scrollY;
+  -# let offset = sec.offsetTop;
+  -# let height = sec.offsetHeight;
+  -# let id = sec.getAttribute('id')
+
+  -# if(top >= offset && top < offset + height) {
+  -# navLinks.forEach(links => {
+  -# console.log(links)
+  -# links.classList.remove("active")
+  -# -# document.querySelector('ul#menu_bottom li).classList.add('active')
+  -# console.log(document.querySelector('ul#menu_bottom li).classList)
+  -# })
+  -# }
+  -# })
+  -# }
+
 
 %link{crossorigin: "anonymous", href: "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css", integrity: "sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==", referrerpolicy: "no-referrer", rel: "stylesheet"}/
 %script{crossorigin: "anonymous", integrity: "sha512-GWzVrcGlo0TxTRvz9ttioyYJ+Wwk9Ck0G81D+eO63BaqHaJ3YZX9wuqjwgfcV/MrB2PhaVX9DkYVhbFpStnqpQ==", referrerpolicy: "no-referrer", src: "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/js/all.min.js"}

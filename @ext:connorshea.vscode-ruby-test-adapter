@@ -273,3 +273,27 @@
 [2024-01-12 14:43:36.770] [INFO] /home/maciej/ruby_for_rails/test/gatherer/app/models/project.rb was saved - checking if this effects /home/maciej/ruby_for_rails/test/gatherer
 [2024-01-12 14:43:36.770] [INFO] Sending autorun event
 [2024-01-19 08:06:09.160] [INFO] Configuration changed
+[2024-01-27 17:37:56.934] [INFO] Test Explorer found
+[2024-01-27 17:37:56.934] [INFO] Creating adapter for /home/maciej/dhruvi/dhruvi_app
+[2024-01-27 17:37:56.934] [INFO] Initializing Ruby adapter
+[2024-01-27 17:37:56.934] [INFO] Registering adapter for /home/maciej/dhruvi/dhruvi_app
+[2024-01-27 17:37:56.934] [INFO] Loading Ruby tests...
+[2024-01-27 17:37:56.935] [INFO] Loading Minitest tests...
+[2024-01-27 17:37:56.935] [INFO] Getting a list of Minitest tests in suite with the following command: bundle exec rake -R $EXT_DIR vscode:minitest:list
+[2024-01-27 17:37:56.950] [INFO] Initialization finished
+[2024-01-27 17:38:11.746] [DEBUG] Passing raw output from dry-run into getJsonFromOutput.
+[2024-01-27 17:38:11.746] [DEBUG] START_OF_TEST_JSON{"version":"5.20.0","examples":[]}END_OF_TEST_JSON
+
+[2024-01-27 17:38:11.746] [DEBUG] Parsing the below JSON:
+[2024-01-27 17:38:11.746] [DEBUG] {"version":"5.20.0","examples":[]}
+[2024-01-27 17:38:15.821] [INFO] Configuration changed
+[2024-01-27 17:47:26.399] [INFO] /home/maciej/dhruvi/dhruvi_app/app/views/main/customer.html.haml was saved - checking if this effects /home/maciej/dhruvi/dhruvi_app
+[2024-01-27 17:47:26.400] [INFO] Sending autorun event
+[2024-01-27 17:47:55.422] [INFO] /home/maciej/dhruvi/dhruvi_app/app/views/main/customer.html.haml was saved - checking if this effects /home/maciej/dhruvi/dhruvi_app
+[2024-01-27 17:47:55.422] [INFO] Sending autorun event
+[2024-01-27 17:50:22.697] [INFO] /home/maciej/dhruvi/dhruvi_app/app/views/layouts/customer.html.haml was saved - checking if this effects /home/maciej/dhruvi/dhruvi_app
+[2024-01-27 17:50:22.697] [INFO] Sending autorun event
+[2024-01-27 17:51:04.971] [INFO] /home/maciej/dhruvi/dhruvi_app/app/views/layouts/customer.html.haml was saved - checking if this effects /home/maciej/dhruvi/dhruvi_app
+[2024-01-27 17:51:04.971] [INFO] Sending autorun event
+[2024-01-27 17:51:18.698] [INFO] /home/maciej/dhruvi/dhruvi_app/app/views/main/customer.html.haml was saved - checking if this effects /home/maciej/dhruvi/dhruvi_app
+[2024-01-27 17:51:18.698] [INFO] Sending autorun event
