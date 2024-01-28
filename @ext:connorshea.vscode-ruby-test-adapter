@@ -302,3 +302,77 @@
 [2024-01-27 21:11:10.109] [INFO] Sending autorun event
 [2024-01-27 21:13:09.973] [INFO] /home/maciej/dhruvi/dhruvi_app/spec/rails_helper.rb was saved - checking if this effects /home/maciej/dhruvi/dhruvi_app
 [2024-01-27 21:13:09.973] [INFO] Sending autorun event
+[2024-01-27 21:41:04.653] [INFO] /home/maciej/dhruvi/dhruvi_app/spec/models/user_spec.rb was saved - checking if this effects /home/maciej/dhruvi/dhruvi_app
+[2024-01-27 21:41:04.653] [INFO] Sending autorun event
+[2024-01-27 21:45:01.650] [INFO] /home/maciej/dhruvi/dhruvi_app/spec/support/factory_bot.rb was saved - checking if this effects /home/maciej/dhruvi/dhruvi_app
+[2024-01-27 21:45:01.650] [INFO] Sending autorun event
+[2024-01-27 21:49:25.267] [INFO] /home/maciej/dhruvi/dhruvi_app/spec/factories/USER.RB was saved - checking if this effects /home/maciej/dhruvi/dhruvi_app
+[2024-01-27 21:49:25.267] [INFO] Sending autorun event
+[2024-01-27 21:49:37.262] [INFO] /home/maciej/dhruvi/dhruvi_app/spec/factories/USER.RB was saved - checking if this effects /home/maciej/dhruvi/dhruvi_app
+[2024-01-27 21:49:37.262] [INFO] Sending autorun event
+[2024-01-27 23:51:08.090] [INFO] /home/maciej/dhruvi/dhruvi_app/app/views/layouts/application.html.haml was saved - checking if this effects /home/maciej/dhruvi/dhruvi_app
+[2024-01-27 23:51:08.091] [INFO] Sending autorun event
+[2024-01-27 23:52:15.902] [INFO] /home/maciej/dhruvi/dhruvi_app/app/views/layouts/application.html.haml was saved - checking if this effects /home/maciej/dhruvi/dhruvi_app
+[2024-01-27 23:52:15.903] [INFO] Sending autorun event
+[2024-01-28 00:02:55.444] [INFO] /home/maciej/dhruvi/dhruvi_app/app/views/layouts/application.html.haml was saved - checking if this effects /home/maciej/dhruvi/dhruvi_app
+[2024-01-28 00:02:55.444] [INFO] Sending autorun event
+[2024-01-28 00:15:13.263] [INFO] /home/maciej/dhruvi/dhruvi_app/app/views/layouts/application.html.haml was saved - checking if this effects /home/maciej/dhruvi/dhruvi_app
+[2024-01-28 00:15:13.264] [INFO] Sending autorun event
+[2024-01-28 00:16:14.877] [INFO] /home/maciej/dhruvi/dhruvi_app/app/views/layouts/application.html.haml was saved - checking if this effects /home/maciej/dhruvi/dhruvi_app
+[2024-01-28 00:16:14.877] [INFO] Sending autorun event
+[2024-01-28 00:16:59.336] [INFO] /home/maciej/dhruvi/dhruvi_app/app/views/layouts/application.html.haml was saved - checking if this effects /home/maciej/dhruvi/dhruvi_app
+[2024-01-28 00:16:59.336] [INFO] Sending autorun event
+[2024-01-28 00:17:25.433] [INFO] /home/maciej/dhruvi/dhruvi_app/app/views/layouts/application.html.haml was saved - checking if this effects /home/maciej/dhruvi/dhruvi_app
+[2024-01-28 00:17:25.433] [INFO] Sending autorun event
+[2024-01-28 00:44:31.774] [INFO] /home/maciej/dhruvi/dhruvi_app/app/views/layouts/application.html.haml was saved - checking if this effects /home/maciej/dhruvi/dhruvi_app
+[2024-01-28 00:44:31.774] [INFO] Sending autorun event
+[2024-01-28 00:53:25.826] [INFO] /home/maciej/dhruvi/dhruvi_app/app/views/layouts/application.html.haml was saved - checking if this effects /home/maciej/dhruvi/dhruvi_app
+[2024-01-28 00:53:25.827] [INFO] Sending autorun event
+[2024-01-28 00:54:23.502] [INFO] /home/maciej/dhruvi/dhruvi_app/app/views/layouts/application.html.haml was saved - checking if this effects /home/maciej/dhruvi/dhruvi_app
+[2024-01-28 00:54:23.502] [INFO] Sending autorun event
+[2024-01-28 00:54:40.730] [INFO] /home/maciej/dhruvi/dhruvi_app/app/views/layouts/application.html.haml was saved - checking if this effects /home/maciej/dhruvi/dhruvi_app
+[2024-01-28 00:54:40.730] [INFO] Sending autorun event
+[2024-01-28 00:54:50.789] [INFO] /home/maciej/dhruvi/dhruvi_app/app/views/layouts/application.html.haml was saved - checking if this effects /home/maciej/dhruvi/dhruvi_app
+[2024-01-28 00:54:50.789] [INFO] Sending autorun event
+[2024-01-28 00:55:10.293] [INFO] /home/maciej/dhruvi/dhruvi_app/app/views/layouts/application.html.haml was saved - checking if this effects /home/maciej/dhruvi/dhruvi_app
+[2024-01-28 00:55:10.293] [INFO] Sending autorun event
+[2024-01-28 01:00:30.862] [INFO] /home/maciej/dhruvi/dhruvi_app/app/views/layouts/application.html.haml was saved - checking if this effects /home/maciej/dhruvi/dhruvi_app
+[2024-01-28 01:00:30.862] [INFO] Sending autorun event
+[2024-01-28 01:03:01.125] [INFO] /home/maciej/dhruvi/dhruvi_app/app/views/layouts/application.html.haml was saved - checking if this effects /home/maciej/dhruvi/dhruvi_app
+[2024-01-28 01:03:01.125] [INFO] Sending autorun event
+[2024-01-28 01:03:22.453] [INFO] /home/maciej/dhruvi/dhruvi_app/app/views/layouts/application.html.haml was saved - checking if this effects /home/maciej/dhruvi/dhruvi_app
+[2024-01-28 01:03:22.453] [INFO] Sending autorun event
+[2024-01-28 01:04:07.013] [INFO] /home/maciej/dhruvi/dhruvi_app/app/views/layouts/application.html.haml was saved - checking if this effects /home/maciej/dhruvi/dhruvi_app
+[2024-01-28 01:04:07.014] [INFO] Sending autorun event
+[2024-01-28 01:29:28.822] [INFO] /home/maciej/dhruvi/dhruvi_app/app/controllers/main_controller.rb was saved - checking if this effects /home/maciej/dhruvi/dhruvi_app
+[2024-01-28 01:29:28.822] [INFO] Sending autorun event
+[2024-01-28 01:30:41.204] [INFO] /home/maciej/dhruvi/dhruvi_app/config/routes.rb was saved - checking if this effects /home/maciej/dhruvi/dhruvi_app
+[2024-01-28 01:30:41.204] [INFO] Sending autorun event
+[2024-01-28 01:30:57.830] [INFO] /home/maciej/dhruvi/dhruvi_app/app/controllers/main_controller.rb was saved - checking if this effects /home/maciej/dhruvi/dhruvi_app
+[2024-01-28 01:30:57.831] [INFO] Sending autorun event
+[2024-01-28 01:32:05.332] [INFO] /home/maciej/dhruvi/dhruvi_app/app/views/layouts/adminlte.html.haml was saved - checking if this effects /home/maciej/dhruvi/dhruvi_app
+[2024-01-28 01:32:05.332] [INFO] Sending autorun event
+[2024-01-28 01:33:40.899] [INFO] /home/maciej/dhruvi/dhruvi_app/app/views/layouts/adminlte.html.haml was saved - checking if this effects /home/maciej/dhruvi/dhruvi_app
+[2024-01-28 01:33:40.899] [INFO] Sending autorun event
+[2024-01-28 01:38:07.164] [INFO] /home/maciej/dhruvi/dhruvi_app/app/views/layouts/adminlte.html.haml was saved - checking if this effects /home/maciej/dhruvi/dhruvi_app
+[2024-01-28 01:38:07.165] [INFO] Sending autorun event
+[2024-01-28 01:39:20.313] [INFO] /home/maciej/dhruvi/dhruvi_app/app/views/layouts/adminlte.html.haml was saved - checking if this effects /home/maciej/dhruvi/dhruvi_app
+[2024-01-28 01:39:20.313] [INFO] Sending autorun event
+[2024-01-28 01:41:14.717] [INFO] /home/maciej/dhruvi/dhruvi_app/app/views/layouts/adminlte.html.haml was saved - checking if this effects /home/maciej/dhruvi/dhruvi_app
+[2024-01-28 01:41:14.717] [INFO] Sending autorun event
+[2024-01-28 01:42:49.626] [INFO] /home/maciej/dhruvi/dhruvi_app/app/views/layouts/adminlte.html.haml was saved - checking if this effects /home/maciej/dhruvi/dhruvi_app
+[2024-01-28 01:42:49.626] [INFO] Sending autorun event
+[2024-01-28 01:50:59.767] [INFO] /home/maciej/dhruvi/dhruvi_app/app/views/layouts/adminlte.html.haml was saved - checking if this effects /home/maciej/dhruvi/dhruvi_app
+[2024-01-28 01:50:59.767] [INFO] Sending autorun event
+[2024-01-28 01:52:04.058] [INFO] /home/maciej/dhruvi/dhruvi_app/app/views/layouts/adminlte.html.haml was saved - checking if this effects /home/maciej/dhruvi/dhruvi_app
+[2024-01-28 01:52:04.058] [INFO] Sending autorun event
+[2024-01-28 01:52:26.883] [INFO] /home/maciej/dhruvi/dhruvi_app/app/views/layouts/adminlte.html.haml was saved - checking if this effects /home/maciej/dhruvi/dhruvi_app
+[2024-01-28 01:52:26.883] [INFO] Sending autorun event
+[2024-01-28 01:53:01.168] [INFO] /home/maciej/dhruvi/dhruvi_app/app/views/layouts/adminlte.html.haml was saved - checking if this effects /home/maciej/dhruvi/dhruvi_app
+[2024-01-28 01:53:01.169] [INFO] Sending autorun event
+[2024-01-28 01:56:50.511] [INFO] /home/maciej/dhruvi/dhruvi_app/app/views/layouts/adminlte.html.haml was saved - checking if this effects /home/maciej/dhruvi/dhruvi_app
+[2024-01-28 01:56:50.511] [INFO] Sending autorun event
+[2024-01-28 02:05:18.475] [INFO] /home/maciej/dhruvi/dhruvi_app/app/views/layouts/adminlte.html.haml was saved - checking if this effects /home/maciej/dhruvi/dhruvi_app
+[2024-01-28 02:05:18.475] [INFO] Sending autorun event
+[2024-01-28 02:06:13.276] [INFO] /home/maciej/dhruvi/dhruvi_app/app/views/layouts/adminlte.html.haml was saved - checking if this effects /home/maciej/dhruvi/dhruvi_app
+[2024-01-28 02:06:13.276] [INFO] Sending autorun event

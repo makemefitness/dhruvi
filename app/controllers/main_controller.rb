@@ -2,10 +2,15 @@ class MainController < ApplicationController
   before_action :authenticate_user!, only: [:dashboard]
   before_action :authenticate_customer!, only: :customer
   layout 'customer', only: [:customer]
+  layout 'adminlte', only: [:adminlte]
 
   def dashboard; end
   
   def main; end
+
+  def adminlte
+    
+  end
 
   def home; end
 

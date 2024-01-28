@@ -1,0 +1,951 @@
+!!!
+%html{lang: "en"}
+  %head
+    %meta{content: "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
+    %meta{charset: "utf-8"}/
+    %meta{content: "width=device-width, initial-scale=1", name: "viewport"}/
+    %title AdminLTE 3 | Dashboard
+
+
+    %link{href: "https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback", rel: "stylesheet"}/
+    %link{crossorigin: "anonymous", href: "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css", integrity: "sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==", referrerpolicy: "no-referrer", rel: "stylesheet"}/
+    %link{href: "https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css", rel: "stylesheet"}/
+    %script{crossorigin: "anonymous", integrity: "sha512-k6/Bkb8Fxf/c1Tkyl39yJwcOZ1P4cRrJu77p83zJjN2Z55prbFHxPs9vN7q3l3+tSMGPDdoH51AEU8Vgo1cgAA==", referrerpolicy: "no-referrer", src: "https://cdnjs.cloudflare.com/ajax/libs/tempusdominus-bootstrap-4/5.39.0/js/tempusdominus-bootstrap-4.min.js"}/
+    %link{crossorigin: "anonymous", href: "https://cdnjs.cloudflare.com/ajax/libs/tempusdominus-bootstrap-4/5.39.0/css/tempusdominus-bootstrap-4.css", integrity: "sha512-ClXpwbczwauhl7XC16/EFu3grIlYTpqTYOwqwAi7rNSqxmTqCpE8VS3ovG+qi61GoxSLnuomxzFXDNcPV1hvCQ==", referrerpolicy: "no-referrer", rel: "stylesheet"}/
+    %link{crossorigin: "anonymous", href: "https://cdnjs.cloudflare.com/ajax/libs/icheck-bootstrap/3.0.1/icheck-bootstrap.min.css", integrity: "sha512-8vq2g5nHE062j3xor4XxPeZiPjmRDh6wlufQlfC6pdQ/9urJkU07NM0tEREeymP++NczacJ/Q59ul+/K2eYvcg==", referrerpolicy: "no-referrer", rel: "stylesheet"}/
+    %link{crossorigin: "anonymous", href: "https://cdnjs.cloudflare.com/ajax/libs/icheck-bootstrap/3.0.1/icheck-bootstrap.css", integrity: "sha512-J5tsMaZISEmI+Ly68nBDiQyNW6vzBoUlNHGsH8T3DzHTn2h9swZqiMeGm/4WMDxAphi5LMZMNA30LvxaEPiPkg==", referrerpolicy: "no-referrer", rel: "stylesheet"}/
+    
+    %script{crossorigin: "anonymous", integrity: "sha512-Zk7h8Wpn6b9LpplWXq1qXpnzJl8gHPfZFf8+aR4aO/4bcOD5+/Si4iNu9qE38/t/j1qFKJ08KWX34d2xmG0jrA==", referrerpolicy: "no-referrer", src: "https://cdnjs.cloudflare.com/ajax/libs/jqvmap/1.5.1/jquery.vmap.min.js"}
+    %link{crossorigin: "anonymous", href: "https://cdnjs.cloudflare.com/ajax/libs/jqvmap/1.5.1/jqvmap.min.css", integrity: "sha512-RPxGl20NcAUAq1+Tfj8VjurpvkZaep2DeCgOfQ6afXSEgcvrLE6XxDG2aacvwjdyheM/bkwaLVc7kk82+mafkQ==", referrerpolicy: "no-referrer", rel: "stylesheet"}/
+    
+    %script{src: "https://cdn.jsdelivr.net/npm/admin-lte@3.2/dist/js/adminlte.min.js"}
+    %link{href: "https://cdn.jsdelivr.net/npm/admin-lte@3.2/dist/css/adminlte.min.css", rel: "stylesheet"}/
+    
+    %script{crossorigin: "anonymous", integrity: "sha512-cfl+m416WJ3rsFC4GgK0/MburI6KYdnf+ObfW7dif0Viv6i9+p8m4TNHCI/SJtG1LgFd9ZwNWyMfk6C38UhUKA==", referrerpolicy: "no-referrer", src: "https://cdnjs.cloudflare.com/ajax/libs/overlayscrollbars/2.4.7/browser/overlayscrollbars.browser.es6.min.js"}
+
+    %script{crossorigin: "anonymous", integrity: "sha512-mh+AjlD3nxImTUGisMpHXW03gE6F4WdQyvuFRkjecwuWLwD2yCijw4tKA3NsEFpA1C3neiKhGXPSIGSfCYPMlQ==", referrerpolicy: "no-referrer", src: "https://cdnjs.cloudflare.com/ajax/libs/bootstrap-daterangepicker/3.0.5/daterangepicker.min.js"}
+    %link{crossorigin: "anonymous", href: "https://cdnjs.cloudflare.com/ajax/libs/bootstrap-daterangepicker/3.0.5/daterangepicker.css", integrity: "sha512-gp+RQIipEa1X7Sq1vYXnuOW96C4704yI1n0YB9T/KqdvqaEgL6nAuTSrKufUX3VBONq/TPuKiXGLVgBKicZ0KA==", referrerpolicy: "no-referrer", rel: "stylesheet"}/
+
+    %script{crossorigin: "anonymous", integrity: "sha512-6rE6Bx6fCBpRXG/FWpQmvguMWDLWMQjPycXMr35Zx/HRD9nwySZswkkLksgyQcvrpYMx0FELLJVBvWFtubZhDQ==", referrerpolicy: "no-referrer", src: "https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.20/summernote.min.js"}
+    %link{crossorigin: "anonymous", href: "https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.20/summernote-bs4.min.css", integrity: "sha512-ngQ4IGzHQ3s/Hh8kMyG4FC74wzitukRMIcTOoKT3EyzFZCILOPF0twiXOQn75eDINUfKBYmzYn2AA8DkAk8veQ==", referrerpolicy: "no-referrer", rel: "stylesheet"}/
+    %script{nonce: "c53a231f-65bc-40ba-979a-d8175402f1e9"}
+      :cdata
+        try { (function(w,d){!function(b$,ca,cb,cc){b$[cb]=b$[cb]||{};b$[cb].executed=[];b$.zaraz={deferred:[],listeners:[]};b$.zaraz.q=[];b$.zaraz._f=function(cd){return async function(){var ce=Array.prototype.slice.call(arguments);b$.zaraz.q.push({m:cd,a:ce})}};for(const cf of["track","set","debug"])b$.zaraz[cf]=b$.zaraz._f(cf);b$.zaraz.init=()=>{var cg=ca.getElementsByTagName(cc)[0],ch=ca.createElement(cc),ci=ca.getElementsByTagName("title")[0];ci&&(b$[cb].t=ca.getElementsByTagName("title")[0].text);b$[cb].x=Math.random();b$[cb].w=b$.screen.width;b$[cb].h=b$.screen.height;b$[cb].j=b$.innerHeight;b$[cb].e=b$.innerWidth;b$[cb].l=b$.location.href;b$[cb].r=ca.referrer;b$[cb].k=b$.screen.colorDepth;b$[cb].n=ca.characterSet;b$[cb].o=(new Date).getTimezoneOffset();if(b$.dataLayer)for(const cm of Object.entries(Object.entries(dataLayer).reduce(((cn,co)=>({...cn[1],...co[1]})),{})))zaraz.set(cm[0],cm[1],{scope:"page"});b$[cb].q=[];for(;b$.zaraz.q.length;){const cp=b$.zaraz.q.shift();b$[cb].q.push(cp)}ch.defer=!0;for(const cq of[localStorage,sessionStorage])Object.keys(cq||{}).filter((cs=>cs.startsWith("_zaraz_"))).forEach((cr=>{try{b$[cb]["z_"+cr.slice(7)]=JSON.parse(cq.getItem(cr))}catch{b$[cb]["z_"+cr.slice(7)]=cq.getItem(cr)}}));ch.referrerPolicy="origin";ch.src="/cdn-cgi/zaraz/s.js?z="+btoa(encodeURIComponent(JSON.stringify(b$[cb])));cg.parentNode.insertBefore(ch,cg)};["complete","interactive"].includes(ca.readyState)?zaraz.init():b$.addEventListener("DOMContentLoaded",zaraz.init)}(w,d,"zarazData","script");})(window,document) } catch (err) {
+        console.error('Failed to run Cloudflare Zaraz: ', err)
+        fetch('/cdn-cgi/zaraz/t', {
+        credentials: 'include',
+        keepalive: true,
+        method: 'GET',
+        })
+        };
+  %body.hold-transition.sidebar-mini.layout-fixed
+    .wrapper
+      .preloader.flex-column.justify-content-center.align-items-center.d-none
+        %img.animation__shake{alt: "AdminLTELogo", height: "60", src: "dist/img/AdminLTELogo.png", width: "60"}/
+      %nav.main-header.navbar.navbar-expand.navbar-white.navbar-light
+        %ul.navbar-nav
+          %li.nav-item
+            %a.nav-link{"data-widget" => "pushmenu", href: "#", role: "button"}
+              %i.fas.fa-bars
+          %li.nav-item.d-none.d-sm-inline-block
+            %a.nav-link{href: "index3.html"} Home
+          %li.nav-item.d-none.d-sm-inline-block
+            %a.nav-link{href: "#"} Contact
+        %ul.navbar-nav.ml-auto
+          %li.nav-item
+            %a.nav-link{"data-widget" => "navbar-search", href: "#", role: "button"}
+              %i.fas.fa-search
+            .navbar-search-block
+              %form.form-inline
+                .input-group.input-group-sm
+                  %input.form-control.form-control-navbar{"aria-label" => "Search", placeholder: "Search", type: "search"}/
+                  .input-group-append
+                    %button.btn.btn-navbar{type: "submit"}
+                      %i.fas.fa-search
+                    %button.btn.btn-navbar{"data-widget" => "navbar-search", type: "button"}
+                      %i.fas.fa-times
+          %li.nav-item.dropdown
+            %a.nav-link{"data-toggle" => "dropdown", href: "#"}
+              %i.far.fa-comments
+              %span.badge.badge-danger.navbar-badge 3
+            .dropdown-menu.dropdown-menu-lg.dropdown-menu-right
+              %a.dropdown-item{href: "#"}
+                .media
+                  %img.img-size-50.mr-3.img-circle{alt: "User Avatar", src: "dist/img/user1-128x128.jpg"}/
+                  .media-body
+                    %h3.dropdown-item-title
+                      Brad Diesel
+                      %span.float-right.text-sm.text-danger
+                        %i.fas.fa-star
+                    %p.text-sm Call me whenever you can...
+                    %p.text-sm.text-muted
+                      %i.far.fa-clock.mr-1
+                      4 Hours Ago
+              .dropdown-divider
+              %a.dropdown-item{href: "#"}
+                .media
+                  %img.img-size-50.img-circle.mr-3{alt: "User Avatar", src: "dist/img/user8-128x128.jpg"}/
+                  .media-body
+                    %h3.dropdown-item-title
+                      John Pierce
+                      %span.float-right.text-sm.text-muted
+                        %i.fas.fa-star
+                    %p.text-sm I got your message bro
+                    %p.text-sm.text-muted
+                      %i.far.fa-clock.mr-1
+                      4 Hours Ago
+              .dropdown-divider
+              %a.dropdown-item{href: "#"}
+                .media
+                  %img.img-size-50.img-circle.mr-3{alt: "User Avatar", src: "dist/img/user3-128x128.jpg"}/
+                  .media-body
+                    %h3.dropdown-item-title
+                      Nora Silvester
+                      %span.float-right.text-sm.text-warning
+                        %i.fas.fa-star
+                    %p.text-sm The subject goes here
+                    %p.text-sm.text-muted
+                      %i.far.fa-clock.mr-1
+                      4 Hours Ago
+              .dropdown-divider
+              %a.dropdown-item.dropdown-footer{href: "#"} See All Messages
+          %li.nav-item.dropdown
+            %a.nav-link{"data-toggle" => "dropdown", href: "#"}
+              %i.far.fa-bell
+              %span.badge.badge-warning.navbar-badge 15
+            .dropdown-menu.dropdown-menu-lg.dropdown-menu-right
+              %span.dropdown-item.dropdown-header 15 Notifications
+              .dropdown-divider
+              %a.dropdown-item{href: "#"}
+                %i.fas.fa-envelope.mr-2
+                4 new messages
+                %span.float-right.text-muted.text-sm 3 mins
+              .dropdown-divider
+              %a.dropdown-item{href: "#"}
+                %i.fas.fa-users.mr-2
+                8 friend requests
+                %span.float-right.text-muted.text-sm 12 hours
+              .dropdown-divider
+              %a.dropdown-item{href: "#"}
+                %i.fas.fa-file.mr-2
+                3 new reports
+                %span.float-right.text-muted.text-sm 2 days
+              .dropdown-divider
+              %a.dropdown-item.dropdown-footer{href: "#"} See All Notifications
+          %li.nav-item
+            %a.nav-link{"data-widget" => "fullscreen", href: "#", role: "button"}
+              %i.fas.fa-expand-arrows-alt
+          %li.nav-item
+            %a.nav-link{"data-controlsidebar-slide" => "true", "data-widget" => "control-sidebar", href: "#", role: "button"}
+              %i.fas.fa-th-large
+      %aside.main-sidebar.sidebar-dark-primary.elevation-4
+        %a.brand-link{href: "index3.html"}
+          %img.brand-image.img-circle.elevation-3{alt: "AdminLTE Logo", src: "dist/img/AdminLTELogo.png", style: "opacity: .8"}/
+          %span.brand-text.font-weight-light AdminLTE 3
+        .sidebar
+          .user-panel.mt-3.pb-3.mb-3.d-flex
+            .image
+              %img.img-circle.elevation-2{alt: "User Image", src: "dist/img/user2-160x160.jpg"}/
+            .info
+              %a.d-block{href: "#"} Alexander Pierce
+          .form-inline
+            .input-group{"data-widget" => "sidebar-search"}
+              %input.form-control.form-control-sidebar{"aria-label" => "Search", placeholder: "Search", type: "search"}/
+              .input-group-append
+                %button.btn.btn-sidebar
+                  %i.fas.fa-search.fa-fw
+          %nav.mt-2
+            %ul.nav.nav-pills.nav-sidebar.flex-column{"data-accordion" => "false", "data-widget" => "treeview", role: "menu"}
+              %li.nav-item.menu-open
+                %a.nav-link.active{href: "#"}
+                  %i.nav-icon.fas.fa-tachometer-alt
+                  %p
+                    Dashboard
+                    %i.right.fas.fa-angle-left
+                %ul.nav.nav-treeview
+                  %li.nav-item
+                    %a.nav-link.active{href: "./index.html"}
+                      %i.far.fa-circle.nav-icon
+                      %p Dashboard v1
+                  %li.nav-item
+                    %a.nav-link{href: "./index2.html"}
+                      %i.far.fa-circle.nav-icon
+                      %p Dashboard v2
+                  %li.nav-item
+                    %a.nav-link{href: "./index3.html"}
+                      %i.far.fa-circle.nav-icon
+                      %p Dashboard v3
+              %li.nav-item
+                %a.nav-link{href: "pages/widgets.html"}
+                  %i.nav-icon.fas.fa-th
+                  %p
+                    Widgets
+                    %span.right.badge.badge-danger New
+              %li.nav-item
+                %a.nav-link{href: "#"}
+                  %i.nav-icon.fas.fa-copy
+                  %p
+                    Layout Options
+                    %i.fas.fa-angle-left.right
+                    %span.badge.badge-info.right 6
+                %ul.nav.nav-treeview
+                  %li.nav-item
+                    %a.nav-link{href: "pages/layout/top-nav.html"}
+                      %i.far.fa-circle.nav-icon
+                      %p Top Navigation
+                  %li.nav-item
+                    %a.nav-link{href: "pages/layout/top-nav-sidebar.html"}
+                      %i.far.fa-circle.nav-icon
+                      %p Top Navigation + Sidebar
+                  %li.nav-item
+                    %a.nav-link{href: "pages/layout/boxed.html"}
+                      %i.far.fa-circle.nav-icon
+                      %p Boxed
+                  %li.nav-item
+                    %a.nav-link{href: "pages/layout/fixed-sidebar.html"}
+                      %i.far.fa-circle.nav-icon
+                      %p Fixed Sidebar
+                  %li.nav-item
+                    %a.nav-link{href: "pages/layout/fixed-sidebar-custom.html"}
+                      %i.far.fa-circle.nav-icon
+                      %p
+                        Fixed Sidebar
+                        %small + Custom Area
+                  %li.nav-item
+                    %a.nav-link{href: "pages/layout/fixed-topnav.html"}
+                      %i.far.fa-circle.nav-icon
+                      %p Fixed Navbar
+                  %li.nav-item
+                    %a.nav-link{href: "pages/layout/fixed-footer.html"}
+                      %i.far.fa-circle.nav-icon
+                      %p Fixed Footer
+                  %li.nav-item
+                    %a.nav-link{href: "pages/layout/collapsed-sidebar.html"}
+                      %i.far.fa-circle.nav-icon
+                      %p Collapsed Sidebar
+              %li.nav-item
+                %a.nav-link{href: "#"}
+                  %i.nav-icon.fas.fa-chart-pie
+                  %p
+                    Charts
+                    %i.right.fas.fa-angle-left
+                %ul.nav.nav-treeview
+                  %li.nav-item
+                    %a.nav-link{href: "pages/charts/chartjs.html"}
+                      %i.far.fa-circle.nav-icon
+                      %p ChartJS
+                  %li.nav-item
+                    %a.nav-link{href: "pages/charts/flot.html"}
+                      %i.far.fa-circle.nav-icon
+                      %p Flot
+                  %li.nav-item
+                    %a.nav-link{href: "pages/charts/inline.html"}
+                      %i.far.fa-circle.nav-icon
+                      %p Inline
+                  %li.nav-item
+                    %a.nav-link{href: "pages/charts/uplot.html"}
+                      %i.far.fa-circle.nav-icon
+                      %p uPlot
+              %li.nav-item
+                %a.nav-link{href: "#"}
+                  %i.nav-icon.fas.fa-tree
+                  %p
+                    UI Elements
+                    %i.fas.fa-angle-left.right
+                %ul.nav.nav-treeview
+                  %li.nav-item
+                    %a.nav-link{href: "pages/UI/general.html"}
+                      %i.far.fa-circle.nav-icon
+                      %p General
+                  %li.nav-item
+                    %a.nav-link{href: "pages/UI/icons.html"}
+                      %i.far.fa-circle.nav-icon
+                      %p Icons
+                  %li.nav-item
+                    %a.nav-link{href: "pages/UI/buttons.html"}
+                      %i.far.fa-circle.nav-icon
+                      %p Buttons
+                  %li.nav-item
+                    %a.nav-link{href: "pages/UI/sliders.html"}
+                      %i.far.fa-circle.nav-icon
+                      %p Sliders
+                  %li.nav-item
+                    %a.nav-link{href: "pages/UI/modals.html"}
+                      %i.far.fa-circle.nav-icon
+                      %p Modals &amp; Alerts
+                  %li.nav-item
+                    %a.nav-link{href: "pages/UI/navbar.html"}
+                      %i.far.fa-circle.nav-icon
+                      %p Navbar &amp; Tabs
+                  %li.nav-item
+                    %a.nav-link{href: "pages/UI/timeline.html"}
+                      %i.far.fa-circle.nav-icon
+                      %p Timeline
+                  %li.nav-item
+                    %a.nav-link{href: "pages/UI/ribbons.html"}
+                      %i.far.fa-circle.nav-icon
+                      %p Ribbons
+              %li.nav-item
+                %a.nav-link{href: "#"}
+                  %i.nav-icon.fas.fa-edit
+                  %p
+                    Forms
+                    %i.fas.fa-angle-left.right
+                %ul.nav.nav-treeview
+                  %li.nav-item
+                    %a.nav-link{href: "pages/forms/general.html"}
+                      %i.far.fa-circle.nav-icon
+                      %p General Elements
+                  %li.nav-item
+                    %a.nav-link{href: "pages/forms/advanced.html"}
+                      %i.far.fa-circle.nav-icon
+                      %p Advanced Elements
+                  %li.nav-item
+                    %a.nav-link{href: "pages/forms/editors.html"}
+                      %i.far.fa-circle.nav-icon
+                      %p Editors
+                  %li.nav-item
+                    %a.nav-link{href: "pages/forms/validation.html"}
+                      %i.far.fa-circle.nav-icon
+                      %p Validation
+              %li.nav-item
+                %a.nav-link{href: "#"}
+                  %i.nav-icon.fas.fa-table
+                  %p
+                    Tables
+                    %i.fas.fa-angle-left.right
+                %ul.nav.nav-treeview
+                  %li.nav-item
+                    %a.nav-link{href: "pages/tables/simple.html"}
+                      %i.far.fa-circle.nav-icon
+                      %p Simple Tables
+                  %li.nav-item
+                    %a.nav-link{href: "pages/tables/data.html"}
+                      %i.far.fa-circle.nav-icon
+                      %p DataTables
+                  %li.nav-item
+                    %a.nav-link{href: "pages/tables/jsgrid.html"}
+                      %i.far.fa-circle.nav-icon
+                      %p jsGrid
+              %li.nav-header EXAMPLES
+              %li.nav-item
+                %a.nav-link{href: "pages/calendar.html"}
+                  %i.nav-icon.far.fa-calendar-alt
+                  %p
+                    Calendar
+                    %span.badge.badge-info.right 2
+              %li.nav-item
+                %a.nav-link{href: "pages/gallery.html"}
+                  %i.nav-icon.far.fa-image
+                  %p
+                    Gallery
+              %li.nav-item
+                %a.nav-link{href: "pages/kanban.html"}
+                  %i.nav-icon.fas.fa-columns
+                  %p
+                    Kanban Board
+              %li.nav-item
+                %a.nav-link{href: "#"}
+                  %i.nav-icon.far.fa-envelope
+                  %p
+                    Mailbox
+                    %i.fas.fa-angle-left.right
+                %ul.nav.nav-treeview
+                  %li.nav-item
+                    %a.nav-link{href: "pages/mailbox/mailbox.html"}
+                      %i.far.fa-circle.nav-icon
+                      %p Inbox
+                  %li.nav-item
+                    %a.nav-link{href: "pages/mailbox/compose.html"}
+                      %i.far.fa-circle.nav-icon
+                      %p Compose
+                  %li.nav-item
+                    %a.nav-link{href: "pages/mailbox/read-mail.html"}
+                      %i.far.fa-circle.nav-icon
+                      %p Read
+              %li.nav-item
+                %a.nav-link{href: "#"}
+                  %i.nav-icon.fas.fa-book
+                  %p
+                    Pages
+                    %i.fas.fa-angle-left.right
+                %ul.nav.nav-treeview
+                  %li.nav-item
+                    %a.nav-link{href: "pages/examples/invoice.html"}
+                      %i.far.fa-circle.nav-icon
+                      %p Invoice
+                  %li.nav-item
+                    %a.nav-link{href: "pages/examples/profile.html"}
+                      %i.far.fa-circle.nav-icon
+                      %p Profile
+                  %li.nav-item
+                    %a.nav-link{href: "pages/examples/e-commerce.html"}
+                      %i.far.fa-circle.nav-icon
+                      %p E-commerce
+                  %li.nav-item
+                    %a.nav-link{href: "pages/examples/projects.html"}
+                      %i.far.fa-circle.nav-icon
+                      %p Projects
+                  %li.nav-item
+                    %a.nav-link{href: "pages/examples/project-add.html"}
+                      %i.far.fa-circle.nav-icon
+                      %p Project Add
+                  %li.nav-item
+                    %a.nav-link{href: "pages/examples/project-edit.html"}
+                      %i.far.fa-circle.nav-icon
+                      %p Project Edit
+                  %li.nav-item
+                    %a.nav-link{href: "pages/examples/project-detail.html"}
+                      %i.far.fa-circle.nav-icon
+                      %p Project Detail
+                  %li.nav-item
+                    %a.nav-link{href: "pages/examples/contacts.html"}
+                      %i.far.fa-circle.nav-icon
+                      %p Contacts
+                  %li.nav-item
+                    %a.nav-link{href: "pages/examples/faq.html"}
+                      %i.far.fa-circle.nav-icon
+                      %p FAQ
+                  %li.nav-item
+                    %a.nav-link{href: "pages/examples/contact-us.html"}
+                      %i.far.fa-circle.nav-icon
+                      %p Contact us
+              %li.nav-item
+                %a.nav-link{href: "#"}
+                  %i.nav-icon.far.fa-plus-square
+                  %p
+                    Extras
+                    %i.fas.fa-angle-left.right
+                %ul.nav.nav-treeview
+                  %li.nav-item
+                    %a.nav-link{href: "#"}
+                      %i.far.fa-circle.nav-icon
+                      %p
+                        Login &amp; Register v1
+                        %i.fas.fa-angle-left.right
+                    %ul.nav.nav-treeview
+                      %li.nav-item
+                        %a.nav-link{href: "pages/examples/login.html"}
+                          %i.far.fa-circle.nav-icon
+                          %p Login v1
+                      %li.nav-item
+                        %a.nav-link{href: "pages/examples/register.html"}
+                          %i.far.fa-circle.nav-icon
+                          %p Register v1
+                      %li.nav-item
+                        %a.nav-link{href: "pages/examples/forgot-password.html"}
+                          %i.far.fa-circle.nav-icon
+                          %p Forgot Password v1
+                      %li.nav-item
+                        %a.nav-link{href: "pages/examples/recover-password.html"}
+                          %i.far.fa-circle.nav-icon
+                          %p Recover Password v1
+                  %li.nav-item
+                    %a.nav-link{href: "#"}
+                      %i.far.fa-circle.nav-icon
+                      %p
+                        Login &amp; Register v2
+                        %i.fas.fa-angle-left.right
+                    %ul.nav.nav-treeview
+                      %li.nav-item
+                        %a.nav-link{href: "pages/examples/login-v2.html"}
+                          %i.far.fa-circle.nav-icon
+                          %p Login v2
+                      %li.nav-item
+                        %a.nav-link{href: "pages/examples/register-v2.html"}
+                          %i.far.fa-circle.nav-icon
+                          %p Register v2
+                      %li.nav-item
+                        %a.nav-link{href: "pages/examples/forgot-password-v2.html"}
+                          %i.far.fa-circle.nav-icon
+                          %p Forgot Password v2
+                      %li.nav-item
+                        %a.nav-link{href: "pages/examples/recover-password-v2.html"}
+                          %i.far.fa-circle.nav-icon
+                          %p Recover Password v2
+                  %li.nav-item
+                    %a.nav-link{href: "pages/examples/lockscreen.html"}
+                      %i.far.fa-circle.nav-icon
+                      %p Lockscreen
+                  %li.nav-item
+                    %a.nav-link{href: "pages/examples/legacy-user-menu.html"}
+                      %i.far.fa-circle.nav-icon
+                      %p Legacy User Menu
+                  %li.nav-item
+                    %a.nav-link{href: "pages/examples/language-menu.html"}
+                      %i.far.fa-circle.nav-icon
+                      %p Language Menu
+                  %li.nav-item
+                    %a.nav-link{href: "pages/examples/404.html"}
+                      %i.far.fa-circle.nav-icon
+                      %p Error 404
+                  %li.nav-item
+                    %a.nav-link{href: "pages/examples/500.html"}
+                      %i.far.fa-circle.nav-icon
+                      %p Error 500
+                  %li.nav-item
+                    %a.nav-link{href: "pages/examples/pace.html"}
+                      %i.far.fa-circle.nav-icon
+                      %p Pace
+                  %li.nav-item
+                    %a.nav-link{href: "pages/examples/blank.html"}
+                      %i.far.fa-circle.nav-icon
+                      %p Blank Page
+                  %li.nav-item
+                    %a.nav-link{href: "starter.html"}
+                      %i.far.fa-circle.nav-icon
+                      %p Starter Page
+              %li.nav-item
+                %a.nav-link{href: "#"}
+                  %i.nav-icon.fas.fa-search
+                  %p
+                    Search
+                    %i.fas.fa-angle-left.right
+                %ul.nav.nav-treeview
+                  %li.nav-item
+                    %a.nav-link{href: "pages/search/simple.html"}
+                      %i.far.fa-circle.nav-icon
+                      %p Simple Search
+                  %li.nav-item
+                    %a.nav-link{href: "pages/search/enhanced.html"}
+                      %i.far.fa-circle.nav-icon
+                      %p Enhanced
+              %li.nav-header MISCELLANEOUS
+              %li.nav-item
+                %a.nav-link{href: "iframe.html"}
+                  %i.nav-icon.fas.fa-ellipsis-h
+                  %p Tabbed IFrame Plugin
+              %li.nav-item
+                %a.nav-link{href: "https://adminlte.io/docs/3.1/"}
+                  %i.nav-icon.fas.fa-file
+                  %p Documentation
+              %li.nav-header MULTI LEVEL EXAMPLE
+              %li.nav-item
+                %a.nav-link{href: "#"}
+                  %i.fas.fa-circle.nav-icon
+                  %p Level 1
+              %li.nav-item
+                %a.nav-link{href: "#"}
+                  %i.nav-icon.fas.fa-circle
+                  %p
+                    Level 1
+                    %i.right.fas.fa-angle-left
+                %ul.nav.nav-treeview
+                  %li.nav-item
+                    %a.nav-link{href: "#"}
+                      %i.far.fa-circle.nav-icon
+                      %p Level 2
+                  %li.nav-item
+                    %a.nav-link{href: "#"}
+                      %i.far.fa-circle.nav-icon
+                      %p
+                        Level 2
+                        %i.right.fas.fa-angle-left
+                    %ul.nav.nav-treeview
+                      %li.nav-item
+                        %a.nav-link{href: "#"}
+                          %i.far.fa-dot-circle.nav-icon
+                          %p Level 3
+                      %li.nav-item
+                        %a.nav-link{href: "#"}
+                          %i.far.fa-dot-circle.nav-icon
+                          %p Level 3
+                      %li.nav-item
+                        %a.nav-link{href: "#"}
+                          %i.far.fa-dot-circle.nav-icon
+                          %p Level 3
+                  %li.nav-item
+                    %a.nav-link{href: "#"}
+                      %i.far.fa-circle.nav-icon
+                      %p Level 2
+              %li.nav-item
+                %a.nav-link{href: "#"}
+                  %i.fas.fa-circle.nav-icon
+                  %p Level 1
+              %li.nav-header LABELS
+              %li.nav-item
+                %a.nav-link{href: "#"}
+                  %i.nav-icon.far.fa-circle.text-danger
+                  %p.text Important
+              %li.nav-item
+                %a.nav-link{href: "#"}
+                  %i.nav-icon.far.fa-circle.text-warning
+                  %p Warning
+              %li.nav-item
+                %a.nav-link{href: "#"}
+                  %i.nav-icon.far.fa-circle.text-info
+                  %p Informational
+      .content-wrapper
+        .content-header
+          .container-fluid
+            .row.mb-2
+              .col-sm-6
+                %h1.m-0 Dashboard
+              .col-sm-6
+                %ol.breadcrumb.float-sm-right
+                  %li.breadcrumb-item
+                    %a{href: "#"} Home
+                  %li.breadcrumb-item.active Dashboard v1
+        %section.content
+          .container-fluid
+            .row
+              .col-lg-3.col-6
+                .small-box.bg-info
+                  .inner
+                    %h3 150
+                    %p New Orders
+                  .icon
+                    %i.ion.ion-bag
+                  %a.small-box-footer{href: "#"}
+                    More info
+                    %i.fas.fa-arrow-circle-right
+              .col-lg-3.col-6
+                .small-box.bg-success
+                  .inner
+                    %h3
+                      53
+                      %sup{style: "font-size: 20px"} %
+                    %p Bounce Rate
+                  .icon
+                    %i.ion.ion-stats-bars
+                  %a.small-box-footer{href: "#"}
+                    More info
+                    %i.fas.fa-arrow-circle-right
+              .col-lg-3.col-6
+                .small-box.bg-warning
+                  .inner
+                    %h3 44
+                    %p User Registrations
+                  .icon
+                    %i.ion.ion-person-add
+                  %a.small-box-footer{href: "#"}
+                    More info
+                    %i.fas.fa-arrow-circle-right
+              .col-lg-3.col-6
+                .small-box.bg-danger
+                  .inner
+                    %h3 65
+                    %p Unique Visitors
+                  .icon
+                    %i.ion.ion-pie-graph
+                  %a.small-box-footer{href: "#"}
+                    More info
+                    %i.fas.fa-arrow-circle-right
+            .row
+              %section.col-lg-7.connectedSortable
+                .card
+                  .card-header
+                    %h3.card-title
+                      %i.fas.fa-chart-pie.mr-1
+                      Sales
+                    .card-tools
+                      %ul.nav.nav-pills.ml-auto
+                        %li.nav-item
+                          %a.nav-link.active{"data-toggle" => "tab", href: "#revenue-chart"} Area
+                        %li.nav-item
+                          %a.nav-link{"data-toggle" => "tab", href: "#sales-chart"} Donut
+                  .card-body
+                    .tab-content.p-0
+                      #revenue-chart.chart.tab-pane.active{style: "position: relative; height: 300px;"}
+                        %canvas#revenue-chart-canvas{height: "300", style: "height: 300px;"}
+                      #sales-chart.chart.tab-pane{style: "position: relative; height: 300px;"}
+                        %canvas#sales-chart-canvas{height: "300", style: "height: 300px;"}
+                .card.direct-chat.direct-chat-primary
+                  .card-header
+                    %h3.card-title Direct Chat
+                    .card-tools
+                      %span.badge.badge-primary{title: "3 New Messages"} 3
+                      %button.btn.btn-tool{"data-card-widget" => "collapse", type: "button"}
+                        %i.fas.fa-minus
+                      %button.btn.btn-tool{"data-widget" => "chat-pane-toggle", title: "Contacts", type: "button"}
+                        %i.fas.fa-comments
+                      %button.btn.btn-tool{"data-card-widget" => "remove", type: "button"}
+                        %i.fas.fa-times
+                  .card-body
+                    .direct-chat-messages
+                      .direct-chat-msg
+                        .direct-chat-infos.clearfix
+                          %span.direct-chat-name.float-left Alexander Pierce
+                          %span.direct-chat-timestamp.float-right 23 Jan 2:00 pm
+                        %img.direct-chat-img{alt: "message user image", src: "dist/img/user1-128x128.jpg"}/
+                        .direct-chat-text
+                          Is this template really for free? That's unbelievable!
+                      .direct-chat-msg.right
+                        .direct-chat-infos.clearfix
+                          %span.direct-chat-name.float-right Sarah Bullock
+                          %span.direct-chat-timestamp.float-left 23 Jan 2:05 pm
+                        %img.direct-chat-img{alt: "message user image", src: "dist/img/user3-128x128.jpg"}/
+                        .direct-chat-text
+                          You better believe it!
+                      .direct-chat-msg
+                        .direct-chat-infos.clearfix
+                          %span.direct-chat-name.float-left Alexander Pierce
+                          %span.direct-chat-timestamp.float-right 23 Jan 5:37 pm
+                        %img.direct-chat-img{alt: "message user image", src: "dist/img/user1-128x128.jpg"}/
+                        .direct-chat-text
+                          Working with AdminLTE on a great new app! Wanna join?
+                      .direct-chat-msg.right
+                        .direct-chat-infos.clearfix
+                          %span.direct-chat-name.float-right Sarah Bullock
+                          %span.direct-chat-timestamp.float-left 23 Jan 6:10 pm
+                        %img.direct-chat-img{alt: "message user image", src: "dist/img/user3-128x128.jpg"}/
+                        .direct-chat-text
+                          I would love to.
+                    .direct-chat-contacts
+                      %ul.contacts-list
+                        %li
+                          %a{href: "#"}
+                            %img.contacts-list-img{alt: "User Avatar", src: "dist/img/user1-128x128.jpg"}/
+                            .contacts-list-info
+                              %span.contacts-list-name
+                                Count Dracula
+                                %small.contacts-list-date.float-right 2/28/2015
+                              %span.contacts-list-msg How have you been? I was...
+                        %li
+                          %a{href: "#"}
+                            %img.contacts-list-img{alt: "User Avatar", src: "dist/img/user7-128x128.jpg"}/
+                            .contacts-list-info
+                              %span.contacts-list-name
+                                Sarah Doe
+                                %small.contacts-list-date.float-right 2/23/2015
+                              %span.contacts-list-msg I will be waiting for...
+                        %li
+                          %a{href: "#"}
+                            %img.contacts-list-img{alt: "User Avatar", src: "dist/img/user3-128x128.jpg"}/
+                            .contacts-list-info
+                              %span.contacts-list-name
+                                Nadia Jolie
+                                %small.contacts-list-date.float-right 2/20/2015
+                              %span.contacts-list-msg I'll call you back at...
+                        %li
+                          %a{href: "#"}
+                            %img.contacts-list-img{alt: "User Avatar", src: "dist/img/user5-128x128.jpg"}/
+                            .contacts-list-info
+                              %span.contacts-list-name
+                                Nora S. Vans
+                                %small.contacts-list-date.float-right 2/10/2015
+                              %span.contacts-list-msg Where is your new...
+                        %li
+                          %a{href: "#"}
+                            %img.contacts-list-img{alt: "User Avatar", src: "dist/img/user6-128x128.jpg"}/
+                            .contacts-list-info
+                              %span.contacts-list-name
+                                John K.
+                                %small.contacts-list-date.float-right 1/27/2015
+                              %span.contacts-list-msg Can I take a look at...
+                        %li
+                          %a{href: "#"}
+                            %img.contacts-list-img{alt: "User Avatar", src: "dist/img/user8-128x128.jpg"}/
+                            .contacts-list-info
+                              %span.contacts-list-name
+                                Kenneth M.
+                                %small.contacts-list-date.float-right 1/4/2015
+                              %span.contacts-list-msg Never mind I found...
+                  .card-footer
+                    %form{action: "#", method: "post"}
+                      .input-group
+                        %input.form-control{name: "message", placeholder: "Type Message ...", type: "text"}/
+                        %span.input-group-append
+                          %button.btn.btn-primary{type: "button"} Send
+                .card
+                  .card-header
+                    %h3.card-title
+                      %i.ion.ion-clipboard.mr-1
+                      To Do List
+                    .card-tools
+                      %ul.pagination.pagination-sm
+                        %li.page-item
+                          %a.page-link{href: "#"} «
+                        %li.page-item
+                          %a.page-link{href: "#"} 1
+                        %li.page-item
+                          %a.page-link{href: "#"} 2
+                        %li.page-item
+                          %a.page-link{href: "#"} 3
+                        %li.page-item
+                          %a.page-link{href: "#"} »
+                  .card-body
+                    %ul.todo-list{"data-widget" => "todo-list"}
+                      %li
+                        %span.handle
+                          %i.fas.fa-ellipsis-v
+                          %i.fas.fa-ellipsis-v
+                        .icheck-primary.d-inline.ml-2
+                          %input#todoCheck1{name: "todo1", type: "checkbox", value: ""}/
+                          %label{for: "todoCheck1"}
+                        %span.text Design a nice theme
+                        %small.badge.badge-danger
+                          %i.far.fa-clock
+                          2 mins
+                        .tools
+                          %i.fas.fa-edit
+                          %i.fas.fa-trash-o
+                      %li
+                        %span.handle
+                          %i.fas.fa-ellipsis-v
+                          %i.fas.fa-ellipsis-v
+                        .icheck-primary.d-inline.ml-2
+                          %input#todoCheck2{checked: "checked", name: "todo2", type: "checkbox", value: ""}/
+                          %label{for: "todoCheck2"}
+                        %span.text Make the theme responsive
+                        %small.badge.badge-info
+                          %i.far.fa-clock
+                          4 hours
+                        .tools
+                          %i.fas.fa-edit
+                          %i.fas.fa-trash-o
+                      %li
+                        %span.handle
+                          %i.fas.fa-ellipsis-v
+                          %i.fas.fa-ellipsis-v
+                        .icheck-primary.d-inline.ml-2
+                          %input#todoCheck3{name: "todo3", type: "checkbox", value: ""}/
+                          %label{for: "todoCheck3"}
+                        %span.text Let theme shine like a star
+                        %small.badge.badge-warning
+                          %i.far.fa-clock
+                          1 day
+                        .tools
+                          %i.fas.fa-edit
+                          %i.fas.fa-trash-o
+                      %li
+                        %span.handle
+                          %i.fas.fa-ellipsis-v
+                          %i.fas.fa-ellipsis-v
+                        .icheck-primary.d-inline.ml-2
+                          %input#todoCheck4{name: "todo4", type: "checkbox", value: ""}/
+                          %label{for: "todoCheck4"}
+                        %span.text Let theme shine like a star
+                        %small.badge.badge-success
+                          %i.far.fa-clock
+                          3 days
+                        .tools
+                          %i.fas.fa-edit
+                          %i.fas.fa-trash-o
+                      %li
+                        %span.handle
+                          %i.fas.fa-ellipsis-v
+                          %i.fas.fa-ellipsis-v
+                        .icheck-primary.d-inline.ml-2
+                          %input#todoCheck5{name: "todo5", type: "checkbox", value: ""}/
+                          %label{for: "todoCheck5"}
+                        %span.text Check your messages and notifications
+                        %small.badge.badge-primary
+                          %i.far.fa-clock
+                          1 week
+                        .tools
+                          %i.fas.fa-edit
+                          %i.fas.fa-trash-o
+                      %li
+                        %span.handle
+                          %i.fas.fa-ellipsis-v
+                          %i.fas.fa-ellipsis-v
+                        .icheck-primary.d-inline.ml-2
+                          %input#todoCheck6{name: "todo6", type: "checkbox", value: ""}/
+                          %label{for: "todoCheck6"}
+                        %span.text Let theme shine like a star
+                        %small.badge.badge-secondary
+                          %i.far.fa-clock
+                          1 month
+                        .tools
+                          %i.fas.fa-edit
+                          %i.fas.fa-trash-o
+                  .card-footer.clearfix
+                    %button.btn.btn-primary.float-right{type: "button"}
+                      %i.fas.fa-plus
+                      Add item
+              %section.col-lg-5.connectedSortable
+                .card.bg-gradient-primary
+                  .card-header.border-0
+                    %h3.card-title
+                      %i.fas.fa-map-marker-alt.mr-1
+                      Visitors
+                    .card-tools
+                      %button.btn.btn-primary.btn-sm.daterange{title: "Date range", type: "button"}
+                        %i.far.fa-calendar-alt
+                      %button.btn.btn-primary.btn-sm{"data-card-widget" => "collapse", title: "Collapse", type: "button"}
+                        %i.fas.fa-minus
+                  .card-body
+                    #world-map{style: "height: 250px; width: 100%;"}
+                  .card-footer.bg-transparent
+                    .row
+                      .col-4.text-center
+                        #sparkline-1
+                        .text-white Visitors
+                      .col-4.text-center
+                        #sparkline-2
+                        .text-white Online
+                      .col-4.text-center
+                        #sparkline-3
+                        .text-white Sales
+                .card.bg-gradient-info
+                  .card-header.border-0
+                    %h3.card-title
+                      %i.fas.fa-th.mr-1
+                      Sales Graph
+                    .card-tools
+                      %button.btn.bg-info.btn-sm{"data-card-widget" => "collapse", type: "button"}
+                        %i.fas.fa-minus
+                      %button.btn.bg-info.btn-sm{"data-card-widget" => "remove", type: "button"}
+                        %i.fas.fa-times
+                  .card-body
+                    %canvas#line-chart.chart{style: "min-height: 250px; height: 250px; max-height: 250px; max-width: 100%;"}
+                  .card-footer.bg-transparent
+                    .row
+                      .col-4.text-center
+                        %input.knob{"data-fgcolor" => "#39CCCC", "data-height" => "60", "data-readonly" => "true", "data-width" => "60", type: "text", value: "20"}/
+                        .text-white Mail-Orders
+                      .col-4.text-center
+                        %input.knob{"data-fgcolor" => "#39CCCC", "data-height" => "60", "data-readonly" => "true", "data-width" => "60", type: "text", value: "50"}/
+                        .text-white Online
+                      .col-4.text-center
+                        %input.knob{"data-fgcolor" => "#39CCCC", "data-height" => "60", "data-readonly" => "true", "data-width" => "60", type: "text", value: "30"}/
+                        .text-white In-Store
+                .card.bg-gradient-success
+                  .card-header.border-0
+                    %h3.card-title
+                      %i.far.fa-calendar-alt
+                      Calendar
+                    .card-tools
+                      .btn-group
+                        %button.btn.btn-success.btn-sm.dropdown-toggle{"data-offset" => "-52", "data-toggle" => "dropdown", type: "button"}
+                          %i.fas.fa-bars
+                        .dropdown-menu{role: "menu"}
+                          %a.dropdown-item{href: "#"} Add new event
+                          %a.dropdown-item{href: "#"} Clear events
+                          .dropdown-divider
+                          %a.dropdown-item{href: "#"} View calendar
+                      %button.btn.btn-success.btn-sm{"data-card-widget" => "collapse", type: "button"}
+                        %i.fas.fa-minus
+                      %button.btn.btn-success.btn-sm{"data-card-widget" => "remove", type: "button"}
+                        %i.fas.fa-times
+                  .card-body.pt-0
+                    #calendar{style: "width: 100%"}
+      %footer.main-footer
+        %strong
+          Copyright © 2014-2021
+          = succeed "." do
+            %a{href: "https://adminlte.io"} AdminLTE.io
+        All rights reserved.
+        .float-right.d-none.d-sm-inline-block
+          %b Version
+          3.2.0
+      %aside.control-sidebar.control-sidebar-dark
+    %script{src: "plugins/jquery/jquery.min.js"}
+    %script{src: "plugins/jquery-ui/jquery-ui.min.js"}
+    :javascript
+      $.widget.bridge('uibutton', $.ui.button)
+    %script{src: "plugins/bootstrap/js/bootstrap.bundle.min.js"}
+    %script{src: "plugins/chart.js/Chart.min.js"}
+    %script{src: "plugins/sparklines/sparkline.js"}
+    %script{src: "plugins/jqvmap/jquery.vmap.min.js"}
+    %script{src: "plugins/jqvmap/maps/jquery.vmap.usa.js"}
+    %script{src: "plugins/jquery-knob/jquery.knob.min.js"}
+    %script{src: "plugins/moment/moment.min.js"}
+    %script{src: "plugins/daterangepicker/daterangepicker.js"}
+    %script{src: "plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js"}
+    %script{src: "plugins/summernote/summernote-bs4.min.js"}
+    %script{src: "plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js"}
+    %script{src: "dist/js/adminlte.js?v=3.2.0"}
+    %script{src: "dist/js/demo.js"}
+    %script{src: "dist/js/pages/dashboard.js"}
