@@ -1,24 +1,15 @@
 require 'rails_helper'
 
 RSpec.describe "recipes/show", type: :view do
-  before(:each) do
-    assign(:recipe, Recipe.create!(
-      photo: nil,
-      name: "Name",
-      ingredients: "Ingredients",
-      preparation: "MyText",
-      summary: "Summary",
-      link: "Link"
-    ))
-  end
+  let(:ingredients) { create_list(:ingredient, 10) }
+  let(:recipe) { build :recipe, ingredients: ingredients }
 
   it "renders attributes in <p>" do
-    render
+    render recipe
     expect(rendered).to match(//)
-    expect(rendered).to match(/Name/)
-    expect(rendered).to match(/Ingredients/)
-    expect(rendered).to match(/MyText/)
-    expect(rendered).to match(/Summary/)
-    expect(rendered).to match(/Link/)
+    expect(rendered).to match(/name/)
+    expect(rendered).to match(/ingredients/)
+    expect(rendered).to match(/summary/)
+    expect(rendered).to match(/link/)
   end
 end

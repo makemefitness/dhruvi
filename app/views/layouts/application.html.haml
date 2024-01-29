@@ -4,6 +4,7 @@
     %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
     %title
       = yield(:title) + " | CRM Trener Dhruvi"
+    = favicon_link_tag asset_path('favicon.png')
     %meta{:content => "width=device-width,initial-scale=1", :name => "viewport"}/
     = csrf_meta_tags
     = csp_meta_tag
@@ -36,7 +37,9 @@
     - else
       .my-container 
         %header.header
-          = image_tag "logo.png", alt: "logo", class: "logo"
+          .logo.d-bloc
+            = image_tag "logo.png", alt: "logo", class: "logo"
+            
           <!-- FORMULARZ -->
           -# = form_for :customers, method: :get, :html => {class: 'search'} do |f|
           -#   = text_field_tag :keywords, nil, placeholder: "First name, Surname lub Email", class: "search__input"
@@ -191,6 +194,6 @@
                     %svg.side-nav__icon
                       %use{"xlink:href" => "#{asset_path('sprite.svg')}#icon-bowl"}
                     %span Ingredients
-            %span.legal &copy; 2023 Maciej Sypniewski.
+            %span.legal &copy; 2023 Dhruvi Infinity Inspiration.
           %main.main-view
             = yield

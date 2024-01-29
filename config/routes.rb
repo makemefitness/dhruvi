@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   get '/add_meal/:id', to: 'diet_sets#add_meal'
   root "main#home"
   get 'main/dashboard'
+  get 'main/adminlte'
   get 'main/settings'
   get 'main/main'
   get 'main/home'

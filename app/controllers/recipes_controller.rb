@@ -15,7 +15,7 @@ class RecipesController < ApplicationController
     end
     respond_to do |format|
       format.html {}
-      format.json { render json: @recipes }
+      format.json
     end
   end
 
@@ -24,7 +24,8 @@ class RecipesController < ApplicationController
     @ingredients_list = @recipe.recipe_ingredients
     respond_to do |format|
       format.html {}
-      format.json { render json: @ingredients_list }
+      format.json {  }
+      # format.json { render json: @ingredients_list }
     end
   end
 

@@ -4,6 +4,10 @@ class Profil < ApplicationRecord
   has_one :lifestyle
   has_and_belongs_to_many :habits, join_table: :habits_profiles
 
+  def profil_url
+    "/customers/#{customer.id}/profil.json"
+  end
+
   def goal
     goal_id ? Goal.find(goal_id).name : ""
   end

@@ -27,6 +27,7 @@ group :development, :test do
   gem 'selenium-webdriver', '~> 4.4'
   gem 'guard-rspec', require: false
   gem 'simplecov', require: false, group: :test
+  gem 'factory_bot'
 end
 
 group :development do
@@ -37,8 +38,6 @@ end
 
 group :test do
 end
-
-gem "factory_bot", "~> 6.4"
 gem "faker", "~> 3.2"
 gem "sassc-rails", "~> 2.1"
 # gem 'sass-rails'

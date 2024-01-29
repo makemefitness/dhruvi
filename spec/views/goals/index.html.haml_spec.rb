@@ -16,7 +16,7 @@ RSpec.describe "goals/index", type: :view do
 
   it "renders a list of goals" do
     render
-    cell_selector = Rails::VERSION::STRING >= '7' ? 'div>p' : 'tr>td'
+    cell_selector = Rails::VERSION::STRING >= '7' ? 'tr>td' : 'tr>td'
     assert_select cell_selector, text: Regexp.new("Name".to_s), count: 2
     assert_select cell_selector, text: Regexp.new("Description".to_s), count: 2
   end
