@@ -1,9 +1,10 @@
 require 'rails_helper'
 
 RSpec.describe "main/home.html.haml", type: :view do
+  # login_user
   it "renders title of page" do
-    render
+    render template: "main/home"
     
-    expect(rendered).to match /Main/
+    expect(rendered).to match /welcome in CRM Trener/
   end
 end

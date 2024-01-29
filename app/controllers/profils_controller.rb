@@ -1,6 +1,6 @@
 class ProfilsController < ApplicationController
   before_action :set_customer
-  # before_action :set_profil, only: %i[ show edit update destroy ]
+  before_action :set_profil, only: %i[ show edit update destroy ]
 
   # GET /profils or /profils.json
   # def index
@@ -68,5 +68,9 @@ class ProfilsController < ApplicationController
 
   def set_customer
     @customer = Customer.find(params[:customer_id])
+  end
+
+  def set_profil
+    @profil = @customer.profil
   end
 end

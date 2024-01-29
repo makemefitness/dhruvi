@@ -1,0 +1,30 @@
+- if @team.present? && !@team.id.nil?
+  .main-sidebar
+    .sidebar
+      .user-panel
+        .pull-left.image
+          h3.header-circ
+              = @team&.name[0]&.upcase
+        .pull-left.info style="vertical-align: middle; margin-top: 5px;"
+          p= @team.name
+        .clearfix
+        span.hidden-xs.description
+          p= @team.description
+      ul.sidebar-menu
+        li.header Overview
+        li
+          = link_to team_path(@team),\
+            {id: "edit_#{@team.hash_id}_sidebar"} do
+              .fa.fa-dashboard
+              span Details
+        li
+          = link_to edit_team_path(@team),\
+            {id: "edit_#{@team.hash_id}_sidebar"} do
+              .fa.fa-cog
+              span Settings
+      ul.sidebar-menu
+        li.header Standups
+        li
+          a href="/t/#{@team.hash_id}/s"
+            .fa.fa-child
+            span View

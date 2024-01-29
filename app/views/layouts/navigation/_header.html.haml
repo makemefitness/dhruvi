@@ -1,0 +1,48 @@
+%header.main-header
+  %a.logo{href: "/"}
+    | Standup App
+  /! Header Navbar: style can be found in header.less
+  %nav.navbar.navbar-static-top{role: "navigation"}
+    .pull-left
+      %a.logo{href: "/t"}
+        | Teams
+      %a.logo{href: "/s"}
+        | Standups
+      %a.logo.standup{href: "/s/new/#{Date.today.iso8601}"}
+        | Submit a Standup
+    /! Navbar Right Menu
+    .navbar-custom-menu
+      %ul.nav.navbar-nav
+        /! Notifications: style can be found in dropdown.less
+        %li.dropdown.notifications-menu
+          %a.dropdown-toggle{data-toggle: "dropdown", href: "#"}
+            %i.fa.fa-bell-o
+            %span.label.label-warning style="display:none"
+              | NEW
+          %ul.dropdown-menu#notification-container
+            = render partial: 'layouts/navigation/notifications', locals: {notification_standups: notification_standups(current_user)}
+        /! User Account: style can be found in dropdown.less
+        li.dropdown.user.user-menu
+          a.dropdown-toggle data-toggle="dropdown" {href: "#"
+            img.user-image{
+              alt=("User Image")
+              src="#{gravatar_image_url(current_user.email, size: 25, secure:true )}"
+            }
+            span.hidden-xs = current_user.name
+          ul.dropdown-menu
+            li.header= current_user.name
+            li.divider
+            li
+              a {href: "/user/me"
+                | Profile
+            - if current_user.has_role? :admin, current_account
+              li
+                a {href: "/account/users"
+                  | Settings
+              li
+                = link_to 'Billing', billing_index_path
+            li.divider
+            li
+              = link_to(destroy_user_session_path, :method => :delete) do
+                i.fa.fa-sign-out
+                | Log out

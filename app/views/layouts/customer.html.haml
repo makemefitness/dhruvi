@@ -93,12 +93,13 @@
   window.onscroll = () => {
   sections.forEach(sec => {
   let top = window.scrollY;
-  let offset = sec.offsetTop;
+  let offset = sec.offsetTop - 150;
   let height = sec.offsetHeight;
   let realHeight = sec.scrollHeight
   let id = sec.getAttribute('id')
   console.log(`top: ${top}, real height: ${realHeight}, offset: ${offset}`)
-  if(top >= realHeight){
+  -# if(top >= realHeight){
+  if(top >= offset && top < offset + height) {
   console.log(`height: ${height}`)
   console.log(`Roznica: ${offset + height}`)
   console.log(sec)

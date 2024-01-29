@@ -1,26 +1,31 @@
-.inner-container#admin-pane
+.inner-container#admin-pane.font-bigger
   .box.mt-0
     %h1 Customer details settings
     %ul.nav.nav-tabs#adminMenuOptions{role: 'tablist'}
       %li.nav-item
         %a.nav-link.active#nav-goals{"aria-controls" => "goals", "aria-selected" => "true", "data-bs-toggle" => "tab", "data-bs-target" => "#goals", :role => "tab"}
-          %button.btn.btn-primary{type: 'button'}
+          %button.btn.btn-primary.font-bigger{type: 'button'}
             %span.m-3 Goals
             %span.badge.badge-light #{@goals.size.to_s if @goals.present?}
       %li.nav-item
         %a.nav-link#nav-lifestyles{"aria-controls" => "lifestyles", "aria-selected" => "false", "data-bs-toggle" => "tab", "data-bs-target" => "#lifestyles", :role => "tab"}
-          %button.btn.btn-primary{type: 'button'}
+          %button.btn.btn-primary.font-bigger{type: 'button'}
             %span.m-3 Lifestyles
             %span.badge.badge-light #{@lifestyles.size.to_s if @lifestyles.present?}
       %li.nav-item
         %a.nav-link#nav-habits{"aria-controls" => "habits", "aria-selected" => "false", "data-bs-toggle" => "tab", "data-bs-target" => "#habits", :role => "tab"}
-          %button.btn.btn-primary{type: 'button'}
+          %button.btn.btn-primary.font-bigger{type: 'button'}
             %span.m-3 Habits
             %span.badge.badge-light #{@habits.size.to_s if @habits.present?}
       %li.nav-item
         %a.nav-link#nav-exercises{"aria-controls" => "exercises", "aria-selected" => "false", "data-bs-toggle" => "tab", "data-bs-target" => "#exercises", :role => "tab"}
-          %button.btn.btn-primary{type: 'button'}
+          %button.btn.btn-primary.font-bigger{type: 'button'}
             %span.m-3 Exercises per week
+            %span.badge.badge-light #{@exercise_per_weeks.size.to_s if @exercise_per_weeks.present?}
+      %li.nav-item
+        %a.nav-link#nav-body_types{"aria-controls" => "body_types", "aria-selected" => "false", "data-bs-toggle" => "tab", "data-bs-target" => "#body_types", :role => "tab"}
+          %button.btn.btn-primary.font-bigger{type: 'button'}
+            %span.m-3 Body Types
             %span.badge.badge-light #{@exercise_per_weeks.size.to_s if @exercise_per_weeks.present?}
 
     / Content
@@ -33,6 +38,8 @@
         = render partial: 'partials/customer_info/habits', locals: {habits: @habits}
       .tab-pane.fade#exercises{role: 'tabpanel', 'aria-labelledby': 'nav-exercises'}
         = render partial: 'partials/customer_info/exercises', locals: {exercise_per_weeks: @exercise_per_weeks}
+      .tab-pane.fade#body_types{role: 'tabpanel', 'aria-labelledby': 'nav-body_types'}
+        = render partial: 'partials/customer_info/body_types', locals: {body_types: @body_types}
     #modal-anchor
 
   .box
@@ -40,17 +47,17 @@
     %ul.nav.nav-tabs#exercisesOptions{role: 'tablist'}
       %li.nav-item
         %a.nav-link.active#nav-equipment{"aria-controls" => "equipment", "aria-selected" => "true", "data-bs-toggle" => "tab", "data-bs-target" => "#equipment", :role => "tab"}
-          %button.btn.btn-primary{type: 'button'}
+          %button.btn.btn-primary.font-bigger{type: 'button'}
             %span.m-3 Equipment
             %span.badge.badge-light #{@equipments.size.to_s if @equipments.present?}
       %li.nav-item
         %a.nav-link#nav-body_parts{"aria-controls" => "body_parts", "aria-selected" => "false", "data-bs-toggle" => "tab", "data-bs-target" => "#body_parts", :role => "tab"}
-          %button.btn.btn-primary{type: 'button'}
+          %button.btn.btn-primary.font-bigger{type: 'button'}
             %span.m-3 Body parts
             %span.badge.badge-light #{@body_parts.size.to_s if @body_parts.present?}
       %li.nav-item
         %a.nav-link#nav-targets{"aria-controls" => "targets", "aria-selected" => "false", "data-bs-toggle" => "tab", "data-bs-target" => "#targets", :role => "tab"}
-          %button.btn.btn-primary{type: 'button'}
+          %button.btn.btn-primary.font-bigger{type: 'button'}
             %span.m-3 Targets
             %span.badge.badge-light #{@targets.size.to_s if @targets.present?}
 

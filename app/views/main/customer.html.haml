@@ -5,7 +5,7 @@
 %main.datails
   
   .callendar.scrollspy-example{"data-bs-offset" => "0", "data-bs-smooth-scroll" => "true", "data-bs-spy" => "scroll", "data-bs-target" => "#menu_bottom", tabindex: "0", style:"margin:auto;padding:2rem;"}
-    %section#home
+    %section#home{style:"min-height:100vh;"}
       .callendar--header{style:"
           width: 100%;
           margin: auto;
@@ -74,7 +74,7 @@
                   = task.marks
                   = task.date
 
-    %section#profile
+    %section#profile{style:"min-height:100vh;"}
       .my-5{style:"
           width: 100%;
           margin: auto;
@@ -112,7 +112,7 @@
                 %p Twøj osobisty trener
                 = image_tag "Rysiu.png", alt: "logo", class: "pt__photo"
           -# .box#calendar-box
-    %section#dieta-1.my-5
+    %section#dieta-1.my-5{style:"min-height:100vh;"}
       .inner-box.my-5{style:"
           width: 100%;
           margin: auto;

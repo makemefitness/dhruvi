@@ -1,15 +1,15 @@
 class MainController < ApplicationController
-  before_action :authenticate_user!, only: [:dashboard]
+  before_action :authenticate_user!, only: [:dashboard, :settings]
   before_action :authenticate_customer!, only: :customer
   layout 'customer', only: [:customer]
-  layout 'adminlte', only: [:adminlte]
+  # layout 'adminlte', only: [:adminlte]
 
   def dashboard; end
   
   def main; end
 
   def adminlte
-    
+    layout 'adminlte'
   end
 
   def home; end
@@ -22,10 +22,11 @@ class MainController < ApplicationController
   def help; end
 
   def settings
-    @goals = Goal.all
-    @lifestyles = Lifestyle.all
-    @habits = Habit.all
+    @goals = Goal.all.order(:name)
+    @lifestyles = Lifestyle.all.order(:name)
+    @habits = Habit.all.order(:name)
     @exercise_per_weeks = ExercisePerWeek.all
+    @body_types = BodyType.all.order(:name)
     @equipments = Equipment.all.order(:name)
     @body_parts = BodyPart.all.order(:name)
     @targets = Target.order(:name)
