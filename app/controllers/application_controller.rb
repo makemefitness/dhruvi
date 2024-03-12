@@ -1,4 +1,5 @@
 class ApplicationController < ActionController::Base
+  layout :layout_by_resource
   # before_action :configure_permitted_parameters, if: :devise_controller?
 
   def authenticate
@@ -26,6 +27,14 @@ class ApplicationController < ActionController::Base
       # '/static_pages/usershome'
     else
       '/main/customer'
+    end
+  end
+
+  def layout_by_resource
+    if devise_controller?
+      "application"
+    else
+      "landing"
     end
   end
 end

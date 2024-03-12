@@ -100,11 +100,7 @@
   console.log(`top: ${top}, real height: ${realHeight}, offset: ${offset}`)
   -# if(top >= realHeight){
   if(top >= offset && top < offset + height) {
-  console.log(`height: ${height}`)
-  console.log(`Roznica: ${offset + height}`)
-  console.log(sec)
-  console.log(`top: ${top}, offset: ${realHeight}`)
-  console.log(id)
+
   let active_element = document.querySelector('ul#menu_bottom li a[href*=' + id + ']')
   active_element.parentElement.classList.add("active")
   console.log(document.querySelector('ul#menu_bottom li a[href*=' + id + ']').parentElement)
