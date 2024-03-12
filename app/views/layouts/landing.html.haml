@@ -1,0 +1,317 @@
+
+!!!
+%html
+  %head
+    %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
+    %title
+      = yield(:title) + " | CRM Trener Dhruvi"
+    = favicon_link_tag asset_path('favicon.png')
+
+    %meta{:content => "width=device-width,initial-scale=1", :name => "viewport"}/
+    = csrf_meta_tags
+    = csp_meta_tag
+    
+    / =============== REMIX ICONS ===============
+    %link{href: "https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css", rel: "stylesheet"}/
+
+    = stylesheet_link_tag "landing", "data-turbo-track": "reload"
+    
+    -# = javascript_importmap_tags
+    = javascript_include_tag "application", "data-turbo-track": "reload", defer: true
+
+  %body
+    / =============== HEADER ===============
+    %header#header.header
+      %nav.nav.container
+        %a.nav__logo{href: "#"}
+          = image_tag "logo.png", alt: "logo", class: "nav__logo"
+        #nav-menu.nav__menu
+          %ul.nav__list
+            %li.nav__item
+              %a.nav__link.active-link{href: "#home"} Home
+            %li.nav__item
+              %a.nav__link{href: "#specs"} Specs
+            %li.nav__item
+              %a.nav__link{href: "#case"} Case
+            %li.nav__item
+              %a.nav__link{href: "#products"} Products
+            %li.nav__item
+              %a.nav__link{href: "users/sign_in"} Login
+          #nav-close.nav__close
+            %i.ri-close-line
+        #nav-toggle.nav__toggle
+          %i.ri-function-line
+    %main.main
+      / =============== HOME ===============
+      %section#home.home.section
+        .home__container.container.grid
+          %div
+            = image_tag "landing/customer_home.png", class: "home__img"
+          .home__data
+            .home__header
+              %h1.home__title CRM
+              %h2.home__subtitle Trener DII
+            .home__footer
+              %h3.home__title-description Why are you using the same software as your hairdresser to run your fitness business?
+              %p.home__description
+                Max out your profitability with the all-in-one software platform created just for fitness businesses like yours. Set a new PR with your fitness business today.
+              %a.button.button--flex{href: "#"}
+                %span.button--flex
+                  %i.ri-shopping-bag-line.button__icon
+                  Try Demo
+                -# %span.home__price $299
+      / =============== User Dashboard ===========
+      %section.sponsor.section
+        .sponsor__container.container.grid
+          = image_tag "landing/user_home.png", class: "sponsor__img-1"
+      / =============== SPONSOR ===============
+      %section.sponsor.section
+        .sponsor__container.container.grid
+          = image_tag "landing/sponsor1.png", class: "sponsor__img"
+          = image_tag "landing/sponsor2.png", class: "sponsor__img"
+          = image_tag "landing/sponsor3.png", class: "sponsor__img"
+          = image_tag "landing/sponsor4.png", class: "sponsor__img"
+      / =============== SPECS ===============
+      %section#specs.specs.section.grid
+        %h2.section__title.section__title-gradient Specs
+        .specs__container.container.grid
+          .specs__content.grid
+            .specs__data
+              
+              %i.ri-hand-coin-line.specs__icon
+              %h3.specs__title Business
+              %span.specs__subtitle Payment Processing
+              %span.specs__subtitle Invoicing
+              %span.specs__subtitle Ckeck-ins
+              %span.specs__subtitle Booking
+              %span.specs__subtitle Member Mangement
+              %span.specs__subtitle Employee Management
+              %span.specs__subtitle Reports
+
+            .specs__data
+              %i.ri-boxing-line.specs__icon
+              %h3.specs__title Workout
+              %span.specs__subtitle Workout Plan Creator
+              %span.specs__subtitle Workout Logger
+              %span.specs__subtitle Exercise Library
+              %span.specs__subtitle Reporting
+              %span.specs__subtitle Habit Tracking
+              %span.specs__subtitle Progress Photos
+            -# .specs__data
+            -#   %i.ri-plug-line.specs__icon
+            -#   %h3.specs__title Load
+            -#   %span.specs__subtitle Fast charge 4.2-AAC
+            .specs__data
+              %i.ri-cloud-line.specs__icon
+              %h3.specs__title Online
+              %span.specs__subtitle Online Training
+              %span.specs__subtitle Sell Workout Plans
+              %span.specs__subtitle On-demand
+              %span.specs__subtitle Digital Products
+              %span.specs__subtitle CRM
+              %span.specs__subtitle Automations
+              %span.specs__subtitle Email
+              %span.specs__subtitle Push Notifications
+          %div
+            = image_tag "landing/ciemny.png", class: "specs__img"
+      -# / =============== CASE ===============
+      -# %section#case.case.section.grid
+      -#   %h2.section__title.section__title-gradient Case
+      -#   .case__container.container.grid
+      -#     %div
+      -#       %img.case__img{alt: "", src: "assets/img/case.png"}/
+      -#     .case__data
+      -#       %p.case__description
+      -#         With a comfortable and adaptable case so that you can
+      -#         store it whenever you want, and keep your durability forever.
+      -#       %a.button.button--flex{href: "#"}
+      -#         %i.ri-information-line.button__icon
+      -#         More info
+      -# / =============== DISCOUNT ===============
+      -# %section.discount.section
+      -#   .discount__container.container.grid
+      -#     .discount__animate
+      -#       %h2.discount__title
+      -#         Immerse yourself in
+      -#         %br/
+      -#         your music
+      -#       %p.discount__description Get it now, up to 50% off.
+      -#       %a.button.button--flex{href: "#"}
+      -#         %i.ri-shopping-bag-line.button__icon
+      -#         Shop Now
+      -#     %img.discount__img{alt: "", src: "assets/img/discount.png"}/
+      / =============== PRODUCTS ===============
+      %section#products.products.section
+        %h2.section__title.section__title-gradient.products__line
+          Take your fitness
+          %br/
+          business to the next level
+        .products__container.container.grid
+          %article.products__card
+            .products__content
+              %img.products__img{alt: "", src: "assets/img/product1.png"}/
+              %h3.products__title Black
+              %span.products__price $249
+              %button.button.button--flex.products__button
+                %i.ri-shopping-bag-line.button__icon
+          %article.products__card
+            .products__content
+              %img.products__img{alt: "", src: "assets/img/product2.png"}/
+              %h3.products__title Personal Trainer
+              %span.products__price $249
+              %button.button.button--flex.products__button
+                %i.ri-shopping-bag-line.button__icon
+          %article.products__card
+            .products__content
+              %img.products__img{alt: "", src: "assets/img/product3.png"}/
+              %h3.products__title Fitness Influencer
+              %span.products__price $249
+              %button.button.button--flex.products__button
+                %i.ri-shopping-bag-line.button__icon
+          %article.products__card
+            .products__content
+              %img.products__img{alt: "", src: "assets/img/product4.png"}/
+              %h3.products__title Sports Performance
+              %span.products__price $249
+              %button.button.button--flex.products__button
+                %i.ri-shopping-bag-line.button__icon
+          %article.products__card
+            .products__content
+              %img.products__img{alt: "", src: "assets/img/product5.png"}/
+              %h3.products__title Yoga
+              %span.products__price $249
+              %button.button.button--flex.products__button
+                %i.ri-shopping-bag-line.button__icon
+    / =============== FOOTER ===============
+    %footer.footer.section
+      .footer__container.container.grid
+        %a.footer__logo{href: "#"}
+          %img{alt: "", src: "assets/img/logo.png"}/
+        .footer__content
+          %h3.footer__title Products
+          %ul.footer__links
+            %li
+              %a.footer__link{href: "#"} Personal Trainers
+            %li
+              %a.footer__link{href: "#"} fitness Influencer
+            %li
+              %a.footer__link{href: "#"} Yoga
+            %li
+              %a.footer__link{href: "#"} Wellness
+        .footer__content
+          %h3.footer__title Support
+          %ul.footer__links
+            %li
+              %a.footer__link{href: "#"} Product help
+            %li
+              %a.footer__link{href: "/users/sign_up"} Register
+            %li
+              %a.footer__link{href: "#"} Updates
+            %li
+              %a.footer__link{href: "#"} Provides
+        .footer__content
+          %form.footer__form{action: ""}
+            %input.footer__input{placeholder: "Email", type: "email"}/
+            %button.button.button--flex
+              %i.ri-send-plane-line.button__icon
+              Subscribe
+          .footer__social
+            %a.footer__social-link{href: "https://www.facebook.com/", target: "_blank"}
+              %i.ri-facebook-fill
+            %a.footer__social-link{href: "https://www.instagram.com/", target: "_blank"}
+              %i.ri-instagram-line
+            %a.footer__social-link{href: "https://twitter.com/", target: "_blank"}
+              %i.ri-twitter-line
+      %p.footer__copy
+        %a.footer__copy-link{href: "http://msyp.co.uk/", target: "_blank"} © Dhruvi Infinity Inspiration. All right reserved
+    / =============== SCROLL UP ===============
+    %a#scroll-up.scrollup{href: "#"}
+      %i.ri-arrow-up-s-line.scrollup__icon
+    / =============== SCROLL REVEAL ===============
+    %script{src: "https://unpkg.com/scrollreveal"}
+    / =============== MAIN JS ===============
+    %script
+      /*=============== SHOW MENU ===============*/
+      const navMenu = document.getElementById('nav-menu'),
+      navToggle = document.getElementById('nav-toggle'),
+      navClose = document.getElementById('nav-close')
+
+      /*===== MENU SHOW =====*/
+      /* Validate if constant exists */
+      if(navToggle){
+      navToggle.addEventListener('click', () =>{
+      navMenu.classList.add('show-menu')
+      })
+      }
+
+      /*===== MENU HIDDEN =====*/
+      /* Validate if constant exists */
+      if(navClose){
+      navClose.addEventListener('click', () =>{
+      navMenu.classList.remove('show-menu')
+      })
+      }
+
+      /*=============== REMOVE MENU MOBILE ===============*/
+      const navLink = document.querySelectorAll('.nav__link')
+
+      function linkAction(){
+      const navMenu = document.getElementById('nav-menu')
+      // When we click on each nav__link, we remove the show-menu class
+      navMenu.classList.remove('show-menu')
+      }
+      navLink.forEach(n => n.addEventListener('click', linkAction))
+
+      /*=============== CHANGE BACKGROUND HEADER ===============*/
+      function scrollHeader(){
+      const header = document.getElementById('header')
+      // When the scroll is greater than 50 viewport height, add the scroll-header class to the header tag
+      if(this.scrollY >= 50) header.classList.add('scroll-header'); else header.classList.remove('scroll-header')
+      }
+      window.addEventListener('scroll', scrollHeader)
+
+      /*=============== SHOW SCROLL UP ===============*/ 
+      function scrollUp(){
+      const scrollUp = document.getElementById('scroll-up');
+      // When the scroll is higher than 200 viewport height, add the show-scroll class to the a tag with the scroll-top class
+      if(this.scrollY >= 200) scrollUp.classList.add('show-scroll'); else scrollUp.classList.remove('show-scroll')
+      }
+      window.addEventListener('scroll', scrollUp)
+
+      /*=============== SCROLL SECTIONS ACTIVE LINK ===============*/
+      const sections = document.querySelectorAll('section[id]')
+
+      function scrollActive(){
+      const scrollY = window.pageYOffset
+
+      sections.forEach(current =>{
+      const sectionHeight = current.offsetHeight
+      const sectionTop = current.offsetTop - 50;
+      sectionId = current.getAttribute('id')
+
+      if(scrollY > sectionTop && scrollY <= sectionTop + sectionHeight){
+      document.querySelector('.nav__menu a[href*=' + sectionId + ']').classList.add('active-link')
+      }else{
+      document.querySelector('.nav__menu a[href*=' + sectionId + ']').classList.remove('active-link')
+      }
+      })
+      }
+      window.addEventListener('scroll', scrollActive)
+
+      /*=============== SCROLL REVEAL ANIMATION ===============*/
+      const sr = ScrollReveal({
+      distance: '60px',
+      duration: 2500,
+      delay: 400,
+      // reset: true
+      })
+
+      sr.reveal(`.home__header, .section__title`,{delay: 600})
+      sr.reveal(`.home__footer`,{delay: 700})
+      sr.reveal(`.home__img`,{delay: 900, origin: 'top'})
+
+      sr.reveal(`.sponsor__img, .products__card, .footer__logo, .footer__content, .footer__copy`,{origin: 'top', interval: 100})
+      sr.reveal(`.specs__data, .discount__animate`,{origin: 'left', interval: 100})
+      sr.reveal(`.specs__img, .discount__img`,{origin: 'right'})
+      sr.reveal(`.case__img`,{origin: 'top'})
+      sr.reveal(`.case__data`)
