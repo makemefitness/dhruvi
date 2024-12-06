@@ -11,6 +11,15 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  def after_sign_in_path_for(resource)
+    if resource.is_a?(User)
+      '/main/dashboard'
+      # '/static_pages/usershome'
+    else
+      '/main/customer'
+    end
+  end
+
   protected
 
   # def configure_permitted_parameters
@@ -21,17 +30,11 @@ class ApplicationController < ActionController::Base
   #   # devise_parameter_sanitizer.permit(:account_update) { |u| u.permit(:username, :email, :password, :password_confirmation, :current_password) }
   # end
 
-  def after_sign_in_path_for(resource)
-    if resource.is_a?(User)
-      '/main/dashboard'
-      # '/static_pages/usershome'
-    else
-      '/main/customer'
-    end
-  end
-
+  # Choose layout dynamically based on context
   def layout_by_resource
     if devise_controller?
+      "application" # Use application layout for devise views
+    elsif user_signed_in? || customer_signed_in?
       "application"
     else
       "landing"
