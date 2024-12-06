@@ -3236,6 +3236,7 @@
       "/home/maciej/dhruvi/dhruvi_app/app/controllers/application_controller.rb": {
         "lines": [
           1,
+          1,
           null,
           null,
           1,
@@ -3261,6 +3262,14 @@
           0,
           0,
           null,
+          null,
+          0,
+          null,
+          null,
+          null,
+          1,
+          0,
+          0,
           null,
           0,
           null,
@@ -4762,6 +4771,6 @@
         ]
       }
     },
-    "timestamp": 1710244387
+    "timestamp": 1733494895
   }
 }
