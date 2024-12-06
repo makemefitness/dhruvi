@@ -2232,3 +2232,23 @@ Coverage report generated for RSpec to /home/maciej/dhruvi/dhruvi_app/coverage. 
 [2024-03-12 15:01:10.174] [INFO] Sending autorun event
 [2024-03-12 15:01:37.084] [INFO] /home/maciej/dhruvi/dhruvi_app/app/views/layouts/landing.html.haml was saved - checking if this effects /home/maciej/dhruvi/dhruvi_app
 [2024-03-12 15:01:37.085] [INFO] Sending autorun event
+[2024-12-06 14:56:28.276] [INFO] Test Explorer found
+[2024-12-06 14:56:28.276] [INFO] Creating adapter for /home/maciej/dhruvi/CRMTrener
+[2024-12-06 14:56:28.276] [INFO] Initializing Ruby adapter
+[2024-12-06 14:56:28.276] [INFO] Registering adapter for /home/maciej/dhruvi/CRMTrener
+[2024-12-06 14:56:28.278] [INFO] Loading Ruby tests...
+[2024-12-06 14:56:28.278] [INFO] Loading RSpec tests...
+[2024-12-06 14:56:28.278] [INFO] Running dry-run of RSpec test suite with the following command: rspec --pattern './spec//**/*_test.rb,./spec//**/test_*.rb,./spec//**/*_spec.rb' --require /home/maciej/.vscode/extensions/connorshea.vscode-ruby-test-adapter-0.9.2/custom_formatter.rb --format CustomFormatter --order defined --dry-run
+[2024-12-06 14:56:28.291] [INFO] Initialization finished
+[2024-12-06 14:56:29.329] [ERROR] Error while finding RSpec test suite: Command failed: rspec --pattern './spec//**/*_test.rb,./spec//**/test_*.rb,./spec//**/*_spec.rb' --require /home/maciej/.vscode/extensions/connorshea.vscode-ruby-test-adapter-0.9.2/custom_formatter.rb --format CustomFormatter --order defined --dry-run
+/home/maciej/.rvm/gems/ruby-3.2.2/gems/bundler-1.17.3/lib/bundler/shared_helpers.rb:29: warning: Pathname#untaint is deprecated and will be removed in Ruby 3.2.
+/home/maciej/.rvm/gems/ruby-3.2.2/gems/bundler-1.17.3/lib/bundler/shared_helpers.rb:118: warning: Pathname#untaint is deprecated and will be removed in Ruby 3.2.
+/home/maciej/.rvm/gems/ruby-3.2.2/gems/bundler-1.17.3/lib/bundler/shared_helpers.rb:118: warning: Pathname#untaint is deprecated and will be removed in Ruby 3.2.
+/home/maciej/.rvm/gems/ruby-3.2.2/gems/bundler-1.17.3/lib/bundler/shared_helpers.rb:35: warning: Pathname#untaint is deprecated and will be removed in Ruby 3.2.
+/home/maciej/.rvm/gems/ruby-3.2.2/gems/bundler-1.17.3/lib/bundler/shared_helpers.rb:35: warning: Pathname#untaint is deprecated and will be removed in Ruby 3.2.
+/home/maciej/.rvm/gems/ruby-3.2.2/gems/bundler-1.17.3/lib/bundler/shared_helpers.rb:44: warning: Pathname#untaint is deprecated and will be removed in Ruby 3.2.
+/home/maciej/.rvm/gems/ruby-3.2.2/gems/bundler-1.17.3/lib/bundler/shared_helpers.rb:35: warning: Pathname#untaint is deprecated and will be removed in Ruby 3.2.
+/home/maciej/.rvm/gems/ruby-3.2.2/gems/bundler-1.17.3/lib/bundler/shared_helpers.rb:35: warning: Pathname#untaint is deprecated and will be removed in Ruby 3.2.
+/home/maciej/.rvm/gems/ruby-3.2.2/gems/bundler-1.17.3/lib/bundler/shared_helpers.rb:44: warning: Pathname#untaint is deprecated and will be removed in Ruby 3.2.
+Stopped processing SimpleCov as a previous error not related to SimpleCov has been detected
+
