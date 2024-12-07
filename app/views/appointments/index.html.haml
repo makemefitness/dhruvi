@@ -1,0 +1,46 @@
+.recipe
+  = render partial: 'partials/main_header'
+  .recipe__header
+    %h1.recipe__heading
+      Appointments
+    .recipe__nav
+      - if params[:keywords].present?
+        %svg.recipe__nav-icon
+          %use{"xlink:href" => "#{asset_path('sprite.svg')}#icon-search"}
+        = @appointments.count
+        results
+    .recipe__summary
+      %p
+        %b= @appointments.count
+        appointments
+
+  %section.p-5
+    %h1 Your appointments
+
+    = link_to "<i class=\"fas fa-calendar-alt\"></i> New Appointment".html_safe, new_appointment_path
+
+    %div 
+      = month_calendar(events: @appointments) do |date, appointments|
+        = date
+        %br/
+        = link_to "<i class=\"fa-regular fa-square-plus\" title=\"New Appointment\"></i>".html_safe, new_appointment_path(start_time: date)
+        - appointments.each do |appointment|
+          %details
+            %summary
+              = appointment.start_time.strftime("%H:%M") + " - "
+              = appointment.end_time.strftime("%H:%M")
+            
+            .appointment
+              = gravatar_for appointment.customer
+              %br/
+              = appointment.customer.name
+              %br/ 
+              = appointment.start_time.strftime("%H:%M") + " - "
+              = appointment.end_time.strftime("%H:%M")
+              %br/
+              Status: 
+              = appointment.status.titleize
+              %br/
+              = link_to 'Edit', edit_appointment_path(appointment)
+              %br/
+              = link_to 'Delete', appointment_path(appointment), method: :delete, data: { confirm: 'Are you sure?' }

@@ -1,0 +1,79 @@
+= form_with(model: @appointment, local: true, html: {class: 'form'}) do |f|
+  - if @appointment.errors.any?
+    #error_explanation
+      %h2
+        = pluralize(@appointment.errors.count, "error")
+        prevented this appointment from being saved
+      %ul
+        - @appointment.errors.full_messages.each do |message|
+          %li= message
+
+  -# .form__group
+  -#   = f.label :customer_id, "Client", class: "form__label"
+  -#   = f.collection_select :customer_id, Customer.all, :id, :name, prompt: "Select a client", class: "form__input"
+
+  .form__group
+    = f.label :customer_id, "Client", class: "form__label"
+    -# = f.text_field :q, placeholder: "Type client name...", class: "form__input", id: "appointment_customer_name"
+    = f.text_field  :customer_name, placeholder: 'First name, Surname lub Email', data: {behavior: "autocomplete"}, id: 'appointment_customer_name', class: 'form__input easyAutocomplete__forms'
+    = f.hidden_field :customer_id, id: "appointment_customer_id"
+
+  .form__group
+    = f.label :start_time, class: "form__label"
+    = f.datetime_local_field :start_time, class: "form__input"
+
+  .form__group
+    = f.label :end_time, class: "form__label"
+    = f.datetime_local_field :end_time, class: "form__input"
+
+  .form__group
+    = f.label :description, class: "form__label"
+    = f.text_area :description, class: "form__input"
+
+  .form__group
+    = f.label :status, class: "form__label"
+    = f.select :status, Appointment.statuses.keys.map { |s| [s.titleize, s] }, class: "form__input"
+
+  .actions
+    = f.submit "Save Appointment", class: "btn btn-success"
+%script
+
+
+  -# let wejscie = $('#appointment_customer_name')
+  -# var options_3 = {
+  -# url: "/customers.json",
+  -# getValue: "name",
+  -# list: {
+  -# onChooseEvent: function() {
+  -# let url = wejscie.getSelectedItemData();console.log(url+"korwa");
+  -# var selectedItemData = $("#appointment_customer_name").getSelectedItemData();
+  -# -# alert(selectedItemData)
+  -# // Set the hidden field to the selected customer's ID
+  -# -# $("#appointment_customer_id").val(selectedItemData.id);
+  -# },
+  -# match: {
+  -# enabled: true
+  -# }
+  -# },
+  -# theme: "blue-light" // optional theme
+  -# };
+
+  -# $("#appointment_customer_name").easyAutocomplete(options_3);
+
+
+
+%script
+  let wejscie = $('#appointment_customer_name');
+  let options_2 = { 
+  getValue: "name",
+  url: function(phrase){
+  return "/customers_search?q=" + phrase;
+  },
+  categories: [
+  {
+  listLocation: 'customers',
+  header: "<strong>Customers</strong>"
+  },
+  ],
+  list:{maxNumberOfElements: 20,onChooseEvent: function(){let url = wejscie.getSelectedItemData().id;console.log(url);$("#appointment_customer_id").val(url);},showAnimation: {type: "fade", time: 400,callback: function() {}},}}
+  wejscie.easyAutocomplete(options_2);

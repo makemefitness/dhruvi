@@ -7,9 +7,16 @@ class CustomersController < ApplicationController
     @page = (params[:page] || 0).to_i
     if params[:keywords].present?
       customer_search_by_term
+    elsif params[:q].present?
+      @customers = Customer.ransack(name_count: params[:q]).result(distinct: true).limit(5)
     else
       @customers = Customer.all.offset(PAGE_SIZE * @page).limit(15).order('created_at DESC')
     end
+
+  end
+
+  def autocomplete
+    @customers = search_customer
   end
 
   def new
@@ -65,6 +72,17 @@ class CustomersController < ApplicationController
       customer_search_term.where_clause,
       customer_search_term.where_args
     ).order(customer_search_term.order).offset(PAGE_SIZE * @page).limit(15)
+  end
+
+  def search_customer
+    if params[:q].present? 
+      @keywords = params[:q]
+      customer_search_term = CustomerSearchTerm.new(@keywords)
+      @customers = Customer.where(
+        customer_search_term.where_clause,
+        customer_search_term.where_args
+      ).order(customer_search_term.order).limit(5)
+    end
   end
 
   # This can also be put somewhere as a static method for reuse in different controllers.
