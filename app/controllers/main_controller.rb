@@ -34,6 +34,7 @@ class MainController < ApplicationController
   end
 
   def autocomplete
+    @customers = search_customer
     @ingredients = Ingredient.ransack(name_cont: params[:q]).result(distinct: true).limit(5)
     @recipes =     Recipe.ransack(name_cont: params[:q]).result(distinct: true).limit(5)
     respond_to do |format|

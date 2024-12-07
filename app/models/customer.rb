@@ -2,6 +2,7 @@ class Customer < ApplicationRecord
   attr_accessor :login
 
   has_one_attached :avatar
+  has_many :appointments, dependent: :destroy
   has_one :body_type
   has_one :profil, dependent: :destroy
   has_many :tasks

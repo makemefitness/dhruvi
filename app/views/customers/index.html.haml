@@ -25,24 +25,25 @@
     %header
     - if @customers.present?
       = render partial: "pager", locals: {keywords: @keywords, page: @page}
-    %ol.list-group
-    - @customers.each do |customer|
-      %ul.list-group
-        %a.list-group-item.list-group-item-action.clearfix{href: "/customers/#{customer.id}"}
-          %ul.list-group.list-group-horizontal
-            %li.list-group-item 
-              = gravatar_for customer
-            %li.list-group-item.w-100 
-              %h3
-                %small Phone number:
-                = customer.phone_number
-              %h2
-                = customer.first_name 
-                = customer.last_name
-              %h5= customer.username
-              %h4.float-left= customer.email
-            %li.list-group-item.clearfix
-              = button_to "<i class=\"fas fa-trash-alt\"> </i> Delete".html_safe, customer, method: :delete, class: "my-btn my-btn--outline-primary p-1 pl-2 pr-2 ml-5", style: "margin-left: 5px;"
+    %ol.list-group.my-3
+      - @customers.each do |customer|
+        %ul.list-group.d-flex.my-3
+          %li.list-group-item
+            = link_to customer_path(customer), class: "list-group-item-action text-decoration-none d-flex" do
+              %ul.list-group.list-group-horizontal
+                %li.list-group-item
+                  = gravatar_for customer
+                %li.list-group-item.w-100
+                  %h3
+                  %small Phone number:
+                  = customer.phone_number
+                  %h2
+                    = "#{customer.first_name} #{customer.last_name}"
+                  %h5= customer.username
+                  %h4.float-left= customer.email
 
+          %li.list-group-item.px-3.d-flex.justify-content-between
+            = link_to "<i class=\"fas fa-calendar-alt\"></i> Add Appointment".html_safe, new_appointment_path(customer_id: customer.id), class: "text-decoration-none"
+            = button_to "<i class=\"fas fa-archive\"></i> Archive".html_safe, customer, method: :delete, class: "my-btn my-btn--outline-primary p-1 pl-2 pr-2 ml-5", style: "margin-left: 5px;"
 
     = link_to 'Add new customer', new_customer_registration_path, class: 'my-btn my-btn--pink my-bottom__link my-3 ms-0 p-1 px-3'

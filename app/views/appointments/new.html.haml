@@ -1,0 +1,7 @@
+%section.form-all{style: "height: 100vh;"}
+  .h-100
+    %h1.heading-secondary.heading-secondary__form New appointment
+
+    = render 'form'
+    .ml-2.p-5
+      = link_to 'Back', appointments_path, class: 'my-bottom__link'

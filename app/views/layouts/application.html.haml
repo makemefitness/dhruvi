@@ -19,6 +19,8 @@
     %script{src: "https://unpkg.com/trix@2.0.0/dist/trix.umd.min.js", type: "text/javascript"} 
 
     %link{href: "https://cdn.jsdelivr.net/npm/@tarekraafat/autocomplete.js@10.2.7/dist/css/autoComplete.min.css", rel: "stylesheet"}/
+
+    %link{:href => "https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css", :rel => "stylesheet"}/
     
     = stylesheet_link_tag "application", "data-turbo-track": "reload"
     
@@ -47,14 +49,14 @@
           -#     %svg.search__icon
           -#       %use{"xlink:href" => "#{asset_path('sprite.svg')}#icon-magnifying-glass"}
           = form_with url: search_path, local: true, method: :get, html: { class: 'search'} do |form|
-            = form.text_field  :q, placeholder: 'First name, Surname lub Email', data: {behavior: "autocomplete"}, id: 'easyAutocomplete', class: 'search__input'
+            = form.text_field  :q, placeholder: 'First name, Surname lub Email', data: {behavior: "autocomplete"}, id: 'easyAutocompleteA', class: 'search__input'
             = form.button "search", class: 'search__button' do
               %svg.search__icon
                 %use{"xlink:href" => "#{asset_path('sprite.svg')}#icon-magnifying-glass"}
           ////////////////////////////////////////////////////////////////////////////////////////////////////
           <!-- = javascript_pack_tag 'javascript/search' -->
           %script
-            let input = $('#easyAutocomplete');
+            let input = $('#easyAutocompleteA');
             let options = { 
             getValue: "name",
             url: function(phrase){
@@ -134,8 +136,8 @@
                     %svg.side-nav__icon
                       %use{"xlink:href" => "#{asset_path('sprite.svg')}#icon-envelope-o"}
                     %span Messages
-                %li{class: "#{(action_name == 'index' && controller_name == 'today')?'side-nav__item side-nav__item--active':'side-nav__item'}"}
-                  %a.side-nav__link{href: "/"}
+                %li{class: "#{(controller_name == 'appointments')?'side-nav__item side-nav__item--active':'side-nav__item'}"}
+                  %a.side-nav__link{href: "/appointments"}
                     %svg.side-nav__icon
                       %use{"xlink:href" => "#{asset_path('sprite.svg')}#icon-calendar"}
                     %span Timetable

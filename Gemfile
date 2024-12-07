@@ -52,3 +52,5 @@ gem 'ransack'
 gem "jquery-rails"
 gem "bootstrap"
 gem "cocoon", "~> 1.2"
+
+gem "simple_calendar", "~> 3.0"

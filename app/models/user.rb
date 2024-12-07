@@ -1,7 +1,8 @@
 class User < ApplicationRecord
-
   attr_accessor :login
+
   has_one_attached :avatar
+  has_many :appointments, dependent: :destroy
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
@@ -11,7 +12,7 @@ class User < ApplicationRecord
   validates :email, presence: true
 
 
-  #Overide the lookup function that Devise uses when performing
+  # Overide the lookup function that Devise uses when performing
   # a sig_in
   def self.find_first_by_auth_conditions(warden_conditions)
     conditions = warden_conditions.dup

@@ -23,6 +23,8 @@ Rails.application.routes.draw do
   get '/api/recipes', to: 'api#recipes'
   get '/diet_search', to: 'customer_recipes#diet_search'
 
+  get 'customers_search', to: 'customers#autocomplete'
+
 
   resources :ingredient_categories
   resources :exercises
@@ -60,6 +62,8 @@ Rails.application.routes.draw do
   resources :ingredients
   resources :recipes
   resources :body_types
+
+  resources :appointments
   
   #-----------------------------------------------------------------------------------------#
 
@@ -69,5 +73,5 @@ Rails.application.routes.draw do
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
   # Can be used by load balancers and uptime monitors to verify that the app is live.
   get "up" => "rails/health#show", as: :rails_health_check
-    root "main#home"
+  root "main#home"
 end
