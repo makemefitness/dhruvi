@@ -15,7 +15,7 @@
   .form__group
     = f.label :customer_id, "Client", class: "form__label"
     -# = f.text_field :q, placeholder: "Type client name...", class: "form__input", id: "appointment_customer_name"
-    = f.text_field  :customer_name, placeholder: 'First name, Surname lub Email', data: {behavior: "autocomplete"}, id: 'appointment_customer_name', class: 'form__input easyAutocomplete__forms'
+    = f.text_field  :customer_name, placeholder: "#{params[:customer_id] ? Customer.find(params[:customer_id]).name : 'First name, Surname lub Email'}", data: {behavior: "autocomplete"}, id: 'appointment_customer_name', class: 'form__input easyAutocomplete__forms'
     = f.hidden_field :customer_id, id: "appointment_customer_id"
 
   .form__group
