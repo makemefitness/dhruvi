@@ -3682,3 +3682,7 @@ Coverage report generated for RSpec to /home/maciej/dhruvi/dhruvi_app/coverage. 
 [2024-12-07 15:04:57.705] [INFO] Sending autorun event
 [2024-12-07 15:23:10.906] [INFO] /home/maciej/dhruvi/dhruvi_app/app/views/customers/autocomplete.json.jbuilder was saved - checking if this effects /home/maciej/dhruvi/dhruvi_app
 [2024-12-07 15:23:10.906] [INFO] Sending autorun event
+[2024-12-07 18:16:36.659] [INFO] /home/maciej/dhruvi/dhruvi_app/app/views/appointments/_form.html.haml was saved - checking if this effects /home/maciej/dhruvi/dhruvi_app
+[2024-12-07 18:16:36.660] [INFO] Sending autorun event
+[2024-12-07 18:17:20.886] [INFO] /home/maciej/dhruvi/dhruvi_app/app/views/appointments/_form.html.haml was saved - checking if this effects /home/maciej/dhruvi/dhruvi_app
+[2024-12-07 18:17:20.886] [INFO] Sending autorun event
