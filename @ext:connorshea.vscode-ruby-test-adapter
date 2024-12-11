@@ -4651,3 +4651,7 @@ Stopped processing SimpleCov as a previous error not related to SimpleCov has be
 [2024-12-11 19:59:53.496] [INFO] Sending autorun event
 [2024-12-11 20:01:45.360] [INFO] /home/maciej/dhruvi/dhruvi_app/app/controllers/conversations_controller.rb was saved - checking if this effects /home/maciej/dhruvi/dhruvi_app
 [2024-12-11 20:01:45.360] [INFO] Sending autorun event
+[2024-12-11 20:19:56.402] [INFO] /home/maciej/dhruvi/dhruvi_app/config/environments/production.rb was saved - checking if this effects /home/maciej/dhruvi/dhruvi_app
+[2024-12-11 20:19:56.402] [INFO] Sending autorun event
+[2024-12-11 20:20:15.102] [INFO] /home/maciej/dhruvi/dhruvi_app/config/environments/production.rb was saved - checking if this effects /home/maciej/dhruvi/dhruvi_app
+[2024-12-11 20:20:15.102] [INFO] Sending autorun event
