@@ -3,6 +3,8 @@ class User < ApplicationRecord
 
   has_one_attached :avatar
   has_many :appointments, dependent: :destroy
+  has_many :messages
+  has_many :customers, through: :messages
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
@@ -10,6 +12,8 @@ class User < ApplicationRecord
 
   validates :email, uniqueness: true
   validates :email, presence: true
+
+  acts_as_messageable
 
 
   # Overide the lookup function that Devise uses when performing
@@ -25,5 +29,13 @@ class User < ApplicationRecord
 
   def remember_me
     true
+  end
+
+  def name
+    email
+  end
+
+  def mailboxer_email(object)
+    email # Return the user's email or `nil` if you want to disable email notifications
   end
 end

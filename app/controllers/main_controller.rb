@@ -1,8 +1,10 @@
 class MainController < ApplicationController
   before_action :authenticate_user!, only: [:dashboard, :settings]
   before_action :authenticate_customer!, only: :customer
-  layout 'customer', only: [:customer]
-  layout "landing", only: [:home]
+  before_action :get_mailbox, only: :customer
+  before_action :get_conversation, only: :customer
+  # layout "customer", only: [:customer]
+  # layout "landing", only: [:home]
   # layout 'adminlte', only: [:adminlte]
 
   def dashboard; end
@@ -16,8 +18,10 @@ class MainController < ApplicationController
   def home; end
 
   def customer
+    # layout "customer"
     @customer = current_customer
     @diet_sets = @customer.diet_sets
+    @conversations = @mailbox.inbox.paginate(page: params[:page], per_page: 10)
   end
 
   def help; end
@@ -67,5 +71,13 @@ class MainController < ApplicationController
         customer_search_term.where_args
       ).order(customer_search_term.order).limit(5)
     end
+  end
+
+  def get_mailbox
+    @mailbox ||= current_customer.mailbox
+  end
+
+  def get_conversation
+    @conversation ||= @mailbox.conversations.first
   end
 end

@@ -34,7 +34,6 @@
     - unless log_in?
       %main.dhruvi-help
         %main.main-view
-          %h1 NIE ZALOGOWANY
           = yield
     - else
       .my-container 
@@ -132,7 +131,7 @@
                       %use{"xlink:href" => "#{asset_path('sprite.svg')}#icon-home"}
                     %span Dashboard
                 %li{class: "#{(controller_name == 'conversations' || controller_name == 'messages')?'side-nav__item side-nav__item--active':'side-nav__item'}"}
-                  %a.side-nav__link{href: "/"}
+                  %a.side-nav__link{href: "/conversations"}
                     %svg.side-nav__icon
                       %use{"xlink:href" => "#{asset_path('sprite.svg')}#icon-envelope-o"}
                     %span Messages
