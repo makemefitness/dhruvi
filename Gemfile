@@ -54,3 +54,9 @@ gem "bootstrap"
 gem "cocoon", "~> 1.2"
 
 gem "simple_calendar", "~> 3.0"
+
+gem 'will_paginate-bootstrap-style'
+gem 'will_paginate', '~> 4.0'
+gem "mailboxer", "~> 0.15.1"
+
+gem 'gravatar_image_tag'

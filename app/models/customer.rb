@@ -9,6 +9,9 @@ class Customer < ApplicationRecord
   has_many :exercises, through: :tasks
   has_many :diet_sets
 
+  has_many :messages
+  has_many :users, through: :messages
+
   # Default sex
   enum sex: [:man, :woman]
   # Include default devise modules. Others available are:
@@ -36,6 +39,8 @@ class Customer < ApplicationRecord
   validates :age, presence: true
   validates :height, presence: true
   validates :weight, presence: true
+
+  acts_as_messageable
   
   def bmr
     tmp = (9.99 * weight.to_f) + (6.25 * height.to_f) - (4.92 * actual_age.to_f)
@@ -70,6 +75,10 @@ class Customer < ApplicationRecord
     return BodyType.find(body_type_id).name if body_type_id.present?
 
     'Not set up'
+  end
+
+  def mailboxer_email(object)
+    email # Return the user's email or `nil` if you want to disable email notifications
   end
 
   ransack_alias :name, :customer_first_name_or_customer_last_name_or_customer_email

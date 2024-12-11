@@ -46,13 +46,13 @@
           .main-callendar#calendar-box
 
       .callendar-deatials.px-0
-        .calendar.inner-box#user-tasks{style:"border-radius: 8px;
+        .calendar1.inner-box#user-tasks{style:"border-radius: 8px;
                 background: #ffffff;
                 box-shadow: -12px 12px 30px #6b6b6b,
               12px -12px 30px #ffffff;"}
           %h1.color-primary Your scheduled tasks.
           %ul.list-group#tasks-list{style:"background:#cfcece;"}
-        .calendar.inner-box.mt-5#user-raining-tasks{style:"border-radius: 8px;
+        .calendar1.inner-box.mt-5#user-raining-tasks{style:"border-radius: 8px;
                 background: #ffffff;
                 box-shadow: -12px 12px 30px #6b6b6b,
               12px -12px 30px #ffffff;"}
@@ -134,43 +134,59 @@
                     %a{href: "#"}
                       = recipe.name
                       = Recipe.find(recipe.recipe_id).name
-    -# %section#druga_opcja
-    -#   .my-5{style:"
-    -#         width: 100%;
-    -#         margin: auto;
-    -#         border-radius: 8px;
-    -#         background: #ffffff;
-    -#         box-shadow: -12px 12px 30px #6b6b6b,
-    -#           12px -12px 30px #ffffff;
-    -#     "}
-    -#     - if @customer.present?
-    -#       .user-review__photo.p-3
-    -#         = image_tag @customer.avatar, class: 'user-review__photo' if @customer.avatar.present?
-    -#         %p.paragraph.px-5
-    -#           - unless @customer.profil.present?
-    -#             %h1 Brak ustalonego celu
-    -#             = link_to 'Utworz profil', new_admin_customer_profil_path(@customer)
-    -#           - else
-    -#             %h1.color-primary.px-5= "#{@customer.name}"
-    -#         .user-review__details.px-5
-    -#           %ul.list.line-top
-    -#             %h3.color-primary Twoje dane osobiste:
-    -#             %li.list__item
-    -#               .list__item-table
-    -#                 %b.color-primary Twoj wskaznik BMR:
-    -#                 %span= @customer.bmr.to_f.round(2)
-    -#             %li.list__item.list__item-table
-    -#               %b Typ budowy ciała:
-    -#               %span= @customer.body_type
-    -#             %li.list__item.list__item-table
-    -#               %b Twoja waga:
-    -#               %span= @customer.weight
-    -#             %li.list__item.list__item-table
-    -#               %b Twoj zwrost:
-    -#               %span= @customer.height
-    -#           .user-review__details-pt.mb-3.line-bottom
-    -#             %p Twøj osobisty trener
-    -#             = image_tag "Rysiu.png", alt: "logo", class: "pt__photo"
+    %section#messages.my-5{style:"min-height:100vh;"}
+      .my-5{style:"
+            width: 100%;
+            margin: auto;
+            border-radius: 8px;
+            background: #ffffff;
+            box-shadow: -12px 12px 30px #6b6b6b,
+              12px -12px 30px #ffffff;
+        "}
+        .container
+          %h1 Your Conversations
+
+          -# %p= link_to 'Start conversation', new_message_path, class: 'btn btn-lg btn-primary'
+
+          %ul.list-group
+            = render partial: 'conversations/conversation', collection: @conversations
+            - if @conversation.present?
+              .container
+                %h1 Conversation
+                %p
+                  Chatting with
+                  \#{render 'conversations/participants', conversation: @conversation}
+                .panel.panel-default
+                  .panel-heading= @conversation.subject
+                  .panel-body
+                    .messages
+                      - @conversation.receipts_for(current_customer).each do |receipt|
+                        .media
+                          - message = receipt.message
+                          .media-left
+                            = gravatar_for message.sender, 45, message.sender.name
+                          .media-body
+                            %h6.media-heading
+                              = message.sender.name
+                              says at #{message.created_at.strftime("%-d %B %Y, %H:%M:%S")}
+                            = message.body
+
+                  = form_tag reply_conversation_path(@conversation), method: :post do
+                    .form-group
+                      = text_area_tag 'body', nil, cols: 3, class: 'form-control', placeholder: 'Type something...', required: true
+                    = submit_tag "Send Message", class: 'btn btn-primary'
+          = will_paginate @conversations
+          = form_tag messages_path, method: :post do
+            .form-group
+              = label_tag 'message[subject]', 'Subject'
+              = text_field_tag 'message[subject]', nil, class: 'form-control', required: true
+            .form-group
+              = label_tag 'message[body]', 'Message'
+              = text_area_tag 'message[body]', nil, cols: 3, class: 'form-control', required: true
+            .form-group
+              = label_tag 'recipients', 'Choose recipients'
+              = select_tag 'recipients', recipients_options_for_customer, multiple: true, class: 'form-control chosen-select my-select'
+            = submit_tag 'Send', class: 'btn btn-primary'
 %script
   function timeNow(){
   let dt = new Date();
@@ -186,6 +202,12 @@
   $('day-number').removeClass('today-mark');
   let today = new Date().getDate();
   $(".day-number:contains('" + today + "')").addClass('today-mark');
+    
+  $(".my-select").chosen({
+  allow_single_deselect: true,
+  no_results_text: 'No results matched',
+  width: "100%"
+  });
 
 .customer_home-header
   .customer_home-header__header

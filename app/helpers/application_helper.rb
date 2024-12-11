@@ -82,5 +82,7 @@ module ApplicationHelper
       end
     nil
   end
-
+  def gravatar_for_options(user, size = 30, title = user)
+    image_tag gravatar_image_url(user.email, size: size), title: title, class: 'img-rounded'
+  end
 end

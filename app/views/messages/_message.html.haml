@@ -1,0 +1,7 @@
+%div{class: "message #{message.user == @user ? 'sent' : 'received'}"}
+  %p
+    %strong
+      = message.user == @user ? "You" : message.customer.name
+      \:
+  %p= message.content
+  %small= message.created_at.strftime("%d %b %Y %H:%M")

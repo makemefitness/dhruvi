@@ -31,7 +31,6 @@
     - unless log_in?
       %main.dhruvi-help
         %main.main-view
-          %h1 NIE ZALOGOWANY
           = yield
     - else
       .my-container 
@@ -60,10 +59,10 @@
                       %span.text Diets
                       %span.circle
                   %li.list
-                    %a{href: "#druga_opcja"}
+                    %a{href: "#messages"}
                       %span.icon
-                        %i.fa-solid.fa-camera
-                      %span.text Photos
+                        %i.fa-solid.fa-message
+                      %span.text Messages
                       %span.circle
                   %li.list
                     %a{href: "javascript: void(0)"}
