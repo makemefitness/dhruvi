@@ -36,6 +36,6 @@ class User < ApplicationRecord
   end
 
   def mailboxer_email(object)
-    email # Return the user's email or `nil` if you want to disable email notifications
+    nil # Return the user's email or `nil` if you want to disable email notifications
   end
 end
