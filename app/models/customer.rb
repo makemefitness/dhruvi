@@ -78,7 +78,7 @@ class Customer < ApplicationRecord
   end
 
   def mailboxer_email(object)
-    email # Return the user's email or `nil` if you want to disable email notifications
+    nil # Return the user's email or `nil` if you want to disable email notifications
   end
 
   ransack_alias :name, :customer_first_name_or_customer_last_name_or_customer_email
