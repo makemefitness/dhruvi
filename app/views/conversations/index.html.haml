@@ -1,9 +1,44 @@
-.container
-  %h1 Your Conversations
+.recipe
+  = render partial: 'partials/main_header'
+  .recipe__header
+    %h1.recipe__heading
+      Your Conversations
+    .recipe__nav
+      - if params[:keywords].present?
+        %svg.recipe__nav-icon
+          %use{"xlink:href" => "#{asset_path('sprite.svg')}#icon-search"}
+        = @conversations.count
+        results
+    .recipe__summary
+      %p
+        %b= @conversations.count
+        conversations
+  .p-5
 
-  %p= link_to 'Start conversation', new_message_path, class: 'btn btn-lg btn-primary'
+    %p= link_to 'Start conversation', new_message_path, class: 'btn btn-lg btn-primary'
+    %ul#myTab.nav.nav-tabs{role: "tablist"}
+      %li.nav-item{role: "presentation"}
+        %button#mailboxer_conversations-tab.nav-link.active{"aria-controls" => "conversations", "aria-selected" => "true", "data-bs-target" => "#mailboxer_conversations", "data-bs-toggle" => "tab", role: "tab", type: "button"} Conversations
+      %li.nav-item{role: "presentation"}
+        %button#sentbox-tab.nav-link{"aria-controls" => "profile", "aria-selected" => "false", "data-bs-target" => "#sentbox", "data-bs-toggle" => "tab", role: "tab", type: "button"} Sentbox
+      %li.nav-item{role: "presentation"}
+        %button#trash-tab.nav-link{"aria-controls" => "contact", "aria-selected" => "false", "data-bs-target" => "#trash", "data-bs-toggle" => "tab", role: "tab", type: "button"} Trash
+    #myTabContent.tab-content.mt-1
 
-  %ul.list-group 
-    = render partial: 'conversations/conversation', collection: @conversations
+      #mailboxer_conversations.tab-pane.fade.show.active{"aria-labelledby" => "profile-tab", role: "tabpanel"}
+        %ul.list-group 
+          = render partial: 'conversations/conversation', collection: @conversations
 
-  = will_paginate
+        = will_paginate
+
+      #sentbox.tab-pane.fade{"aria-labelledby" => "profile-tab", role: "tabpanel"}
+        %ul.list-group
+          = render partial: 'conversations/conversation', collection: @sent_items
+
+        = will_paginate
+
+      #trash.tab-pane.fade{"aria-labelledby" => "contact-tab", role: "tabpanel"}
+        %ul.list-group
+          = render partial: 'conversations/conversation', collection: @trash_items
+
+        = will_paginate

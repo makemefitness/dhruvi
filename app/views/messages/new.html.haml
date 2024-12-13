@@ -10,31 +10,58 @@
         .form__group
           = label_tag 'message[body]', 'Message', class: "form__label"
           = text_area_tag 'message[body]', nil, cols: 3, class: 'form__input', required: true
-        .form__group
-          = label_tag 'recipients', 'Choose recipients', class: "form__label"
-          -# = select_tag 'recipients', recipients_options, multiple: true, class: 'form__input easyAutocomplete__forms chosen-select my-select'
-          -# = text_field_tag  :customer_name, placeholder: "First name, Surname lub Email", data: {behavior: "autocomplete"}, id: 'appointment_customer_name', class: 'form__input easyAutocomplete__forms'
-          -# = hidden_field_tag :recipients, id: "appointment_customer_id"
 
         .form__group
-          = label_tag :customer_id, "Client", class: "form__label"
-          -# = f.text_field :q, placeholder: "Type client name...", class: "form__input", id: "appointment_customer_name"
-          = text_field_tag  :customer_name, nil, data: {behavior: "autocomplete"}, class: 'form__input easyAutocomplete__forms'
-          = hidden_field_tag :customer_id, id: "appointment_customer_id"
+          = label_tag :customer_name, "Client", class: "form__label"
+          = text_field_tag :customer_name, nil, data: {behavior: "autocomplete"}, class: 'form__input easyAutocomplete__forms'
+          = hidden_field_tag 'recipients[]', id: "appointment_customer_ids", name: "recipients[]", value: ""
         = submit_tag 'Send', class: 'btn btn-primary'
 
       %script
-        let wejscie = $('#customer_name');
-        let options_2 = { 
+        -# let wejscie = $('#customer_name');
+        -# let options_2 = { 
+        -# getValue: "name",
+        -# url: function(phrase){
+        -# return "/customers_search?q=" + phrase;
+        -# },
+        -# categories: [
+        -# {
+        -# listLocation: 'customers',
+        -# header: "<strong>Customers</strong>"
+        -# },
+        -# ],
+        -# list:{maxNumberOfElements: 20,onChooseEvent: function(){let url = wejscie.getSelectedItemData().id;console.log(url);$("#appointment_customer_id").val(url);},showAnimation: {type: "fade", time: 400,callback: function() {}},}}
+        -# wejscie.easyAutocomplete(options_2);
+      %script 
+        const wejscie = $('#customer_name');
+        const selectedIds = [];
+        const hiddenField = $("#recipients_");
+        const options3 = {
         getValue: "name",
-        url: function(phrase){
-        return "/customers_search?q=" + phrase;
+        url: function(phrase) {
+        return `/customers_search?q=${phrase}`;
         },
         categories: [
         {
         listLocation: 'customers',
         header: "<strong>Customers</strong>"
-        },
+        }
         ],
-        list:{maxNumberOfElements: 20,onChooseEvent: function(){let url = wejscie.getSelectedItemData().id;console.log(url);$("#appointment_customer_id").val(url);},showAnimation: {type: "fade", time: 400,callback: function() {}},}}
-        wejscie.easyAutocomplete(options_2);
+        list: {
+        maxNumberOfElements: 20,
+        onChooseEvent: function() {
+        const selectedId = wejscie.getSelectedItemData().id;
+        console.log(selectedId)
+        hiddenField.attr("value", selectedId);
+        // Debug output
+        console.log("Selected ID:", selectedId); 
+        console.log("Hidden Field Updated:", hiddenField.val());
+        console.log(hiddenField)
+        },
+        showAnimation: {
+        type: "fade",
+        time: 400
+        }
+        }
+        };
+        wejscie.easyAutocomplete(options3);

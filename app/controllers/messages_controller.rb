@@ -31,11 +31,7 @@ class MessagesController < ApplicationController
   def get_receipents
 
     if get_type_of_login == 'User'
-      if session[:user]
-        User.where(id: params['recipients'])
-      else
-        Customer.where(id: params['recipients'])
-      end
+      Customer.where(id: params['recipients'])
     elsif get_type_of_login == 'Customer'
       User.where(id: params['recipients'])
     end

@@ -5,6 +5,8 @@ class ConversationsController < ApplicationController
 
   def index
     @conversations = @mailbox.inbox.paginate(page: params[:page], per_page: 10)
+    @sent_items = @mailbox.sentbox.paginate(page: params[:page], per_page: 10)
+    @trash_items = @mailbox.trash.paginate(page: params[:page], per_page: 10)
   end
 
   def show
