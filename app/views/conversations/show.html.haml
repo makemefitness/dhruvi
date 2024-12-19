@@ -1,43 +1,94 @@
+-# .recipe
+-#   = render partial: 'partials/main_header'
+-#   .recipe__header
+-#     %h1.recipe__heading
+-#       Your Conversations
+-#     .recipe__nav
+-#       - if params[:keywords].present?
+-#         %svg.recipe__nav-icon
+-#           %use{"xlink:href" => "#{asset_path('sprite.svg')}#icon-search"}
+-#         = @conversation.receipts_for(current_user).count
+-#         results
+-#     .recipe__summary
+-#       %p
+-#         %b= @conversation.receipts_for(current_user).count
+-#         messages
+-#   .p-5
+
+-#     %p= link_to 'Start conversation', new_message_path, class: 'btn btn-lg btn-primary'
+-#     %h1 Conversation
+-#     %p
+-#       Chatting with
+-#       \#{render 'conversations/participants', conversation: @conversation}
+-#     .panel.panel-default
+-#       .panel-heading= @conversation.subject
+-#       .panel-body
+-#         .messages
+-#           %ul.list-group 
+-#             - @conversation.receipts_for(current_user).each do |receipt|
+-#               %li.list-group-item 
+-#                 .media.d-flex.w-100
+-#                   - message = receipt.message
+-#                   .media-left
+-#                     = gravatar_for message.sender, 10, message.sender.name
+-#                   .media-body.p-1.ml-5.w-100
+-#                     %h6.media-heading.d-flex.w-100.justify-content-between
+-#                       %p= message.sender.name
+-#                       %p says at #{message.created_at.strftime("%-d %B %Y, %H:%M:%S")}
+-#                     = message.body
+
+-#       = form_tag reply_conversation_path(@conversation), method: :post do
+-#         .form-group.mt-5
+-#           = text_area_tag 'body', nil, cols: 3, class: 'form-control', placeholder: 'Type something...', required: true
+-#         = submit_tag "Send Message", class: 'btn btn-lg btn-primary'
+
 .recipe
   = render partial: 'partials/main_header'
   .recipe__header
     %h1.recipe__heading
       Your Conversations
     .recipe__nav
-      - if params[:keywords].present?
-        %svg.recipe__nav-icon
-          %use{"xlink:href" => "#{asset_path('sprite.svg')}#icon-search"}
-        = @conversation.receipts_for(current_user).count
-        results
+
     .recipe__summary
       %p
-        %b= @conversation.receipts_for(current_user).count
-        messages
-  .p-5
+        %b= @conversations.present? ? "#{@conversations.count} conversations" : "#{@conversation.receipts_for(current_user).count} messages"
+  .px-5
 
     %p= link_to 'Start conversation', new_message_path, class: 'btn btn-lg btn-primary'
-    %h1 Conversation
-    %p
-      Chatting with
-      \#{render 'conversations/participants', conversation: @conversation}
-    .panel.panel-default
-      .panel-heading= @conversation.subject
-      .panel-body
-        .messages
-          %ul.list-group 
-            - @conversation.receipts_for(current_user).each do |receipt|
-              %li.list-group-item 
-                .media.d-flex.w-100
-                  - message = receipt.message
-                  .media-left
-                    = gravatar_for message.sender, 10, message.sender.name
-                  .media-body.p-1.ml-5.w-100
-                    %h6.media-heading.d-flex.w-100.justify-content-between
-                      %p= message.sender.name
-                      %p says at #{message.created_at.strftime("%-d %B %Y, %H:%M:%S")}
-                    = message.body
+  .row.p-5
+    .col-sm-3.col-md-2
+      %ul.nav.nav-pills.nav-fill.flex-column
+        = mailbox_section 'inbox', @box, class: 'nav-item'
+        = mailbox_section 'sent', @box, class: 'nav-item'
+        = mailbox_section 'trash', @box, class: 'nav-item'
+    .col-sm-9.col-md-10
+      - if @conversations.present?
+        - if @box == 'trash'
+          %p= button_to 'Empty trash', empty_trash_conversations_path, class: 'btn btn-danger', method: :delete, data: {confirm: 'Are you sure?'}                                                                 |
+        %ul.list-group
+          = render partial: 'conversations/conversation', collection: @conversations
+        = will_paginate
+      .card
+        .card-header
+          Chatting with
+          \#{render 'conversations/participants', conversation: @conversation}
+          = @conversation.subject
+        .card-body
+          .messages
+            %ul.list-group 
+              - @conversation.receipts_for(current_user).each do |receipt|
+                %li.list-group-item 
+                  .media.d-flex.w-100
+                    - message = receipt.message
+                    .media-left
+                      = gravatar_for message.sender, 10, message.sender.name
+                    .media-body.p-1.ml-5.w-100
+                      %h6.media-heading.d-flex.w-100.justify-content-between
+                        %p= message.sender.name
+                        %p says at #{message.created_at.strftime("%-d %B %Y, %H:%M:%S")}
+                      = message.body
 
-      = form_tag reply_conversation_path(@conversation), method: :post do
-        .form-group.mt-5
-          = text_area_tag 'body', nil, cols: 3, class: 'form-control', placeholder: 'Type something...', required: true
-        = submit_tag "Send Message", class: 'btn btn-lg btn-primary'
+          = form_tag reply_conversation_path(@conversation), method: :post do
+            .form-group.mt-5
+              = text_area_tag 'body', nil, cols: 3, class: 'form-control', placeholder: 'Type something...', required: true
+            = submit_tag "Send Message", class: 'btn btn-lg btn-primary'

@@ -23,7 +23,11 @@ class CustomersController < ApplicationController
     @customer = Customer.new
   end
 
-  def show; end
+  def show
+    @conversation = current_user.mailbox.conversations.joins(:receipts)
+    .where(mailboxer_receipts: { receiver_id: @customer.id, receiver_type: "Customer" })
+    .distinct
+  end
 
   def edit; end
 

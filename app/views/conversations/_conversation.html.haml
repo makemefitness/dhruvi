@@ -1,9 +1,45 @@
-%li.list-group-item.clearfix 
-  = link_to conversation.subject, conversation_path(conversation)
-  %p= render 'conversations/participants', conversation: conversation
-  %p
-    = conversation.last_message.body
-    %small
-      (
-      %span.text-muted>= conversation.last_message.created_at.strftime("%-d %B %Y, %H:%M:%S")
-      )
+-# %li.list-group-item.clearfix
+-#   = link_to conversation.subject, conversation_path(conversation)
+-#   .btn-group-vertical.pull-right
+-#     - if conversation.is_trashed?(current_user)
+-#       = button_to 'Restore', restore_conversation_path(conversation), class: 'btn btn-xs btn-info', method: :post
+-#     - else
+-#       = button_to 'Move to trash', conversation_path(conversation), class: 'btn btn-xs btn-danger',method: :delete, data: {turbo_method: :delete, turbo_confirm: 'Are you sure?'}
+-#       - if conversation.is_unread?(current_user)
+-#         = button_to 'Mark as read', mark_as_read_conversation_path(conversation), class: 'btn btn-xs btn-info', method: :post                                                                  |
+-#   %p= render 'conversations/participants', conversation: conversation
+-#   %p
+-#     = conversation.last_message.body
+-#     %small
+-#       (
+-#       %span.text-muted>= conversation.last_message.created_at.strftime("%-d %B %Y, %H:%M:%S")
+-#       )
+
+= link_to conversation_path(conversation), class: "text-decoration-none text-reset" do
+  .card.mb-3
+    .row.g-0.d-flex
+      .col
+        -# \#{render 'conversations/participants', conversation: conversation}
+        -# = conversation.subject
+        -# = conversation.last_message.body
+        %li.list-group-item 
+          .media.d-flex.w-100
+            - message = conversation.last_message
+            .media-left
+              = render 'conversations/participants', conversation: conversation
+              -# = message.sender.name
+            .media-body.p-1.ml-5.w-100
+              = render 'conversations/participants_name', conversation: conversation
+              %h6.media-heading.d-flex.w-100.justify-content-between
+                -# %p= message.sender.name
+                %p= conversation.subject
+                %p= message.created_at.strftime("%-d %B %Y, %H:%M:%S")
+              %span.media-heading.d-flex.w-100.justify-content-between
+                %small= conversation.last_message.body
+                .d-flex
+                  - if conversation.is_unread?(current_user)
+                    = button_to 'Mark as read', mark_as_read_conversation_path(conversation), class: 'btn btn-xs btn-info me-md-3', method: :post
+                  - if conversation.is_trashed?(current_user)
+                    = button_to 'Restore', restore_conversation_path(conversation), class: 'btn btn-xs btn-info', method: :post
+                  - else
+                    = button_to 'Move to trash', conversation_path(conversation), class: 'btn btn-xs btn-danger',method: :delete, data: {turbo_method: :delete, turbo_confirm: 'Are you sure?'}

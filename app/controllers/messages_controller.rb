@@ -20,7 +20,7 @@ class MessagesController < ApplicationController
     recipients = get_receipents
     conversation = current_login_in.send_message(recipients, params[:message][:body], params[:message][:subject]).conversation
     session[:user] = false
-    flash[:success] = "Wiadomość została wysłana!"
+    flash[:success] = "Message has been sent!"
     respond_to do |format|
       format.html { get_type_of_login == 'User' ? (redirect_to conversation_path(conversation)) : (redirect_to main_customer_path)  }
       format.js { redirect_to conversation_path(conversation) }
