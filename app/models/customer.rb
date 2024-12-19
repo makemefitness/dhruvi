@@ -81,5 +81,9 @@ class Customer < ApplicationRecord
     nil # Return the user's email or `nil` if you want to disable email notifications
   end
 
+  def unread_messages
+    mailbox.receipts.where(is_read: false)
+  end
+
   ransack_alias :name, :customer_first_name_or_customer_last_name_or_customer_email
 end

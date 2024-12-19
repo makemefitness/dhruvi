@@ -38,4 +38,8 @@ class User < ApplicationRecord
   def mailboxer_email(object)
     nil # Return the user's email or `nil` if you want to disable email notifications
   end
+
+  def unread_messages
+    mailbox.receipts.where(is_read: false)
+  end
 end

@@ -1,0 +1,5 @@
+- conversation.participants.each do |participant|
+  - if current_user
+    %h3= participant.name unless participant == current_user
+  - if current_customer
+    %h3= participant.name unless participant == current_customer
