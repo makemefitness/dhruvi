@@ -7238,3 +7238,7 @@ Coverage report generated for RSpec to /home/maciej/dhruvi/dhruvi_app/coverage. 
 [2024-12-26 10:25:09.610] [INFO] Sending autorun event
 [2024-12-26 10:25:48.049] [INFO] /home/maciej/dhruvi/dhruvi_app/config/routes.rb was saved - checking if this effects /home/maciej/dhruvi/dhruvi_app
 [2024-12-26 10:25:48.050] [INFO] Sending autorun event
+[2024-12-26 10:46:55.057] [INFO] /home/maciej/dhruvi/dhruvi_app/.gitignore was saved - checking if this effects /home/maciej/dhruvi/dhruvi_app
+[2024-12-26 10:46:55.057] [INFO] Sending autorun event
+[2024-12-26 10:47:25.296] [INFO] /home/maciej/dhruvi/dhruvi_app/.gitignore was saved - checking if this effects /home/maciej/dhruvi/dhruvi_app
+[2024-12-26 10:47:25.297] [INFO] Sending autorun event
