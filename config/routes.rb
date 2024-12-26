@@ -15,6 +15,21 @@ Rails.application.routes.draw do
     controllers: 'users',
     views: 'users'
   }
+
+  # Define authenticated roots
+  authenticated :user do
+    root to: "main#dashboard", as: :authenticated_user_root
+  end
+
+  authenticated :customer do
+    root to: "main#customer", as: :authenticated_customer_root
+  end
+
+  # Define unauthenticated root (for visitors)
+  unauthenticated do
+    root to: "main#home"
+  end
+  
   resources :customer_recipes
   resources :diet_sets
 
@@ -90,5 +105,5 @@ Rails.application.routes.draw do
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
   # Can be used by load balancers and uptime monitors to verify that the app is live.
   get "up" => "rails/health#show", as: :rails_health_check
-  root "main#home"
+  # root "main#home"
 end
