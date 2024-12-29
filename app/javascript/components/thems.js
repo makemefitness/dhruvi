@@ -90,6 +90,14 @@ class Themes {
   }
 }
 
-window.onload = function () {
-  let theme = new Themes()
-}
+let theme = new Themes()
+
+// window.onload = function () {
+//   console.log('dupa 3')
+//   alert('dupa')
+//   // let theme = new Themes()
+// }
+
+// window.onload = function () {
+//   console.log('korwa jestem za tepy 2')
+// }

@@ -73,7 +73,7 @@ module ApplicationHelper
       next if msg_type == :form_error
 
       concat(
-        content_tag(:div, class: "alert #{bootstrap_class_for(msg_type)} alert-dismissible fade show d-flex align-items-center fs-5 m-3", role: "alert") do
+        content_tag(:div, class: "alert #{bootstrap_class_for(msg_type)} alert-dismissible d-flex align-items-center fs-5 m-3", role: "alert") do
           concat content_tag(:svg, class: "bi flex-shrink-0 me-2", "aria-label" => "Success:", height: "24", role: "img", width: "24") { concat content_tag(:use, '', "xlink:href" => "#{icon_for_flash(msg_type)}") }
           concat content_tag(:span, message.html_safe)
           concat content_tag(:button, '', class: "btn-close", data: { 'bs-dismiss': 'alert' }, 'aria-label': "Close")

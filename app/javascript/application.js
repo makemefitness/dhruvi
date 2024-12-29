@@ -14,18 +14,13 @@ import './components/calendar'
 import './components/todolist'
 import './components/dietSetSummary'
 import './components/chosen.jquery'
-// $('recipe_ingredients').cocoon()
-// import './components/autocomplete'
+
+import './lib/flash'
+console.log('korwa wewnatra')
+import './components/thems'
+console.log('korwa wewnatra')
+
 $(function () {
   console.log('Hello world z korwy pierwszy start')
 })
-// import 'jquery_ujs'
-// import 'popper'
 import 'bootstrap'
-// document.addEventListener('turbo:load', function () {
-//   alert('ladujesies')
-// })
-// $(function () {
-//   $('[data-toggle="popover"]').popover()
-// })
-// $('.dropdown-toggle').dropdown()
