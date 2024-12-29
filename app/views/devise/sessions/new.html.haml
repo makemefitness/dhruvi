@@ -1,22 +1,20 @@
 %section.form-all.jumbotron.p-5.center
   .login_customer__form.p-5
-    %h1.heading-secondary.heading-secondary__form Zaloguj sie
+    %h1.heading-secondary.heading-secondary__form Sign in to your account
     = form_for(resource, as: resource_name, url: session_path(resource_name), html: {class: 'form'}) do |f|
-      .form-group
-        = f.text_field :login, autofocus: true, autocomplete: "email", placeholder: 'Email lub nick', class: "form__input"
+      .form__group
+        = f.text_field :login, autofocus: true, autocomplete: "email", placeholder: 'Email or nick', class: "form__input"
         = f.label :login, "Email or nick", class: "form__label"
         %br/
-      .form-group
+      .form__group
         = f.password_field :password, class: "form__input", autocomplete: true, placeholder: 'Password'
         = f.label :password, 'Password', class: "form__label"
         %br/
-      /
-        <div class="form-group">
-        <haml_loud> f.check_box :remember_me </haml_loud>
-        <haml_loud> f.label :remember_me, &#39;Zapamiej mnie&#39; </haml_loud>
-        </div>
-      .form-group
-        = f.submit "Loguj", class: "my-btn my-btn--pink my-btn--width btn-lg"
+      .form__group.d-flex.justify-content-start
+        = f.check_box :remember_me, style: "min-width: 20px;"
+        = f.label :remember_me, class: "ms-3"
+      .form__group
+        = f.submit "Log in", class: "my-btn my-btn--pink my-btn--width btn-lg"
       .form__group.mt-5
         %h5.bg-transparent-8.p-3.pull-left.text-left.br-3
           = render "devise/shared/links"

@@ -1,6 +1,6 @@
 %section.form-all.jumbotron.p-5.center
   .login_customer__form.p-5
-    %h1.heading-secondary.heading-secondary__form Załóż konto
+    %h1.heading-secondary.heading-secondary__form Sign Up
     = form_for(resource, as: resource_name, url: registration_path(resource_name), html: {class: 'form'}) do |f|
       = devise_error_messages!
       .form__group
@@ -20,22 +20,22 @@
       .form__group
         - if @minimum_password_length
           %em
-            (#{@minimum_password_length} znakow minimum)
+            (#{@minimum_password_length} characters minimum)
         = f.password_field :password, autocomplete: "off", class: "form__input"
         .field_with_errors
-          = "Hasło #{resource.errors.messages[:password][0]}" if resource.errors.messages[:password] != []
-        = f.label :password, "Hasło", class: "form__label"
+          = "Password #{resource.errors.messages[:password][0]}" if resource.errors.messages[:password] != []
+        = f.label :password, "Password", class: "form__label"
         %small#passwordHelpInline.text-muted
-          Musi zawierć 6-20 znakow.
+          Must contain 6-20 characters.
         %br/
       .form__group
         = f.password_field :password_confirmation, autocomplete: "off", class: "form__input"
         .field_with_errors
-          = "Potwierdz hasło #{resource.errors.messages[:password_confirmation][0]}" if resource.errors.messages[:password_confirmation] != []
-        = f.label :password_confirmation, "Potwierdz hasło", class: "form__label"
+          = "Confirm password #{resource.errors.messages[:password_confirmation][0]}" if resource.errors.messages[:password_confirmation] != []
+        = f.label :password_confirmation, "Confirm password", class: "form__label"
         %br/
       .actions-1
-        = f.button "Załóż konto", class: "my-btn my-btn--pink my-btn--width btn-lg"
+        = f.button "Sign Up", class: "my-btn my-btn--pink my-btn--width btn-lg"
       .form__group
         %h2.bg-transparent-8.p-3.mt-5.pull-left.br-3
           = render "devise/shared/links"

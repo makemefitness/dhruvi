@@ -32,7 +32,7 @@ class User < ApplicationRecord
   end
 
   def name
-    email
+    self[:name].presence || email
   end
 
   def mailboxer_email(object)

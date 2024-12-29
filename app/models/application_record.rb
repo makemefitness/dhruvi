@@ -1,5 +1,6 @@
 class ApplicationRecord < ActiveRecord::Base
   primary_abstract_class
+  self.implicit_order_column = "created_at"
 
   def self.ransackable_associations(auth_object = nil)
     @ransackable_associations ||= reflect_on_all_associations.map { |a| a.name.to_s }

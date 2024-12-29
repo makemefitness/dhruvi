@@ -40,4 +40,6 @@
 /node_modules
 
 /coverage
+coverage
+@ext:connorshea.vscode-ruby-test-adaptercoverage/
 @ext:connorshea.vscode-ruby-test-adapter
