@@ -69,20 +69,36 @@ module ApplicationHelper
   end
 
   def flash_messages(_opts = {})
-    # return if flash[0][0] == :form_error
     flash.each do |msg_type, message|
       next if msg_type == :form_error
-      concat(content_tag(:div, message.html_safe, {
-        class: "alert #{bootstrap_class_for(msg_type)} fade in"}) do
-          concat content_tag(:button, 'x', class: "close", data: {
-            dismiss: 'alert'
-          })
-          concat message.html_safe
-        end)
-      end
+
+      concat(
+        content_tag(:div, class: "alert #{bootstrap_class_for(msg_type)} alert-dismissible d-flex align-items-center fs-5 m-3", role: "alert") do
+          concat content_tag(:svg, class: "bi flex-shrink-0 me-2", "aria-label" => "Success:", height: "24", role: "img", width: "24") { concat content_tag(:use, '', "xlink:href" => "#{icon_for_flash(msg_type)}") }
+          concat content_tag(:span, message.html_safe)
+          concat content_tag(:button, '', class: "btn-close", data: { 'bs-dismiss': 'alert' }, 'aria-label': "Close")
+        end
+      )
+    end
     nil
   end
+
   def gravatar_for_options(user, size = 30, title = user)
     image_tag gravatar_image_url(user.email, size: size), title: title, class: 'img-rounded'
+  end
+
+  private
+
+  def icon_for_flash(msg_type)
+    case msg_type.to_sym
+    when :success, :notice
+      "#check-circle-fill"
+    when :error, :alert
+      "#exclamation-triangle-fill"
+    when :info
+      "#info-fill"
+    else
+      ''
+    end
   end
 end

@@ -1,48 +1,77 @@
-%header.main-header
-  %a.logo{href: "/"}
-    | Standup App
-  /! Header Navbar: style can be found in header.less
-  %nav.navbar.navbar-static-top{role: "navigation"}
-    .pull-left
-      %a.logo{href: "/t"}
-        | Teams
-      %a.logo{href: "/s"}
-        | Standups
-      %a.logo.standup{href: "/s/new/#{Date.today.iso8601}"}
-        | Submit a Standup
-    /! Navbar Right Menu
-    .navbar-custom-menu
-      %ul.nav.navbar-nav
-        /! Notifications: style can be found in dropdown.less
-        %li.dropdown.notifications-menu
-          %a.dropdown-toggle{data-toggle: "dropdown", href: "#"}
-            %i.fa.fa-bell-o
-            %span.label.label-warning style="display:none"
-              | NEW
-          %ul.dropdown-menu#notification-container
-            = render partial: 'layouts/navigation/notifications', locals: {notification_standups: notification_standups(current_user)}
-        /! User Account: style can be found in dropdown.less
-        li.dropdown.user.user-menu
-          a.dropdown-toggle data-toggle="dropdown" {href: "#"
-            img.user-image{
-              alt=("User Image")
-              src="#{gravatar_image_url(current_user.email, size: 25, secure:true )}"
-            }
-            span.hidden-xs = current_user.name
-          ul.dropdown-menu
-            li.header= current_user.name
-            li.divider
-            li
-              a {href: "/user/me"
-                | Profile
-            - if current_user.has_role? :admin, current_account
-              li
-                a {href: "/account/users"
-                  | Settings
-              li
-                = link_to 'Billing', billing_index_path
-            li.divider
-            li
-              = link_to(destroy_user_session_path, :method => :delete) do
-                i.fa.fa-sign-out
-                | Log out
+%header.header
+  .logo.d-bloc
+    = image_tag "logo.png", alt: "logo", class: "logo"
+    
+  <!-- FORMULARZ -->
+  = form_with url: search_path, local: true, method: :get, html: { class: 'search'} do |form|
+    = form.text_field  :q, placeholder: 'First name, Last name or Email', data: {behavior: "autocomplete"}, id: 'easyAutocompleteA', class: 'search__input'
+    = form.button "search", class: 'search__button' do
+      %svg.search__icon
+        %use{"xlink:href" => "#{asset_path('sprite.svg')}#icon-magnifying-glass"}
+  ////////////////////////////////////////////////////////////////////////////////////////////////////
+  <!-- = javascript_pack_tag 'javascript/search' -->
+  %script
+    let input = $('#easyAutocompleteA');
+    let options = { 
+    getValue: "name",
+    url: function(phrase){
+    return "/search?q=" + phrase;
+    },
+    categories: [
+    {
+    listLocation: 'customers',
+    header: "<strong>Customers</strong>"
+    },
+    {
+    listLocation: 'ingredients',
+    header: "<strong>Ingredients</strong>"
+    },
+    {
+    listLocation: 'recipes',
+    header: "<strong>Recipes</strong>"
+    }
+    ],
+    list:{maxNumberOfElements: 20,onChooseEvent: function(){let url = input.getSelectedItemData().url;console.log(url);window.location.href = url;},showAnimation: {type: "fade", time: 400,callback: function() {}},}}
+    input.easyAutocomplete(options);
+  ////////////////////////////////////////////////////////////////////////////////////////////////////
+  <!-- USER-NAV -->
+  %nav.user-nav
+    .user-nav__icon-box
+      %svg.user-nav__icon
+        %use{"xlink:href" => "#{asset_path('sprite.svg')}#icon-bookmark"}
+      %span.user-nav__notification 10
+    .user-nav__icon-box{title: "Messages"}
+      %a(href="http:/conversations") 
+        %svg.user-nav__icon
+          %use{"xlink:href" => "#{asset_path('sprite.svg')}#icon-chat"}
+        %span.user-nav__notification= current_user.unread_messages.size
+    .user-nav__user
+      - if log_in?
+        = gravatar_for_login(get_login_user)
+        /= image_pack_tag "images/Maciej.jpg", class: "user-nav__user-photo", alt: "Maciej"
+        %span.user-nav__user-name
+          = get_login_user_name
+          %svg.user-nav__icon.color-primary
+            %use{"xlink:href" => "#{asset_path('sprite.svg')}#icon-caret-down"}
+        %nav.sidebar.user-nav__user-sidebar
+          %ul.user-nav__user-menu
+            %li.user-nav__user-item
+              %a.user-nav__user__link{href: "/#{get_type_of_login}/edit"}
+                %svg.side-nav__icon
+                  %use{"xlink:href" => "#{asset_path('sprite.svg')}#icon-pencil1"}
+                %span Edit your data
+            %li.user-nav__user-item.user-nav__user-theme-chooser
+              %a.user-nav__user__link{href: '#'}
+                %svg.side-nav__icon
+                  %use{"xlink:href" => "#{asset_path('sprite.svg')}#icon-paint-brush"}
+                %span Choose theme
+                %ul.user-nav__user-theme__choose#theme-chooser
+
+            %li.user-nav__user-item
+              %a.user-nav__user__link{href: "/#{get_type_of_login}/sign_out", "data-method" => 'delete'}
+                %svg.side-nav__icon
+                  %use{"xlink:href" => "#{asset_path('sprite.svg')}#icon-power-off"}
+                %span Logout
+
+      - else
+        = link_to 'Log in',  new_customer_session_path

@@ -19127,7 +19127,7 @@
     }
     loadThemes() {
       let themeItems = this.themes.reduce(
-        (html, theme, index) => html += this.generateThemeList(theme, index),
+        (html, theme2, index) => html += this.generateThemeList(theme2, index),
         ""
       );
       let menu_themes = document.getElementById("theme-chooser");
@@ -19146,9 +19146,9 @@
     saveTheme(color) {
       localStorage.setItem("Theme", JSON.stringify(color));
     }
-    generateThemeList(theme, index) {
+    generateThemeList(theme2, index) {
       return `
-      <li class="user-nav__user-item"><a class="user-nav__user__link" href="#" id="${index}">${theme.name}</a></li>
+      <li class="user-nav__user-item"><a class="user-nav__user__link" href="#" id="${index}">${theme2.name}</a></li>
     `;
     }
     loadColors(col1, col2, col3) {
@@ -19157,9 +19157,7 @@
       document.documentElement.style.setProperty("--color-primary-dark", col3);
     }
   };
-  window.onload = function() {
-    let theme = new Themes();
-  };
+  var theme = new Themes();
 
   // app/javascript/components/todolist.js
   var ToDoListClass = class {
@@ -19572,6 +19570,26 @@
 
   // app/javascript/application.js
   var import_chosen = __toESM(require_chosen_jquery());
+
+  // app/javascript/lib/flash.js
+  window.onload = function() {
+    console.log("korwa jestem za tepy");
+    const alert2 = document.querySelector(".alert");
+    if (alert2) {
+      setTimeout(() => {
+        alert2.classList.remove("opacity-100");
+        alert2.classList.add("opacity-0");
+      }, 5e3);
+      setTimeout(() => {
+        alert2.classList.remove("d-flex");
+        alert2.classList.add("d-none");
+      }, 6e3);
+    }
+  };
+
+  // app/javascript/application.js
+  console.log("korwa wewnatra");
+  console.log("korwa wewnatra");
   $(function() {
     console.log("Hello world z korwy pierwszy start");
   });

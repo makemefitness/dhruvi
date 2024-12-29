@@ -1,30 +1,74 @@
-- if @team.present? && !@team.id.nil?
-  .main-sidebar
-    .sidebar
-      .user-panel
-        .pull-left.image
-          h3.header-circ
-              = @team&.name[0]&.upcase
-        .pull-left.info style="vertical-align: middle; margin-top: 5px;"
-          p= @team.name
-        .clearfix
-        span.hidden-xs.description
-          p= @team.description
-      ul.sidebar-menu
-        li.header Overview
-        li
-          = link_to team_path(@team),\
-            {id: "edit_#{@team.hash_id}_sidebar"} do
-              .fa.fa-dashboard
-              span Details
-        li
-          = link_to edit_team_path(@team),\
-            {id: "edit_#{@team.hash_id}_sidebar"} do
-              .fa.fa-cog
-              span Settings
-      ul.sidebar-menu
-        li.header Standups
-        li
-          a href="/t/#{@team.hash_id}/s"
-            .fa.fa-child
-            span View
+%nav.sidebar
+  - if get_type_of_login == 'users'
+    %ul.side-nav
+      %li{class: "#{(action_name == 'dashboard' && controller_name == 'main')?'side-nav__item side-nav__item--active':'side-nav__item'}"}
+        %a.side-nav__link{href: "/main/dashboard"}
+          %svg.side-nav__icon
+            %use{"xlink:href" => "#{asset_path('sprite.svg')}#icon-home"}
+          %span Dashboard
+      %li{class: "#{(controller_name == 'conversations' || controller_name == 'messages')?'side-nav__item side-nav__item--active':'side-nav__item'}"}
+        %a.side-nav__link{href: "/conversations"}
+          %svg.side-nav__icon
+            %use{"xlink:href" => "#{asset_path('sprite.svg')}#icon-envelope-o"}
+          %span Messages
+      %li{class: "#{(controller_name == 'appointments')?'side-nav__item side-nav__item--active':'side-nav__item'}"}
+        %a.side-nav__link{href: "/appointments"}
+          %svg.side-nav__icon
+            %use{"xlink:href" => "#{asset_path('sprite.svg')}#icon-calendar"}
+          %span Timetable
+      %li{class: "#{(controller_name == 'customers')?'side-nav__item side-nav__item--active':'side-nav__item'}"}
+        %a.side-nav__link{href: "/customers"}
+          %svg.side-nav__icon
+            %use{"xlink:href" => "#{asset_path('sprite.svg')}#icon-location-restroom"}
+          %span Customers
+      %li{class: "#{(controller_name == 'workload_parts' || controller_name == 'workload_weeks' || controller_name == 'workload_temps')?'side-nav__item side-nav__item--active':'side-nav__item'}"}
+        %a.side-nav__link{href: "/"}
+          %i.fas.fa-running.side-nav__icon{style:"font-size:2rem;"}
+          %span Workloads
+      %li{class: "#{(controller_name == 'exercises')?'side-nav__item side-nav__item--active':'side-nav__item'}"}
+        %a.side-nav__link{href: "/exercises"}
+          %svg.side-nav__icon
+            %use{"xlink:href" => "#{asset_path('sprite.svg')}#icon-accessibility"}
+          %span Exercises
+      %li{class: "#{(controller_name == 'diet_set_categories')||(controller_name == 'diet_set_templates'||(controller_name == 'diet_sets'))?'side-nav__item side-nav__item--active':'side-nav__item'}"}
+        %a.side-nav__link{href: "/"}
+          %i.fas.fa-concierge-bell.side-nav__icon{style:"font-size:2rem;"}
+          %span Diets
+      %li{class: "#{(controller_name == 'recipes')?'side-nav__item side-nav__item--active':'side-nav__item'}"}
+        %a.side-nav__link{href: "/recipes"}
+          %svg.side-nav__icon
+            %use{"xlink:href" => "#{asset_path('sprite.svg')}#icon-forkandspoon"}
+          %span Recipes
+      %li{class: "#{(controller_name == 'ingredients')?'side-nav__item side-nav__item--active':'side-nav__item'}"}
+        %a.side-nav__link{href: "/ingredients"}
+          %svg.side-nav__icon
+            %use{"xlink:href" => "#{asset_path('sprite.svg')}#icon-bowl"}
+          %span Ingredients
+      %li{class: "#{(action_name == 'settings' && controller_name == 'main')?'side-nav__item side-nav__item--active':'side-nav__item'}"}
+        %a.side-nav__link{href: "/main/settings"}
+          %svg.side-nav__icon
+            %use{"xlink:href" => "#{asset_path('sprite.svg')}#icon-cog"}
+          %span Settings
+  - else
+    %ul.side-nav
+      %li{class: "#{(action_name == 'customer' && controller_name == 'main')?'side-nav__item side-nav__item--active':'side-nav__item'}"}
+        %a.side-nav__link{href: "/"}
+          %svg.side-nav__icon
+            %use{"xlink:href" => "#{asset_path('sprite.svg')}#icon-home"}
+          %span Dashboard
+      %li{class: "#{(action_name == 'index' && controller_name == 'trenings')?'side-nav__item side-nav__item--active':'side-nav__item'}"}
+        %a.side-nav__link{href: "#"}
+          %svg.side-nav__icon
+            %use{"xlink:href" => "#{asset_path('sprite.svg')}#icon-accessibility"}
+          %span Treningi
+      %li{class: "#{(controller_name == 'recipes')?'side-nav__item side-nav__item--active':'side-nav__item'}"}
+        %a.side-nav__link{href: "/recipes"}
+          %svg.side-nav__icon
+            %use{"xlink:href" => "#{asset_path('sprite.svg')}#icon-forkandspoon"}
+          %span Recipes
+      %li{class: "#{(controller_name == 'ingredients')?'side-nav__item side-nav__item--active':'side-nav__item'}"}
+        %a.side-nav__link{href: "/ingredients"}
+          %svg.side-nav__icon
+            %use{"xlink:href" => "#{asset_path('sprite.svg')}#icon-bowl"}
+          %span Ingredients
+  %span.legal &copy; 2023 Dhruvi Infinity Inspiration.
