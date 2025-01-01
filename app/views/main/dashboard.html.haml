@@ -40,11 +40,11 @@
             %h1.color-primary Appointments.
             .list-group
               %li.list-group-item.d-flex.align-items-start
-                = gravatar_for(Customer.last(3)[0])
+                -# = gravatar_for(Customer.last(3)[0])
                 %div.w-100.align-items-start.ps-5
                   .d-flex.w-100.justify-content-between
                     %h5.mb-1
-                      =  Customer.last(3)[0].name
+                      -# =  Customer.last(3)[0].name
                     %small.text-body-secondary Tomorow 12:15
                   %p.mb-1 Initial interview.
                   %small.text-body-secondary Measurements and interviews.
@@ -55,21 +55,21 @@
                 %p.mb-1 Measurments.
                 %small And some small print.
               %li.list-group-item.d-flex.align-items-start
-                = gravatar_for(Customer.last(2)[0])
+                -# = gravatar_for(Customer.last(2)[0])
                 %div.w-100.align-items-start.ps-5 
                   .d-flex.w-100.justify-content-between
                     %h5.mb-1 
-                      =  Customer.last(2)[0].name
+                      -# =  Customer.last(2)[0].name
                     %small.text-body-secondary 3 days ago
                   %p.mb-1 Confirmation of measurement and test results.
                   %small.text-body-secondary And some muted small print.
 
               %li.list-group-item.d-flex.align-items-start
-                = gravatar_for(Customer.last)
+                -# = gravatar_for(Customer.last)
                 %div.w-100.align-items-start.ps-5
                   .d-flex.w-100.justify-content-between
                     %h5.mb-1 
-                      =  Customer.last.name
+                      -# =  Customer.last.name
                     %small.text-body-secondary 3 days ago
                   %p.mb-1 Some placeholder content in a paragraph.
                   %small.text-body-secondary And some muted small print.
@@ -106,7 +106,7 @@
         // Trainings SECTION
 #recipe_details
 
-
+= current_user
 
 
 = javascript_tag 'javascript/calenndarTabMenu'

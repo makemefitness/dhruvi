@@ -54,7 +54,7 @@ class ProfilsController < ApplicationController
     @profil.destroy!
 
     respond_to do |format|
-      format.html { redirect_to profils_url, notice: "Profil was successfully destroyed." }
+      format.html { redirect_to customer_url(@customer), notice: "Profil was successfully destroyed." }
       format.json { head :no_content }
     end
   end

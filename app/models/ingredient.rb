@@ -5,6 +5,12 @@ class Ingredient < ApplicationRecord
   has_many :customer_recipes, through: :customer_diets
   belongs_to :ingredients_categories, optional: true
 
+  validates :name, presence: true
+  validates :carbohydrate, presence: true
+  validates :energy, presence: true
+  validates :fat, presence: true
+  validates :protein, presence: true
+
   def self.ransackable_attributes(auth_object = nil)
     ["carbohydrate", "energy", "fat", "id", "id_value", "name", "protein"]
   end 

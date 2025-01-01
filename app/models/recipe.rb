@@ -8,6 +8,8 @@ class Recipe < ApplicationRecord
   end
   has_rich_text :description
 
+  validates :name, presence: true
+
 
   def self.ransackable_attributes(auth_object = nil)
     ["created_at", "id", "id_value", "ingredients", "link", "name", "preparation", "summary", "updated_at"]

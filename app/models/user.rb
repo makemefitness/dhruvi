@@ -1,6 +1,9 @@
 class User < ApplicationRecord
   attr_accessor :login
 
+  has_one :owned_account, class_name: 'Account', foreign_key: 'owner_id', dependent: :destroy
+  belongs_to :account, optional: true # If the user belongs to a team or account
+
   has_one_attached :avatar
   has_many :appointments, dependent: :destroy
   has_many :messages

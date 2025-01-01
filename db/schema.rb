@@ -10,10 +10,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_12_27_194050) do
+ActiveRecord::Schema[7.1].define(version: 2024_12_30_095523) do
   # These are extensions that must be enabled in order to support this database
-  enable_extension "pgcrypto"
   enable_extension "plpgsql"
+
+  create_table "accounts", force: :cascade do |t|
+    t.string "name"
+    t.string "subdomain"
+    t.bigint "owner_id", null: false
+    t.jsonb "settings", default: {}, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["owner_id"], name: "index_accounts_on_owner_id"
+    t.index ["settings"], name: "index_accounts_on_settings", using: :gin
+  end
 
   create_table "action_text_rich_texts", force: :cascade do |t|
     t.string "name", null: false
@@ -327,6 +337,14 @@ ActiveRecord::Schema[7.1].define(version: 2024_12_27_194050) do
     t.index ["exercise_id"], name: "index_tasks_on_exercise_id"
   end
 
+  create_table "teams", force: :cascade do |t|
+    t.string "name"
+    t.bigint "account_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["account_id"], name: "index_teams_on_account_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -336,12 +354,14 @@ ActiveRecord::Schema[7.1].define(version: 2024_12_27_194050) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "avatar"
-    t.uuid "uuid", default: -> { "gen_random_uuid()" }, null: false
     t.string "name"
+    t.bigint "account_id"
+    t.index ["account_id"], name: "index_users_on_account_id"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "accounts", "users", column: "owner_id"
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "appointments", "customers"
@@ -366,4 +386,6 @@ ActiveRecord::Schema[7.1].define(version: 2024_12_27_194050) do
   add_foreign_key "recipe_ingredients", "recipes"
   add_foreign_key "tasks", "customers"
   add_foreign_key "tasks", "exercises"
+  add_foreign_key "teams", "accounts"
+  add_foreign_key "users", "accounts"
 end
