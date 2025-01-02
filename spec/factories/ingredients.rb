@@ -1,9 +1,9 @@
 FactoryBot.define do
   factory :ingredient do
-    name { 'apple' }
-    energy { 100 }
-    protein { 110 }
-    fat { 20 }
-    carbohydrate { 30 }
+    sequence(:name) { |n| "Ingredient #{n}" }
+    energy { rand(50..150) }
+    protein { rand(10..50) }
+    fat { rand(5..25) }
+    carbohydrate { rand(10..60) }
   end
 end

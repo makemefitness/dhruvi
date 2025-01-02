@@ -3,9 +3,8 @@ class MainController < ApplicationController
   before_action :authenticate_customer!, only: :customer
   before_action :get_mailbox, only: :customer
   before_action :get_conversation, only: :customer
-  # layout "customer", only: [:customer]
-  # layout "landing", only: [:home]
-  # layout 'adminlte', only: [:adminlte]
+  skip_before_action :authenticate, only: [:home, :main, :help, :about]
+
 
   def dashboard; end
   

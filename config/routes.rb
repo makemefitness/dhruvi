@@ -30,12 +30,14 @@ Rails.application.routes.draw do
     root to: "main#home"
   end
   
+  resource :account
   resources :customer_recipes
   resources :diet_sets
 
   get '/add_meal/:id', to: 'diet_sets#add_meal'
 
   get 'main/dashboard'
+  get 'dashboard', to: 'main#dashboard', as: :dashboard
   get 'main/adminlte'
   get 'main/settings'
   get 'main/main'

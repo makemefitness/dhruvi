@@ -1,10 +1,14 @@
 class ApplicationController < ActionController::Base
   layout :layout_by_resource
+  before_action :authenticate
   # before_action :configure_permitted_parameters, if: :devise_controller?
 
   def authenticate
+    if devise_controller?
+      return
+    end
     unless current_login_in != false
-      redirect_to new_customer_session_path
+      redirect_to root_path
     end
     # if current_user && current_user.account.nil?
     #   redirect_to new_accounts_path

@@ -13,17 +13,30 @@ require 'rails_helper'
 # sticking to rails and rspec-rails APIs to keep things simple and stable.
 
 RSpec.describe "/recipes", type: :request do
+  let(:user) { create(:user) }
   
   # This should return the minimal set of attributes required to create a valid
   # Recipe. As you add validations to Recipe, be sure to
   # adjust the attributes here as well.
   let(:valid_attributes) {
-    skip("Add a hash of attributes valid for your model")
+    attributes_for(:recipe)
   }
 
   let(:invalid_attributes) {
-    skip("Add a hash of attributes invalid for your model")
+    {name: ""}
   }
+
+  shared_examples "unauthorized access" do
+    it "redirects to the login page" do
+      action.call
+      expect(response).to redirect_to(root_path) # Devise login path
+    end
+  end
+
+  # Ensure the user is logged in before tests
+  before do
+    sign_in user # Devise helper to log in the user
+  end
 
   describe "GET /index" do
     it "renders a successful response" do
@@ -89,14 +102,14 @@ RSpec.describe "/recipes", type: :request do
   describe "PATCH /update" do
     context "with valid parameters" do
       let(:new_attributes) {
-        skip("Add a hash of attributes valid for your model")
+        { name: "New name" }
       }
 
       it "updates the requested recipe" do
         recipe = Recipe.create! valid_attributes
         patch recipe_url(recipe), params: { recipe: new_attributes }
         recipe.reload
-        skip("Add assertions for updated state")
+        expect(recipe.name).to eq "New name"
       end
 
       it "redirects to the recipe" do

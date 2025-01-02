@@ -46,7 +46,6 @@ jobs:
         uses: ruby/setup-ruby@v1
         with:
           ruby-version: 3.2.2 # Use the version of Ruby you are using in your project
-    
 
       - name: Install Dependencies
         run: |
@@ -60,13 +59,12 @@ jobs:
 
       - name: Install dependencies for bun
         uses: oven-sh/setup-bun@v2
-      
+        
       - name: Precompile assets
         run: |
           source /home/runner/.bashrc
           bun --help
           bundle exec rails assets:precompile
-          
 
       - name: Run Tests with RSpec
         run: |

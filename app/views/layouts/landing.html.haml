@@ -149,35 +149,40 @@
         .products__container.container.grid
           %article.products__card
             .products__content
-              %img.products__img{alt: "", src: "assets/img/product1.png"}/
+              = image_tag "landing/product1.png", alt: "", class: "products__img"
+              -# %img.products__img{alt: "", src: "assets/img/product1.png"}/
               %h3.products__title Black
               %span.products__price $249
               %button.button.button--flex.products__button
                 %i.ri-shopping-bag-line.button__icon
           %article.products__card
             .products__content
-              %img.products__img{alt: "", src: "assets/img/product2.png"}/
+              = image_tag "landing/personal_trainer1", alt: "", class: "products__img"
+              -# %img.products__img{alt: "", src: "assets/img/product2.png"}/
               %h3.products__title Personal Trainer
               %span.products__price $249
               %button.button.button--flex.products__button
                 %i.ri-shopping-bag-line.button__icon
           %article.products__card
             .products__content
-              %img.products__img{alt: "", src: "assets/img/product3.png"}/
+              = image_tag "landing/fitness_influencer", alt: "", class: "products__img"
+              -# %img.products__img{alt: "", src: "assets/img/product3.png"}/
               %h3.products__title Fitness Influencer
               %span.products__price $249
               %button.button.button--flex.products__button
                 %i.ri-shopping-bag-line.button__icon
           %article.products__card
             .products__content
-              %img.products__img{alt: "", src: "assets/img/product4.png"}/
+              = image_tag "landing/sport_performance", alt: "", class: "products__img"
+              -# %img.products__img{alt: "", src: "assets/img/product4.png"}/
               %h3.products__title Sports Performance
               %span.products__price $249
               %button.button.button--flex.products__button
                 %i.ri-shopping-bag-line.button__icon
           %article.products__card
             .products__content
-              %img.products__img{alt: "", src: "assets/img/product5.png"}/
+              = image_tag "landing/yoga", alt: "", class: "products__img"
+              -# %img.products__img{alt: "", src: "assets/img/product5.png"}/
               %h3.products__title Yoga
               %span.products__price $249
               %button.button.button--flex.products__button

@@ -22,4 +22,27 @@ RSpec.describe "Mains", type: :request do
     end
   end
 
+  describe "GET /dashboard" do
+    context "user login" do
+      let(:user) { create(:user) }
+
+      before do
+        sign_in user # Assuming you're using Devise
+        get '/dashboard'
+      end
+
+      it 'return http success' do
+        expect(response).to have_http_status(:success)
+      end
+    end
+
+    context "when no user is logged in" do
+      before do
+        get '/dashboard'
+      end
+      it "redirect to root path" do
+        expect(response).to redirect_to(root_path)
+      end
+    end
+  end
 end
