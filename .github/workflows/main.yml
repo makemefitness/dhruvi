@@ -59,7 +59,7 @@ jobs:
 
       - name: Install dependencies for bun
         uses: oven-sh/setup-bun@v2
-
+        
       - name: Precompile assets
         run: |
           source /home/runner/.bashrc
